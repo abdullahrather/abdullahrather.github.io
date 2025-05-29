@@ -8,11 +8,11 @@ const Layout = ({ children }) => {
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">Abdullah Rather</div>
           <ul className="flex space-x-6">
-            <li><ScrollLink to="hero" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 font-medium">Home</ScrollLink></li>
-            <li><ScrollLink to="about" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 font-medium">About</ScrollLink></li>
-            <li><ScrollLink to="services" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 font-medium">Services</ScrollLink></li>
-            <li><ScrollLink to="projects" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 font-medium">Projects</ScrollLink></li>
-            <li><ScrollLink to="contact" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 font-medium">Contact</ScrollLink></li>
+            <li><ScrollLink to="hero" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">Home</ScrollLink></li>
+            <li><ScrollLink to="about" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">About</ScrollLink></li>
+            <li><ScrollLink to="services" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">Services</ScrollLink></li>
+            <li><ScrollLink to="projects" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">Projects</ScrollLink></li>
+            <li><ScrollLink to="contact" smooth duration={500} className="cursor-pointer hover:text-blue-600 transition-colors text-gray-700 dark:text-gray-300 font-medium">Contact</ScrollLink></li>
           </ul>
         </nav>
       </header>

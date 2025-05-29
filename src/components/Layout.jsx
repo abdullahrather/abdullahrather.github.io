@@ -4,7 +4,7 @@ import { Link as ScrollLink } from 'react-scroll';
 const Layout = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+      <header className="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm dark:backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-700">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">Abdullah Rather</div>
           <ul className="flex space-x-6">

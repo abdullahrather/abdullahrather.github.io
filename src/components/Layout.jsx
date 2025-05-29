@@ -17,13 +17,13 @@ const Layout = ({ children }) => {
         </nav>
       </header>
       <main className="flex-grow pt-24">{children}</main>
-      <footer className="bg-gray-800 text-white py-8 relative z-10">
+      <footer className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white py-8 relative z-10">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <p className="text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300">
               © {new Date().getFullYear()} Abdullah Rather. All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm mt-2">
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
               Built with React, Tailwind CSS, and Framer Motion
             </p>
           </div>

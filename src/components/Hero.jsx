@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 text-white"
+      className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 text-white relative"
     >
       <motion.h1
         className="text-5xl md:text-7xl font-extrabold mb-4 text-center"
@@ -26,7 +26,7 @@ const Hero = () => {
       </motion.p>
       <motion.a
         href="#projects"
-        className="px-6 py-3 bg-white text-indigo-600 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
+        className="px-6 py-3 bg-white text-indigo-600 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}

@@ -39,17 +39,18 @@ const Hero = () => {
       requestAnimationFrame(raf);
     }
 
-    // Hero headline animation with SplitType
+    // 🎯 KEEP: Hero animations on BOTH desktop and mobile
     const heroHeadline = document.getElementById("heroHeadline");
     const heroSubline = document.getElementById("heroSubline");
     const heroButtons = document.getElementById("heroButtons");
 
     if (heroHeadline && heroSubline && heroButtons) {
-      // Ensure elements are visible before animation
+      // Show elements immediately
       gsap.set([heroHeadline, heroSubline, heroButtons], { opacity: 1 });
 
+      // 🎯 KEEP: Run animations on BOTH desktop AND mobile
       setTimeout(() => {
-        // Split text animation
+        // Split text animation - "Transform your vision into intelligent solutions"
         const split = new SplitType(heroHeadline, {
           types: "chars",
           tagName: "span",
@@ -57,30 +58,25 @@ const Hero = () => {
 
         gsap.fromTo(
           split.chars,
-          {
-            y: 100,
-            opacity: 0,
-          },
+          { y: 50, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            stagger: 0.02,
-            duration: 0.8,
-            ease: "back.out(1.4)",
+            stagger: 0.01,
+            duration: 0.4,
+            ease: "power2.out",
           }
         );
 
-        // Subline typing effect
-        gsap.set(heroSubline, { opacity: 1 });
-
+        // 🎯 KEEP: Typing effect - "Bridging the gap..."
         gsap.to(heroSubline, {
-          delay: 1.2,
+          delay: 0.6,
           text: {
             value:
               "Bridging the gap between complex business requirements and scalable software solutions with expertise in enterprise systems and AI integration.",
             delimiter: "",
           },
-          duration: 2.5,
+          duration: 1.2,
           ease: "none",
         });
 
@@ -91,72 +87,47 @@ const Hero = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            delay: 2.5,
+            duration: 0.4,
+            delay: 1.8,
           }
         );
-      }, 300);
+      }, 100);
     }
 
-    // Enhanced floating animation for background shapes (reduced intensity for mobile)
-    const animationIntensity = isMobile ? 0.5 : 1;
+    // 🎯 KEEP: Background shapes animation on BOTH desktop and mobile
+    const animationIntensity = isMobile ? 0.5 : 1; // Slightly reduced on mobile but still animated
 
     gsap.to(".shape-1", {
-      x: `${20 * animationIntensity}%`,
-      y: `${15 * animationIntensity}%`,
-      rotation: 25 * animationIntensity,
-      duration: 2,
+      x: `${15 * animationIntensity}%`,
+      y: `${12 * animationIntensity}%`,
+      rotation: 20 * animationIntensity,
+      duration: 3,
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
     });
 
     gsap.to(".shape-2", {
-      x: `${-18 * animationIntensity}%`,
-      y: `${-16 * animationIntensity}%`,
-      rotation: -20 * animationIntensity,
-      duration: 2.5,
+      x: `${-12 * animationIntensity}%`,
+      y: `${-10 * animationIntensity}%`,
+      rotation: -15 * animationIntensity,
+      duration: 3.5,
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
       delay: 0.2,
     });
 
     gsap.to(".shape-3", {
-      x: `${16 * animationIntensity}%`,
-      y: `${-12 * animationIntensity}%`,
-      rotation: 18 * animationIntensity,
-      duration: 2.2,
+      x: `${10 * animationIntensity}%`,
+      y: `${-8 * animationIntensity}%`,
+      rotation: 12 * animationIntensity,
+      duration: 4,
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
       delay: 0.4,
     });
-
-    // Desktop-only additional animations
-    if (!isMobile) {
-      gsap.to(".shape-4", {
-        x: "-15%",
-        y: "12%",
-        rotation: 15,
-        duration: 2.4,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        delay: 0.3,
-      });
-
-      gsap.to(".shape-5", {
-        x: "12%",
-        y: "-10%",
-        rotation: -12,
-        duration: 1.8,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        delay: 0.5,
-      });
-    }
 
     // Cleanup function
     return () => {
@@ -171,13 +142,11 @@ const Hero = () => {
       id="hero"
       className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center"
     >
-      {/* Animated background shapes */}
+      {/* 🎯 KEEP: Animated background shapes */}
       <div className="animated-background absolute inset-0 -z-10 overflow-hidden w-full">
         <div className="animated-shape shape-1"></div>
         <div className="animated-shape shape-2"></div>
         <div className="animated-shape shape-3"></div>
-        <div className="animated-shape shape-4 hidden md:block"></div>
-        <div className="animated-shape shape-5 hidden md:block"></div>
       </div>
 
       {/* Content container */}
@@ -201,7 +170,7 @@ const Hero = () => {
 
         <div
           id="heroButtons"
-          className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4 opacity-0"
+          className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4"
         >
           <ScrollLink
             to="projects"

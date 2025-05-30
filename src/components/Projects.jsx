@@ -301,20 +301,6 @@ const Projects = () => {
     }
   }, [selectedProject]);
 
-  // Close modal on Escape key
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        closeModal();
-      }
-    };
-
-    if (selectedProject) {
-      document.addEventListener("keydown", handleEscape);
-      return () => document.removeEventListener("keydown", handleEscape);
-    }
-  }, [selectedProject]);
-
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -398,18 +384,64 @@ const Projects = () => {
                 key={project.id}
                 className="project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:shadow-2xl"
               >
-                <div className="project-card-inner">
-                  {/* 🔥 FRONT SIDE */}
+                <div className="project-card-inner" id={`card-${project.id}`}>
+                  {/* 🔥 NEW: Flip control button */}
+                  <button
+                    className="flip-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const cardInner = document.getElementById(
+                        `card-${project.id}`
+                      );
+                      const card = cardInner.closest(".project-card");
+
+                      // Toggle flip
+                      cardInner.classList.toggle("flipped");
+
+                      // 🔥 NEW: Set up auto-flip back on mouse leave
+                      if (cardInner.classList.contains("flipped")) {
+                        const handleMouseLeave = () => {
+                          setTimeout(() => {
+                            if (!card.matches(":hover")) {
+                              cardInner.classList.remove("flipped");
+                            }
+                          }, 300);
+                          card.removeEventListener(
+                            "mouseleave",
+                            handleMouseLeave
+                          );
+                        };
+
+                        card.addEventListener("mouseleave", handleMouseLeave);
+                      }
+                    }}
+                    title="Flip card for quick info"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* FRONT SIDE */}
                   <div className="project-card-front">
                     <div className="relative group">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-48 object-cover rounded-t-xl"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="flex space-x-4">
-                          {/* Existing GitHub and View Details buttons */}
                           {isPrivateRepo(project.github) ? (
                             <div className="p-3 bg-gray-600/90 text-white rounded-md backdrop-blur cursor-not-allowed flex items-center justify-center">
                               <svg
@@ -433,6 +465,7 @@ const Projects = () => {
                               rel="noopener noreferrer"
                               className="p-3 bg-white/90 text-gray-800 rounded-md hover:bg-white transition-colors backdrop-blur flex items-center justify-center"
                               title="View on GitHub"
+                              onClick={(e) => e.stopPropagation()}
                             >
                               <svg
                                 className="h-5 w-5"
@@ -445,7 +478,10 @@ const Projects = () => {
                           )}
 
                           <button
-                            onClick={() => openModal(project)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openModal(project);
+                            }}
                             className="p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors flex items-center justify-center"
                             title="View Details"
                           >
@@ -504,17 +540,18 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      {/* Enhanced technology stack with tooltips */}
+                      {/* 🔥 FIXED: Technology stack with working tooltips */}
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, i) => (
                           <div
                             key={i}
                             className="tech-stack-item relative group"
+                            onClick={(e) => e.stopPropagation()} // Prevent card flip
                           >
                             <span className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-md">
                               {tech}
                             </span>
-                            <div className="tech-tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-slate-900 text-white text-xs rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
+                            <div className="tech-tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-slate-900 text-white text-xs rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20">
                               {tech}
                               <div className="tooltip-arrow absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900"></div>
                             </div>
@@ -524,7 +561,7 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* 🔥 BACK SIDE - Quick Project Info */}
+                  {/* BACK SIDE - Same as before */}
                   <div className="project-card-back">
                     <div className="text-center">
                       <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
@@ -577,7 +614,10 @@ const Projects = () => {
 
                       <div className="mt-6 space-y-2">
                         <button
-                          onClick={() => openModal(project)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openModal(project);
+                          }}
                           className="w-full bg-white/20 hover:bg-white/30 border border-white/30 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                         >
                           View Full Details
@@ -587,6 +627,7 @@ const Projects = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="block w-full bg-white text-indigo-600 hover:bg-gray-100 py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                           >
                             View Source Code

@@ -164,33 +164,44 @@ const Services = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Services title
-    gsap.to("#servicesTitle", {
-      scrollTrigger: {
-        trigger: "#servicesTitle",
-        start: "top 95%",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.3,
-    });
+    // Mobile detection
+    const isMobile = window.innerWidth <= 768;
 
-    // Card animations with enhanced hover effects
-    gsap.utils.toArray(".service-card").forEach((card, i) => {
-      gsap.to(card, {
+    if (!isMobile) {
+      // Desktop: animated loading
+      gsap.to("#servicesTitle", {
         scrollTrigger: {
-          trigger: card,
+          trigger: "#servicesTitle",
           start: "top 95%",
         },
         opacity: 1,
         y: 0,
         duration: 0.3,
-        delay: i * 0.05,
-        onComplete: function () {
-          card.classList.add("animation-complete");
-        },
       });
-    });
+
+      gsap.utils.toArray(".service-card").forEach((card, i) => {
+        gsap.to(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: i * 0.05,
+          onComplete: function () {
+            card.classList.add("animation-complete");
+          },
+        });
+      });
+    } else {
+      // Mobile: show everything immediately
+      gsap.set("#servicesTitle", { opacity: 1, y: 0 });
+      gsap.set(".service-card", { opacity: 1, y: 0 });
+      gsap.utils.toArray(".service-card").forEach((card) => {
+        card.classList.add("animation-complete");
+      });
+    }
   }, []);
 
   return (

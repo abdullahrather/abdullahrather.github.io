@@ -21,6 +21,32 @@
   font-named-instance: 'Italic';
 }
 
+/* Prevent _any_ scrolling/overscroll on the overlay itself */
+.modal-overlay {
+  overscroll-behavior: none;
+}
+
+/* The inner scroll container */
+.modal-body {
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+}
+
+/* ———————————————————————————
+   Always hide the native scrollbar
+   for your modal’s scrolling area
+   ——————————————————————————— */
+.modal-body::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-body {
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 /* Enhanced animations and effects */
 body {
   font-family: "Inter", sans-serif;
@@ -148,19 +174,27 @@ body {
 .text-reveal span {
   display: inline-block;
   color: rgba(100, 116, 139, 0.2);
+  font-weight: bold;
+  /* 🔥 ADD: Bold for unrevealed text */
   transition: color 0.3s ease;
 }
 
 .dark .text-reveal span {
   color: rgba(203, 213, 225, 0.2);
+  font-weight: bold;
+  /* 🔥 ADD: Bold for unrevealed text in dark mode */
 }
 
 span.text-reveal-visible {
   color: rgb(30, 41, 59) !important;
+  font-weight: bold !important;
+  /* 🔥 ADD: Bold for revealed text */
 }
 
 .dark span.text-reveal-visible {
   color: rgb(241, 245, 249) !important;
+  font-weight: bold !important;
+  /* 🔥 ADD: Bold for revealed text in dark mode */
 }
 
 .animated-background {
@@ -220,12 +254,17 @@ html:not(.dark) .animated-shape {
 .nav-mobile-item {
   display: flex;
   align-items: center;
-  padding: 0.75rem;
-  border-radius: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
   color: rgba(30, 41, 59, 0.9);
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(4px);
+  background: rgba(241, 245, 249, 0.6);
+  /* Better light mode background */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  /* Light border */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  /* Subtle shadow */
   transition: all 0.3s ease;
   margin-bottom: 0.5rem;
 }
@@ -233,6 +272,8 @@ html:not(.dark) .animated-shape {
 .dark .nav-mobile-item {
   color: rgba(255, 255, 255, 0.9);
   background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-mobile-item:hover {
@@ -241,11 +282,13 @@ html:not(.dark) .animated-shape {
 
 html:not(.dark) .nav-mobile-item:hover {
   background: rgba(226, 232, 240, 0.8);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-color: rgba(203, 213, 225, 0.5);
 }
 
 html.dark .nav-mobile-item:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(51, 65, 85, 0.6);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 .nav-mobile-icon {
@@ -255,8 +298,22 @@ html.dark .nav-mobile-item:hover {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.75rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  background: rgba(226, 232, 240, 0.5);
+  /* Better light mode icon background */
+  transition: background-color 0.3s ease;
+}
+
+.dark .nav-mobile-icon {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+.nav-mobile-item:hover .nav-mobile-icon {
+  background: rgba(203, 213, 225, 0.7);
+}
+
+.dark .nav-mobile-item:hover .nav-mobile-icon {
+  background: rgba(71, 85, 105, 0.7);
 }
 
 /* Responsive shapes for mobile */

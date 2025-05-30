@@ -190,30 +190,38 @@ const Contact = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Contact title
-    gsap.to("#contactTitle", {
-      scrollTrigger: {
-        trigger: "#contactTitle",
-        start: "top 95%",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.3,
-    });
+    // Mobile detection
+    const isMobile = window.innerWidth <= 768;
 
-    // Contact cards
-    gsap.utils.toArray(".contact-card").forEach((card, i) => {
-      gsap.to(card, {
+    if (!isMobile) {
+      // Desktop: animated loading
+      gsap.to("#contactTitle", {
         scrollTrigger: {
-          trigger: card,
+          trigger: "#contactTitle",
           start: "top 95%",
         },
         opacity: 1,
         y: 0,
         duration: 0.3,
-        delay: i * 0.05,
       });
-    });
+
+      gsap.utils.toArray(".contact-card").forEach((card, i) => {
+        gsap.to(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: i * 0.05,
+        });
+      });
+    } else {
+      // Mobile: show everything immediately
+      gsap.set("#contactTitle", { opacity: 1, y: 0 });
+      gsap.set(".contact-card", { opacity: 1, y: 0 });
+    }
   }, []);
 
   return (

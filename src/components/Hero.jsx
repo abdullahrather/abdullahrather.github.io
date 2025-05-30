@@ -39,17 +39,18 @@ const Hero = () => {
       requestAnimationFrame(raf);
     }
 
-    // Much faster Hero animations
+    // 🎯 KEEP: Hero animations on BOTH desktop and mobile
     const heroHeadline = document.getElementById("heroHeadline");
     const heroSubline = document.getElementById("heroSubline");
     const heroButtons = document.getElementById("heroButtons");
 
     if (heroHeadline && heroSubline && heroButtons) {
-      // Show elements immediately without opacity animations
+      // Show elements immediately
       gsap.set([heroHeadline, heroSubline, heroButtons], { opacity: 1 });
 
-      // Faster split text animation (reduced from 0.8s to 0.4s)
+      // 🎯 KEEP: Run animations on BOTH desktop AND mobile
       setTimeout(() => {
+        // Split text animation - "Transform your vision into intelligent solutions"
         const split = new SplitType(heroHeadline, {
           types: "chars",
           tagName: "span",
@@ -61,46 +62,46 @@ const Hero = () => {
           {
             y: 0,
             opacity: 1,
-            stagger: 0.01, // Reduced from 0.02
-            duration: 0.4, // Reduced from 0.8
-            ease: "power2.out", // Faster ease
+            stagger: 0.01,
+            duration: 0.4,
+            ease: "power2.out",
           }
         );
 
-        // Faster typing effect (reduced from 2.5s to 1.2s)
+        // 🎯 KEEP: Typing effect - "Bridging the gap..."
         gsap.to(heroSubline, {
-          delay: 0.6, // Reduced from 1.2
+          delay: 0.6,
           text: {
             value:
               "Bridging the gap between complex business requirements and scalable software solutions with expertise in enterprise systems and AI integration.",
             delimiter: "",
           },
-          duration: 1.2, // Reduced from 2.5
+          duration: 1.2,
           ease: "none",
         });
 
-        // Faster buttons animation
+        // Buttons animation
         gsap.fromTo(
           heroButtons,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.4, // Reduced from 0.8
-            delay: 1.8, // Reduced from 2.5
+            duration: 0.4,
+            delay: 1.8,
           }
         );
-      }, 100); // Reduced from 300ms
+      }, 100);
     }
 
-    // Reduced animation intensity for better performance
-    const animationIntensity = isMobile ? 0.3 : 0.6; // Reduced intensity
+    // 🎯 KEEP: Background shapes animation on BOTH desktop and mobile
+    const animationIntensity = isMobile ? 0.5 : 1; // Slightly reduced on mobile but still animated
 
     gsap.to(".shape-1", {
       x: `${15 * animationIntensity}%`,
       y: `${12 * animationIntensity}%`,
       rotation: 20 * animationIntensity,
-      duration: 3, // Slower, less distracting
+      duration: 3,
       repeat: -1,
       yoyo: true,
       ease: "power1.inOut",
@@ -141,7 +142,7 @@ const Hero = () => {
       id="hero"
       className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center"
     >
-      {/* Animated background shapes */}
+      {/* 🎯 KEEP: Animated background shapes */}
       <div className="animated-background absolute inset-0 -z-10 overflow-hidden w-full">
         <div className="animated-shape shape-1"></div>
         <div className="animated-shape shape-2"></div>
@@ -179,6 +180,14 @@ const Hero = () => {
           >
             <span className="absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10"></span>
             View My Work
+          </ScrollLink>
+          <ScrollLink
+            to="about"
+            smooth
+            duration={500}
+            className="rounded-full bg-white/60 px-8 py-3 text-base font-semibold text-slate-800 ring-1 ring-slate-300 backdrop-blur transition-all duration-300 hover:bg-white/80 hover:shadow-lg hover:translate-y-[-2px] dark:bg-slate-800/60 dark:text-slate-100 dark:ring-slate-600 cursor-pointer"
+          >
+            Learn More
           </ScrollLink>
         </div>
       </div>

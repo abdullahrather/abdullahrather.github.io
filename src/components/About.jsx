@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 
@@ -11,97 +10,145 @@ const About = () => {
     { number: "24/7", label: "Support" },
   ];
 
-  const skills = [
-    { name: "PHP & Laravel", level: 95 },
-    { name: "Python & Flask", level: 88 },
-    { name: "JavaScript & React", level: 85 },
-    { name: "MySQL & Database Design", level: 90 },
-    { name: "API Development & Integration", level: 88 },
-    { name: "Git", level: 85 },
-    { name: "System Architecture", level: 90 },
-    { name: "Team Leadership", level: 85 },
-  ];
+  const skills = useMemo(
+    () => [
+      { name: "PHP & Laravel", level: 95 },
+      { name: "Python & Flask", level: 88 },
+      { name: "JavaScript & React", level: 85 },
+      { name: "MySQL & Database Design", level: 90 },
+      { name: "API Development & Integration", level: 88 },
+      { name: "Git", level: 85 },
+      { name: "System Architecture", level: 90 },
+      { name: "Team Leadership", level: 85 },
+    ],
+    []
+  );
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-    // Much faster animations with earlier triggers
+    // Mobile detection
+    const isMobile = window.innerWidth <= 768;
+
+    // 🔥 ADD: About title animation (replacing motion)
+    gsap.to("#aboutTitle", {
+      scrollTrigger: {
+        trigger: "#aboutTitle",
+        start: isMobile ? "top 95%" : "top 90%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+    });
+
+    // 🎯 KEEP: About description typing effect
     const aboutDescription = document.getElementById("aboutDescription");
     if (aboutDescription) {
-      gsap.to(aboutDescription, {
-        scrollTrigger: {
-          trigger: aboutDescription,
-          start: "top 90%", // Trigger earlier
-        },
-        opacity: 1,
-        duration: 0.3, // Much faster
-      });
+      gsap.set(aboutDescription, { opacity: 1 });
 
       gsap.to(aboutDescription, {
         scrollTrigger: {
           trigger: aboutDescription,
-          start: "top 90%",
+          start: isMobile ? "top 95%" : "top 90%",
         },
-        delay: 0.1, // Reduced delay
+        delay: 0.1,
         text: {
           value:
             "Full-Stack Software Engineer with 5+ years of experience designing and implementing enterprise solutions. Currently pursuing M.Sc. in Artificial Intelligence in Germany.",
           delimiter: "",
         },
-        duration: 1.5, // Reduced from 3s
+        duration: isMobile ? 1.0 : 1.5,
         ease: "none",
       });
     }
 
-    // Faster text reveal
+    // 🔥 ADD: Left content animation (replacing motion)
+    gsap.to(".about-content-left", {
+      scrollTrigger: {
+        trigger: ".about-content-left",
+        start: isMobile ? "top 95%" : "top 90%",
+      },
+      opacity: 1,
+      x: 0,
+      duration: 0.4,
+    });
+
+    // 🔥 ADD: Skills section animation (replacing motion)
+    gsap.to(".skills-section", {
+      scrollTrigger: {
+        trigger: ".skills-section",
+        start: isMobile ? "top 95%" : "top 90%",
+      },
+      opacity: 1,
+      x: 0,
+      duration: 0.4,
+    });
+
+    // 🔥 FIX: Replace Framer Motion with GSAP for progress bars
+    gsap.utils.toArray(".skill-progress-bar").forEach((bar, index) => {
+      const skillLevel = skills[index].level;
+
+      // Set initial state
+      gsap.set(bar, { width: "0%" });
+
+      // Animate with ScrollTrigger
+      gsap.to(bar, {
+        scrollTrigger: {
+          trigger: bar,
+          start: isMobile ? "top 95%" : "top 85%", // Earlier trigger
+          toggleActions: "play none none reverse", // Play on enter, reverse on leave
+          refreshPriority: -1, // Lower priority to ensure it runs after other animations
+        },
+        width: `${skillLevel}%`,
+        duration: 0.8,
+        delay: index * 0.1, // Stagger animation
+        ease: "power2.out",
+      });
+    });
+
+    // 🔥 FIXED: Text reveal animation with consistent reveal/unreveal behavior
     const textReveal = document.querySelector("#aboutTextReveal");
     if (textReveal) {
-      gsap.to("#aboutTextReveal", {
-        scrollTrigger: {
-          trigger: "#aboutTextReveal",
-          start: "top 90%", // Earlier trigger
-        },
-        opacity: 1,
-        y: 0,
-        duration: 0.4, // Faster
-      });
+      // Set initial state
+      gsap.set("#aboutTextReveal", { opacity: 1, y: 0 });
 
       const words = textReveal.querySelectorAll("span");
       const totalWords = words.length;
 
+      // 🔥 FIX: Create consistent reveal/unreveal animation
       ScrollTrigger.create({
         trigger: ".text-reveal-container",
-        start: "top 90%", // Earlier trigger
-        end: "bottom 40%", // Shorter range
+        start: "top 80%", // Start revealing when 80% from top
+        end: "bottom 20%", // Continue until 20% from bottom
+        scrub: 1, // 🔥 IMPORTANT: This makes it smooth and consistent
         onUpdate: (self) => {
-          const wordIndex = Math.round(self.progress * totalWords);
+          const progress = self.progress;
+          const wordIndex = Math.round(progress * totalWords);
+
           words.forEach((word, i) => {
             if (i < wordIndex) {
               word.classList.add("text-reveal-visible");
+            } else {
+              word.classList.remove("text-reveal-visible");
             }
           });
         },
+        refreshPriority: 0, // Normal priority
         markers: false,
       });
     }
 
-    // Much faster card animations
-    gsap.utils.toArray(".stats-card").forEach((card, i) => {
-      gsap.to(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 95%", // Much earlier
-        },
-        opacity: 1,
-        y: 0,
-        duration: 0.3, // Much faster
-        delay: i * 0.05, // Reduced stagger
-        onComplete: function () {
-          card.classList.add("animation-complete");
-        },
-      });
+    // Stats cards - show immediately
+    gsap.set(".stats-card", { opacity: 1, y: 0 });
+    gsap.utils.toArray(".stats-card").forEach((card) => {
+      card.classList.add("animation-complete");
     });
-  }, []);
+
+    // 🔥 IMPORTANT: Refresh ScrollTrigger after a short delay to handle page load scenarios
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  }, [skills]);
 
   return (
     <>
@@ -111,27 +158,23 @@ const About = () => {
         className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900"
       >
         <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} // Reduced movement
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }} // Faster
-            viewport={{ once: true, margin: "-50px" }} // Earlier trigger
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">About Me</h2>
+          {/* 🔥 REPLACE: motion.div with regular div + GSAP animations */}
+          <div className="text-center mb-16">
+            <h2
+              id="aboutTitle"
+              className="text-4xl font-bold mb-4 opacity-0 transform translate-y-6"
+            >
+              About Me
+            </h2>
             <p
               id="aboutDescription"
-              className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto opacity-0"
+              className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
             ></p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }} // Reduced movement
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4 }} // Faster
-              viewport={{ once: true, margin: "-50px" }}
-            >
+            {/* 🔥 REPLACE: motion.div with regular div + GSAP animations */}
+            <div className="about-content-left opacity-0 transform translate-x-[-30px]">
               <h3 className="text-2xl font-bold mb-6">My Journey</h3>
               <p className="text-slate-600 dark:text-slate-300 mb-4">
                 I'm a passionate Full-Stack Software Engineer specializing in
@@ -153,7 +196,7 @@ const About = () => {
                 {stats.map((stat, index) => (
                   <div
                     key={index}
-                    className="stats-card group text-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-lg shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-8 transition-all duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/60 hover:shadow-xl hover:scale-105 cursor-pointer"
+                    className="stats-card group text-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-lg shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 transition-all duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/60 hover:shadow-xl hover:scale-105 cursor-pointer"
                   >
                     <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors duration-300">
                       {stat.number}
@@ -164,15 +207,10 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }} // Reduced movement
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4 }} // Faster
-              viewport={{ once: true, margin: "-50px" }}
-              className="skills-section"
-            >
+            {/* 🔥 REPLACE: motion.div with regular div + GSAP animations */}
+            <div className="skills-section opacity-0 transform translate-x-[30px]">
               <h3 className="text-2xl font-bold mb-6">Technical Expertise</h3>
               <div className="space-y-4">
                 {skills.map((skill, index) => (
@@ -184,18 +222,16 @@ const About = () => {
                       </span>
                     </div>
                     <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 0.6, delay: index * 0.05 }} // Faster
-                        viewport={{ once: true, margin: "-50px" }}
-                        className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full"
+                      {/* 🔥 FIX: Replace Framer Motion with div + GSAP */}
+                      <div
+                        className="skill-progress-bar bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full"
+                        style={{ width: "0%" }} // Start at 0%
                       />
                     </div>
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -206,7 +242,7 @@ const About = () => {
           <div className="text-reveal-container">
             <p
               id="aboutTextReveal"
-              className="text-reveal text-3xl md:text-4xl font-medium leading-relaxed opacity-0 transform translate-y-6"
+              className="text-reveal text-3xl md:text-4xl font-medium leading-relaxed"
             >
               <span>I</span>&nbsp;<span>specialize</span>&nbsp;<span>in</span>{" "}
               <span>designing</span>&nbsp;

@@ -4,6 +4,14 @@ import { ScrollTrigger } from "gsap/all";
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // 🔥 HELPER: Check if repository is private
+  const isPrivateRepo = (githubUrl) => {
+    return (
+      githubUrl === "https://github.com/abdullahrather" || githubUrl === "#"
+    );
+  };
 
   const projects = [
     {
@@ -11,8 +19,7 @@ const Projects = () => {
       title: "Enterprise Management System",
       description:
         "Comprehensive enterprise system with project management, document handling, DATEV integration, and multi-language support using Yii PHP framework.",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/enterprise-management.webp",
       technologies: [
         "Yii Framework",
         "PHP",
@@ -28,7 +35,7 @@ const Projects = () => {
         "ZUGFeRD XML Generation",
         "Multi-language Support",
       ],
-      github: "https://github.com/abdullahrather",
+      github: "#",
       demo: "#",
     },
     {
@@ -36,8 +43,7 @@ const Projects = () => {
       title: "Education Management System",
       description:
         "Complete education management platform with student management, parent portal, teacher dashboard, and financial modules built with PHP.",
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/education-management.webp",
       technologies: ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
       category: "fullstack",
       features: [
@@ -46,7 +52,7 @@ const Projects = () => {
         "Teacher Dashboard",
         "Financial Modules",
       ],
-      github: "https://github.com/abdullahrather",
+      github: "#",
       demo: "#",
     },
     {
@@ -54,8 +60,7 @@ const Projects = () => {
       title: "Donor Management System",
       description:
         "Modern donor management platform with Laravel backend and React frontend for streamlined contribution tracking and analytics.",
-      image:
-        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/donor-management.webp",
       technologies: ["Laravel", "React", "MySQL", "JavaScript"],
       category: "fullstack",
       features: [
@@ -64,7 +69,7 @@ const Projects = () => {
         "Analytics Dashboard",
         "Payment Integration",
       ],
-      github: "https://github.com/abdullahrather",
+      github: "#",
       demo: "#",
     },
     {
@@ -72,8 +77,7 @@ const Projects = () => {
       title: "Currency Converter App",
       description:
         "Real-time currency conversion web application with live exchange rates, currency switching, and responsive design using Laravel.",
-      image:
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/currency-converter.webp",
       technologies: ["Laravel", "GuzzleHttp", "ExchangeRate API", "PHP 8.2+"],
       category: "web",
       features: [
@@ -82,7 +86,7 @@ const Projects = () => {
         "Error Handling",
         "Responsive Design",
       ],
-      github: "https://github.com/abdullahrather",
+      github: "https://github.com/abdullahrather/Currency-Converter-Laravel",
       demo: "#",
     },
     {
@@ -90,8 +94,7 @@ const Projects = () => {
       title: "Ticket Management System",
       description:
         "Sophisticated workflow management system with advanced routing, notifications, user roles, and comprehensive reporting features.",
-      image:
-        "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/ticket-management.webp",
       technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
       category: "fullstack",
       features: [
@@ -100,7 +103,7 @@ const Projects = () => {
         "Role Management",
         "Comprehensive Reporting",
       ],
-      github: "https://github.com/abdullahrather",
+      github: "#",
       demo: "#",
     },
     {
@@ -108,8 +111,7 @@ const Projects = () => {
       title: "Employee Performance Tracker",
       description:
         "Advanced HR management system with performance metrics, data visualization, analytics dashboard, and export capabilities.",
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/employee-performance.webp",
       technologies: ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
       category: "fullstack",
       features: [
@@ -118,7 +120,7 @@ const Projects = () => {
         "CSV/PDF Export",
         "Employee Dashboard",
       ],
-      github: "https://github.com/abdullahrather",
+      github: "#",
       demo: "#",
     },
     {
@@ -126,8 +128,7 @@ const Projects = () => {
       title: "Laravel Auth & Role Management App",
       description:
         "Comprehensive Laravel application featuring advanced authentication, authorization, and role-based access control with Gates policies and Eloquent relationships.",
-      image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/laravel-auth-role.webp",
       technologies: [
         "Laravel",
         "PHP",
@@ -154,8 +155,7 @@ const Projects = () => {
       title: "Academic Institution Website",
       description:
         "A custom-built academic institution website featuring secure user authentication with CAPTCHA-protected registration and password recovery, role-based dashboard, student performance modules, news/events sections, committee and application form management, developed using PHP and MySQL.",
-      image:
-        "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/academic-institution.webp",
       technologies: ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
       category: "web",
       features: [
@@ -175,8 +175,7 @@ const Projects = () => {
       title: "Laravel Authentication & CRUD System",
       description:
         "An authentication system combined with product management CRUD operations built on Laravel 10's MVC framework, including secure user registration and login alongside full product lifecycle handling.",
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/laravel-auth-crud.webp",
       technologies: [
         "Laravel 10",
         "PHP",
@@ -201,8 +200,7 @@ const Projects = () => {
       title: "Corporate Insurance Website",
       description:
         "A custom-built insurance company website with a dynamic form submission module for user inquiries and application processing, supported by SQL schema scripts and styled components.",
-      image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/corporate-insurance.webp",
       technologies: ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
       category: "web",
       features: [
@@ -220,8 +218,7 @@ const Projects = () => {
       title: "Laravel Authentication Showcase",
       description:
         "A Laravel project showcasing built-in authentication features including registration, login/logout, password reset, and email verification using Laravel's scaffolding and middleware.",
-      image:
-        "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/laravel-auth-showcase.webp",
       technologies: ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
       category: "web",
       features: [
@@ -239,8 +236,7 @@ const Projects = () => {
       title: "Laravel MVC CRUD Application",
       description:
         "An example Laravel application demonstrating Create, Read, Update, and Delete operations for generic resources, emphasizing MVC conventions and form request validation.",
-      image:
-        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop&crop=center",
+      image: "/images/projects/laravel-mvc-crud.webp",
       technologies: ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
       category: "web",
       features: [
@@ -266,142 +262,441 @@ const Projects = () => {
       ? projects
       : projects.filter((project) => project.category === filter);
 
+  const openModal = (project) => {
+    setSelectedProject(project);
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden"; // lock html too
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+    document.body.style.overflow = ""; // restore
+    document.documentElement.style.overflow = ""; // restore
+  };
+
+  useEffect(() => {
+    if (!selectedProject) return;
+    const modalBody = document.querySelector(".modal-body");
+    if (!modalBody) return;
+
+    const stop = (e) => e.stopPropagation();
+    modalBody.addEventListener("wheel", stop, { passive: false });
+
+    return () => {
+      modalBody.removeEventListener("wheel", stop);
+    };
+  }, [selectedProject]);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    if (selectedProject) {
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
+    }
+  }, [selectedProject]);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Projects title
-    gsap.to("#projectsTitle", {
-      scrollTrigger: {
-        trigger: "#projectsTitle",
-        start: "top 95%",
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.3,
-    });
+    // Mobile detection
+    const isMobile = window.innerWidth <= 768;
 
-    // Project cards
-    gsap.utils.toArray(".project-card").forEach((card, i) => {
-      gsap.to(card, {
+    if (!isMobile) {
+      // Desktop: animated loading
+      gsap.to("#projectsTitle", {
         scrollTrigger: {
-          trigger: card,
+          trigger: "#projectsTitle",
           start: "top 95%",
         },
         opacity: 1,
         y: 0,
         duration: 0.3,
-        delay: i * 0.05,
       });
-    });
+
+      gsap.utils.toArray(".project-card").forEach((card, i) => {
+        gsap.to(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: i * 0.05,
+        });
+      });
+    } else {
+      // Mobile: show everything immediately
+      gsap.set("#projectsTitle", { opacity: 1, y: 0 });
+      gsap.set(".project-card", { opacity: 1, y: 0 });
+    }
   }, [filteredProjects]);
 
   return (
-    <section
-      id="projects"
-      className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900"
-    >
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2
-            id="projectsTitle"
-            className="text-4xl font-bold mb-4 transform opacity-0 translate-y-6"
-          >
-            Success Stories
-          </h2>
-          <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Here are some of the projects I've worked on, showcasing my
-            expertise in full-stack development.
-          </p>
-        </div>
-
-        {/* Filter Buttons */}
-        <div className="flex justify-center mb-12">
-          <div className="flex space-x-4 bg-white/60 dark:bg-slate-800/60 p-2 rounded-lg shadow-md backdrop-blur ring-1 ring-white/20">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                className={`px-6 py-2 rounded-md transition-all duration-300 ${
-                  filter === category.id
-                    ? "bg-indigo-600 text-white shadow-md"
-                    : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg overflow-hidden backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:transform hover:translate-y-[-8px] hover:shadow-xl"
+    <>
+      <section
+        id="projects"
+        className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900"
+      >
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2
+              id="projectsTitle"
+              className="text-4xl font-bold mb-4 transform opacity-0 translate-y-6"
             >
-              <div className="relative group">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex space-x-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-white/90 text-gray-800 rounded-md hover:bg-white transition-colors backdrop-blur"
-                    >
-                      GitHub
-                    </a>
-                    <a
-                      href={project.demo}
-                      className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-                    >
-                      Demo
-                    </a>
+              Success Stories
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Here are some of the projects I've worked on, showcasing my
+              expertise in full-stack development.
+            </p>
+          </div>
+
+          {/* Filter Buttons */}
+          <div className="flex justify-center mb-12">
+            <div className="flex space-x-4 bg-white/60 dark:bg-slate-800/60 p-2 rounded-lg shadow-md backdrop-blur ring-1 ring-white/20">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setFilter(category.id)}
+                  className={`px-6 py-2 rounded-md transition-all duration-300 ${
+                    filter === category.id
+                      ? "bg-indigo-600 text-white shadow-md"
+                      : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg overflow-hidden backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:transform hover:translate-y-[-8px] hover:shadow-xl"
+              >
+                <div className="relative group">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex space-x-4">
+                      {/* 🔥 NEW: GitHub Icon with Lock for Private Repos */}
+                      {isPrivateRepo(project.github) ? (
+                        <div className="p-3 bg-gray-600/90 text-white rounded-md backdrop-blur cursor-not-allowed flex items-center justify-center">
+                          {/* Lock Icon */}
+                          <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                            />
+                          </svg>
+                        </div>
+                      ) : (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white/90 text-gray-800 rounded-md hover:bg-white transition-colors backdrop-blur flex items-center justify-center"
+                          title="View on GitHub"
+                        >
+                          {/* GitHub Icon */}
+                          <svg
+                            className="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                          </svg>
+                        </a>
+                      )}
+
+                      {/* 🔥 NEW: View Details Icon */}
+                      <button
+                        onClick={() => openModal(project)}
+                        className="p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors flex items-center justify-center"
+                        title="View Details"
+                      >
+                        {/* Eye Icon for View Details */}
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
+                    {project.description}
+                  </p>
+
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-sm mb-2">
+                      Key Features:
+                    </h4>
+                    <div className="flex flex-wrap gap-1">
+                      {project.features.map((feature, i) => (
+                        <span
+                          key={i}
+                          className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
-                  {project.description}
-                </p>
+      {/* 🔥 NEW: Project Details Modal */}
+      {selectedProject && (
+        <div
+          className="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={closeModal}
+        >
+          <div
+            className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                {selectedProject.title}
+              </h2>
+              <button
+                onClick={closeModal}
+                className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+              >
+                <svg
+                  className="h-6 w-6 text-slate-600 dark:text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
 
-                <div className="mb-4">
-                  <h4 className="font-semibold text-sm mb-2">Key Features:</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {project.features.map((feature, i) => (
+            {/* Modal Content - Scrollable */}
+            <div className="overflow-y-auto max-h-[calc(90vh-140px)] modal-body">
+              {/* Project Image - Full Display */}
+              <div className="relative">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full h-64 md:h-80 object-contain bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600"
+                />
+              </div>
+
+              {/* Project Details */}
+              <div className="p-6 space-y-6">
+                {/* Description */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-slate-900 dark:text-white">
+                    Project Overview
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                {/* Technologies Used */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-slate-900 dark:text-white">
+                    Technologies Used
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded"
+                        className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 rounded-full text-sm font-medium"
                       >
-                        {feature}
+                        {tech}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded"
+                {/* Key Features */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-slate-900 dark:text-white">
+                    Key Features
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {selectedProject.features.map((feature, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg"
+                      >
+                        <span className="w-2 h-2 bg-indigo-500 rounded-full mr-3 flex-shrink-0"></span>
+                        <span className="text-slate-700 dark:text-slate-300 text-sm">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Development Details */}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3 text-slate-900 dark:text-white">
+                      Development Details
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                        <h4 className="font-medium text-slate-900 dark:text-white mb-2">
+                          Architecture
+                        </h4>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm">
+                          Built with modern software architecture patterns
+                          ensuring scalability, maintainability, and
+                          performance.
+                        </p>
+                      </div>
+                      <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                        <h4 className="font-medium text-slate-900 dark:text-white mb-2">
+                          Database Design
+                        </h4>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm">
+                          Optimized database schema with proper indexing,
+                          relationships, and query optimization for excellent
+                          performance.
+                        </p>
+                      </div>
+                      <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                        <h4 className="font-medium text-slate-900 dark:text-white mb-2">
+                          Security Features
+                        </h4>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm">
+                          Implemented comprehensive security measures including
+                          authentication, authorization, input validation, and
+                          protection against common vulnerabilities.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-4 pt-4">
+                  {isPrivateRepo(selectedProject.github) ? (
+                    <div className="flex-1 bg-gray-600 text-white py-3 px-6 rounded-lg text-center font-medium cursor-not-allowed flex items-center justify-center">
+                      <svg
+                        className="h-5 w-5 mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                        />
+                      </svg>
+                      Private Repository
+                    </div>
+                  ) : (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-slate-800 dark:bg-slate-700 text-white py-3 px-6 rounded-lg hover:bg-slate-900 dark:hover:bg-slate-600 transition-colors text-center font-medium flex items-center justify-center"
                     >
-                      {tech}
-                    </span>
-                  ))}
+                      <svg
+                        className="h-5 w-5 mr-2"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                      </svg>
+                      View on GitHub
+                    </a>
+                  )}
+                  <button
+                    onClick={closeModal}
+                    className="flex-1 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 py-3 px-6 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors font-medium flex items-center justify-center"
+                  >
+                    <svg
+                      className="h-5 w-5 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                    Close
+                  </button>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
 };
 

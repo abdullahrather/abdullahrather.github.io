@@ -267,45 +267,32 @@ const Projects = () => {
       : projects.filter((project) => project.category === filter);
 
   useEffect(() => {
-    const initializeAnimations = () => {
-      if (typeof gsap !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-        // Projects title
-        gsap.to("#projectsTitle", {
-          scrollTrigger: {
-            trigger: "#projectsTitle",
-            start: "top 80%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-        });
+    gsap.registerPlugin(ScrollTrigger);
 
-        // Project cards
-        gsap.utils.toArray(".project-card").forEach((card, i) => {
-          gsap.to(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: i * 0.15,
-          });
-        });
-      }
-    };
+    // Projects title
+    gsap.to("#projectsTitle", {
+      scrollTrigger: {
+        trigger: "#projectsTitle",
+        start: "top 80%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+    });
 
-    const checkGSAP = () => {
-      if (typeof gsap !== "undefined") {
-        initializeAnimations();
-      } else {
-        setTimeout(checkGSAP, 100);
-      }
-    };
-
-    checkGSAP();
+    // Project cards
+    gsap.utils.toArray(".project-card").forEach((card, i) => {
+      gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: i * 0.15,
+      });
+    });
   }, [filteredProjects]);
 
   return (

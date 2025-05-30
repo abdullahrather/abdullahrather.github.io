@@ -58,11 +58,12 @@ const Layout = ({ children }) => {
               duration={500}
               className="group flex items-center space-x-2 cursor-pointer"
             >
-              <div className="relative h-9 w-9 overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 shadow-md transition-all duration-300 group-hover:scale-110">
-                <div className="absolute inset-0 opacity-0 bg-gradient-to-br from-indigo-500 to-purple-500 transition-opacity duration-300 group-hover:opacity-100"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">AR</span>
-                </div>
+              <div className="relative h-9 w-9 overflow-hidden rounded-lg shadow-md transition-all duration-300 group-hover:scale-110">
+                <img
+                  src="/images/favicons/favicon-512x512.png"
+                  alt="Abdullah Rather Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="logo-text text-2xl font-extrabold tracking-tight transition-all duration-300 group-hover:tracking-wider">
                 Abdullah Rather
@@ -207,10 +208,12 @@ const Layout = ({ children }) => {
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10 dark:border-slate-700/30">
               <div className="group flex items-center space-x-2">
-                <div className="relative h-9 w-9 overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 shadow-md">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">AR</span>
-                  </div>
+                <div className="relative h-9 w-9 overflow-hidden rounded-lg shadow-md">
+                  <img
+                    src="/images/favicons/favicon-512x512.png"
+                    alt="Abdullah Rather Logo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <span className="logo-text text-2xl font-extrabold tracking-tight">
                   Abdullah Rather
@@ -320,7 +323,7 @@ const Layout = ({ children }) => {
                   ),
                   label: "Contact",
                 },
-              ].map((item, index) => (
+              ].map((item) => (
                 <ScrollLink
                   key={item.to}
                   to={item.to}

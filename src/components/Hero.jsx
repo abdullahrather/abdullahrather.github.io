@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
+import React, { useEffect } from "react";
+import { Link as ScrollLink } from "react-scroll";
 import { gsap } from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 import Lenis from "lenis";
@@ -7,145 +7,163 @@ import SplitType from "split-type";
 
 const Hero = () => {
   useEffect(() => {
-    // Initialize GSAP animations when component mounts
-    const initializeAnimations = () => {
-      if (typeof gsap !== "undefined" && typeof SplitType !== "undefined") {
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-        // Initialize Lenis smooth scrolling
-        const lenis = new Lenis({
-          lerp: 0.01,
-          wheelMultiplier: 1.2,
-          smoothWheel: false,
-          smoothTouch: false,
-          syncTouch: true,
-        });
+    // Better mobile detection
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) || window.innerWidth <= 768;
 
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
+    let lenis = null;
+
+    // Only initialize Lenis on desktop
+    if (!isMobile) {
+      lenis = new Lenis({
+        lerp: 0.06,
+        wheelMultiplier: 0.8,
+        smoothWheel: true,
+        smoothTouch: false,
+        syncTouch: false,
+        touchMultiplier: 1,
+        infinite: false,
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+      });
+
+      function raf(time) {
+        lenis.raf(time);
         requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
 
-        // Hero headline animation with SplitType
-        const heroHeadline = document.getElementById("heroHeadline");
-        const heroSubline = document.getElementById("heroSubline");
-        const heroButtons = document.getElementById("heroButtons");
+    // Hero headline animation with SplitType
+    const heroHeadline = document.getElementById("heroHeadline");
+    const heroSubline = document.getElementById("heroSubline");
+    const heroButtons = document.getElementById("heroButtons");
 
-        if (heroHeadline && heroSubline && heroButtons) {
-          setTimeout(() => {
-            const headlineSplit = new SplitType(heroHeadline, {
-              types: "words, chars",
-            });
+    if (heroHeadline && heroSubline && heroButtons) {
+      // Ensure elements are visible before animation
+      gsap.set([heroHeadline, heroSubline, heroButtons], { opacity: 1 });
 
-            gsap.set(heroHeadline, { opacity: 1 });
-            gsap.from(headlineSplit.chars, {
-              opacity: 0,
-              y: 100,
-              rotateX: -90,
-              stagger: 0.02,
-              duration: 0.8,
-              ease: "back.out(1.7)",
-            });
-
-            // Subline typing animation
-            gsap.to(heroSubline, {
-              delay: 0.5,
-              opacity: 1,
-              duration: 0.5,
-            });
-
-            gsap.to(heroSubline, {
-              delay: 0.7,
-              text: {
-                value:
-                  "Full-Stack Developer & AI Enthusiast building scalable solutions with modern technologies.",
-                delimiter: "",
-              },
-              duration: 2,
-              ease: "none",
-            });
-
-            // Button fade in
-            gsap.to(heroButtons, {
-              delay: 2.5,
-              opacity: 1,
-              duration: 0.8,
-            });
-          }, 300);
-        }
-
-        // Enhanced floating animation for background shapes
-        gsap.to(".shape-1", {
-          x: "20%",
-          y: "15%",
-          rotation: 25,
-          duration: 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "power2.inOut",
+      setTimeout(() => {
+        // Split text animation
+        const split = new SplitType(heroHeadline, {
+          types: "chars",
+          tagName: "span",
         });
 
-        gsap.to(".shape-2", {
-          x: "-18%",
-          y: "-16%",
-          rotation: -20,
+        gsap.fromTo(
+          split.chars,
+          {
+            y: 100,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.02,
+            duration: 0.8,
+            ease: "back.out(1.4)",
+          }
+        );
+
+        // Subline typing effect
+        gsap.set(heroSubline, { opacity: 1 });
+
+        gsap.to(heroSubline, {
+          delay: 1.2,
+          text: {
+            value:
+              "Bridging the gap between complex business requirements and scalable software solutions with expertise in enterprise systems and AI integration.",
+            delimiter: "",
+          },
           duration: 2.5,
-          repeat: -1,
-          yoyo: true,
-          ease: "power2.inOut",
-          delay: 0.2,
+          ease: "none",
         });
 
-        gsap.to(".shape-3", {
-          x: "16%",
-          y: "-12%",
-          rotation: 18,
-          duration: 2.2,
-          repeat: -1,
-          yoyo: true,
-          ease: "power2.inOut",
-          delay: 0.4,
-        });
+        // Buttons animation
+        gsap.fromTo(
+          heroButtons,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 2.5,
+          }
+        );
+      }, 300);
+    }
 
-        // Mobile additional shapes
-        if (window.innerWidth <= 768) {
-          gsap.to(".shape-4", {
-            x: "-15%",
-            y: "12%",
-            rotation: 15,
-            duration: 2.4,
-            repeat: -1,
-            yoyo: true,
-            ease: "power2.inOut",
-            delay: 0.3,
-          });
+    // Enhanced floating animation for background shapes (reduced intensity for mobile)
+    const animationIntensity = isMobile ? 0.5 : 1;
 
-          gsap.to(".shape-5", {
-            x: "12%",
-            y: "-10%",
-            rotation: -12,
-            duration: 1.8,
-            repeat: -1,
-            yoyo: true,
-            ease: "power2.inOut",
-            delay: 0.5,
-          });
-        }
+    gsap.to(".shape-1", {
+      x: `${20 * animationIntensity}%`,
+      y: `${15 * animationIntensity}%`,
+      rotation: 25 * animationIntensity,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+    });
+
+    gsap.to(".shape-2", {
+      x: `${-18 * animationIntensity}%`,
+      y: `${-16 * animationIntensity}%`,
+      rotation: -20 * animationIntensity,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+      delay: 0.2,
+    });
+
+    gsap.to(".shape-3", {
+      x: `${16 * animationIntensity}%`,
+      y: `${-12 * animationIntensity}%`,
+      rotation: 18 * animationIntensity,
+      duration: 2.2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+      delay: 0.4,
+    });
+
+    // Desktop-only additional animations
+    if (!isMobile) {
+      gsap.to(".shape-4", {
+        x: "-15%",
+        y: "12%",
+        rotation: 15,
+        duration: 2.4,
+        repeat: -1,
+        yoyo: true,
+        ease: "power2.inOut",
+        delay: 0.3,
+      });
+
+      gsap.to(".shape-5", {
+        x: "12%",
+        y: "-10%",
+        rotation: -12,
+        duration: 1.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "power2.inOut",
+        delay: 0.5,
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      if (lenis) {
+        lenis.destroy();
       }
     };
-
-    // Wait for external scripts to load
-    const checkScripts = () => {
-      if (typeof gsap !== "undefined" && typeof SplitType !== "undefined") {
-        initializeAnimations();
-      } else {
-        setTimeout(checkScripts, 100);
-      }
-    };
-
-    checkScripts();
   }, []);
 
   return (
@@ -166,7 +184,7 @@ const Hero = () => {
       <div className="mx-auto max-w-7xl">
         <h1
           id="heroHeadline"
-          className="max-w-5xl mx-auto overflow-hidden text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl opacity-0"
+          className="max-w-5xl mx-auto overflow-hidden text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl"
         >
           Transform your vision into
           <br />
@@ -178,7 +196,7 @@ const Hero = () => {
 
         <p
           id="heroSubline"
-          className="mt-6 max-w-xl mx-auto text-lg text-slate-600 dark:text-slate-300 opacity-0"
+          className="mt-6 max-w-xl mx-auto text-lg text-slate-600 dark:text-slate-300"
         ></p>
 
         <div

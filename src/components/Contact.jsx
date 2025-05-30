@@ -188,45 +188,32 @@ const Contact = () => {
   ];
 
   useEffect(() => {
-    const initializeAnimations = () => {
-      if (typeof gsap !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-        // Contact title
-        gsap.to("#contactTitle", {
-          scrollTrigger: {
-            trigger: "#contactTitle",
-            start: "top 80%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-        });
+    gsap.registerPlugin(ScrollTrigger);
 
-        // Contact cards
-        gsap.utils.toArray(".contact-card").forEach((card, i) => {
-          gsap.to(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: i * 0.15,
-          });
-        });
-      }
-    };
+    // Contact title
+    gsap.to("#contactTitle", {
+      scrollTrigger: {
+        trigger: "#contactTitle",
+        start: "top 80%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+    });
 
-    const checkGSAP = () => {
-      if (typeof gsap !== "undefined") {
-        initializeAnimations();
-      } else {
-        setTimeout(checkGSAP, 100);
-      }
-    };
-
-    checkGSAP();
+    // Contact cards
+    gsap.utils.toArray(".contact-card").forEach((card, i) => {
+      gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: i * 0.15,
+      });
+    });
   }, []);
 
   return (

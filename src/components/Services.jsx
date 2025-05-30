@@ -162,48 +162,35 @@ const Services = () => {
   ];
 
   useEffect(() => {
-    const initializeAnimations = () => {
-      if (typeof gsap !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-        // Services title
-        gsap.to("#servicesTitle", {
-          scrollTrigger: {
-            trigger: "#servicesTitle",
-            start: "top 80%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-        });
+    gsap.registerPlugin(ScrollTrigger);
 
-        // Card animations with enhanced hover effects
-        gsap.utils.toArray(".service-card").forEach((card, i) => {
-          gsap.to(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: i * 0.15,
-            onComplete: function () {
-              card.classList.add("animation-complete");
-            },
-          });
-        });
-      }
-    };
+    // Services title
+    gsap.to("#servicesTitle", {
+      scrollTrigger: {
+        trigger: "#servicesTitle",
+        start: "top 80%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+    });
 
-    const checkGSAP = () => {
-      if (typeof gsap !== "undefined") {
-        initializeAnimations();
-      } else {
-        setTimeout(checkGSAP, 100);
-      }
-    };
-
-    checkGSAP();
+    // Card animations with enhanced hover effects
+    gsap.utils.toArray(".service-card").forEach((card, i) => {
+      gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: i * 0.15,
+        onComplete: function () {
+          card.classList.add("animation-complete");
+        },
+      });
+    });
   }, []);
 
   return (

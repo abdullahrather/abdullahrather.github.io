@@ -168,11 +168,11 @@ const Services = () => {
     gsap.to("#servicesTitle", {
       scrollTrigger: {
         trigger: "#servicesTitle",
-        start: "top 80%",
+        start: "top 95%",
       },
       opacity: 1,
       y: 0,
-      duration: 0.8,
+      duration: 0.3,
     });
 
     // Card animations with enhanced hover effects
@@ -180,12 +180,12 @@ const Services = () => {
       gsap.to(card, {
         scrollTrigger: {
           trigger: card,
-          start: "top 85%",
+          start: "top 95%",
         },
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        delay: i * 0.15,
+        duration: 0.3,
+        delay: i * 0.05,
         onComplete: function () {
           card.classList.add("animation-complete");
         },

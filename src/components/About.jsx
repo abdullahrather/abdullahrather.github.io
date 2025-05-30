@@ -25,65 +25,59 @@ const About = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-    // Typing animation for About description only
+    // Much faster animations with earlier triggers
     const aboutDescription = document.getElementById("aboutDescription");
     if (aboutDescription) {
       gsap.to(aboutDescription, {
         scrollTrigger: {
           trigger: aboutDescription,
-          start: "top 80%",
+          start: "top 90%", // Trigger earlier
         },
         opacity: 1,
-        duration: 0.5,
+        duration: 0.3, // Much faster
       });
 
       gsap.to(aboutDescription, {
         scrollTrigger: {
           trigger: aboutDescription,
-          start: "top 80%",
+          start: "top 90%",
         },
-        delay: 0.3,
+        delay: 0.1, // Reduced delay
         text: {
           value:
             "Full-Stack Software Engineer with 5+ years of experience designing and implementing enterprise solutions. Currently pursuing M.Sc. in Artificial Intelligence in Germany.",
           delimiter: "",
         },
-        duration: 3,
+        duration: 1.5, // Reduced from 3s
         ease: "none",
       });
     }
 
-    // Text reveal effect for the mission statement
+    // Faster text reveal
     const textReveal = document.querySelector("#aboutTextReveal");
-
     if (textReveal) {
-      // Add scroll trigger for initial reveal animation
       gsap.to("#aboutTextReveal", {
         scrollTrigger: {
           trigger: "#aboutTextReveal",
-          start: "top 80%",
+          start: "top 90%", // Earlier trigger
         },
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.4, // Faster
       });
 
-      // Get all words
       const words = textReveal.querySelectorAll("span");
       const totalWords = words.length;
 
-      // Create ScrollTrigger for sequential word reveal
       ScrollTrigger.create({
         trigger: ".text-reveal-container",
-        start: "top 80%",
-        end: "bottom 20%",
+        start: "top 90%", // Earlier trigger
+        end: "bottom 40%", // Shorter range
         onUpdate: (self) => {
           const wordIndex = Math.round(self.progress * totalWords);
           words.forEach((word, i) => {
             if (i < wordIndex) {
               word.classList.add("text-reveal-visible");
-            } else {
-              word.classList.remove("text-reveal-visible");
             }
           });
         },
@@ -91,17 +85,17 @@ const About = () => {
       });
     }
 
-    // Card animations (only for stats cards, not skill bars)
+    // Much faster card animations
     gsap.utils.toArray(".stats-card").forEach((card, i) => {
       gsap.to(card, {
         scrollTrigger: {
           trigger: card,
-          start: "top 85%",
+          start: "top 95%", // Much earlier
         },
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        delay: i * 0.15,
+        duration: 0.3, // Much faster
+        delay: i * 0.05, // Reduced stagger
         onComplete: function () {
           card.classList.add("animation-complete");
         },
@@ -118,10 +112,10 @@ const About = () => {
       >
         <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }} // Reduced movement
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4 }} // Faster
+            viewport={{ once: true, margin: "-50px" }} // Earlier trigger
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold mb-4">About Me</h2>
@@ -133,10 +127,10 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }} // Reduced movement
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.4 }} // Faster
+              viewport={{ once: true, margin: "-50px" }}
             >
               <h3 className="text-2xl font-bold mb-6">My Journey</h3>
               <p className="text-slate-600 dark:text-slate-300 mb-4">
@@ -159,7 +153,7 @@ const About = () => {
                 {stats.map((stat, index) => (
                   <div
                     key={index}
-                    className="stats-card group text-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-lg shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/60 hover:shadow-xl hover:scale-105 cursor-pointer"
+                    className="stats-card group text-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-lg shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-8 transition-all duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/60 hover:shadow-xl hover:scale-105 cursor-pointer"
                   >
                     <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors duration-300">
                       {stat.number}
@@ -173,10 +167,10 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 30 }} // Reduced movement
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.4 }} // Faster
+              viewport={{ once: true, margin: "-50px" }}
               className="skills-section"
             >
               <h3 className="text-2xl font-bold mb-6">Technical Expertise</h3>
@@ -193,8 +187,8 @@ const About = () => {
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: index * 0.05 }} // Faster
+                        viewport={{ once: true, margin: "-50px" }}
                         className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full"
                       />
                     </div>
@@ -206,13 +200,13 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission Statement with Text Reveal */}
+      {/* Mission Statement */}
       <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 py-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-reveal-container">
             <p
               id="aboutTextReveal"
-              className="text-reveal text-3xl md:text-4xl font-medium leading-relaxed opacity-0 transform translate-y-8"
+              className="text-reveal text-3xl md:text-4xl font-medium leading-relaxed opacity-0 transform translate-y-6"
             >
               <span>I</span>&nbsp;<span>specialize</span>&nbsp;<span>in</span>{" "}
               <span>designing</span>&nbsp;

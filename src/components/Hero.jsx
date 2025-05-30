@@ -39,17 +39,17 @@ const Hero = () => {
       requestAnimationFrame(raf);
     }
 
-    // Hero headline animation with SplitType
+    // Much faster Hero animations
     const heroHeadline = document.getElementById("heroHeadline");
     const heroSubline = document.getElementById("heroSubline");
     const heroButtons = document.getElementById("heroButtons");
 
     if (heroHeadline && heroSubline && heroButtons) {
-      // Ensure elements are visible before animation
+      // Show elements immediately without opacity animations
       gsap.set([heroHeadline, heroSubline, heroButtons], { opacity: 1 });
 
+      // Faster split text animation (reduced from 0.8s to 0.4s)
       setTimeout(() => {
-        // Split text animation
         const split = new SplitType(heroHeadline, {
           types: "chars",
           tagName: "span",
@@ -57,106 +57,76 @@ const Hero = () => {
 
         gsap.fromTo(
           split.chars,
-          {
-            y: 100,
-            opacity: 0,
-          },
+          { y: 50, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            stagger: 0.02,
-            duration: 0.8,
-            ease: "back.out(1.4)",
+            stagger: 0.01, // Reduced from 0.02
+            duration: 0.4, // Reduced from 0.8
+            ease: "power2.out", // Faster ease
           }
         );
 
-        // Subline typing effect
-        gsap.set(heroSubline, { opacity: 1 });
-
+        // Faster typing effect (reduced from 2.5s to 1.2s)
         gsap.to(heroSubline, {
-          delay: 1.2,
+          delay: 0.6, // Reduced from 1.2
           text: {
             value:
               "Bridging the gap between complex business requirements and scalable software solutions with expertise in enterprise systems and AI integration.",
             delimiter: "",
           },
-          duration: 2.5,
+          duration: 1.2, // Reduced from 2.5
           ease: "none",
         });
 
-        // Buttons animation
+        // Faster buttons animation
         gsap.fromTo(
           heroButtons,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            delay: 2.5,
+            duration: 0.4, // Reduced from 0.8
+            delay: 1.8, // Reduced from 2.5
           }
         );
-      }, 300);
+      }, 100); // Reduced from 300ms
     }
 
-    // Enhanced floating animation for background shapes (reduced intensity for mobile)
-    const animationIntensity = isMobile ? 0.5 : 1;
+    // Reduced animation intensity for better performance
+    const animationIntensity = isMobile ? 0.3 : 0.6; // Reduced intensity
 
     gsap.to(".shape-1", {
-      x: `${20 * animationIntensity}%`,
-      y: `${15 * animationIntensity}%`,
-      rotation: 25 * animationIntensity,
-      duration: 2,
+      x: `${15 * animationIntensity}%`,
+      y: `${12 * animationIntensity}%`,
+      rotation: 20 * animationIntensity,
+      duration: 3, // Slower, less distracting
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
     });
 
     gsap.to(".shape-2", {
-      x: `${-18 * animationIntensity}%`,
-      y: `${-16 * animationIntensity}%`,
-      rotation: -20 * animationIntensity,
-      duration: 2.5,
+      x: `${-12 * animationIntensity}%`,
+      y: `${-10 * animationIntensity}%`,
+      rotation: -15 * animationIntensity,
+      duration: 3.5,
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
       delay: 0.2,
     });
 
     gsap.to(".shape-3", {
-      x: `${16 * animationIntensity}%`,
-      y: `${-12 * animationIntensity}%`,
-      rotation: 18 * animationIntensity,
-      duration: 2.2,
+      x: `${10 * animationIntensity}%`,
+      y: `${-8 * animationIntensity}%`,
+      rotation: 12 * animationIntensity,
+      duration: 4,
       repeat: -1,
       yoyo: true,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
       delay: 0.4,
     });
-
-    // Desktop-only additional animations
-    if (!isMobile) {
-      gsap.to(".shape-4", {
-        x: "-15%",
-        y: "12%",
-        rotation: 15,
-        duration: 2.4,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        delay: 0.3,
-      });
-
-      gsap.to(".shape-5", {
-        x: "12%",
-        y: "-10%",
-        rotation: -12,
-        duration: 1.8,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        delay: 0.5,
-      });
-    }
 
     // Cleanup function
     return () => {
@@ -176,8 +146,6 @@ const Hero = () => {
         <div className="animated-shape shape-1"></div>
         <div className="animated-shape shape-2"></div>
         <div className="animated-shape shape-3"></div>
-        <div className="animated-shape shape-4 hidden md:block"></div>
-        <div className="animated-shape shape-5 hidden md:block"></div>
       </div>
 
       {/* Content container */}
@@ -201,7 +169,7 @@ const Hero = () => {
 
         <div
           id="heroButtons"
-          className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4 opacity-0"
+          className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4"
         >
           <ScrollLink
             to="projects"
@@ -211,14 +179,6 @@ const Hero = () => {
           >
             <span className="absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10"></span>
             View My Work
-          </ScrollLink>
-          <ScrollLink
-            to="about"
-            smooth
-            duration={500}
-            className="rounded-full bg-white/60 px-8 py-3 text-base font-semibold text-slate-800 ring-1 ring-slate-300 backdrop-blur transition-all duration-300 hover:bg-white/80 hover:shadow-lg hover:translate-y-[-2px] dark:bg-slate-800/60 dark:text-slate-100 dark:ring-slate-600 cursor-pointer"
-          >
-            Learn More
           </ScrollLink>
         </div>
       </div>

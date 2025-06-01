@@ -96,6 +96,14 @@ const ScrollControls = () => {
     });
   };
 
+  const modalOverlay = document.querySelector(".modal-overlay");
+  const isModalOpen = Boolean(modalOverlay);
+
+  // If the modal is open, do not render any scroll buttons or ring:
+  if (isModalOpen) {
+    return null;
+  }
+
   return (
     <>
       {/* Scroll ↟ Top Button */}

@@ -264,14 +264,26 @@ const Projects = () => {
 
   const openModal = (project) => {
     setSelectedProject(project);
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
+    const scrollY = window.scrollY || window.pageYOffset;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
   };
 
   const closeModal = () => {
+    const savedY = parseInt(document.body.style.top || "0", 10) * -1;
+    document.documentElement.style.scrollBehavior = "auto";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    window.scrollTo(0, savedY);
+    requestAnimationFrame(() => {
+      document.documentElement.style.scrollBehavior = "";
+    });
+
     setSelectedProject(null);
-    document.body.style.overflow = "";
-    document.documentElement.style.overflow = "";
   };
 
   useEffect(() => {
@@ -648,6 +660,8 @@ const Projects = () => {
         <div
           className='modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm'
           onClick={closeModal}
+          onWheel={(e) => e.preventDefault()}
+          onTouchMove={(e) => e.preventDefault()}
         >
           <div
             className='bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden'

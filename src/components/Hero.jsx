@@ -68,7 +68,7 @@ const Hero = () => {
           }
         );
 
-        // 🎯 KEEP: Typing effect - "Bridging the gap..."
+        // 🔥 NEW: Animated typing cursor
         gsap.to(heroSubline, {
           delay: 0.6,
           text: {
@@ -78,6 +78,22 @@ const Hero = () => {
           },
           duration: 1.2,
           ease: "none",
+          onComplete: () => {
+            // Add blinking cursor after typing is complete
+            const cursor = document.createElement("span");
+            cursor.textContent = "|";
+            cursor.className = "typing-cursor";
+            heroSubline.appendChild(cursor);
+
+            // Animate cursor blinking
+            gsap.to(cursor, {
+              opacity: 0,
+              duration: 0.8,
+              repeat: -1,
+              yoyo: true,
+              ease: "power2.inOut",
+            });
+          },
         });
 
         // Buttons animation
@@ -94,8 +110,30 @@ const Hero = () => {
       }, 100);
     }
 
-    // 🎯 KEEP: Background shapes animation on BOTH desktop and mobile
-    const animationIntensity = isMobile ? 0.5 : 1; // Slightly reduced on mobile but still animated
+    // 🔥 ENHANCED: Parallax background shapes
+    const animationIntensity = isMobile ? 0.5 : 1;
+
+    // Create parallax effect on scroll
+    ScrollTrigger.create({
+      trigger: "#hero",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const shapes = document.querySelectorAll(".animated-shape");
+
+        shapes.forEach((shape, index) => {
+          const speed = (index + 1) * 0.5;
+          const yMovement = progress * 100 * speed;
+
+          gsap.set(shape, {
+            y: `${yMovement}px`,
+            rotation: progress * 360 * (index + 1) * 0.2,
+          });
+        });
+      },
+    });
 
     gsap.to(".shape-1", {
       x: `${15 * animationIntensity}%`,
@@ -129,10 +167,63 @@ const Hero = () => {
       delay: 0.4,
     });
 
+    // 🔥 NEW: Particle system
+    const createParticle = () => {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+
+      // Random size between 2-6px
+      const size = Math.random() * 4 + 2;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+
+      // Random horizontal position
+      particle.style.left = `${Math.random() * 100}%`;
+
+      // Random animation duration
+      particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+
+      return particle;
+    };
+
+    // Create particles container if it doesn't exist
+    let particlesContainer = document.querySelector(".particles-container");
+    if (!particlesContainer) {
+      particlesContainer = document.createElement("div");
+      particlesContainer.className = "particles-container";
+      document
+        .querySelector("#hero .animated-background")
+        .appendChild(particlesContainer);
+    }
+
+    // Create initial particles
+    for (let i = 0; i < 50; i++) {
+      particlesContainer.appendChild(createParticle());
+    }
+
+    // Continuously add particles
+    const particleInterval = setInterval(() => {
+      if (particlesContainer.children.length < 50) {
+        particlesContainer.appendChild(createParticle());
+      }
+
+      // Remove old particles
+      Array.from(particlesContainer.children).forEach((particle) => {
+        if (particle.offsetTop < -100) {
+          particle.remove();
+        }
+      });
+    }, 2000);
+
     // Cleanup function
     return () => {
       if (lenis) {
         lenis.destroy();
+      }
+      // Clean up particle interval
+      if (particleInterval) {
+        clearInterval(particleInterval);
       }
     };
   }, []);

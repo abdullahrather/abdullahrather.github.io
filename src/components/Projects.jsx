@@ -265,13 +265,13 @@ const Projects = () => {
   const openModal = (project) => {
     setSelectedProject(project);
     document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden"; // lock html too
+    document.documentElement.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setSelectedProject(null);
-    document.body.style.overflow = ""; // restore
-    document.documentElement.style.overflow = ""; // restore
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   };
 
   useEffect(() => {
@@ -365,11 +365,10 @@ const Projects = () => {
                 <button
                   key={category.id}
                   onClick={() => setFilter(category.id)}
-                  className={`px-6 py-2 rounded-md transition-all duration-300 ${
-                    filter === category.id
-                      ? "bg-indigo-600 text-white shadow-md"
-                      : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-                  }`}
+                  className={`px-6 py-2 rounded-md transition-all duration-300 ${filter === category.id
+                    ? "bg-indigo-600 text-white shadow-md"
+                    : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    }`}
                 >
                   {category.name}
                 </button>
@@ -382,62 +381,191 @@ const Projects = () => {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg overflow-hidden backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:transform hover:translate-y-[-8px] hover:shadow-xl"
+                className="project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:shadow-2xl"
               >
-                <div className="relative group">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex space-x-4">
-                      {/* 🔥 NEW: GitHub Icon with Lock for Private Repos */}
-                      {isPrivateRepo(project.github) ? (
-                        <div className="p-3 bg-gray-600/90 text-white rounded-md backdrop-blur cursor-not-allowed flex items-center justify-center">
-                          {/* Lock Icon */}
-                          <svg
-                            className="h-5 w-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                            />
-                          </svg>
-                        </div>
-                      ) : (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 bg-white/90 text-gray-800 rounded-md hover:bg-white transition-colors backdrop-blur flex items-center justify-center"
-                          title="View on GitHub"
-                        >
-                          {/* GitHub Icon */}
-                          <svg
-                            className="h-5 w-5"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                          </svg>
-                        </a>
-                      )}
+                <div className="project-card-inner" id={`card-${project.id}`}>
+                  {/* 🔥 NEW: Flip control button */}
+                  <button
+                    className="flip-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const cardInner = document.getElementById(
+                        `card-${project.id}`
+                      );
+                      const card = cardInner.closest(".project-card");
 
-                      {/* 🔥 NEW: View Details Icon */}
-                      <button
-                        onClick={() => openModal(project)}
-                        className="p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors flex items-center justify-center"
-                        title="View Details"
-                      >
-                        {/* Eye Icon for View Details */}
+                      // Toggle flip
+                      cardInner.classList.toggle("flipped");
+
+                      // 🔥 NEW: Set up auto-flip back on mouse leave
+                      if (cardInner.classList.contains("flipped")) {
+                        const handleMouseLeave = () => {
+                          setTimeout(() => {
+                            if (!card.matches(":hover")) {
+                              cardInner.classList.remove("flipped");
+                            }
+                          }, 300);
+                          card.removeEventListener(
+                            "mouseleave",
+                            handleMouseLeave
+                          );
+                        };
+
+                        card.addEventListener("mouseleave", handleMouseLeave);
+                      }
+                    }}
+                    title="Flip card for quick info"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* FRONT SIDE */}
+                  <div className="project-card-front">
+                    <div className="relative group">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-48 object-cover rounded-t-xl"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="flex space-x-4">
+                          {isPrivateRepo(project.github) ? (
+                            <div className="p-3 bg-gray-600/90 text-white rounded-md backdrop-blur cursor-not-allowed flex items-center justify-center">
+                              <svg
+                                className="h-5 w-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                />
+                              </svg>
+                            </div>
+                          ) : (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-3 bg-white/90 text-gray-800 rounded-md hover:bg-white transition-colors backdrop-blur flex items-center justify-center"
+                              title="View on GitHub"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <svg
+                                className="h-5 w-5"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                              </svg>
+                            </a>
+                          )}
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openModal(project);
+                            }}
+                            className="p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors flex items-center justify-center"
+                            title="View Details"
+                          >
+                            <svg
+                              className="h-5 w-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
+                        {project.description.length > 120
+                          ? `${project.description.substring(0, 120)}...`
+                          : project.description}
+                      </p>
+
+                      <div className="mb-4">
+                        <h4 className="font-semibold text-sm mb-2">
+                          Key Features:
+                        </h4>
+                        <div className="flex flex-wrap gap-1">
+                          {project.features.slice(0, 3).map((feature, i) => (
+                            <span
+                              key={i}
+                              className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded"
+                            >
+                              {feature}
+                            </span>
+                          ))}
+                          {project.features.length > 3 && (
+                            <span className="text-xs text-slate-500 dark:text-slate-400 px-2 py-1">
+                              +{project.features.length - 3} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* 🔥 FIXED: Technology stack with working tooltips */}
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, i) => (
+                          <div
+                            key={i}
+                            className="tech-stack-item relative group"
+                            onClick={(e) => e.stopPropagation()} // Prevent card flip
+                          >
+                            <span className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-md">
+                              {tech}
+                            </span>
+                            <div className="tech-tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-slate-900 text-white text-xs rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20">
+                              {tech}
+                              <div className="tooltip-arrow absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900"></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BACK SIDE - Same as before */}
+                  <div className="project-card-back">
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
                         <svg
-                          className="h-5 w-5"
+                          className="w-8 h-8"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -446,51 +574,66 @@ const Projects = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
                           />
                         </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                      </div>
+                      <h3 className="text-xl font-bold mb-4">
+                        {project.title}
+                      </h3>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
-                    {project.description}
-                  </p>
+                      <div className="space-y-3 text-sm">
+                        <div className="flex items-center justify-between">
+                          <span>Category:</span>
+                          <span className="font-semibold capitalize">
+                            {project.category}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Technologies:</span>
+                          <span className="font-semibold">
+                            {project.technologies.length}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Features:</span>
+                          <span className="font-semibold">
+                            {project.features.length}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Repository:</span>
+                          <span className="font-semibold">
+                            {isPrivateRepo(project.github)
+                              ? "Private"
+                              : "Public"}
+                          </span>
+                        </div>
+                      </div>
 
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-sm mb-2">
-                      Key Features:
-                    </h4>
-                    <div className="flex flex-wrap gap-1">
-                      {project.features.map((feature, i) => (
-                        <span
-                          key={i}
-                          className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded"
+                      <div className="mt-6 space-y-2">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openModal(project);
+                          }}
+                          className="w-full bg-white/20 hover:bg-white/30 border border-white/30 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium"
                         >
-                          {feature}
-                        </span>
-                      ))}
+                          View Full Details
+                        </button>
+                        {!isPrivateRepo(project.github) && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="block w-full bg-white text-indigo-600 hover:bg-gray-100 py-2 px-4 rounded-lg transition-all duration-300 font-medium"
+                          >
+                            View Source Code
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
                   </div>
                 </div>
               </div>

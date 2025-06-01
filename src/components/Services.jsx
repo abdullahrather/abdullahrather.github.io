@@ -202,6 +202,38 @@ const Services = () => {
         card.classList.add("animation-complete");
       });
     }
+    // 🔥 NEW: Animated service icons
+    gsap.utils.toArray(".service-card svg").forEach((icon, index) => {
+      // Continuous gentle float
+      gsap.to(icon, {
+        y: -8,
+        duration: 2 + index * 0.2, // Slightly different timing for each
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        delay: index * 0.3, // Stagger start times
+      });
+
+      // Hover enhancement
+      const card = icon.closest(".service-card");
+      card.addEventListener("mouseenter", () => {
+        gsap.to(icon, {
+          scale: 1.1,
+          rotation: 5,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+        });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(icon, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    });
   }, []);
 
   return (

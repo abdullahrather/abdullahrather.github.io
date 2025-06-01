@@ -6,6 +6,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID || "";
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+const NOTIFY_TO_EMAIL = import.meta.env.VITE_EMAILJS_NOTIFY_TO || "";
 const TEMPLATE_NOTIFY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY || "";
 const TEMPLATE_REPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY || "";
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
@@ -74,6 +75,7 @@ const Contact = () => {
     const templateParams = {
       from_name: formData.name.trim(),
       from_email: formData.email.trim(),
+      to_email: NOTIFY_TO_EMAIL,
       subject: formData.subject.trim(),
       message: formData.message.trim(),
       "g-recaptcha-response": recaptchaToken,

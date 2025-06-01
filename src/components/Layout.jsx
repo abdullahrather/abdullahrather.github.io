@@ -119,8 +119,9 @@ const Layout = ({ children }) => {
       <header id="navbar" className="fixed inset-x-0 top-0 z-50">
         {/* 🔥 NEW: Scroll Progress Bar */}
         <div
-          className={`scroll-progress-container ${scrollProgress > 0 ? "visible" : ""
-            }`}
+          className={`scroll-progress-container ${
+            scrollProgress > 0 ? "visible" : ""
+          }`}
         >
           <div
             className="scroll-progress-bar"
@@ -135,12 +136,14 @@ const Layout = ({ children }) => {
               to="hero"
               smooth
               duration={500}
-              className={`brand-container group flex items-center space-x-2 cursor-pointer ${activeSection === "hero" ? "active" : ""
-                }`}
+              className={`brand-container group flex items-center space-x-2 cursor-pointer ${
+                activeSection === "hero" ? "active" : ""
+              }`}
             >
               <div
-                className={`logo-image relative h-9 w-9 overflow-hidden rounded-lg shadow-md transition-all duration-300 group-hover:scale-110 ${activeSection === "hero" ? "active" : ""
-                  }`}
+                className={`logo-image relative h-9 w-9 overflow-hidden rounded-lg shadow-md transition-all duration-300 group-hover:scale-110 ${
+                  activeSection === "hero" ? "active" : ""
+                }`}
               >
                 <img
                   src="/images/favicons/favicon-512x512.png"
@@ -153,8 +156,9 @@ const Layout = ({ children }) => {
                 )}
               </div>
               <span
-                className={`logo-text text-2xl font-extrabold tracking-tight transition-all duration-300 group-hover:tracking-wider ${activeSection === "hero" ? "active" : ""
-                  }`}
+                className={`logo-text text-2xl font-extrabold tracking-tight transition-all duration-300 group-hover:tracking-wider ${
+                  activeSection === "hero" ? "active" : ""
+                }`}
               >
                 Abdullah Rather
               </span>
@@ -178,8 +182,9 @@ const Layout = ({ children }) => {
                     to={item.to}
                     smooth
                     duration={500}
-                    className={`nav-link text-slate-800 dark:text-slate-200 cursor-pointer ${activeSection === item.to ? "active" : ""
-                      }`}
+                    className={`nav-link text-slate-800 dark:text-slate-200 cursor-pointer ${
+                      activeSection === item.to ? "active" : ""
+                    }`}
                   >
                     {item.label}
                   </ScrollLink>
@@ -187,19 +192,20 @@ const Layout = ({ children }) => {
 
                 {/* 🔥 NEW: Sliding Active Indicator */}
                 <div
-                  className={`nav-active-indicator ${activeSection !== "hero" && activeSection !== "contact"
-                    ? "active"
-                    : ""
-                    }`}
+                  className={`nav-active-indicator ${
+                    activeSection !== "hero" && activeSection !== "contact"
+                      ? "active"
+                      : ""
+                  }`}
                   style={{
                     left:
                       activeSection === "about"
                         ? "0%"
                         : activeSection === "services"
-                          ? "33.33%"
-                          : activeSection === "projects"
-                            ? "66.66%"
-                            : "0%",
+                        ? "33.33%"
+                        : activeSection === "projects"
+                        ? "66.66%"
+                        : "0%",
                     width: "33.33%",
                   }}
                 />
@@ -236,8 +242,9 @@ const Layout = ({ children }) => {
                   to="contact"
                   smooth
                   duration={500}
-                  className={`btn-primary rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer ${activeSection === "contact" ? "ring-2 ring-indigo-300" : ""
-                    }`}
+                  className={`btn-primary rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer ${
+                    activeSection === "contact" ? "ring-2 ring-indigo-300" : ""
+                  }`}
                 >
                   Get In Touch
                 </ScrollLink>
@@ -309,12 +316,14 @@ const Layout = ({ children }) => {
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10 dark:border-slate-700/30">
               <div
-                className={`brand-container group flex items-center space-x-2 ${activeSection === "hero" ? "active" : ""
-                  }`}
+                className={`brand-container group flex items-center space-x-2 ${
+                  activeSection === "hero" ? "active" : ""
+                }`}
               >
                 <div
-                  className={`logo-image relative h-9 w-9 overflow-hidden rounded-lg shadow-md ${activeSection === "hero" ? "active" : ""
-                    }`}
+                  className={`logo-image relative h-9 w-9 overflow-hidden rounded-lg shadow-md ${
+                    activeSection === "hero" ? "active" : ""
+                  }`}
                 >
                   <img
                     src="/images/favicons/favicon-512x512.png"
@@ -327,8 +336,9 @@ const Layout = ({ children }) => {
                   )}
                 </div>
                 <span
-                  className={`logo-text text-2xl font-extrabold tracking-tight ${activeSection === "hero" ? "active" : ""
-                    }`}
+                  className={`logo-text text-2xl font-extrabold tracking-tight ${
+                    activeSection === "hero" ? "active" : ""
+                  }`}
                 >
                   Abdullah Rather
                 </span>
@@ -419,16 +429,18 @@ const Layout = ({ children }) => {
                   smooth
                   duration={500}
                   onClick={closeMobileMenu}
-                  className={`nav-mobile-item cursor-pointer ${activeSection === item.to
-                    ? "bg-indigo-100 dark:bg-indigo-900/50 border-indigo-300 dark:border-indigo-700"
-                    : ""
-                    }`}
+                  className={`nav-mobile-item cursor-pointer ${
+                    activeSection === item.to
+                      ? "bg-indigo-100 dark:bg-indigo-900/50 border-indigo-300 dark:border-indigo-700"
+                      : ""
+                  }`}
                 >
                   <div
-                    className={`nav-mobile-icon ${activeSection === item.to
-                      ? "bg-indigo-200 dark:bg-indigo-800"
-                      : ""
-                      }`}
+                    className={`nav-mobile-icon ${
+                      activeSection === item.to
+                        ? "bg-indigo-200 dark:bg-indigo-800"
+                        : ""
+                    }`}
                   >
                     {item.icon}
                   </div>
@@ -455,8 +467,9 @@ const Layout = ({ children }) => {
                 smooth
                 duration={500}
                 onClick={closeMobileMenu}
-                className={`flex items-center justify-center w-full py-3 px-6 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold shadow-lg cursor-pointer ${activeSection === "contact" ? "ring-2 ring-indigo-300" : ""
-                  }`}
+                className={`flex items-center justify-center w-full py-3 px-6 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold shadow-lg cursor-pointer ${
+                  activeSection === "contact" ? "ring-2 ring-indigo-300" : ""
+                }`}
               >
                 Get Started
               </ScrollLink>

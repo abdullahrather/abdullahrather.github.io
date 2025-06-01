@@ -1,48 +1,104 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID || "";
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+const TEMPLATE_NOTIFY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY || "";
+const TEMPLATE_REPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY || "";
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+  const recaptchaRef = useRef(null);
+
+  useEffect(() => {
+    if (USER_ID) {
+      emailjs.init(USER_ID);
+    } else {
+      console.warn("⚠️  VITE_EMAILJS_USER_ID is missing in your .env");
+    }
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) {
+      gsap.to("#contactTitle", {
+        scrollTrigger: { trigger: "#contactTitle", start: "top 95%" },
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+      });
+      gsap.utils.toArray(".contact-card").forEach((card, i) => {
+        gsap.to(card, {
+          scrollTrigger: { trigger: card, start: "top 95%" },
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: i * 0.05,
+        });
+      });
+    } else {
+      gsap.set("#contactTitle", { opacity: 1, y: 0 });
+      gsap.set(".contact-card", { opacity: 1, y: 0 });
+    }
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const onRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!recaptchaToken) {
+      alert("Please complete the reCAPTCHA before submitting.");
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus("");
 
-    try {
-      // Replace with your actual Formspree endpoint
-      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    const templateParams = {
+      from_name: formData.name.trim(),
+      from_email: formData.email.trim(),
+      subject: formData.subject.trim(),
+      message: formData.message.trim(),
+      "g-recaptcha-response": recaptchaToken,
+    };
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setSubmitStatus("error");
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY_ID, templateParams);
+
+      await emailjs.send(SERVICE_ID, TEMPLATE_REPLY_ID, templateParams);
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
       }
+      setRecaptchaToken(null);
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error("EmailJS Error:", error);
       setSubmitStatus("error");
+
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setRecaptchaToken(null);
     } finally {
       setIsSubmitting(false);
     }
@@ -187,43 +243,6 @@ const Contact = () => {
     },
   ];
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Mobile detection
-    const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile) {
-      // Desktop: animated loading
-      gsap.to("#contactTitle", {
-        scrollTrigger: {
-          trigger: "#contactTitle",
-          start: "top 95%",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-      });
-
-      gsap.utils.toArray(".contact-card").forEach((card, i) => {
-        gsap.to(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 95%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          delay: i * 0.05,
-        });
-      });
-    } else {
-      // Mobile: show everything immediately
-      gsap.set("#contactTitle", { opacity: 1, y: 0 });
-      gsap.set(".contact-card", { opacity: 1, y: 0 });
-    }
-  }, []);
-
   return (
     <section id="contact" className="py-20 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-6">
@@ -240,43 +259,14 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* 🔥 TEMPORARY: Test Success Animation */}
-        {/* <div className="text-center mb-8 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-          <p className="text-yellow-700 dark:text-yellow-300 text-sm mb-2">
-            🧪 <strong>Testing Mode:</strong> Click buttons below to preview
-            animations
-          </p>
-          <div className="flex gap-2 justify-center">
-            <button
-              onClick={() => setSubmitStatus("success")}
-              className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600 transition-colors"
-            >
-              Test Success
-            </button>
-            <button
-              onClick={() => setSubmitStatus("error")}
-              className="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600 transition-colors"
-            >
-              Test Error
-            </button>
-            <button
-              onClick={() => setSubmitStatus("")}
-              className="px-3 py-1 bg-gray-500 text-white rounded text-sm hover:bg-gray-600 transition-colors"
-            >
-              Clear
-            </button>
-          </div>
-        </div> */}
-
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+          {/* Left Column: Contact Info */}
           <div className="contact-card opacity-0 transform translate-y-12">
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-
             <div className="space-y-4 mb-8">
-              {contactInfo.map((info, index) => (
+              {contactInfo.map((info, idx) => (
                 <a
-                  key={index}
+                  key={idx}
                   href={info.link}
                   className="flex items-center p-4 bg-slate-100/80 dark:bg-slate-800/60 rounded-lg hover:bg-slate-200/80 dark:hover:bg-slate-700/60 transition-colors backdrop-blur ring-1 ring-slate-200/50 dark:ring-white/20"
                 >
@@ -293,13 +283,12 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Enhanced Social Links */}
             <div>
               <h4 className="text-lg font-semibold mb-4">Connect with me:</h4>
               <div className="flex flex-wrap gap-3">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social, idx) => (
                   <a
-                    key={index}
+                    key={idx}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -313,11 +302,10 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Right Column: Contact Form */}
           <div className="contact-card opacity-0 transform translate-y-12">
             <h3 className="text-2xl font-bold mb-6">Send Message</h3>
 
-            {/* Enhanced Status Messages */}
             {submitStatus === "success" && (
               <div className="success-message success-pulse mb-6 p-4 bg-green-100 dark:bg-green-900/50 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 rounded-lg">
                 <div className="flex items-center">
@@ -350,7 +338,7 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="form-field">
+                <div className="relative form-field">
                   <input
                     type="text"
                     id="name"
@@ -369,8 +357,7 @@ const Contact = () => {
                     Your Name
                   </label>
                 </div>
-
-                <div className="form-field">
+                <div className="relative form-field">
                   <input
                     type="email"
                     id="email"
@@ -391,7 +378,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="form-field">
+              <div className="relative form-field">
                 <input
                   type="text"
                   id="subject"
@@ -411,7 +398,7 @@ const Contact = () => {
                 </label>
               </div>
 
-              <div className="form-field">
+              <div className="relative form-field">
                 <textarea
                   id="message"
                   name="message"
@@ -429,6 +416,14 @@ const Contact = () => {
                 >
                   Message
                 </label>
+              </div>
+
+              <div className="pt-2">
+                <ReCAPTCHA
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  onChange={onRecaptchaChange}
+                  ref={recaptchaRef}
+                />
               </div>
 
               <button

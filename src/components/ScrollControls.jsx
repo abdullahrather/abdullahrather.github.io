@@ -105,9 +105,11 @@ const ScrollControls = () => {
           disabled={isScrolling}
           className={`
             scroll-to-top fixed right-6 bottom-20 z-50 group transition-all duration-500
-            ${showTopBtn
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 translate-y-10 pointer-events-none"}
+            ${
+              showTopBtn
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 translate-y-10 pointer-events-none"
+            }
             ${isScrolling ? "opacity-50 cursor-not-allowed" : ""}
           `}
           aria-label="Scroll to top"
@@ -142,7 +144,13 @@ const ScrollControls = () => {
             {/* Gradient Definition */}
             <svg className="absolute inset-0 w-0 h-0">
               <defs>
-                <linearGradient id="scrollGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient
+                  id="scrollGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
                   <stop offset="0%" stopColor="#4f46e5" />
                   <stop offset="100%" stopColor="#8b5cf6" />
                 </linearGradient>
@@ -157,7 +165,12 @@ const ScrollControls = () => {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
               </svg>
             </div>
 
@@ -190,9 +203,11 @@ const ScrollControls = () => {
           disabled={isScrolling}
           className={`
             scroll-to-bottom fixed right-6 bottom-4 z-50 group transition-all duration-500
-            ${showBottomBtn
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 translate-y-10 pointer-events-none"}
+            ${
+              showBottomBtn
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 translate-y-10 pointer-events-none"
+            }
             ${isScrolling ? "opacity-50 cursor-not-allowed" : ""}
           `}
           aria-label="Scroll to bottom"
@@ -206,7 +221,12 @@ const ScrollControls = () => {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
               </svg>
             </div>
 

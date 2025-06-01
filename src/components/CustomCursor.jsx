@@ -150,8 +150,8 @@ const CustomCursor = () => {
       >
         {/* Outer Ring */}
         <div className={`absolute inset-0 rounded-full border-2 transition-all duration-300 ${isHovered
-            ? 'border-indigo-500 bg-indigo-500/20'
-            : 'border-indigo-400/60 bg-indigo-400/10'
+          ? 'border-indigo-500 bg-indigo-500/20'
+          : 'border-indigo-400/60 bg-indigo-400/10'
           } ${isClicked ? 'scale-75' : ''}`}>
 
           {/* Animated Border */}

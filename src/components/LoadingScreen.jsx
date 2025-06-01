@@ -50,7 +50,8 @@ const LoadingScreen = ({ onLoadComplete }) => {
 
   useEffect(() => {
     // Track visit count
-    const visitCount = parseInt(localStorage.getItem("visitCount") || "0", 10) + 1;
+    const visitCount =
+      parseInt(localStorage.getItem("visitCount") || "0", 10) + 1;
     localStorage.setItem("visitCount", visitCount.toString());
 
     const tl = gsap.timeline();
@@ -185,8 +186,8 @@ const LoadingScreen = ({ onLoadComplete }) => {
               {progress < 34
                 ? "Initializing"
                 : progress < 67
-                  ? "Processing"
-                  : "Completing"}
+                ? "Processing"
+                : "Completing"}
             </span>
             <span className="text-sm font-semibold text-white">
               {progress}%

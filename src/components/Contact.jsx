@@ -1,13 +1,9 @@
-// src/components/Contact.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
-
-// 1) EmailJS + reCAPTCHA imports
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 
-// 2) Pull in VITE_ env variables (Vite → import.meta.env)
 const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID || "";
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
 const TEMPLATE_NOTIFY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY || "";
@@ -15,16 +11,13 @@ const TEMPLATE_REPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY || "";
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 const Contact = () => {
-  // 3) Form state
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(""); // "", "success", "error"
+  const [submitStatus, setSubmitStatus] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState(null);
 
-  // 4) reCAPTCHA ref so we can reset it manually
   const recaptchaRef = useRef(null);
 
-  // 5) Initialize EmailJS once on mount
   useEffect(() => {
     if (USER_ID) {
       emailjs.init(USER_ID);
@@ -33,7 +26,6 @@ const Contact = () => {
     }
   }, []);
 
-  // 6) GSAP scroll-trigger (exactly as before)
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const isMobile = window.innerWidth <= 768;
@@ -60,21 +52,17 @@ const Contact = () => {
     }
   }, []);
 
-  // 7) Handle field changes
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // 8) reCAPTCHA callback
   const onRecaptchaChange = (token) => {
     setRecaptchaToken(token);
   };
 
-  // 9) Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 9a) Must have a valid reCAPTCHA token
     if (!recaptchaToken) {
       alert("Please complete the reCAPTCHA before submitting.");
       return;
@@ -83,27 +71,22 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus("");
 
-    // 9b) Build your EmailJS template parameters
     const templateParams = {
       from_name: formData.name.trim(),
       from_email: formData.email.trim(),
       subject: formData.subject.trim(),
       message: formData.message.trim(),
-      "g-recaptcha-response": recaptchaToken, // EmailJS can verify server-side
+      "g-recaptcha-response": recaptchaToken,
     };
 
     try {
-      // 9c) Send the “Notify Me” email (to you)
       await emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY_ID, templateParams);
 
-      // 9d) Send the Auto-Reply (to the user)
       await emailjs.send(SERVICE_ID, TEMPLATE_REPLY_ID, templateParams);
 
-      // 9e) If both succeeded, show success banner + clear fields
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
 
-      // 9f) Reset the reCAPTCHA widget
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
@@ -112,7 +95,6 @@ const Contact = () => {
       console.error("EmailJS Error:", error);
       setSubmitStatus("error");
 
-      // Still reset reCAPTCHA on error so user can try again
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
@@ -122,7 +104,6 @@ const Contact = () => {
     }
   };
 
-  // 10) Static Contact Info (unchanged)
   const contactInfo = [
     {
       icon: (

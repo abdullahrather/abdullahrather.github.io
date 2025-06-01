@@ -365,11 +365,10 @@ const Projects = () => {
                 <button
                   key={category.id}
                   onClick={() => setFilter(category.id)}
-                  className={`px-6 py-2 rounded-md transition-all duration-300 ${
-                    filter === category.id
-                      ? "bg-indigo-600 text-white shadow-md"
-                      : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-                  }`}
+                  className={`px-6 py-2 rounded-md transition-all duration-300 ${filter === category.id
+                    ? "bg-indigo-600 text-white shadow-md"
+                    : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    }`}
                 >
                   {category.name}
                 </button>

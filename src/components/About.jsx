@@ -3,22 +3,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 
 const About = () => {
-  const stats = [
-    { number: "5+", label: "Years Experience", targetValue: 5, suffix: "+" },
-    {
-      number: "20+",
-      label: "Projects Completed",
-      targetValue: 20,
-      suffix: "+",
-    },
-    {
-      number: "10+",
-      label: "Technologies Mastered",
-      targetValue: 10,
-      suffix: "+",
-    },
-    { number: "24/7", label: "Support", targetValue: 24, suffix: "/7" },
-  ];
+  const stats = useMemo(
+    () => [
+      { number: "5+", label: "Years Experience", targetValue: 5, suffix: "+" },
+      { number: "20+", label: "Projects Completed", targetValue: 20, suffix: "+" },
+      { number: "10+", label: "Technologies Mastered", targetValue: 10, suffix: "+" },
+      { number: "24/7", label: "Support", targetValue: 24, suffix: "/7" },
+    ],
+    []
+  );
 
   const skills = useMemo(
     () => [
@@ -479,8 +472,8 @@ const About = () => {
                           {skill.level >= 90
                             ? "Expert"
                             : skill.level >= 80
-                            ? "Advanced"
-                            : "Intermediate"}
+                              ? "Advanced"
+                              : "Intermediate"}
                         </span>
                         <span className="skill-percentage text-slate-600 dark:text-slate-300">
                           0%

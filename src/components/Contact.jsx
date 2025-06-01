@@ -12,7 +12,12 @@ const TEMPLATE_REPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY || "";
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState(null);
@@ -54,7 +59,7 @@ const Contact = () => {
   }, []);
 
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const onRecaptchaChange = (token) => {
@@ -72,12 +77,70 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus("");
 
+    // 🔥 ENHANCED: Dynamic timezone detection for both user and you
+    const now = new Date();
+
+    // Auto-detect current browser timezone (works for both user and you)
+    const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    // User's local time (what they'll see in auto-reply)
+    const userLocalTime = now.toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    });
+
+    // Your current location time (auto-detected from your browser/device)
+    const yourCurrentTime = now.toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: currentTimezone, // This will be your actual current timezone
+      timeZoneName: "short",
+    });
+
+    // UTC for technical reference
+    const utcTime = now.toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "UTC",
+      timeZoneName: "short",
+    });
+
+    // 🔥 ENHANCED: More comprehensive location context
+    const locationContext = {
+      timezone: currentTimezone,
+      timezoneAbbr: now
+        .toLocaleString("en-US", { timeZoneName: "short" })
+        .split(", ")[1],
+      city: currentTimezone.split("/")[1]?.replace("_", " ") || "Unknown",
+      country: getCountryFromTimezone(currentTimezone),
+    };
+
     const templateParams = {
       from_name: formData.name.trim(),
       from_email: formData.email.trim(),
       to_email: NOTIFY_TO_EMAIL,
       subject: formData.subject.trim(),
       message: formData.message.trim(),
+      // 🔥 DYNAMIC TIMEZONE VARIABLES
+      time: userLocalTime, // User sees their local time
+      time_recipient: yourCurrentTime, // Your current location time (dynamic)
+      time_utc: utcTime, // UTC for technical reference
+      user_timezone: currentTimezone, // User's timezone (e.g., "America/New_York")
+      recipient_timezone: currentTimezone, // Your current timezone (auto-detected)
+      recipient_location: `${locationContext.city}, ${locationContext.country}`, // Your current location
       "g-recaptcha-response": recaptchaToken,
     };
 
@@ -104,6 +167,48 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // 🔥 HELPER: Get country from timezone
+  const getCountryFromTimezone = (timezone) => {
+    const timezoneToCountry = {
+      // Europe
+      "Europe/Berlin": "Germany",
+      "Europe/London": "United Kingdom",
+      "Europe/Paris": "France",
+      "Europe/Madrid": "Spain",
+      "Europe/Rome": "Italy",
+      "Europe/Amsterdam": "Netherlands",
+      "Europe/Vienna": "Austria",
+      "Europe/Zurich": "Switzerland",
+
+      // North America
+      "America/New_York": "United States",
+      "America/Los_Angeles": "United States",
+      "America/Chicago": "United States",
+      "America/Denver": "United States",
+      "America/Toronto": "Canada",
+      "America/Vancouver": "Canada",
+      "America/Mexico_City": "Mexico",
+
+      // Asia
+      "Asia/Tokyo": "Japan",
+      "Asia/Shanghai": "China",
+      "Asia/Dubai": "UAE",
+      "Asia/Singapore": "Singapore",
+      "Asia/Kolkata": "India",
+      "Asia/Seoul": "South Korea",
+
+      // Australia
+      "Australia/Sydney": "Australia",
+      "Australia/Melbourne": "Australia",
+      "Australia/Perth": "Australia",
+
+      // Default fallback
+      UTC: "UTC",
+    };
+
+    return timezoneToCountry[timezone] || timezone.split("/")[0] || "Unknown";
   };
 
   const contactInfo = [
@@ -431,10 +536,11 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`submit-btn w-full py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 ${isSubmitting
-                  ? "bg-slate-400 dark:bg-slate-600 cursor-not-allowed"
-                  : "bg-gradient-to-r from-indigo-600 to-indigo-700 hover:shadow-xl hover:shadow-indigo-500/20"
-                  } text-white`}
+                className={`submit-btn w-full py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 ${
+                  isSubmitting
+                    ? "bg-slate-400 dark:bg-slate-600 cursor-not-allowed"
+                    : "bg-gradient-to-r from-indigo-600 to-indigo-700 hover:shadow-xl hover:shadow-indigo-500/20"
+                } text-white`}
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">

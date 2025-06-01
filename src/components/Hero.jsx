@@ -230,53 +230,53 @@ const Hero = () => {
 
   return (
     <section
-      id="hero"
-      className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center"
+      id='hero'
+      className='relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center'
     >
       {/* 🎯 KEEP: Animated background shapes */}
-      <div className="animated-background absolute inset-0 -z-10 overflow-hidden w-full">
-        <div className="animated-shape shape-1"></div>
-        <div className="animated-shape shape-2"></div>
-        <div className="animated-shape shape-3"></div>
+      <div className='animated-background absolute inset-0 -z-10 overflow-hidden w-full'>
+        <div className='animated-shape shape-1'></div>
+        <div className='animated-shape shape-2'></div>
+        <div className='animated-shape shape-3'></div>
       </div>
 
       {/* Content container */}
-      <div className="mx-auto max-w-7xl">
+      <div className='mx-auto max-w-7xl'>
         <h1
-          id="heroHeadline"
-          className="max-w-5xl mx-auto overflow-hidden text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl"
+          id='heroHeadline'
+          className='max-w-5xl mx-auto overflow-hidden text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl'
         >
           Transform your vision into
           <br />
-          <span className="text-indigo-600 dark:text-indigo-400">
+          <span className='text-indigo-600 dark:text-indigo-400'>
             intelligent
           </span>{" "}
           solutions
         </h1>
 
         <p
-          id="heroSubline"
-          className="mt-6 max-w-xl mx-auto text-lg text-slate-600 dark:text-slate-300"
+          id='heroSubline'
+          className='mt-6 max-w-xl mx-auto text-lg text-slate-600 dark:text-slate-300'
         ></p>
 
         <div
-          id="heroButtons"
-          className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4"
+          id='heroButtons'
+          className='mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4'
         >
           <ScrollLink
-            to="projects"
+            to='projects'
             smooth
             duration={500}
-            className="btn-primary group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer"
+            className='btn-primary group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer'
           >
-            <span className="absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10"></span>
+            <span className='absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10'></span>
             View My Work
           </ScrollLink>
           <ScrollLink
-            to="about"
+            to='about'
             smooth
             duration={500}
-            className="rounded-full bg-white/60 px-8 py-3 text-base font-semibold text-slate-800 ring-1 ring-slate-300 backdrop-blur transition-all duration-300 hover:bg-white/80 hover:shadow-lg hover:translate-y-[-2px] dark:bg-slate-800/60 dark:text-slate-100 dark:ring-slate-600 cursor-pointer"
+            className='rounded-full bg-white/60 px-8 py-3 text-base font-semibold text-slate-800 ring-1 ring-slate-300 backdrop-blur transition-all duration-300 hover:bg-white/80 hover:shadow-lg hover:translate-y-[-2px] dark:bg-slate-800/60 dark:text-slate-100 dark:ring-slate-600 cursor-pointer'
           >
             Learn More
           </ScrollLink>

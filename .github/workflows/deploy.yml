@@ -8,23 +8,28 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with: node-version: "18"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build
         run: npm run build
         env:
-          VITE_EMAILJS_USER_ID:     ${{ secrets.VITE_EMAILJS_USER_ID }}
-          VITE_EMAILJS_SERVICE_ID:  ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_NOTIFY_TO:   ${{ secrets.VITE_EMAILJS_NOTIFY_TO }}
+          VITE_EMAILJS_USER_ID:        ${{ secrets.VITE_EMAILJS_USER_ID }}
+          VITE_EMAILJS_SERVICE_ID:     ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_NOTIFY_TO:      ${{ secrets.VITE_EMAILJS_NOTIFY_TO }}
           VITE_EMAILJS_TEMPLATE_NOTIFY: ${{ secrets.VITE_EMAILJS_TEMPLATE_NOTIFY }}
           VITE_EMAILJS_TEMPLATE_REPLY:  ${{ secrets.VITE_EMAILJS_TEMPLATE_REPLY }}
-          VITE_RECAPTCHA_SITE_KEY:  ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
+          VITE_RECAPTCHA_SITE_KEY:     ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

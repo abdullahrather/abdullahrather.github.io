@@ -126,31 +126,123 @@ body {
   width: 100%;
 }
 
-/* 🔥 NEW: Scroll progress bar */
+/* 🔥 ENHANCED: More Prominent Full-Width Scroll Progress Bar */
 .scroll-progress-container {
   position: fixed;
-  top: 0;
+  top: 4px;
+  /* Added space from top to prevent cutoff */
   left: 0;
   right: 0;
-  height: 4px;
-  background: rgba(148, 163, 184, 0.2);
+  height: 10px;
+  /* Increased height to match percentage block */
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid rgba(148, 163, 184, 0.3);
   z-index: 9999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 8px 8px;
+  /* Rounded bottom corners */
+}
+
+.dark .scroll-progress-container {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 2px solid rgba(71, 85, 105, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .scroll-progress-container.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .scroll-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #4f46e5, #8b5cf6, #06b6d4);
-  background-size: 200% 100%;
-  animation: gradient-shift 3s ease-in-out infinite;
+  /* Full height of container */
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6, #06b6d4, #10b981);
+  background-size: 300% 100%;
+  animation: gradient-shift 4s ease-in-out infinite;
   transform-origin: left;
   transform: scaleX(0);
-  transition: transform 0.1s ease-out;
+  transition: transform 0.2s ease-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+  border-radius: 0 0 6px 6px;
+  /* Rounded bottom corners to match container */
+}
+
+/* 🔥 ENHANCED: More prominent shimmer effect */
+.scroll-progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent);
+  animation: shimmer-progress 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer-progress {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+/* 🔥 FIXED: Integrated percentage display inside the progress bar */
+.scroll-progress-container::after {
+  content: attr(data-progress) "%";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  /* Dark text for light mode - visible against light background */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  /* Light shadow for light mode */
+  z-index: 10;
+  line-height: 1;
+}
+
+.dark .scroll-progress-container::after {
+  color: #ffffff;
+  /* White text for dark mode - visible against dark background */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  /* Dark shadow for dark mode */
+}
+
+.scroll-progress-container.visible::after {
+  opacity: 1;
+}
+
+/* 🔥 ENHANCED: Pulsing effect when progress changes */
+.scroll-progress-bar {
+  animation: gradient-shift 4s ease-in-out infinite, progress-pulse 3s ease-in-out infinite;
+}
+
+@keyframes progress-pulse {
+
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+
+  50% {
+    filter: brightness(1.1) saturate(1.2);
+  }
 }
 
 @keyframes gradient-shift {
@@ -162,6 +254,38 @@ body {
 
   50% {
     background-position: 100% 50%;
+  }
+}
+
+/* 🔥 ENHANCED: Add subtle top glow line */
+.scroll-progress-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.5), transparent);
+  opacity: 0.7;
+}
+
+/* 🔥 NEW: Progress percentage visibility based on progress */
+.scroll-progress-container[data-progress="0"]::after {
+  opacity: 0;
+  /* Hide when no progress */
+}
+
+/* 🔥 ENHANCED: Better mobile responsiveness */
+@media (max-width: 768px) {
+  .scroll-progress-container {
+    height: 10px;
+    /* Slightly smaller on mobile */
+    top: 2px;
+  }
+
+  .scroll-progress-container::after {
+    font-size: 11px;
+    right: 8px;
   }
 }
 
@@ -537,6 +661,85 @@ html:not(.dark) .animated-shape {
     opacity: 0.7;
     transform: scale(1.1);
   }
+}
+
+/* 🔥 ENHANCED: Larger avatar animations */
+.profile-avatar-large {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.profile-avatar-large:hover {
+  transform: translateY(-4px);
+}
+
+.profile-avatar-large::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  background: conic-gradient(from 0deg, transparent, rgba(99, 102, 241, 0.3), transparent, rgba(139, 92, 246, 0.3), transparent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  animation: avatar-rotate 8s linear infinite;
+}
+
+.profile-avatar-large:hover::before {
+  opacity: 1;
+}
+
+@keyframes avatar-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 🔥 ENHANCED: Professional badge hover effects */
+.inline-flex:hover {
+  transform: translateY(-2px) scale(1.05);
+  transition: all 0.2s ease;
+}
+
+/* 🔥 NEW: Gradient text animation */
+.bg-clip-text {
+  background-size: 200% 100%;
+  animation: gradient-flow 6s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 🔥 ENHANCED: Floating particles */
+@keyframes particle-float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+.profile-avatar-large .absolute.animate-bounce {
+  animation: particle-float 3s ease-in-out infinite;
 }
 
 /* 🔥 NEW: Skill icon animations */

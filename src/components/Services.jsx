@@ -202,12 +202,11 @@ const Services = () => {
         card.classList.add("animation-complete");
       });
     }
-    // 🔥 NEW: Animated service icons
     gsap.utils.toArray(".service-card svg").forEach((icon, index) => {
       // Continuous gentle float
       gsap.to(icon, {
         y: -8,
-        duration: 2 + index * 0.2, // Slightly different timing for each
+        duration: 2 + index * 0.2,
         repeat: -1,
         yoyo: true,
         ease: "power1.inOut",

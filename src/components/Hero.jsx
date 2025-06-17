@@ -68,7 +68,6 @@ const Hero = () => {
           }
         );
 
-        // 🔥 NEW: Animated typing cursor
         gsap.to(heroSubline, {
           delay: 0.6,
           text: {
@@ -110,7 +109,6 @@ const Hero = () => {
       }, 100);
     }
 
-    // 🔥 ENHANCED: Parallax background shapes
     const animationIntensity = isMobile ? 0.5 : 1;
 
     // Create parallax effect on scroll
@@ -167,7 +165,6 @@ const Hero = () => {
       delay: 0.4,
     });
 
-    // 🔥 NEW: Particle system
     const createParticle = () => {
       const particle = document.createElement("div");
       particle.className = "particle";

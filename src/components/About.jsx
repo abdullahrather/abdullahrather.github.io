@@ -164,7 +164,6 @@ const About = () => {
     []
   );
 
-  // 🔥 NEW: Professional profiles data
   const professionalProfiles = [
     {
       name: "LinkedIn",
@@ -255,7 +254,6 @@ const About = () => {
     setIsProfileModalOpen(false);
   };
 
-  // 🔥 NEW: Close modal on escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isProfileModalOpen) {
@@ -272,7 +270,6 @@ const About = () => {
     };
   }, [isProfileModalOpen]);
 
-  // 🔥 NEW: Modal scroll prevention - Same as Projects
   useEffect(() => {
     if (!isProfileModalOpen) return;
     const modalBody = document.querySelector(".modal-body");
@@ -292,7 +289,6 @@ const About = () => {
     // Mobile detection
     const isMobile = window.innerWidth <= 768;
 
-    // 🔥 ADD: About title animation (replacing motion)
     gsap.to("#aboutTitle", {
       scrollTrigger: {
         trigger: "#aboutTitle",
@@ -324,7 +320,6 @@ const About = () => {
       });
     }
 
-    // 🔥 ADD: Left content animation (replacing motion)
     gsap.to(".about-content-left", {
       scrollTrigger: {
         trigger: ".about-content-left",
@@ -335,7 +330,6 @@ const About = () => {
       duration: 0.4,
     });
 
-    // 🔥 ADD: Skills section animation (replacing motion)
     gsap.to(".skills-section", {
       scrollTrigger: {
         trigger: ".skills-section",
@@ -346,7 +340,6 @@ const About = () => {
       duration: 0.4,
     });
 
-    // 🔥 ENHANCED: Progress bars with animated percentages
     gsap.utils.toArray(".skill-progress-bar").forEach((bar, index) => {
       const skillLevel = skills[index].level;
       const percentageElement =
@@ -363,7 +356,7 @@ const About = () => {
         scrollTrigger: {
           trigger: bar,
           start: isMobile ? "top 95%" : "top 85%",
-          toggleActions: "play none none reverse", // 🔥 This makes it reverse on scroll up
+          toggleActions: "play none none reverse",
           refreshPriority: -1,
         },
         width: `${skillLevel}%`,
@@ -378,7 +371,6 @@ const About = () => {
           }
         },
         onComplete: function () {
-          // 🔥 NEW: Animate skill badge when progress completes
           const skillBadge =
             bar.parentElement.parentElement.querySelector(".skill-badge");
           if (skillBadge) {
@@ -390,7 +382,6 @@ const About = () => {
             });
           }
         },
-        // 🔥 NEW: Hide badge when animation reverses (scroll up)
         onReverseComplete: function () {
           const skillBadge =
             bar.parentElement.parentElement.querySelector(".skill-badge");
@@ -403,7 +394,6 @@ const About = () => {
         },
       });
 
-      // 🔥 NEW: Animate skill icons
       const skillIcon =
         bar.parentElement.parentElement.querySelector(".skill-icon");
       if (skillIcon) {
@@ -422,7 +412,6 @@ const About = () => {
       }
     });
 
-    // 🔥 NEW: Animated stats counters
     gsap.utils.toArray(".stats-card").forEach((card, index) => {
       const stat = stats[index];
       const numberElement = card.querySelector(".stat-number");
@@ -455,7 +444,6 @@ const About = () => {
       );
     });
 
-    // 🔥 FIXED: Text reveal animation with consistent reveal/unreveal behavior
     const textReveal = document.querySelector("#aboutTextReveal");
     if (textReveal) {
       // Set initial state
@@ -464,12 +452,11 @@ const About = () => {
       const words = textReveal.querySelectorAll("span");
       const totalWords = words.length;
 
-      // 🔥 FIX: Create consistent reveal/unreveal animation
       ScrollTrigger.create({
         trigger: ".text-reveal-container",
-        start: "top 80%", // Start revealing when 80% from top
-        end: "bottom 20%", // Continue until 20% from bottom
-        scrub: 1, // 🔥 IMPORTANT: This makes it smooth and consistent
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: 1,
         onUpdate: (self) => {
           const progress = self.progress;
           const wordIndex = Math.round(progress * totalWords);
@@ -493,7 +480,6 @@ const About = () => {
       card.classList.add("animation-complete");
     });
 
-    // 🔥 IMPORTANT: Refresh ScrollTrigger after a short delay to handle page load scenarios
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
@@ -507,8 +493,6 @@ const About = () => {
         className='py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900'
       >
         <div className='container mx-auto px-6'>
-          {/* 🔥 NEW: Animated Avatar - Above heading */}
-          {/* 🔥 ENHANCED: Hero-style About Header */}
           <div className='relative mb-20'>
             {/* Background Elements */}
             <div className='absolute inset-0 overflow-hidden pointer-events-none'>
@@ -518,7 +502,6 @@ const About = () => {
 
             {/* Main Content */}
             <div className='relative text-center'>
-              {/* 🔥 ENHANCED: Clickable avatar for professional profiles */}
               <div
                 className='profile-avatar-large relative inline-block mb-8 cursor-pointer group'
                 onClick={openProfileModal}
@@ -543,7 +526,6 @@ const About = () => {
                     </div>
                   </div>
 
-                  {/* 🔥 NEW: Click indicator overlay */}
                   <div className='absolute inset-0 rounded-full bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-all duration-300 flex items-center justify-center'>
                     <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full p-2'>
                       <svg
@@ -563,7 +545,6 @@ const About = () => {
                   </div>
                 </div>
 
-                {/* 🔥 ENHANCED: Larger status indicator with pulse */}
                 <div className='profile-status absolute bottom-2 right-2 md:bottom-4 md:right-4'>
                   <div className='relative'>
                     <div className='w-6 h-6 bg-green-500 rounded-full border-4 border-white dark:border-slate-800'></div>
@@ -571,7 +552,6 @@ const About = () => {
                   </div>
                 </div>
 
-                {/* 🔥 NEW: Floating particles around avatar */}
                 <div className='absolute -inset-4 pointer-events-none'>
                   <div
                     className='absolute top-4 left-4 w-2 h-2 bg-indigo-400 rounded-full animate-bounce'
@@ -598,7 +578,6 @@ const About = () => {
                 </div>
               </div>
 
-              {/* 🔥 ENHANCED: Larger, more prominent title */}
               <div className='space-y-6'>
                 <h2
                   id='aboutTitle'
@@ -607,7 +586,6 @@ const About = () => {
                   About Me
                 </h2>
 
-                {/* 🔥 ENHANCED: Styled description with better typography */}
                 <div className='max-w-4xl mx-auto'>
                   <p
                     id='aboutDescription'
@@ -615,7 +593,6 @@ const About = () => {
                   ></p>
                 </div>
 
-                {/* 🔥 NEW: Professional badges */}
                 <div className='flex flex-wrap justify-center gap-3 mt-8'>
                   <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-200'>
                     <svg
@@ -661,7 +638,6 @@ const About = () => {
           </div>
 
           <div className='grid md:grid-cols-2 gap-12 items-center'>
-            {/* 🔥 REPLACE: motion.div with regular div + GSAP animations */}
             <div className='about-content-left opacity-0 transform translate-x-[-30px]'>
               <h3 className='text-2xl font-bold mb-6'>My Journey</h3>
               <p className='text-slate-600 dark:text-slate-300 mb-4'>
@@ -679,7 +655,6 @@ const About = () => {
                 training.
               </p>
 
-              {/* 🔥 ENHANCED: Stats with animated counters */}
               <div className='grid grid-cols-2 gap-4'>
                 {stats.map((stat, index) => (
                   <div
@@ -687,7 +662,7 @@ const About = () => {
                     className='stats-card group text-center p-4 bg-white/60 dark:bg-slate-800/60 rounded-lg shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 transition-all duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/60 hover:shadow-xl hover:scale-105 cursor-pointer'
                   >
                     <div className='stat-number text-2xl font-bold text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors duration-300'>
-                      {/* 🔥 NEW: This will be animated */}0{stat.suffix}
+                      0{stat.suffix}
                     </div>
                     <div className='text-slate-600 dark:text-slate-300 text-sm group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors duration-300'>
                       {stat.label}
@@ -697,7 +672,6 @@ const About = () => {
               </div>
             </div>
 
-            {/* 🔥 REPLACE: motion.div with regular div + GSAP animations */}
             <div className='skills-section opacity-0 transform translate-x-[30px]'>
               <h3 className='text-2xl font-bold mb-6'>
                 Major Technical Skills
@@ -707,14 +681,12 @@ const About = () => {
                   <div key={index} className='skill-item'>
                     <div className='flex justify-between items-center mb-2'>
                       <div className='flex items-center space-x-3'>
-                        {/* 🔥 NEW: Animated skill icon */}
                         <div className='skill-icon-container text-indigo-600 dark:text-indigo-400'>
                           {skill.icon}
                         </div>
                         <span className='font-medium'>{skill.name}</span>
                       </div>
                       <div className='flex items-center space-x-2'>
-                        {/* 🔥 NEW: Skill level badge */}
                         <span className='skill-badge opacity-0 px-2 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white'>
                           {skill.level >= 90
                             ? "Expert"
@@ -767,7 +739,6 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* 🔥 ENHANCED: Professional Profiles Modal - Same structure as Projects */}
       {isProfileModalOpen && (
         <div
           className='modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm'

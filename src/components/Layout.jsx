@@ -77,7 +77,6 @@ const Layout = ({ children }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🔥 NEW: Smooth section transitions
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -117,7 +116,6 @@ const Layout = ({ children }) => {
 
       {/* Header */}
       <header id='navbar' className='fixed inset-x-0 top-0 z-50'>
-        {/* 🔥 ENHANCED: Prominent Scroll Progress Bar */}
         <div
           className={`scroll-progress-container ${
             scrollProgress > 0 ? "visible" : ""
@@ -132,7 +130,6 @@ const Layout = ({ children }) => {
 
         <div className='nav-container bg-white/70 dark:bg-slate-900/70 backdrop-blur-md py-4 px-4 sm:px-6 transition-all duration-500'>
           <div className='mx-auto flex max-w-7xl items-center justify-between px-6'>
-            {/* 🔥 ENHANCED: Brand with Active State */}
             <ScrollLink
               to='hero'
               smooth
@@ -151,7 +148,6 @@ const Layout = ({ children }) => {
                   alt='Abdullah Rather Logo'
                   className='w-full h-full object-cover'
                 />
-                {/* 🔥 NEW: Active indicator ring for logo */}
                 {activeSection === "hero" && (
                   <div className='absolute inset-0 rounded-lg border-2 border-indigo-500 animate-pulse'></div>
                 )}
@@ -164,13 +160,11 @@ const Layout = ({ children }) => {
                 Abdullah Rather
               </span>
 
-              {/* 🔥 NEW: Active badge for hero section */}
               {activeSection === "hero" && (
                 <div className='absolute -top-1 -right-1 w-2 h-2 bg-indigo-500 rounded-full animate-ping'></div>
               )}
             </ScrollLink>
 
-            {/* 🔥 ENHANCED: Desktop Navigation with Active Indicator */}
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
@@ -191,7 +185,6 @@ const Layout = ({ children }) => {
                   </ScrollLink>
                 ))}
 
-                {/* 🔥 NEW: Sliding Active Indicator */}
                 <div
                   className={`nav-active-indicator ${
                     activeSection !== "hero" && activeSection !== "contact"

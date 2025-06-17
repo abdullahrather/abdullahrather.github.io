@@ -60,7 +60,7 @@ body {
   transition: all 1s ease;
 }
 
-/* 🔥 NEW: Advanced navigation with sliding active indicator */
+/* Advanced navigation with sliding active indicator */
 .nav-desktop {
   position: relative;
 }
@@ -126,7 +126,7 @@ body {
   width: 100%;
 }
 
-/* 🔥 ENHANCED: More Prominent Full-Width Scroll Progress Bar */
+/* Full-Width Scroll Progress Bar */
 .scroll-progress-container {
   position: fixed;
   top: 4px;
@@ -173,7 +173,7 @@ body {
   /* Rounded bottom corners to match container */
 }
 
-/* 🔥 ENHANCED: More prominent shimmer effect */
+/* More prominent shimmer effect */
 .scroll-progress-bar::before {
   content: "";
   position: absolute;
@@ -198,7 +198,7 @@ body {
   }
 }
 
-/* 🔥 FIXED: Integrated percentage display inside the progress bar */
+/* Integrated percentage display inside the progress bar */
 .scroll-progress-container::after {
   content: attr(data-progress) "%";
   position: absolute;
@@ -228,7 +228,7 @@ body {
   opacity: 1;
 }
 
-/* 🔥 ENHANCED: Pulsing effect when progress changes */
+/* Pulsing effect when progress changes */
 .scroll-progress-bar {
   animation: gradient-shift 4s ease-in-out infinite, progress-pulse 3s ease-in-out infinite;
 }
@@ -257,7 +257,7 @@ body {
   }
 }
 
-/* 🔥 ENHANCED: Add subtle top glow line */
+/* Add subtle top glow line */
 .scroll-progress-container::before {
   content: "";
   position: absolute;
@@ -269,17 +269,14 @@ body {
   opacity: 0.7;
 }
 
-/* 🔥 NEW: Progress percentage visibility based on progress */
 .scroll-progress-container[data-progress="0"]::after {
   opacity: 0;
-  /* Hide when no progress */
 }
 
-/* 🔥 ENHANCED: Better mobile responsiveness */
+
 @media (max-width: 768px) {
   .scroll-progress-container {
     height: 10px;
-    /* Slightly smaller on mobile */
     top: 2px;
   }
 
@@ -329,7 +326,6 @@ body {
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* 🔥 NEW: Enhanced brand/logo active state */
 .logo-text {
   background: linear-gradient(90deg, #4f46e5, #8b5cf6);
   -webkit-background-clip: text;
@@ -503,26 +499,22 @@ body {
   display: inline-block;
   color: rgba(100, 116, 139, 0.2);
   font-weight: bold;
-  /* 🔥 ADD: Bold for unrevealed text */
   transition: color 0.3s ease;
 }
 
 .dark .text-reveal span {
   color: rgba(203, 213, 225, 0.2);
   font-weight: bold;
-  /* 🔥 ADD: Bold for unrevealed text in dark mode */
 }
 
 span.text-reveal-visible {
   color: rgb(30, 41, 59) !important;
   font-weight: bold !important;
-  /* 🔥 ADD: Bold for revealed text */
 }
 
 .dark span.text-reveal-visible {
   color: rgb(241, 245, 249) !important;
   font-weight: bold !important;
-  /* 🔥 ADD: Bold for revealed text in dark mode */
 }
 
 .animated-background {
@@ -582,7 +574,6 @@ html:not(.dark) .animated-shape {
   animation-delay: -4s;
 }
 
-/* 🔥 NEW: Particle system */
 .particles-container {
   position: absolute;
   top: 0;
@@ -624,7 +615,6 @@ html:not(.dark) .animated-shape {
   }
 }
 
-/* 🔥 NEW: Avatar animations */
 .profile-avatar {
   animation: gentle-float 3s ease-in-out infinite;
 }
@@ -663,7 +653,6 @@ html:not(.dark) .animated-shape {
   }
 }
 
-/* 🔥 NEW: Professional Profiles Modal Enhancements */
 .profile-avatar-large {
   position: relative;
   transition: all 0.3s ease;
@@ -677,12 +666,10 @@ html:not(.dark) .animated-shape {
   transform: translateY(-2px) scale(1.01);
 }
 
-/* 🔥 NEW: Modal scroll prevention */
 body.modal-open {
   overflow: hidden !important;
 }
 
-/* 🔥 NEW: Profile modal animations */
 .profile-modal-enter {
   opacity: 0;
   transform: scale(0.9) translateY(20px);
@@ -694,7 +681,6 @@ body.modal-open {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 🔥 FIXED: Single enhanced avatar hover state (combined both ::before and ::after) */
 .profile-avatar-large::before {
   content: "";
   position: absolute;
@@ -711,7 +697,6 @@ body.modal-open {
   opacity: 1;
 }
 
-/* 🔥 NEW: Click ripple effect */
 .profile-avatar-large:active::after {
   content: "";
   position: absolute;
@@ -723,7 +708,6 @@ body.modal-open {
   pointer-events: none;
 }
 
-/* 🔥 FIXED: Added missing keyframes */
 @keyframes avatar-rotate {
   from {
     transform: rotate(0deg);
@@ -746,7 +730,6 @@ body.modal-open {
   }
 }
 
-/* 🔥 NEW: Professional profile cards */
 .profile-card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -756,13 +739,11 @@ body.modal-open {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* 🔥 ENHANCED: Professional badge hover effects */
 .inline-flex:hover {
   transform: translateY(-2px) scale(1.05);
   transition: all 0.2s ease;
 }
 
-/* 🔥 NEW: Gradient text animation */
 .bg-clip-text {
   background-size: 200% 100%;
   animation: gradient-flow 6s ease-in-out infinite;
@@ -780,7 +761,6 @@ body.modal-open {
   }
 }
 
-/* 🔥 ENHANCED: Floating particles */
 @keyframes particle-float {
 
   0%,
@@ -799,7 +779,6 @@ body.modal-open {
   animation: particle-float 3s ease-in-out infinite;
 }
 
-/* 🔥 NEW: Skill icon animations */
 .skill-icon {
   transition: all 0.3s ease;
 }
@@ -820,19 +799,15 @@ body.modal-open {
   color: rgb(129, 140, 248) !important;
 }
 
-/* 🔥 NEW: Skill badge animations */
 .skill-badge {
   transition: all 0.5s ease;
   transform: translateX(20px);
 }
 
-/* 🔥 FIXED: Proper card flip without position absolute issues */
 .project-card {
   perspective: 1000px;
   height: auto;
-  /* Let content determine height */
   min-height: 400px;
-  /* Minimum height for consistency */
 }
 
 .project-card-inner {
@@ -851,23 +826,19 @@ body.modal-open {
 
 .project-card-front,
 .project-card-back {
-  /* 🔥 REMOVE: position: absolute - this was causing the issue */
   width: 100%;
   min-height: 400px;
   backface-visibility: hidden;
   border-radius: 0.75rem;
   overflow: hidden;
-  /* 🔥 NEW: Use transform instead of absolute positioning */
   transform-style: preserve-3d;
 }
 
 .project-card-front {
-  /* Front face - visible by default */
   transform: rotateY(0deg);
 }
 
 .project-card-back {
-  /* Back face - rotated 180deg and positioned behind front */
   position: absolute;
   top: 0;
   left: 0;
@@ -892,7 +863,6 @@ body.modal-open {
       rgba(139, 92, 246, 0.9));
 }
 
-/* 🔥 NEW: Flip button styles */
 .flip-button {
   position: absolute;
   top: 1rem;
@@ -925,7 +895,6 @@ body.modal-open {
   transform: rotate(180deg);
 }
 
-/* 🔥 NEW: Technology tooltips */
 .tech-tooltip {
   font-size: 0.75rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -940,7 +909,6 @@ body.modal-open {
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
 }
 
-/* 🔥 NEW: Enhanced tech stack items */
 .tech-stack-item:hover span {
   background: rgb(79, 70, 229) !important;
   color: white !important;
@@ -951,7 +919,6 @@ body.modal-open {
   color: rgb(15, 23, 42) !important;
 }
 
-/* 🔥 NEW: Social media icon animations */
 .social-icon {
   transition: all 0.3s ease;
   transform-origin: center;
@@ -983,7 +950,6 @@ body.modal-open {
   }
 }
 
-/* Individual social platform colors on hover */
 .social-linkedin:hover {
   background: #0077b5 !important;
   color: white !important;
@@ -1008,7 +974,6 @@ body.modal-open {
   transform: scale(1.1) translateY(-2px);
 }
 
-/* 🔥 NEW: Form field focus animations */
 .form-field {
   position: relative;
   transition: all 0.3s ease;
@@ -1040,7 +1005,6 @@ body.modal-open {
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
 }
 
-/* Floating label effect */
 .form-field label {
   transition: all 0.3s ease;
   transform-origin: left top;
@@ -1055,7 +1019,6 @@ body.modal-open {
   font-weight: 600;
 }
 
-/* Submit button animation */
 .submit-btn {
   position: relative;
   overflow: hidden;
@@ -1089,7 +1052,6 @@ body.modal-open {
   left: 100%;
 }
 
-/* 🔥 NEW: Success message celebration animation */
 .success-message {
   animation: celebration-bounce 0.8s ease-out;
   position: relative;
@@ -1165,7 +1127,6 @@ body.modal-open {
   }
 }
 
-/* Pulsing border for success */
 .success-pulse {
   animation: success-pulse 2s ease-in-out infinite;
 }
@@ -1271,7 +1232,6 @@ html.dark .nav-mobile-item:hover {
   }
 }
 
-/* 🔥 NEW: Skeleton loaders */
 .skeleton {
   background: linear-gradient(90deg,
       rgba(229, 231, 235, 0.8) 0%,
@@ -1349,7 +1309,6 @@ html.dark .nav-mobile-item:hover {
   transform: translateY(0);
 }
 
-/* 🔥 NEW: Advanced section transitions */
 .section-enter {
   opacity: 0;
   transform: translateY(40px) scale(0.95);
@@ -1436,10 +1395,8 @@ html.dark .nav-mobile-item:hover {
 .loading-particle {
   box-shadow: 0 0 15px rgba(165, 180, 252, 0.6),
     0 0 30px rgba(129, 140, 248, 0.3);
-  /* Enhanced glow for better visibility */
 }
 
-/* 🔥 NEW: Additional sparkle particles for loading screen */
 .loading-screen::before {
   content: "";
   position: absolute;
@@ -1471,7 +1428,6 @@ html.dark .nav-mobile-item:hover {
   }
 }
 
-/* 🔥 FIXED: Enhanced transitions for better performance - SELECTIVE, not global */
 .nav-container,
 .project-card,
 .service-card,
@@ -1484,10 +1440,8 @@ html.dark .nav-mobile-item:hover {
   backface-visibility: hidden;
 }
 
-/* 🔥 NEW: Scroll Controls Styles */
 .scroll-to-top,
 .scroll-to-bottom {
-  /* Ensure buttons are always visible over other elements */
   z-index: 50;
   width: 56px;
   height: 56px;
@@ -1498,12 +1452,10 @@ html.dark .nav-mobile-item:hover {
   filter: drop-shadow(0 10px 20px rgba(79, 70, 229, 0.3));
 }
 
-/* Progress ring animation enhancement */
 .scroll-to-top svg circle {
   filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.4));
 }
 
-/* 🔥 NEW: Custom Cursor Styles */
 * {
   cursor: none !important;
 }
@@ -1582,7 +1534,6 @@ button:hover,
   }
 }
 
-/* Loading screen cursor override */
 .loading-screen * {
   cursor: none !important;
 }

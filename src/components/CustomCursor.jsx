@@ -41,7 +41,6 @@ const CustomCursor = () => {
       gsap.to(cursor, { scale: 1, duration: 0.1 });
     };
 
-    // 🔥 FIXED: Safe element checking
     const isInteractiveElement = (element) => {
       if (!element || !element.matches) return false;
 
@@ -50,7 +49,6 @@ const CustomCursor = () => {
           'a, button, .btn-primary, .nav-link, .project-card, .service-card, .social-icon, .scroll-to-top, .scroll-to-bottom, input, textarea, [role="button"], [onclick]'
         );
       } catch {
-        // 🔥 FIXED: Removed unused 'error' parameter
         // Fallback check for elements without matches support
         const tagName = element.tagName ? element.tagName.toLowerCase() : "";
         const className = element.className || "";
@@ -80,7 +78,6 @@ const CustomCursor = () => {
       try {
         return element.matches("input, textarea");
       } catch {
-        // 🔥 FIXED: Removed unused 'error' parameter
         const tagName = element.tagName ? element.tagName.toLowerCase() : "";
         return tagName === "input" || tagName === "textarea";
       }

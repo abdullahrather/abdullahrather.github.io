@@ -77,13 +77,10 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus("");
 
-    // 🔥 ENHANCED: Dynamic timezone detection for both user and you
     const now = new Date();
 
-    // Auto-detect current browser timezone (works for both user and you)
     const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    // User's local time (what they'll see in auto-reply)
     const userLocalTime = now.toLocaleString("en-US", {
       weekday: "long",
       year: "numeric",
@@ -94,7 +91,6 @@ const Contact = () => {
       timeZoneName: "short",
     });
 
-    // Your current location time (auto-detected from your browser/device)
     const yourCurrentTime = now.toLocaleString("en-US", {
       weekday: "long",
       year: "numeric",
@@ -102,11 +98,10 @@ const Contact = () => {
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-      timeZone: currentTimezone, // This will be your actual current timezone
+      timeZone: currentTimezone,
       timeZoneName: "short",
     });
 
-    // UTC for technical reference
     const utcTime = now.toLocaleString("en-US", {
       weekday: "long",
       year: "numeric",
@@ -118,7 +113,6 @@ const Contact = () => {
       timeZoneName: "short",
     });
 
-    // 🔥 ENHANCED: More comprehensive location context
     const locationContext = {
       timezone: currentTimezone,
       timezoneAbbr: now
@@ -134,13 +128,12 @@ const Contact = () => {
       to_email: NOTIFY_TO_EMAIL,
       subject: formData.subject.trim(),
       message: formData.message.trim(),
-      // 🔥 DYNAMIC TIMEZONE VARIABLES
-      time: userLocalTime, // User sees their local time
-      time_recipient: yourCurrentTime, // Your current location time (dynamic)
-      time_utc: utcTime, // UTC for technical reference
-      user_timezone: currentTimezone, // User's timezone (e.g., "America/New_York")
-      recipient_timezone: currentTimezone, // Your current timezone (auto-detected)
-      recipient_location: `${locationContext.city}, ${locationContext.country}`, // Your current location
+      time: userLocalTime,
+      time_recipient: yourCurrentTime,
+      time_utc: utcTime,
+      user_timezone: currentTimezone,
+      recipient_timezone: currentTimezone,
+      recipient_location: `${locationContext.city}, ${locationContext.country}`,
       "g-recaptcha-response": recaptchaToken,
     };
 
@@ -169,7 +162,6 @@ const Contact = () => {
     }
   };
 
-  // 🔥 HELPER: Get country from timezone
   const getCountryFromTimezone = (timezone) => {
     const timezoneToCountry = {
       // Europe

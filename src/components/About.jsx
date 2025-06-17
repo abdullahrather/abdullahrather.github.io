@@ -385,42 +385,133 @@ const About = () => {
       >
         <div className='container mx-auto px-6'>
           {/* 🔥 NEW: Animated Avatar - Above heading */}
-          <div className='flex justify-center mb-8'>
-            <div className='profile-avatar relative'>
-              <div className='w-24 h-24 rounded-full overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 p-1 shadow-lg'>
-                <div className='w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-800'>
-                  <img
-                    src='/images/profile-avatar.png'
-                    alt='Abdullah Rather'
-                    className='w-full h-full object-cover'
-                    onError={(e) => {
-                      e.target.style.display = "none";
-                      e.target.nextSibling.style.display = "flex";
-                    }}
-                  />
-                  <div
-                    className='w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-lg font-bold'
-                    style={{ display: "none" }}
-                  >
-                    AR
+          {/* 🔥 ENHANCED: Hero-style About Header */}
+          <div className='relative mb-20'>
+            {/* Background Elements */}
+            <div className='absolute inset-0 overflow-hidden pointer-events-none'>
+              <div className='absolute top-10 left-10 w-32 h-32 bg-indigo-100 dark:bg-indigo-900/30 rounded-full blur-xl opacity-60'></div>
+              <div className='absolute bottom-10 right-10 w-24 h-24 bg-purple-100 dark:bg-purple-900/30 rounded-full blur-xl opacity-60'></div>
+            </div>
+
+            {/* Main Content */}
+            <div className='relative text-center'>
+              {/* 🔥 ENHANCED: Larger, more prominent avatar */}
+              <div className='profile-avatar-large relative inline-block mb-8'>
+                <div className='w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 dark:from-indigo-900 dark:via-purple-900 dark:to-purple-800 p-2 shadow-2xl mx-auto'>
+                  <div className='w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-800 ring-4 ring-white/50 dark:ring-slate-700/50'>
+                    <img
+                      src='/images/profile-avatar.png'
+                      alt='Abdullah Rather'
+                      className='w-full h-full object-cover transition-transform duration-300 hover:scale-110'
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        e.target.nextSibling.style.display = "flex";
+                      }}
+                    />
+                    <div
+                      className='w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold'
+                      style={{ display: "none" }}
+                    >
+                      AR
+                    </div>
                   </div>
                 </div>
+
+                {/* 🔥 ENHANCED: Larger status indicator with pulse */}
+                <div className='profile-status absolute bottom-2 right-2 md:bottom-4 md:right-4'>
+                  <div className='relative'>
+                    <div className='w-6 h-6 bg-green-500 rounded-full border-4 border-white dark:border-slate-800'></div>
+                    <div className='absolute inset-0 w-6 h-6 bg-green-400 rounded-full animate-ping opacity-75'></div>
+                  </div>
+                </div>
+
+                {/* 🔥 NEW: Floating particles around avatar */}
+                <div className='absolute -inset-4 pointer-events-none'>
+                  <div
+                    className='absolute top-4 left-4 w-2 h-2 bg-indigo-400 rounded-full animate-bounce'
+                    style={{ animationDelay: "0s", animationDuration: "2s" }}
+                  ></div>
+                  <div
+                    className='absolute top-8 right-8 w-1.5 h-1.5 bg-purple-400 rounded-full animate-bounce'
+                    style={{
+                      animationDelay: "0.5s",
+                      animationDuration: "2.5s",
+                    }}
+                  ></div>
+                  <div
+                    className='absolute bottom-8 left-8 w-1 h-1 bg-indigo-300 rounded-full animate-bounce'
+                    style={{ animationDelay: "1s", animationDuration: "3s" }}
+                  ></div>
+                  <div
+                    className='absolute bottom-4 right-12 w-1.5 h-1.5 bg-purple-300 rounded-full animate-bounce'
+                    style={{
+                      animationDelay: "1.5s",
+                      animationDuration: "2.8s",
+                    }}
+                  ></div>
+                </div>
               </div>
-              <div className='profile-status absolute bottom-1 right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-slate-800'></div>
+
+              {/* 🔥 ENHANCED: Larger, more prominent title */}
+              <div className='space-y-6'>
+                <h2
+                  id='aboutTitle'
+                  className='text-5xl md:text-6xl font-extrabold mb-6 opacity-0 transform translate-y-6 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 dark:from-white dark:via-indigo-100 dark:to-white bg-clip-text text-transparent'
+                >
+                  About Me
+                </h2>
+
+                {/* 🔥 ENHANCED: Styled description with better typography */}
+                <div className='max-w-4xl mx-auto'>
+                  <p
+                    id='aboutDescription'
+                    className='text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium'
+                  ></p>
+                </div>
+
+                {/* 🔥 NEW: Professional badges */}
+                <div className='flex flex-wrap justify-center gap-3 mt-8'>
+                  <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-200'>
+                    <svg
+                      className='w-4 h-4 mr-2'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path
+                        fillRule='evenodd'
+                        d='M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+                        clipRule='evenodd'
+                      />
+                    </svg>
+                    5+ Years Experience
+                  </span>
+                  <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-200'>
+                    <svg
+                      className='w-4 h-4 mr-2'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path d='M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z' />
+                    </svg>
+                    M.Sc. AI Student
+                  </span>
+                  <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200'>
+                    <svg
+                      className='w-4 h-4 mr-2'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path
+                        fillRule='evenodd'
+                        d='M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z'
+                        clipRule='evenodd'
+                      />
+                    </svg>
+                    Based in Germany
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-          {/* 🔥 REPLACE: motion.div with regular div + GSAP animations */}
-          <div className='text-center mb-16'>
-            <h2
-              id='aboutTitle'
-              className='text-4xl font-bold mb-4 opacity-0 transform translate-y-6'
-            >
-              About Me
-            </h2>
-            <p
-              id='aboutDescription'
-              className='text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'
-            ></p>
           </div>
 
           <div className='grid md:grid-cols-2 gap-12 items-center'>

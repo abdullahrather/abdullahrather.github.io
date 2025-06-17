@@ -117,11 +117,12 @@ const Layout = ({ children }) => {
 
       {/* Header */}
       <header id='navbar' className='fixed inset-x-0 top-0 z-50'>
-        {/* 🔥 NEW: Scroll Progress Bar */}
+        {/* 🔥 ENHANCED: Prominent Scroll Progress Bar */}
         <div
           className={`scroll-progress-container ${
             scrollProgress > 0 ? "visible" : ""
           }`}
+          data-progress={Math.round(scrollProgress)}
         >
           <div
             className='scroll-progress-bar'

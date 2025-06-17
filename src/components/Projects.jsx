@@ -6,7 +6,7 @@ const Projects = () => {
   const [filter, setFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // 🔥 HELPER: Check if repository is private
+  // Check if repository is private
   const isPrivateRepo = (githubUrl) => {
     return (
       githubUrl === "https://github.com/abdullahrather" || githubUrl === "#"
@@ -397,7 +397,6 @@ const Projects = () => {
                 className='project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:shadow-2xl'
               >
                 <div className='project-card-inner' id={`card-${project.id}`}>
-                  {/* 🔥 NEW: Flip control button */}
                   <button
                     className='flip-button'
                     onClick={(e) => {
@@ -410,7 +409,6 @@ const Projects = () => {
                       // Toggle flip
                       cardInner.classList.toggle("flipped");
 
-                      // 🔥 NEW: Set up auto-flip back on mouse leave
                       if (cardInner.classList.contains("flipped")) {
                         const handleMouseLeave = () => {
                           setTimeout(() => {
@@ -552,7 +550,6 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      {/* 🔥 FIXED: Technology stack with working tooltips */}
                       <div className='flex flex-wrap gap-2'>
                         {project.technologies.map((tech, i) => (
                           <div
@@ -655,7 +652,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* 🔥 NEW: Project Details Modal */}
+      {/* Project Details Modal */}
       {selectedProject && (
         <div
           className='modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm'

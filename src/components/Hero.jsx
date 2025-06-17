@@ -241,7 +241,7 @@ const Hero = () => {
       <div className='mx-auto max-w-7xl'>
         <h1
           id='heroHeadline'
-          className='max-w-5xl mx-auto overflow-hidden text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl'
+          className='max-w-5xl mx-auto text-5xl font-extrabold leading-[1.15] tracking-tight sm:text-6xl lg:text-7xl pb-2'
         >
           Transform your vision into
           <br />

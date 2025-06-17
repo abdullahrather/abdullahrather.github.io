@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 
 const About = () => {
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const stats = useMemo(
     () => [
       { number: "5+", label: "Years Experience", targetValue: 5, suffix: "+" },
@@ -162,6 +163,128 @@ const About = () => {
     ],
     []
   );
+
+  // 🔥 NEW: Professional profiles data
+  const professionalProfiles = [
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/abdullahrather",
+      description: "Professional network & career highlights",
+      icon: (
+        <svg className='w-8 h-8' fill='currentColor' viewBox='0 0 24 24'>
+          <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' />
+        </svg>
+      ),
+      color: "bg-[#0077b5] hover:bg-[#005885]",
+      textColor: "text-white",
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/abdullahrather",
+      description: "Open source projects & code repositories",
+      icon: (
+        <svg className='w-8 h-8' fill='currentColor' viewBox='0 0 24 24'>
+          <path d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z' />
+        </svg>
+      ),
+      color: "bg-[#333] hover:bg-[#24292e]",
+      textColor: "text-white",
+    },
+    {
+      name: "Xing",
+      url: "https://www.xing.com/profile/Abdullah_Rather",
+      description: "German professional network",
+      icon: (
+        <svg className='w-8 h-8' fill='currentColor' viewBox='0 0 90 90'>
+          <path d='M 13.677 17.774 c -0.782 0 -1.44 0.274 -1.77 0.811 c -0.342 0.555 -0.289 1.269 0.074 1.991 l 8.776 15.193 c 0.015 0.029 0.015 0.047 0 0.074 L 6.966 60.181 c -0.36 0.717 -0.342 1.437 0 1.991 c 0.33 0.534 0.915 0.885 1.696 0.885 h 12.98 c 1.941 0 2.876 -1.31 3.54 -2.508 c 0 0 13.488 -23.854 14.013 -24.78 c -0.053 -0.086 -8.924 -15.561 -8.924 -15.561 c -0.646 -1.151 -1.623 -2.434 -3.614 -2.434 H 13.677 z' />
+          <path d='M 68.208 0 c -1.938 0 -2.779 1.221 -3.475 2.472 c 0 0 -27.963 49.59 -28.884 51.219 c 0.047 0.089 18.444 33.837 18.444 33.837 C 54.936 88.678 55.93 90 57.919 90 h 12.966 c 0.782 0 1.392 -0.295 1.723 -0.829 c 0.345 -0.555 0.336 -1.286 -0.027 -2.006 L 54.281 53.732 c -0.018 -0.027 -0.018 -0.059 0 -0.085 L 83.02 2.832 c 0.36 -0.717 0.369 -1.449 0.027 -2.003 C 82.717 0.295 82.103 0 81.321 0 H 68.208 z' />
+        </svg>
+      ),
+      color: "bg-[#026466] hover:bg-[#014a4c]",
+      textColor: "text-white",
+    },
+    {
+      name: "Email",
+      url: "mailto:abdullahrather19@gmail.com",
+      description: "Direct professional contact",
+      icon: (
+        <svg
+          className='w-8 h-8'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth='2'
+            d='M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+          />
+        </svg>
+      ),
+      color: "bg-[#ea4335] hover:bg-[#d23924]",
+      textColor: "text-white",
+    },
+  ];
+
+  // Modal handlers
+  const openProfileModal = () => {
+    setIsProfileModalOpen(true);
+
+    // Enhanced scroll prevention
+    const scrollY = window.scrollY || window.pageYOffset;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+  };
+
+  const closeProfileModal = () => {
+    // Restore scroll position
+    const savedY = parseInt(document.body.style.top || "0", 10) * -1;
+    document.documentElement.style.scrollBehavior = "auto";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    window.scrollTo(0, savedY);
+    requestAnimationFrame(() => {
+      document.documentElement.style.scrollBehavior = "";
+    });
+
+    setIsProfileModalOpen(false);
+  };
+
+  // 🔥 NEW: Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape" && isProfileModalOpen) {
+        closeProfileModal();
+      }
+    };
+
+    if (isProfileModalOpen) {
+      document.addEventListener("keydown", handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isProfileModalOpen]);
+
+  // 🔥 NEW: Modal scroll prevention - Same as Projects
+  useEffect(() => {
+    if (!isProfileModalOpen) return;
+    const modalBody = document.querySelector(".modal-body");
+    if (!modalBody) return;
+
+    const stop = (e) => e.stopPropagation();
+    modalBody.addEventListener("wheel", stop, { passive: false });
+
+    return () => {
+      modalBody.removeEventListener("wheel", stop);
+    };
+  }, [isProfileModalOpen]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -395,10 +518,14 @@ const About = () => {
 
             {/* Main Content */}
             <div className='relative text-center'>
-              {/* 🔥 ENHANCED: Larger, more prominent avatar */}
-              <div className='profile-avatar-large relative inline-block mb-8'>
-                <div className='w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 dark:from-indigo-900 dark:via-purple-900 dark:to-purple-800 p-2 shadow-2xl mx-auto'>
-                  <div className='w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-800 ring-4 ring-white/50 dark:ring-slate-700/50'>
+              {/* 🔥 ENHANCED: Clickable avatar for professional profiles */}
+              <div
+                className='profile-avatar-large relative inline-block mb-8 cursor-pointer group'
+                onClick={openProfileModal}
+                title='View Professional Profiles'
+              >
+                <div className='w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 dark:from-indigo-900 dark:via-purple-900 dark:to-purple-800 p-2 shadow-2xl mx-auto transition-all duration-300 group-hover:shadow-3xl'>
+                  <div className='w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-800 ring-4 ring-white/50 dark:ring-slate-700/50 group-hover:ring-indigo-300 dark:group-hover:ring-indigo-600 transition-all duration-300'>
                     <img
                       src='/images/profile-avatar.png'
                       alt='Abdullah Rather'
@@ -413,6 +540,25 @@ const About = () => {
                       style={{ display: "none" }}
                     >
                       AR
+                    </div>
+                  </div>
+
+                  {/* 🔥 NEW: Click indicator overlay */}
+                  <div className='absolute inset-0 rounded-full bg-indigo-500/0 group-hover:bg-indigo-500/10 transition-all duration-300 flex items-center justify-center'>
+                    <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full p-2'>
+                      <svg
+                        className='w-6 h-6 text-indigo-600 dark:text-indigo-400'
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth='2'
+                          d='M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1'
+                        />
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -621,6 +767,129 @@ const About = () => {
           </div>
         </div>
       </section>
+      {/* 🔥 ENHANCED: Professional Profiles Modal - Same structure as Projects */}
+      {isProfileModalOpen && (
+        <div
+          className='modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm'
+          onClick={closeProfileModal}
+          onWheel={(e) => e.preventDefault()}
+          onTouchMove={(e) => e.preventDefault()}
+        >
+          <div
+            className='bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden'
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className='flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700'>
+              <div className='flex items-center space-x-4'>
+                <div className='w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-800 p-1'>
+                  <img
+                    src='/images/profile-avatar.png'
+                    alt='Abdullah Rather'
+                    className='w-full h-full object-cover rounded-full'
+                  />
+                </div>
+                <div>
+                  <h2 className='text-2xl font-bold text-slate-900 dark:text-white'>
+                    Professional Profiles
+                  </h2>
+                  <p className='text-slate-600 dark:text-slate-300 text-sm'>
+                    Connect with me on various platforms
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={closeProfileModal}
+                className='p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors'
+              >
+                <svg
+                  className='h-6 w-6 text-slate-600 dark:text-slate-400'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M6 18L18 6M6 6l12 12'
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Content - Scrollable */}
+            <div className='overflow-y-auto max-h-[calc(90vh-140px)] modal-body'>
+              <div className='p-6'>
+                <div className='grid gap-4'>
+                  {professionalProfiles.map((profile, index) => (
+                    <a
+                      key={index}
+                      href={profile.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className={`group flex items-center p-4 rounded-xl transition-all duration-300 ${profile.color} ${profile.textColor} hover:scale-105 hover:shadow-lg transform`}
+                    >
+                      <div className='flex-shrink-0 mr-4'>{profile.icon}</div>
+                      <div className='flex-1'>
+                        <h3 className='text-lg font-semibold mb-1'>
+                          {profile.name}
+                        </h3>
+                        <p className='text-sm opacity-90'>
+                          {profile.description}
+                        </p>
+                      </div>
+                      <div className='flex-shrink-0 ml-4'>
+                        <svg
+                          className='w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300'
+                          fill='none'
+                          stroke='currentColor'
+                          viewBox='0 0 24 24'
+                        >
+                          <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth='2'
+                            d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
+                          />
+                        </svg>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                {/* Additional Info */}
+                <div className='mt-6 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl'>
+                  <div className='flex items-start space-x-3'>
+                    <svg
+                      className='w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path
+                        fillRule='evenodd'
+                        d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z'
+                        clipRule='evenodd'
+                      />
+                    </svg>
+                    <div>
+                      <h4 className='font-semibold text-slate-900 dark:text-white mb-1'>
+                        Let's Connect!
+                      </h4>
+                      <p className='text-sm text-slate-600 dark:text-slate-300'>
+                        I'm always open to discussing new opportunities,
+                        collaborations, or just connecting with fellow
+                        developers. Feel free to reach out through any of these
+                        platforms.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

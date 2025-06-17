@@ -663,16 +663,38 @@ html:not(.dark) .animated-shape {
   }
 }
 
-/* 🔥 ENHANCED: Larger avatar animations */
+/* 🔥 NEW: Professional Profiles Modal Enhancements */
 .profile-avatar-large {
   position: relative;
   transition: all 0.3s ease;
 }
 
 .profile-avatar-large:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
 }
 
+.profile-avatar-large:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* 🔥 NEW: Modal scroll prevention */
+body.modal-open {
+  overflow: hidden !important;
+}
+
+/* 🔥 NEW: Profile modal animations */
+.profile-modal-enter {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+}
+
+.profile-modal-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 🔥 FIXED: Single enhanced avatar hover state (combined both ::before and ::after) */
 .profile-avatar-large::before {
   content: "";
   position: absolute;
@@ -689,6 +711,19 @@ html:not(.dark) .animated-shape {
   opacity: 1;
 }
 
+/* 🔥 NEW: Click ripple effect */
+.profile-avatar-large:active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: click-ripple 0.6s ease-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* 🔥 FIXED: Added missing keyframes */
 @keyframes avatar-rotate {
   from {
     transform: rotate(0deg);
@@ -697,6 +732,28 @@ html:not(.dark) .animated-shape {
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes click-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* 🔥 NEW: Professional profile cards */
+.profile-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-card-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* 🔥 ENHANCED: Professional badge hover effects */

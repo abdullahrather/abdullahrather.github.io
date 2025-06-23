@@ -1537,3 +1537,24 @@ button:hover,
 .loading-screen * {
   cursor: none !important;
 }
+
+/* hero headline character breaking */
+#heroHeadline {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  white-space: normal;
+}
+
+@media (max-width: 640px) {
+  #heroHeadline {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  #heroHeadline {
+    font-size: 2rem;
+  }
+}

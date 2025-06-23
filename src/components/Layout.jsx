@@ -494,7 +494,7 @@ const Layout = ({ children }) => {
       <CustomCursor />
 
       {/* Scroll Controls */}
-      <ScrollControls />
+      <ScrollControls isMobileMenuOpen={isMobileMenuOpen} />
     </div>
   );
 };

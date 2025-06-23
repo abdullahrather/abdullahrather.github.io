@@ -4,7 +4,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-const ScrollControls = () => {
+const ScrollControls = ({ isMobileMenuOpen = false }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [showBottomBtn, setShowBottomBtn] = useState(true);
@@ -60,7 +60,7 @@ const ScrollControls = () => {
       },
     });
 
-    // Button press “blink”
+    // Button press "blink"
     gsap.to(".scroll-to-top", {
       scale: 0.9,
       duration: 0.1,
@@ -99,8 +99,11 @@ const ScrollControls = () => {
   const modalOverlay = document.querySelector(".modal-overlay");
   const isModalOpen = Boolean(modalOverlay);
 
-  // If the modal is open, do not render any scroll buttons or ring:
-  if (isModalOpen) {
+  /* Hide scroll controls if:
+   * Modal is open
+   * Mobile menu is open
+   */
+  if (isModalOpen || isMobileMenuOpen) {
     return null;
   }
 
@@ -112,7 +115,7 @@ const ScrollControls = () => {
           onClick={scrollToTop}
           disabled={isScrolling}
           className={`
-            scroll-to-top fixed right-6 bottom-20 z-50 group transition-all duration-500
+            scroll-to-top fixed right-3 bottom-16 md:right-6 md:bottom-20 z-50 group transition-all duration-500
             ${
               showTopBtn
                 ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -122,29 +125,29 @@ const ScrollControls = () => {
           `}
           aria-label='Scroll to top'
         >
-          <div className='relative w-14 h-14'>
+          <div className='relative w-10 h-10 md:w-14 md:h-14'>
             {/* Background Ring */}
-            <svg className='w-14 h-14 transform -rotate-90' viewBox='0 0 56 56'>
+            <svg className='w-full h-full transform -rotate-90' viewBox='0 0 56 56'>
               <circle
                 cx='28'
                 cy='28'
-                r='24'
+                r='22'
                 fill='none'
                 stroke='rgba(148, 163, 184, 0.2)'
-                strokeWidth='3'
+                strokeWidth='2.5'
                 className='dark:stroke-slate-600/30'
               />
               {/* Progress Ring */}
               <circle
                 cx='28'
                 cy='28'
-                r='24'
+                r='22'
                 fill='none'
                 stroke='url(#scrollGradient)'
-                strokeWidth='3'
+                strokeWidth='2.5'
                 strokeLinecap='round'
-                strokeDasharray={150.8}
-                strokeDashoffset={150.8 - (scrollProgress / 100) * 150.8}
+                strokeDasharray={138.2}
+                strokeDashoffset={138.2 - (scrollProgress / 100) * 138.2}
                 className='transition-all duration-300 ease-out'
               />
             </svg>
@@ -168,7 +171,7 @@ const ScrollControls = () => {
             {/* Arrow Icon */}
             <div className='absolute inset-0 flex items-center justify-center bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full border border-white/20 dark:border-slate-700/50 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110'>
               <svg
-                className='w-5 h-5 text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:-translate-y-0.5'
+                className='w-4 h-4 md:w-5 md:h-5 text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:-translate-y-0.5'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
@@ -197,7 +200,7 @@ const ScrollControls = () => {
           </div>
 
           {/* Tooltip */}
-          <div className='absolute right-full mr-3 top-1/2 transform -translate-y-1/2 px-3 py-1.5 bg-slate-900 dark:bg-slate-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none'>
+          <div className='hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 px-3 py-1.5 bg-slate-900 dark:bg-slate-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none'>
             {isScrolling ? "Scrolling..." : "Back to top"}
             <div className='absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-slate-900 dark:border-l-slate-700'></div>
           </div>
@@ -210,7 +213,7 @@ const ScrollControls = () => {
           onClick={scrollToBottom}
           disabled={isScrolling}
           className={`
-            scroll-to-bottom fixed right-6 bottom-4 z-50 group transition-all duration-500
+            scroll-to-bottom fixed right-3 bottom-4 md:right-6 md:bottom-4 z-50 group transition-all duration-500
             ${
               showBottomBtn
                 ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -220,11 +223,11 @@ const ScrollControls = () => {
           `}
           aria-label='Scroll to bottom'
         >
-          <div className='relative w-14 h-14'>
+          <div className='relative w-10 h-10 md:w-14 md:h-14'>
             {/* Arrow Icon */}
             <div className='absolute inset-0 flex items-center justify-center bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full border border-white/20 dark:border-slate-700/50 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110'>
               <svg
-                className='w-5 h-5 text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:translate-y-0.5'
+                className='w-4 h-4 md:w-5 md:h-5 text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:translate-y-0.5'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
@@ -253,7 +256,7 @@ const ScrollControls = () => {
           </div>
 
           {/* Tooltip */}
-          <div className='absolute right-full mr-3 top-1/2 transform -translate-y-1/2 px-3 py-1.5 bg-slate-900 dark:bg-slate-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none'>
+          <div className='hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 px-3 py-1.5 bg-slate-900 dark:bg-slate-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none'>
             {isScrolling ? "Scrolling..." : "Go to bottom"}
             <div className='absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-slate-900 dark:border-l-slate-700'></div>
           </div>

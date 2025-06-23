@@ -225,6 +225,37 @@ const Hero = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const headline = document.getElementById("heroHeadline");
+      if (!headline) return;
+
+      headline.innerHTML = `
+      Transform your vision into
+      <br />
+      <span class='text-indigo-600 dark:text-indigo-400'>
+        intelligent
+      </span> solutions
+    `;
+
+      if (window.innerWidth <= 640) {
+        headline.innerHTML = `
+        <span style="display: inline-block; white-space: nowrap;">Transform your</span>
+        <span style="display: inline-block; white-space: nowrap;"> vision into</span>
+        <br />
+        <span class='text-indigo-600 dark:text-indigo-400' style="display: inline-block; white-space: nowrap;">intelligent</span>
+        <span style="display: inline-block; white-space: nowrap;"> solutions</span>
+      `;
+      }
+    };
+
+    // Run on mount and resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id='hero'

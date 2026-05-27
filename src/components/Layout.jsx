@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import ScrollControls from "./ScrollControls";
-import CustomCursor from "./CustomCursor";
 
 const Layout = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -489,12 +487,6 @@ const Layout = ({ children }) => {
           </p>
         </div>
       </footer>
-
-      {/* Custom Cursor */}
-      <CustomCursor />
-
-      {/* Scroll Controls */}
-      <ScrollControls isMobileMenuOpen={isMobileMenuOpen} />
     </div>
   );
 };

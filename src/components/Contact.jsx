@@ -10,6 +10,19 @@ const NOTIFY_TO_EMAIL = import.meta.env.VITE_EMAILJS_NOTIFY_TO || "";
 const TEMPLATE_NOTIFY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY || "";
 const TEMPLATE_REPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY || "";
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+const IS_EMAIL_CONFIGURED = Boolean(
+  USER_ID && SERVICE_ID && NOTIFY_TO_EMAIL && TEMPLATE_NOTIFY_ID && TEMPLATE_REPLY_ID
+);
+const IS_RECAPTCHA_CONFIGURED = Boolean(RECAPTCHA_SITE_KEY);
+const IS_FORM_ENABLED = IS_EMAIL_CONFIGURED && IS_RECAPTCHA_CONFIGURED;
+const MISSING_ENV_VARS = [
+  !USER_ID && "VITE_EMAILJS_USER_ID",
+  !SERVICE_ID && "VITE_EMAILJS_SERVICE_ID",
+  !NOTIFY_TO_EMAIL && "VITE_EMAILJS_NOTIFY_TO",
+  !TEMPLATE_NOTIFY_ID && "VITE_EMAILJS_TEMPLATE_NOTIFY",
+  !TEMPLATE_REPLY_ID && "VITE_EMAILJS_TEMPLATE_REPLY",
+  !RECAPTCHA_SITE_KEY && "VITE_RECAPTCHA_SITE_KEY",
+].filter(Boolean);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +40,12 @@ const Contact = () => {
   useEffect(() => {
     if (USER_ID) {
       emailjs.init(USER_ID);
-    } else {
-      console.warn("⚠️  VITE_EMAILJS_USER_ID is missing in your .env");
+    }
+
+    if (MISSING_ENV_VARS.length > 0) {
+      console.warn(
+        `Contact form disabled: missing env vars: ${MISSING_ENV_VARS.join(", ")}`
+      );
     }
   }, []);
 
@@ -68,6 +85,11 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!IS_FORM_ENABLED) {
+      setSubmitStatus("config-missing");
+      return;
+    }
 
     if (!recaptchaToken) {
       alert("Please complete the reCAPTCHA before submitting.");
@@ -287,7 +309,7 @@ const Contact = () => {
         </svg>
       ),
       title: "Availability",
-      value: "Open for Freelance Projects",
+      value: "Open for Full-Time & Freelance Opportunities",
       link: "#",
     },
   ];
@@ -434,6 +456,18 @@ const Contact = () => {
                 directly.
               </div>
             )}
+            {submitStatus === "config-missing" && (
+              <div className='mb-6 p-4 bg-amber-100 dark:bg-amber-900/40 border border-amber-400 dark:border-amber-700 text-amber-800 dark:text-amber-200 rounded-lg'>
+                Contact form is not configured in this environment. Please use
+                the email link instead.
+              </div>
+            )}
+            {!IS_FORM_ENABLED && submitStatus !== "config-missing" && (
+              <div className='mb-6 p-4 bg-amber-100 dark:bg-amber-900/40 border border-amber-400 dark:border-amber-700 text-amber-800 dark:text-amber-200 rounded-lg'>
+                Contact form is not configured here. Please use the email link
+                to get in touch.
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className='space-y-6'>
               <div className='grid md:grid-cols-2 gap-6'>
@@ -445,7 +479,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !IS_FORM_ENABLED}
                     placeholder=' '
                     className='w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100 disabled:bg-slate-100 dark:disabled:bg-slate-700'
                   />
@@ -464,7 +498,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !IS_FORM_ENABLED}
                     placeholder=' '
                     className='w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100 disabled:bg-slate-100 dark:disabled:bg-slate-700'
                   />
@@ -485,7 +519,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !IS_FORM_ENABLED}
                   placeholder=' '
                   className='w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100 disabled:bg-slate-100 dark:disabled:bg-slate-700'
                 />
@@ -504,7 +538,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !IS_FORM_ENABLED}
                   rows={6}
                   placeholder=' '
                   className='w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none text-slate-900 dark:text-slate-100 disabled:bg-slate-100 dark:disabled:bg-slate-700'
@@ -518,18 +552,24 @@ const Contact = () => {
               </div>
 
               <div className='pt-2'>
-                <ReCAPTCHA
-                  sitekey={RECAPTCHA_SITE_KEY}
-                  onChange={onRecaptchaChange}
-                  ref={recaptchaRef}
-                />
+                {IS_FORM_ENABLED ? (
+                  <ReCAPTCHA
+                    sitekey={RECAPTCHA_SITE_KEY}
+                    onChange={onRecaptchaChange}
+                    ref={recaptchaRef}
+                  />
+                ) : (
+                  <p className='text-sm text-slate-600 dark:text-slate-400'>
+                    reCAPTCHA is unavailable in this environment.
+                  </p>
+                )}
               </div>
 
               <button
                 type='submit'
-                disabled={isSubmitting}
+                disabled={isSubmitting || !IS_FORM_ENABLED}
                 className={`submit-btn w-full py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 ${
-                  isSubmitting
+                  isSubmitting || !IS_FORM_ENABLED
                     ? "bg-slate-400 dark:bg-slate-600 cursor-not-allowed"
                     : "bg-gradient-to-r from-indigo-600 to-indigo-700 hover:shadow-xl hover:shadow-indigo-500/20"
                 } text-white`}

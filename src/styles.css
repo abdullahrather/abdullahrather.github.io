@@ -1440,56 +1440,6 @@ html.dark .nav-mobile-item:hover {
   backface-visibility: hidden;
 }
 
-.scroll-to-top,
-.scroll-to-bottom {
-  z-index: 50;
-  width: 56px;
-  height: 56px;
-}
-
-.scroll-to-top:hover,
-.scroll-to-bottom:hover {
-  filter: drop-shadow(0 10px 20px rgba(79, 70, 229, 0.3));
-}
-
-.scroll-to-top svg circle {
-  filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.4));
-}
-
-* {
-  cursor: none !important;
-}
-
-.custom-cursor {
-  transition: all 0.1s ease-out;
-  backdrop-filter: blur(2px);
-}
-
-.cursor-dot {
-  box-shadow: 0 0 10px rgba(79, 70, 229, 0.6);
-}
-
-/* Cursor trail effect */
-.cursor-trail {
-  width: 6px;
-  height: 6px;
-  background: linear-gradient(45deg, #4f46e5, #8b5cf6);
-  border-radius: 50%;
-  opacity: 0.3;
-  animation: trail-fade 0.5s ease-out forwards;
-}
-
-@keyframes trail-fade {
-  0% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-}
 
 /* Enhanced hover states for cursor interaction */
 a,
@@ -1521,22 +1471,6 @@ button:hover,
   box-shadow: 0 0 30px rgba(79, 70, 229, 0.3);
 }
 
-/* Mobile fallback - show default cursor on touch devices */
-@media (hover: none) and (pointer: coarse) {
-  * {
-    cursor: auto !important;
-  }
-
-  .custom-cursor,
-  .cursor-dot,
-  .cursor-trail {
-    display: none !important;
-  }
-}
-
-.loading-screen * {
-  cursor: none !important;
-}
 
 /* hero headline character breaking */
 #heroHeadline {

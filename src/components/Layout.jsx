@@ -166,7 +166,7 @@ const Layout = ({ children }) => {
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
-                  { to: "about", label: "About" },
+                  { to: "about", label: "Journey" },
                   { to: "services", label: "Services" },
                   { to: "projects", label: "Projects" },
                 ].map((item) => (
@@ -374,7 +374,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "About",
+                  label: "Journey",
                 },
                 {
                   to: "services",

@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 const Projects = () => {
   const [filter, setFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(() => {
+    if (typeof window === "undefined") {
+      return 3;
+    }
+
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 2;
+  });
+  const [showAll, setShowAll] = useState(false);
 
   // Check if repository is private
   const isPrivateRepo = (githubUrl) => {
@@ -13,254 +23,279 @@ const Projects = () => {
     );
   };
 
-  const projects = [
-    {
-      id: 1,
-      title: "Enterprise Management System",
-      description:
-        "Comprehensive enterprise system with project management, document handling, DATEV integration, and multi-language support using Yii PHP framework.",
-      image: "/images/projects/enterprise-management.webp",
-      technologies: [
-        "Yii Framework",
-        "PHP",
-        "MySQL",
-        "JavaScript",
-        "DATEV API",
-        "Bootstrap",
-      ],
-      category: "fullstack",
-      features: [
-        "Project Management",
-        "DATEV Integration",
-        "ZUGFeRD XML Generation",
-        "Multi-language Support",
-      ],
-      github: "#",
-      demo: "#",
-    },
-    {
-      id: 2,
-      title: "Education Management System",
-      description:
-        "Complete education management platform with student management, parent portal, teacher dashboard, and financial modules built with PHP.",
-      image: "/images/projects/education-management.webp",
-      technologies: ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
-      category: "fullstack",
-      features: [
-        "Student Management",
-        "Parent Portal",
-        "Teacher Dashboard",
-        "Financial Modules",
-      ],
-      github: "#",
-      demo: "#",
-    },
-    {
-      id: 3,
-      title: "Donor Management System",
-      description:
-        "Modern donor management platform with Laravel backend and React frontend for streamlined contribution tracking and analytics.",
-      image: "/images/projects/donor-management.webp",
-      technologies: ["Laravel", "React", "MySQL", "JavaScript"],
-      category: "fullstack",
-      features: [
-        "Donor Portal",
-        "Contribution Tracking",
-        "Analytics Dashboard",
-        "Payment Integration",
-      ],
-      github: "#",
-      demo: "#",
-    },
-    {
-      id: 4,
-      title: "Currency Converter App",
-      description:
-        "Real-time currency conversion web application with live exchange rates, currency switching, and responsive design using Laravel.",
-      image: "/images/projects/currency-converter.webp",
-      technologies: ["Laravel", "GuzzleHttp", "ExchangeRate API", "PHP 8.2+"],
-      category: "web",
-      features: [
-        "Real-time Exchange Rates",
-        "Currency Switch Function",
-        "Error Handling",
-        "Responsive Design",
-      ],
-      github: "https://github.com/abdullahrather/Currency-Converter-Laravel",
-      demo: "#",
-    },
-    {
-      id: 5,
-      title: "Ticket Management System",
-      description:
-        "Sophisticated workflow management system with advanced routing, notifications, user roles, and comprehensive reporting features.",
-      image: "/images/projects/ticket-management.webp",
-      technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
-      category: "fullstack",
-      features: [
-        "Advanced Workflow",
-        "Notification System",
-        "Role Management",
-        "Comprehensive Reporting",
-      ],
-      github: "#",
-      demo: "#",
-    },
-    {
-      id: 6,
-      title: "Employee Performance Tracker",
-      description:
-        "Advanced HR management system with performance metrics, data visualization, analytics dashboard, and export capabilities.",
-      image: "/images/projects/employee-performance.webp",
-      technologies: ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
-      category: "fullstack",
-      features: [
-        "Performance Analytics",
-        "Data Visualization",
-        "CSV/PDF Export",
-        "Employee Dashboard",
-      ],
-      github: "#",
-      demo: "#",
-    },
-    {
-      id: 7,
-      title: "Laravel Auth & Role Management App",
-      description:
-        "Comprehensive Laravel application featuring advanced authentication, authorization, and role-based access control with Gates policies and Eloquent relationships.",
-      image: "/images/projects/laravel-auth-role.webp",
-      technologies: [
-        "Laravel",
-        "PHP",
-        "MariaDB",
-        "Blade",
-        "Bootstrap 5",
-        "Eloquent ORM",
-      ],
-      category: "fullstack",
-      features: [
-        "User Authentication & Registration",
-        "Role-Based Authorization",
-        "Gates & Policies Implementation",
-        "Role-Specific Views & Permissions",
-        "CRUD Operations with Access Control",
-        "Eloquent Relationships",
-        "Database Seeding for Roles",
-      ],
-      github: "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
-      demo: "#",
-    },
-    {
-      id: 8,
-      title: "Academic Institution Website",
-      description:
-        "A custom-built academic institution website featuring secure user authentication with CAPTCHA-protected registration and password recovery, role-based dashboard, student performance modules, news/events sections, committee and application form management, developed using PHP and MySQL.",
-      image: "/images/projects/academic-institution.webp",
-      technologies: ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
-      category: "web",
-      features: [
-        "Secure User Registration & Login",
-        "Password Reset with CAPTCHA Verification",
-        "Role-Based Dashboard",
-        "Student Grades & Top Performers",
-        "News & Announcements Pages",
-        "Event & Committee Management",
-        "Application Form Submission",
-      ],
-      github: "https://github.com/abdullahrather/CustomAcademy-PHP",
-      demo: "#",
-    },
-    {
-      id: 9,
-      title: "Laravel Authentication & CRUD System",
-      description:
-        "An authentication system combined with product management CRUD operations built on Laravel 10's MVC framework, including secure user registration and login alongside full product lifecycle handling.",
-      image: "/images/projects/laravel-auth-crud.webp",
-      technologies: [
-        "Laravel 10",
-        "PHP",
-        "MySQL",
-        "Blade",
-        "JavaScript",
-        "CSS",
-      ],
-      category: "web",
-      features: [
-        "User Registration & Login",
-        "Product Create/Read/Update/Delete",
-        "Form Validation",
-        "MVC Routing",
-        "Blade Templating",
-      ],
-      github: "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
-      demo: "#",
-    },
-    {
-      id: 10,
-      title: "Corporate Insurance Website",
-      description:
-        "A custom-built insurance company website with a dynamic form submission module for user inquiries and application processing, supported by SQL schema scripts and styled components.",
-      image: "/images/projects/corporate-insurance.webp",
-      technologies: ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
-      category: "web",
-      features: [
-        "Dynamic Form Submission",
-        "SQL Schema Setup",
-        "Custom PHP Pages",
-        "Client-Side Validation",
-        "Responsive Design",
-      ],
-      github: "https://github.com/abdullahrather/CustomWebsite-PHP",
-      demo: "#",
-    },
-    {
-      id: 11,
-      title: "Laravel Authentication Showcase",
-      description:
-        "A Laravel project showcasing built-in authentication features including registration, login/logout, password reset, and email verification using Laravel's scaffolding and middleware.",
-      image: "/images/projects/laravel-auth-showcase.webp",
-      technologies: ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
-      category: "web",
-      features: [
-        "User Registration",
-        "Login & Logout",
-        "Password Reset",
-        "Email Verification",
-        "Authentication Middleware",
-      ],
-      github: "https://github.com/abdullahrather/Auth-Laravel",
-      demo: "#",
-    },
-    {
-      id: 12,
-      title: "Laravel MVC CRUD Application",
-      description:
-        "An example Laravel application demonstrating Create, Read, Update, and Delete operations for generic resources, emphasizing MVC conventions and form request validation.",
-      image: "/images/projects/laravel-mvc-crud.webp",
-      technologies: ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
-      category: "web",
-      features: [
-        "Resourceful Routing",
-        "Model-Controller Binding",
-        "Form Request Validation",
-        "Blade View Rendering",
-        "Database Migrations",
-      ],
-      github: "https://github.com/abdullahrather/CrudOperations-Laravel",
-      demo: "#",
-    },
-  ];
+  const projects = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "Enterprise Management System",
+        description:
+          "Comprehensive enterprise system with project management, document handling, DATEV integration, and multi-language support using Yii PHP framework.",
+        image: "/images/projects/enterprise-management.webp",
+        technologies: [
+          "Yii Framework",
+          "PHP",
+          "MySQL",
+          "JavaScript",
+          "DATEV API",
+          "Bootstrap",
+        ],
+        category: "fullstack",
+        features: [
+          "Project Management",
+          "DATEV Integration",
+          "ZUGFeRD XML Generation",
+          "Multi-language Support",
+        ],
+        github: "#",
+        demo: "#",
+      },
+      {
+        id: 2,
+        title: "Education Management System",
+        description:
+          "Complete education management platform with student management, parent portal, teacher dashboard, and financial modules built with PHP.",
+        image: "/images/projects/education-management.webp",
+        technologies: ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
+        category: "fullstack",
+        features: [
+          "Student Management",
+          "Parent Portal",
+          "Teacher Dashboard",
+          "Financial Modules",
+        ],
+        github: "#",
+        demo: "#",
+      },
+      {
+        id: 3,
+        title: "Donor Management System",
+        description:
+          "Modern donor management platform with Laravel backend and React frontend for streamlined contribution tracking and analytics.",
+        image: "/images/projects/donor-management.webp",
+        technologies: ["Laravel", "React", "MySQL", "JavaScript"],
+        category: "fullstack",
+        features: [
+          "Donor Portal",
+          "Contribution Tracking",
+          "Analytics Dashboard",
+          "Payment Integration",
+        ],
+        github: "#",
+        demo: "#",
+      },
+      {
+        id: 4,
+        title: "Currency Converter App",
+        description:
+          "Real-time currency conversion web application with live exchange rates, currency switching, and responsive design using Laravel.",
+        image: "/images/projects/currency-converter.webp",
+        technologies: [
+          "Laravel",
+          "GuzzleHttp",
+          "ExchangeRate API",
+          "PHP 8.2+",
+        ],
+        category: "web",
+        features: [
+          "Real-time Exchange Rates",
+          "Currency Switch Function",
+          "Error Handling",
+          "Responsive Design",
+        ],
+        github: "https://github.com/abdullahrather/Currency-Converter-Laravel",
+        demo: "#",
+      },
+      {
+        id: 5,
+        title: "Ticket Management System",
+        description:
+          "Sophisticated workflow management system with advanced routing, notifications, user roles, and comprehensive reporting features.",
+        image: "/images/projects/ticket-management.webp",
+        technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
+        category: "fullstack",
+        features: [
+          "Advanced Workflow",
+          "Notification System",
+          "Role Management",
+          "Comprehensive Reporting",
+        ],
+        github: "#",
+        demo: "#",
+      },
+      {
+        id: 6,
+        title: "Employee Performance Tracker",
+        description:
+          "Advanced HR management system with performance metrics, data visualization, analytics dashboard, and export capabilities.",
+        image: "/images/projects/employee-performance.webp",
+        technologies: ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
+        category: "fullstack",
+        features: [
+          "Performance Analytics",
+          "Data Visualization",
+          "CSV/PDF Export",
+          "Employee Dashboard",
+        ],
+        github: "#",
+        demo: "#",
+      },
+      {
+        id: 7,
+        title: "Laravel Auth & Role Management App",
+        description:
+          "Comprehensive Laravel application featuring advanced authentication, authorization, and role-based access control with Gates policies and Eloquent relationships.",
+        image: "/images/projects/laravel-auth-role.webp",
+        technologies: [
+          "Laravel",
+          "PHP",
+          "MariaDB",
+          "Blade",
+          "Bootstrap 5",
+          "Eloquent ORM",
+        ],
+        category: "fullstack",
+        features: [
+          "User Authentication & Registration",
+          "Role-Based Authorization",
+          "Gates & Policies Implementation",
+          "Role-Specific Views & Permissions",
+          "CRUD Operations with Access Control",
+          "Eloquent Relationships",
+          "Database Seeding for Roles",
+        ],
+        github: "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
+        demo: "#",
+      },
+      {
+        id: 8,
+        title: "Academic Institution Website",
+        description:
+          "A custom-built academic institution website featuring secure user authentication with CAPTCHA-protected registration and password recovery, role-based dashboard, student performance modules, news/events sections, committee and application form management, developed using PHP and MySQL.",
+        image: "/images/projects/academic-institution.webp",
+        technologies: ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
+        category: "web",
+        features: [
+          "Secure User Registration & Login",
+          "Password Reset with CAPTCHA Verification",
+          "Role-Based Dashboard",
+          "Student Grades & Top Performers",
+          "News & Announcements Pages",
+          "Event & Committee Management",
+          "Application Form Submission",
+        ],
+        github: "https://github.com/abdullahrather/CustomAcademy-PHP",
+        demo: "#",
+      },
+      {
+        id: 9,
+        title: "Laravel Authentication & CRUD System",
+        description:
+          "An authentication system combined with product management CRUD operations built on Laravel 10's MVC framework, including secure user registration and login alongside full product lifecycle handling.",
+        image: "/images/projects/laravel-auth-crud.webp",
+        technologies: [
+          "Laravel 10",
+          "PHP",
+          "MySQL",
+          "Blade",
+          "JavaScript",
+          "CSS",
+        ],
+        category: "web",
+        features: [
+          "User Registration & Login",
+          "Product Create/Read/Update/Delete",
+          "Form Validation",
+          "MVC Routing",
+          "Blade Templating",
+        ],
+        github: "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
+        demo: "#",
+      },
+      {
+        id: 10,
+        title: "Corporate Insurance Website",
+        description:
+          "A custom-built insurance company website with a dynamic form submission module for user inquiries and application processing, supported by SQL schema scripts and styled components.",
+        image: "/images/projects/corporate-insurance.webp",
+        technologies: ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
+        category: "web",
+        features: [
+          "Dynamic Form Submission",
+          "SQL Schema Setup",
+          "Custom PHP Pages",
+          "Client-Side Validation",
+          "Responsive Design",
+        ],
+        github: "https://github.com/abdullahrather/CustomWebsite-PHP",
+        demo: "#",
+      },
+      {
+        id: 11,
+        title: "Laravel Authentication Showcase",
+        description:
+          "A Laravel project showcasing built-in authentication features including registration, login/logout, password reset, and email verification using Laravel's scaffolding and middleware.",
+        image: "/images/projects/laravel-auth-showcase.webp",
+        technologies: [
+          "Laravel",
+          "PHP",
+          "Blade",
+          "MySQL",
+          "CSS",
+          "JavaScript",
+        ],
+        category: "web",
+        features: [
+          "User Registration",
+          "Login & Logout",
+          "Password Reset",
+          "Email Verification",
+          "Authentication Middleware",
+        ],
+        github: "https://github.com/abdullahrather/Auth-Laravel",
+        demo: "#",
+      },
+      {
+        id: 12,
+        title: "Laravel MVC CRUD Application",
+        description:
+          "An example Laravel application demonstrating Create, Read, Update, and Delete operations for generic resources, emphasizing MVC conventions and form request validation.",
+        image: "/images/projects/laravel-mvc-crud.webp",
+        technologies: ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
+        category: "web",
+        features: [
+          "Resourceful Routing",
+          "Model-Controller Binding",
+          "Form Request Validation",
+          "Blade View Rendering",
+          "Database Migrations",
+        ],
+        github: "https://github.com/abdullahrather/CrudOperations-Laravel",
+        demo: "#",
+      },
+    ],
+    []
+  );
 
-  const categories = [
-    { id: "all", name: "All Projects" },
-    { id: "fullstack", name: "Full-Stack" },
-    { id: "web", name: "Web Apps" },
-  ];
+  const categories = useMemo(
+    () => [
+      { id: "all", name: "All Projects" },
+      { id: "fullstack", name: "Full-Stack" },
+      { id: "web", name: "Web Apps" },
+    ],
+    []
+  );
 
-  const filteredProjects =
-    filter === "all"
-      ? projects
-      : projects.filter((project) => project.category === filter);
+  const filteredProjects = useMemo(() => {
+    if (filter === "all") return projects;
+    return projects.filter((project) => project.category === filter);
+  }, [filter, projects]);
+
+  const visibleProjects = useMemo(() => {
+    if (showAll) return filteredProjects;
+    return filteredProjects.slice(0, visibleCount);
+  }, [filteredProjects, showAll, visibleCount]);
+
+  const canToggleProjects = filteredProjects.length > visibleCount;
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -314,6 +349,31 @@ const Projects = () => {
   }, [selectedProject]);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setVisibleCount(3);
+        return;
+      }
+
+      if (window.innerWidth >= 768) {
+        setVisibleCount(2);
+        return;
+      }
+
+      setVisibleCount(2);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setShowAll(false);
+  }, [filter]);
+
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Mobile detection
@@ -348,7 +408,7 @@ const Projects = () => {
       gsap.set("#projectsTitle", { opacity: 1, y: 0 });
       gsap.set(".project-card", { opacity: 1, y: 0 });
     }
-  }, [filteredProjects]);
+  }, [visibleProjects.length, filter]);
 
   return (
     <>
@@ -391,7 +451,7 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {filteredProjects.map((project) => (
+            {visibleProjects.map((project) => (
               <div
                 key={project.id}
                 className='project-card bg-white/60 dark:bg-slate-800/60 rounded-xl shadow-lg backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:shadow-2xl'
@@ -649,6 +709,21 @@ const Projects = () => {
               </div>
             ))}
           </div>
+
+          {canToggleProjects && (
+            <div className='mt-12 flex flex-col items-center gap-3'>
+              <button
+                type='button'
+                onClick={() => setShowAll((prev) => !prev)}
+                className='btn-primary rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95'
+              >
+                {showAll ? "Show Less" : "View All Projects"}
+              </button>
+              <p className='text-sm text-slate-500 dark:text-slate-400'>
+                Showing {visibleProjects.length} of {filteredProjects.length}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

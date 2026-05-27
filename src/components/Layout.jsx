@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import ScrollControls from "./ScrollControls";
-import CustomCursor from "./CustomCursor";
 
 const Layout = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -168,7 +166,7 @@ const Layout = ({ children }) => {
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
-                  { to: "about", label: "About" },
+                  { to: "about", label: "Journey" },
                   { to: "services", label: "Services" },
                   { to: "projects", label: "Projects" },
                 ].map((item) => (
@@ -376,7 +374,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "About",
+                  label: "Journey",
                 },
                 {
                   to: "services",
@@ -489,12 +487,6 @@ const Layout = ({ children }) => {
           </p>
         </div>
       </footer>
-
-      {/* Custom Cursor */}
-      <CustomCursor />
-
-      {/* Scroll Controls */}
-      <ScrollControls isMobileMenuOpen={isMobileMenuOpen} />
     </div>
   );
 };

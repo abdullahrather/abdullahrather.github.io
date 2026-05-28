@@ -1,14 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent } from "../lib/analytics";
 import { Link as ScrollLink } from "react-scroll";
 import { gsap } from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 import Lenis from "lenis";
 
 const HERO_SUMMARY_TEXT =
-  "Backend / Full-Stack Developer with 5+ years building enterprise web apps, REST APIs, internal platforms, and data-driven business systems. Strong in Laravel, Yii, Symfony, MySQL/MariaDB, Docker, CI/CD, and integrations for business-critical workflows.";
+  "I design and deliver APIs and data-driven platforms that improve reliability and automation in production. Skilled in backend frameworks, relational databases, Docker containers, and CI/CD pipelines.";
 
 const Hero = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isResumeMenuOpen, setIsResumeMenuOpen] = useState(false);
+  const resumeMenuRef = useRef(null);
 
   const professionalProfiles = useMemo(
     () => [
@@ -100,6 +103,17 @@ const Hero = () => {
     setIsProfileModalOpen(false);
   };
 
+  const handleResumeView = () => trackEvent("resume_view");
+  const handleResumeDownload = () => trackEvent("resume_download");
+
+  const toggleResumeMenu = () => {
+    setIsResumeMenuOpen((prev) => !prev);
+  };
+
+  const closeResumeMenu = () => {
+    setIsResumeMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isProfileModalOpen) {
@@ -128,6 +142,31 @@ const Hero = () => {
       modalBody.removeEventListener("wheel", stop);
     };
   }, [isProfileModalOpen]);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!resumeMenuRef.current) return;
+      if (!resumeMenuRef.current.contains(event.target)) {
+        closeResumeMenu();
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        closeResumeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick, { passive: true });
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
 
   useEffect(() => {
     // Register GSAP plugins
@@ -197,32 +236,16 @@ const Hero = () => {
     slideIn(heroBadges, 0.2);
 
     if (heroSummary) {
-      const summaryTimeline = gsap.timeline({
+      gsap.to(heroSummary, {
         scrollTrigger: {
           trigger: heroSummary,
           start: isMobile ? "top 95%" : "top 90%",
         },
-      });
-
-      summaryTimeline.to(heroSummary, {
         opacity: 1,
         y: 0,
-        duration: 0.4,
+        duration: 0.5,
         ease: "power2.out",
       });
-
-      summaryTimeline.to(
-        heroSummary,
-        {
-          text: {
-            value: HERO_SUMMARY_TEXT,
-            delimiter: "",
-          },
-          duration: isMobile ? 1.0 : 1.5,
-          ease: "none",
-        },
-        "+=0.05"
-      );
     }
 
     const animationIntensity = isMobile ? 0.5 : 1;
@@ -437,6 +460,7 @@ const Hero = () => {
                   id='heroSummary'
                   className='text-lg md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium opacity-0 transform translate-y-4'
                 >
+                  {HERO_SUMMARY_TEXT}
                 </p>
               </div>
 
@@ -523,15 +547,77 @@ const Hero = () => {
                 >
                   Experience
                 </ScrollLink>
-                <a
-                  href='/assets/Resume.pdf'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn-primary group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer'
-                >
-                  <span className='absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10'></span>
-                  Resume
-                </a>
+                <div ref={resumeMenuRef} className='relative'>
+                  <button
+                    type='button'
+                    onClick={toggleResumeMenu}
+                    aria-expanded={isResumeMenuOpen}
+                    aria-haspopup='menu'
+                    className='btn-primary group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer'
+                  >
+                    <span className='absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10'></span>
+                    <span>Resume</span>
+                    <svg
+                      className={`h-4 w-4 transition-transform duration-300 ${
+                        isResumeMenuOpen ? "rotate-180" : ""
+                      }`}
+                      fill='none'
+                      stroke='currentColor'
+                      viewBox='0 0 24 24'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M19 9l-7 7-7-7'
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    role='menu'
+                    aria-label='Resume actions'
+                    className={`absolute left-1/2 top-full z-20 mt-3 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/40 bg-white/90 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl transition-all duration-300 dark:border-slate-700/50 dark:bg-slate-900/90 ${
+                      isResumeMenuOpen
+                        ? "pointer-events-auto translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-2 opacity-0"
+                    }`}
+                  >
+                    <a
+                      href='/assets/Resume.pdf'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      onClick={() => {
+                        handleResumeView();
+                        closeResumeMenu();
+                      }}
+                      className='flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-800 transition-colors hover:bg-indigo-50 dark:text-slate-100 dark:hover:bg-slate-800/80'
+                    >
+                      <span className='flex h-9 w-9 items-center justify-center rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-200'>
+                        <svg className='h-4 w-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M15 12H9m12 0A9 9 0 1112 3a9 9 0 019 9z' />
+                        </svg>
+                      </span>
+                      <span className='flex-1 text-left'>View Resume</span>
+                    </a>
+                    <a
+                      href='/assets/Resume.pdf'
+                      download
+                      onClick={() => {
+                        handleResumeDownload();
+                        closeResumeMenu();
+                      }}
+                      className='flex items-center gap-3 border-t border-slate-200/80 px-4 py-3 text-sm font-semibold text-slate-800 transition-colors hover:bg-indigo-50 dark:border-slate-700/80 dark:text-slate-100 dark:hover:bg-slate-800/80'
+                    >
+                      <span className='flex h-9 w-9 items-center justify-center rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-200'>
+                        <svg className='h-4 w-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M12 4v10m0 0l-4-4m4 4l4-4m-7 8h6' />
+                        </svg>
+                      </span>
+                      <span className='flex-1 text-left'>Download Resume</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

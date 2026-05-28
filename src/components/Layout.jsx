@@ -52,7 +52,14 @@ const Layout = ({ children }) => {
 
     // Active section tracking
     const updateActiveSection = () => {
-      const sections = ["hero", "about", "services", "projects", "contact"];
+      const sections = [
+        "hero",
+        "about",
+        "work-experience",
+        "services",
+        "projects",
+        "contact",
+      ];
       const scrollPosition = window.scrollY + 100; // Offset for better detection
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -166,10 +173,11 @@ const Layout = ({ children }) => {
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
-                  { to: "about", label: "Experience" },
+                  { to: "about", label: "About" },
+                  { to: "work-experience", label: "Experience" },
                   { to: "services", label: "Services" },
                   { to: "projects", label: "Projects" },
-                ].map((item) => (
+                ].map((item, index) => (
                   <ScrollLink
                     key={item.to}
                     to={item.to}
@@ -193,12 +201,14 @@ const Layout = ({ children }) => {
                     left:
                       activeSection === "about"
                         ? "0%"
+                        : activeSection === "work-experience"
+                        ? "25%"
                         : activeSection === "services"
-                        ? "33.33%"
+                        ? "50%"
                         : activeSection === "projects"
-                        ? "66.66%"
+                        ? "75%"
                         : "0%",
-                    width: "33.33%",
+                    width: "25%",
                   }}
                 />
               </div>
@@ -371,6 +381,25 @@ const Layout = ({ children }) => {
                         strokeLinejoin='round'
                         strokeWidth='2'
                         d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+                      />
+                    </svg>
+                  ),
+                  label: "About",
+                },
+                {
+                  to: "work-experience",
+                  icon: (
+                    <svg
+                      className='h-6 w-6'
+                      fill='none'
+                      stroke='currentColor'
+                      viewBox='0 0 24 24'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
                       />
                     </svg>
                   ),

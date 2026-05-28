@@ -236,15 +236,25 @@ const Hero = () => {
     slideIn(heroBadges, 0.2);
 
     if (heroSummary) {
-      gsap.to(heroSummary, {
+      // Clear initial text so TextPlugin can animate typing
+      heroSummary.textContent = "";
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroSummary,
           start: isMobile ? "top 95%" : "top 90%",
         },
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
+      });
+
+      // Fade/slide in, then type the full summary text
+      tl.fromTo(
+        heroSummary,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
+      ).to(heroSummary, {
+        duration: 2.2,
+        text: HERO_SUMMARY_TEXT,
+        ease: "none",
       });
     }
 
@@ -339,7 +349,7 @@ const Hero = () => {
     <>
       <section
         id='hero'
-        className='relative min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 sm:pt-32 lg:pt-0 text-center'
+        className='relative z-0 min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 sm:pt-32 pb-16 sm:pb-20 lg:pt-0 lg:pb-0 text-center overflow-visible'
       >
         {/* 🎯 KEEP: Animated background shapes */}
         <div className='animated-background absolute inset-0 -z-10 overflow-hidden w-full'>
@@ -350,7 +360,7 @@ const Hero = () => {
 
         {/* Content container */}
         <div className='mx-auto w-full max-w-6xl'>
-          <div className='grid items-center gap-12 lg:grid-cols-2'>
+          <div className='grid items-center gap-12 lg:grid-cols-2 overflow-visible'>
             <div className='flex justify-center lg:justify-start'>
               <div
                 id='heroAvatar'
@@ -441,16 +451,16 @@ const Hero = () => {
                     Abdullah Rather
                   </p>
                   <p className='text-sm text-indigo-100 dark:text-slate-700'>
-                    Backend / Full-Stack Developer
+                    Backend / Full-Stack Developer - APIs & systems that scale
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className='space-y-6 text-center lg:text-left rounded-3xl border border-white/40 dark:border-slate-700/40 bg-white/40 dark:bg-slate-900/40 backdrop-blur-lg shadow-lg shadow-indigo-500/5 px-6 py-8 sm:px-8'>
+            <div className='relative z-20 space-y-6 text-center lg:text-left rounded-3xl border border-white/40 dark:border-slate-700/40 bg-white/40 dark:bg-slate-900/40 backdrop-blur-lg shadow-lg shadow-indigo-500/5 px-6 py-8 sm:px-8 mb-8 lg:mb-0 overflow-visible'>
               <h1
                 id='heroTitle'
-                className='text-4xl md:text-6xl font-extrabold mb-6 opacity-0 transform translate-y-6 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 dark:from-white dark:via-indigo-100 dark:to-white bg-clip-text text-transparent'
+                className='text-3xl md:text-4xl font-bold mb-4 opacity-0 transform translate-y-6 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 dark:from-white dark:via-indigo-100 dark:to-white bg-clip-text text-transparent'
               >
                 About Me
               </h1>
@@ -462,6 +472,16 @@ const Hero = () => {
                 >
                   {HERO_SUMMARY_TEXT}
                 </p>
+                <div className='mt-4 flex flex-col sm:flex-row gap-3 text-sm text-slate-600 dark:text-slate-300'>
+                  <div className='inline-flex items-start gap-2'>
+                    <span className='w-2 h-2 rounded-full bg-indigo-600 inline-block mt-1.5'></span>
+                    <span>Delivered 15+ production deployments with automated CI/CD.</span>
+                  </div>
+                  <div className='inline-flex items-start gap-2'>
+                    <span className='w-2 h-2 rounded-full bg-indigo-600 inline-block mt-1.5'></span>
+                    <span>Built integrations used in enterprise workflows (20+).</span>
+                  </div>
+                </div>
               </div>
 
               <div
@@ -540,14 +560,14 @@ const Hero = () => {
                   Projects
                 </ScrollLink>
                 <ScrollLink
-                  to='about'
+                  to='work-experience'
                   smooth
                   duration={500}
                   className='rounded-full bg-white/60 px-8 py-3 text-base font-semibold text-slate-800 ring-1 ring-slate-300 backdrop-blur transition-all duration-300 hover:bg-white/80 hover:shadow-lg hover:translate-y-[-2px] dark:bg-slate-800/60 dark:text-slate-100 dark:ring-slate-600 cursor-pointer'
                 >
                   Experience
                 </ScrollLink>
-                <div ref={resumeMenuRef} className='relative'>
+                <div ref={resumeMenuRef} className='relative z-30'>
                   <button
                     type='button'
                     onClick={toggleResumeMenu}
@@ -577,7 +597,7 @@ const Hero = () => {
                   <div
                     role='menu'
                     aria-label='Resume actions'
-                    className={`absolute left-1/2 top-full z-20 mt-3 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/40 bg-white/90 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl transition-all duration-300 dark:border-slate-700/50 dark:bg-slate-900/90 ${
+                    className={`absolute left-1/2 top-full z-50 mt-3 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/40 bg-white/95 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl transition-all duration-300 dark:border-slate-700/50 dark:bg-slate-900/95 ${
                       isResumeMenuOpen
                         ? "pointer-events-auto translate-y-0 opacity-100"
                         : "pointer-events-none -translate-y-2 opacity-0"

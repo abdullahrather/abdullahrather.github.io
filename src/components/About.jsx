@@ -8,17 +8,22 @@ const About = () => {
       { number: "5+", label: "Years Experience", targetValue: 5, suffix: "+" },
       {
         number: "20+",
-        label: "Projects Completed",
+        label: "Enterprise Integrations",
         targetValue: 20,
         suffix: "+",
       },
       {
+        number: "15+",
+        label: "Production Deployments",
+        targetValue: 15,
+        suffix: "+",
+      },
+      {
         number: "10+",
-        label: "Technologies Mastered",
+        label: "Core Technologies",
         targetValue: 10,
         suffix: "+",
       },
-      { number: "24/7", label: "Support", targetValue: 24, suffix: "/7" },
     ],
     []
   );
@@ -26,7 +31,7 @@ const About = () => {
   const skills = useMemo(
     () => [
       {
-        name: "PHP & Laravel",
+        name: "PHP, Laravel, Symfony, Yii",
         level: 95,
         icon: (
           <svg
@@ -45,15 +50,39 @@ const About = () => {
         ),
       },
       {
-        name: "Python & Flask",
-        level: 88,
+        name: "Docker & CI/CD",
+        level: 82,
         icon: (
           <svg
             className='skill-icon h-5 w-5'
-            fill='currentColor'
+            fill='none'
+            stroke='currentColor'
             viewBox='0 0 24 24'
           >
-            <path d='M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.26-.02.21-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25c-.2 0-.37.09-.5.27-.13.18-.2.39-.2.63 0 .24.07.45.2.63.13.18.3.27.5.27.2 0 .37-.09.5-.27.13-.18.2-.39.2-.63 0-.24-.07-.45-.2-.63-.13-.18-.3-.27-.5-.27zm7.5 0c-.2 0-.37.09-.5.27-.13.18-.2.39-.2.63 0 .24.07.45.2.63.13.18.3.27.5.27.2 0 .37-.09.5-.27.13-.18.2-.39.2-.63 0-.24-.07-.45-.2-.63-.13-.18-.3-.27-.5-.27z' />
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M6 9h12v6H6z'
+            />
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M9 9V6h6v3'
+            />
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M9 15v3m6-3v3'
+            />
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M4 18h16'
+            />
           </svg>
         ),
       },
@@ -71,7 +100,20 @@ const About = () => {
         ),
       },
       {
-        name: "MySQL & Database Design",
+        name: "Python & Flask",
+        level: 86,
+        icon: (
+          <svg
+            className='skill-icon h-5 w-5'
+            fill='currentColor'
+            viewBox='0 0 24 24'
+          >
+            <path d='M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.26-.02.21-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25c-.2 0-.37.09-.5.27-.13.18-.2.39-.2.63 0 .24.07.45.2.63.13.18.3.27.5.27.2 0 .37-.09.5-.27.13-.18.2-.39.2-.63 0-.24-.07-.45-.2-.63-.13-.18-.3-.27-.5-.27zm7.5 0c-.2 0-.37.09-.5.27-.13.18-.2.39-.2.63 0 .24.07.45.2.63.13.18.3.27.5.27.2 0 .37-.09.5-.27.13-.18.2-.39.2-.63 0-.24-.07-.45-.2-.63-.13-.18-.3-.27-.5-.27z' />
+          </svg>
+        ),
+      },
+      {
+        name: "MySQL & PostgreSQL",
         level: 90,
         icon: (
           <svg
@@ -90,7 +132,7 @@ const About = () => {
         ),
       },
       {
-        name: "API Development & Integration",
+        name: "REST APIs & Integrations",
         level: 90,
         icon: (
           <svg
@@ -109,7 +151,7 @@ const About = () => {
         ),
       },
       {
-        name: "Git",
+        name: "Git & GitHub Actions",
         level: 85,
         icon: (
           <svg
@@ -344,20 +386,18 @@ const About = () => {
         <div className='container mx-auto px-6'>
           <div className='grid md:grid-cols-2 gap-12 items-center'>
             <div className='about-content-left opacity-0 transform translate-x-[-30px]'>
-              <h3 className='text-2xl font-bold mb-6'>My Journey</h3>
+              <h3 className='text-2xl font-bold mb-6'>Experience Snapshot</h3>
               <p className='text-slate-600 dark:text-slate-300 mb-4'>
-                I'm a passionate Full-Stack Software Engineer specializing in
-                PHP (Laravel, Yii Framework), JavaScript (React, Node.js), and
-                Python (Flask, FastAPI). My expertise spans enterprise
-                management systems, educational platforms, and complex API
-                integrations including DATEV for German accounting standards.
+                I'm a Backend / Full-Stack Developer with 5+ years building
+                enterprise web apps, REST APIs, internal platforms, and
+                database-driven business systems. My core stack includes
+                Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.
               </p>
               <p className='text-slate-600 dark:text-slate-300 mb-6'>
-                Currently working as a Full-Stack Software Engineer in Germany
-                while pursuing my Master's in Artificial Intelligence. I have
-                led teams of 5+ developers and delivered high-quality solutions
-                across diverse domains with comprehensive documentation and
-                training.
+                I've delivered enterprise management, EMIS, and donor management
+                systems, leading teams and owning delivery from requirements to
+                deployment. I focus on clean architecture, reporting, reliable
+                integrations (including DATEV), and maintainable code.
               </p>
 
               <div className='grid grid-cols-2 gap-4'>
@@ -436,10 +476,9 @@ const About = () => {
               <span>challenges,</span>&nbsp;<span>combining</span>&nbsp;
               <span>modern</span>&nbsp;<span>development</span>{" "}
               <span>practices</span>&nbsp;<span>with</span>&nbsp;
-              <span>AI</span>&nbsp;<span>technologies</span>&nbsp;
+              <span>reliable</span>&nbsp;<span>integrations</span>&nbsp;
               <span>to</span> <span>deliver</span>&nbsp;
-              <span>exceptional</span>&nbsp;<span>user</span>{" "}
-              <span>experiences.</span>
+              <span>measurable</span>&nbsp;<span>results.</span>
             </p>
           </div>
         </div>

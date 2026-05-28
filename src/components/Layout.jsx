@@ -166,7 +166,7 @@ const Layout = ({ children }) => {
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
-                  { to: "about", label: "Journey" },
+                  { to: "about", label: "Experience" },
                   { to: "services", label: "Services" },
                   { to: "projects", label: "Projects" },
                 ].map((item) => (
@@ -374,7 +374,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "Journey",
+                  label: "Experience",
                 },
                 {
                   to: "services",
@@ -480,7 +480,7 @@ const Layout = ({ children }) => {
       <footer className='border-t border-slate-200 bg-white/70 dark:bg-slate-900/70 dark:border-slate-700 px-6 py-12 text-center text-sm backdrop-blur-md'>
         <div className='mx-auto max-w-7xl'>
           <p className='opacity-75'>
-            © {new Date().getFullYear()} Abdullah Rather. All rights reserved.
+            © {new Date().getFullYear()} Abdullah Rather.
           </p>
           <p className='opacity-60 mt-2'>
             Built with ❤️ and passion for innovation

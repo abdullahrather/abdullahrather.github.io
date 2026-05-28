@@ -31,14 +31,14 @@ const Services = () => {
             />
           </svg>
         ),
-        title: "Enterprise Management Systems",
+        title: "Enterprise Platforms & Workflow Systems",
         description:
-          "Comprehensive enterprise solutions including project management, document handling, and complex workflow systems using modern PHP frameworks.",
+          "Internal platforms for operations, project tracking, document handling, and multi-role workflows.",
         features: [
-          "Project Management Modules",
-          "Document Management Systems",
-          "Workflow & Ticket Systems",
+          "Workflow & Ticket Modules",
+          "Document Management",
           "Role-based Access Control (RBAC)",
+          "Multi-language Support",
         ],
       },
       {
@@ -61,14 +61,14 @@ const Services = () => {
             />
           </svg>
         ),
-        title: "DATEV Integration & Financial Systems",
+        title: "API Integrations & Automation",
         description:
-          "Specialized integration with German accounting standards including DATEV systems and ZUGFeRD-compliant invoice generation.",
+          "Integrations and automation for third-party systems, including German accounting standards.",
         features: [
-          "DATEV API Integration",
-          "ZUGFeRD XML Generation",
-          "Financial Data Processing",
-          "German Accounting Compliance",
+          "REST API Integrations",
+          "DATEV & ZUGFeRD Compliance",
+          "Data Sync & Automation",
+          "Secure Webhooks",
         ],
       },
       {
@@ -86,14 +86,14 @@ const Services = () => {
             />
           </svg>
         ),
-        title: "Full-Stack Web Development",
+        title: "PHP Backend Engineering",
         description:
-          "Modern web applications using PHP (Laravel, Yii), JavaScript (React, Node.js), and Python (Flask, FastAPI) with responsive design.",
+          "Backend services with clean architecture, testing, and scalable APIs.",
         features: [
-          "PHP Frameworks (Laravel, Yii)",
-          "JavaScript (React, TypeScript)",
-          "Python (Flask, FastAPI)",
-          "RESTful API Development",
+          "Laravel / Yii / Symfony",
+          "REST API Design",
+          "Authentication & RBAC",
+          "PHPUnit Testing",
         ],
       },
       {
@@ -111,14 +111,14 @@ const Services = () => {
             />
           </svg>
         ),
-        title: "Team Leadership & Project Management",
+        title: "Full-Stack Web Delivery",
         description:
-          "Technical team leadership with experience managing teams of 5+ developers, ensuring timely delivery and high-quality solutions.",
+          "Modern front ends connected to reliable APIs for data-heavy apps.",
         features: [
-          "Technical Team Leadership",
-          "Project Planning & Delivery",
-          "Code Review & Mentoring",
-          "Agile Development Practices",
+          "React UI Development",
+          "Admin Dashboards",
+          "State Management",
+          "Performance Tuning",
         ],
       },
       {
@@ -136,13 +136,13 @@ const Services = () => {
             />
           </svg>
         ),
-        title: "Legacy System Migration",
+        title: "Legacy Modernization & Performance",
         description:
-          "Expert in modernizing legacy systems, including PHP version migrations (7.4 to 8.2) and implementing modern OOP design patterns.",
+          "Upgrade and refactor legacy PHP systems for stability, security, and speed.",
         features: [
-          "PHP Version Migrations",
-          "Legacy Code Modernization",
-          "OOP Design Pattern Implementation",
+          "PHP 7.4 to 8.2 Upgrades",
+          "Legacy Refactors",
+          "OOP Design Patterns",
           "Performance Optimization",
         ],
       },
@@ -161,14 +161,14 @@ const Services = () => {
             />
           </svg>
         ),
-        title: "Education & Management Systems",
+        title: "Technical Leadership",
         description:
-          "Specialized development of Education Management Information Systems with comprehensive student, teacher, and administrative modules.",
+          "Lead teams and deliver predictable releases with clear standards.",
         features: [
-          "Student Management Systems",
-          "Teacher & Staff Management",
-          "Financial Transaction Modules",
-          "Parent Portal Development",
+          "Team Mentoring",
+          "Code Reviews",
+          "Release Planning",
+          "Agile Delivery",
         ],
       },
     ],
@@ -283,7 +283,7 @@ const Services = () => {
         id='servicesTitle'
         className='mb-16 text-center text-4xl font-extrabold transform opacity-0 translate-y-6'
       >
-        Technical Expertise
+        Core Focus
       </h2>
 
       <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3'>
@@ -319,7 +319,7 @@ const Services = () => {
             onClick={() => setShowAll((prev) => !prev)}
             className='btn-primary rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95'
           >
-            {showAll ? "Show Less" : "View All Services"}
+            {showAll ? "Show Less" : "View All Focus Areas"}
           </button>
           <p className='text-sm text-slate-500 dark:text-slate-400'>
             Showing {visibleServices.length} of {services.length}

@@ -5,7 +5,7 @@ import { ScrollTrigger, TextPlugin } from "gsap/all";
 import Lenis from "lenis";
 
 const HERO_SUMMARY_TEXT =
-  "Full-Stack Software Engineer with 5+ years of experience designing and implementing enterprise solutions. Currently pursuing M.Sc. in Artificial Intelligence in Germany.";
+  "Backend / Full-Stack Developer with 5+ years building enterprise web apps, REST APIs, internal platforms, and data-driven business systems. Strong in Laravel, Yii, Symfony, MySQL/MariaDB, Docker, CI/CD, and integrations for business-critical workflows.";
 
 const Hero = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -232,35 +232,6 @@ const Hero = () => {
       trigger: "#hero",
       start: "top bottom",
       end: "bottom top",
-      scrub: 1,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const shapes = document.querySelectorAll(".animated-shape");
-
-        shapes.forEach((shape, index) => {
-          const speed = (index + 1) * 0.5;
-          const yMovement = progress * 100 * speed;
-
-          gsap.set(shape, {
-            y: `${yMovement}px`,
-            rotation: progress * 360 * (index + 1) * 0.2,
-          });
-        });
-      },
-    });
-
-    gsap.to(".shape-1", {
-      x: `${15 * animationIntensity}%`,
-      y: `${12 * animationIntensity}%`,
-      rotation: 20 * animationIntensity,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
-
-    gsap.to(".shape-2", {
-      x: `${-12 * animationIntensity}%`,
       y: `${-10 * animationIntensity}%`,
       rotation: -15 * animationIntensity,
       duration: 3.5,
@@ -345,7 +316,7 @@ const Hero = () => {
     <>
       <section
         id='hero'
-        className='relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center'
+        className='relative min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 sm:pt-32 lg:pt-0 text-center'
       >
         {/* 🎯 KEEP: Animated background shapes */}
         <div className='animated-background absolute inset-0 -z-10 overflow-hidden w-full'>
@@ -447,7 +418,7 @@ const Hero = () => {
                     Abdullah Rather
                   </p>
                   <p className='text-sm text-indigo-100 dark:text-slate-700'>
-                    Full-Stack Software Engineer
+                    Backend / Full-Stack Developer
                   </p>
                 </div>
               </div>
@@ -490,12 +461,18 @@ const Hero = () => {
                 <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-200'>
                   <svg
                     className='w-4 h-4 mr-2'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                    viewBox='0 0 24 24'
                   >
-                    <path d='M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z' />
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'
+                    />
                   </svg>
-                  M.Sc. AI Student
+                  Backend APIs
                 </span>
                 <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200'>
                   <svg
@@ -511,6 +488,21 @@ const Hero = () => {
                   </svg>
                   Based in Germany
                 </span>
+                <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-200'>
+                  <svg
+                    className='w-4 h-4 mr-2'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                    viewBox='0 0 24 24'
+                  >
+                    <path strokeLinecap='round' strokeLinejoin='round' d='M6 9h12v6H6z' />
+                    <path strokeLinecap='round' strokeLinejoin='round' d='M9 9V6h6v3' />
+                    <path strokeLinecap='round' strokeLinejoin='round' d='M9 15v3m6-3v3' />
+                    <path strokeLinecap='round' strokeLinejoin='round' d='M4 18h16' />
+                  </svg>
+                  Docker & CI/CD
+                </span>
               </div>
 
               <div className='mt-10 flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4'>
@@ -521,7 +513,7 @@ const Hero = () => {
                   className='btn-primary group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer'
                 >
                   <span className='absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10'></span>
-                  View Projects
+                  Projects
                 </ScrollLink>
                 <ScrollLink
                   to='about'
@@ -529,8 +521,17 @@ const Hero = () => {
                   duration={500}
                   className='rounded-full bg-white/60 px-8 py-3 text-base font-semibold text-slate-800 ring-1 ring-slate-300 backdrop-blur transition-all duration-300 hover:bg-white/80 hover:shadow-lg hover:translate-y-[-2px] dark:bg-slate-800/60 dark:text-slate-100 dark:ring-slate-600 cursor-pointer'
                 >
-                  My Journey
+                  Experience
                 </ScrollLink>
+                <a
+                  href='/assets/Resume.pdf'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn-primary group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-indigo-700 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 active:scale-95 hover:translate-y-[-2px] cursor-pointer'
+                >
+                  <span className='absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10'></span>
+                  Resume
+                </a>
               </div>
             </div>
           </div>

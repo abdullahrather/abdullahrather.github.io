@@ -269,7 +269,7 @@ const Contact = () => {
         </svg>
       ),
       title: "Location",
-      value: "Berlin, Germany",
+      value: "Germany (Open to Relocation)",
       link: "#",
     },
     {
@@ -289,7 +289,7 @@ const Contact = () => {
         </svg>
       ),
       title: "Current Role",
-      value: "Full-Stack Software Engineer",
+      value: "Full-Stack Software Developer",
       link: "#",
     },
     {
@@ -309,7 +309,7 @@ const Contact = () => {
         </svg>
       ),
       title: "Availability",
-      value: "Open for Full-Time & Freelance Opportunities",
+      value: "Open to Full-Time Roles (Freelance Considered)",
       link: "#",
     },
   ];

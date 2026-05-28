@@ -1014,9 +1014,19 @@ body.modal-open {
 .form-field textarea:focus+label,
 .form-field input:not(:placeholder-shown)+label,
 .form-field textarea:not(:placeholder-shown)+label {
-  transform: translateY(-1.5rem) scale(0.85);
+  transform: translateY(-1.9rem) scale(0.85);
   color: rgb(99, 102, 241);
   font-weight: 600;
+  padding: 0 0.35rem;
+  background: rgba(241, 245, 249, 0.95);
+  border-radius: 999px;
+}
+
+.dark .form-field input:focus+label,
+.dark .form-field textarea:focus+label,
+.dark .form-field input:not(:placeholder-shown)+label,
+.dark .form-field textarea:not(:placeholder-shown)+label {
+  background: rgba(30, 41, 59, 0.95);
 }
 
 .submit-btn {

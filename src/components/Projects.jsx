@@ -29,7 +29,7 @@ const Projects = () => {
         id: 1,
         title: "Enterprise Management System",
         description:
-          "Comprehensive enterprise system with project management, document handling, DATEV integration, and multi-language support using Yii PHP framework.",
+          "Enterprise platform for operations, document handling, and compliance-heavy workflows with DATEV integration and multi-language support on Yii.",
         image: "/images/projects/enterprise-management.webp",
         technologies: [
           "Yii Framework",
@@ -46,22 +46,50 @@ const Projects = () => {
           "ZUGFeRD XML Generation",
           "Multi-language Support",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Structured as a multi-module Yii application to keep admin workflows, document handling, and integrations isolated and maintainable.",
+          },
+          {
+            label: "Data & Compliance",
+            text: "Implemented DATEV and ZUGFeRD flows to support finance-oriented document exchange with consistent data handling.",
+          },
+          {
+            label: "Business Value",
+            text: "Gives operations teams a centralized workspace for project tracking, document processing, and multilingual collaboration.",
+          },
+        ],
         github: "#",
         demo: "#",
       },
       {
         id: 2,
-        title: "Education Management System",
+        title: "Education Management Information System (EMIS)",
         description:
-          "Complete education management platform with student management, parent portal, teacher dashboard, and financial modules built with PHP.",
+          "Education management system for admissions, student and staff records, parent access, and finance workflows built with PHP.",
         image: "/images/projects/education-management.webp",
         technologies: ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
         category: "fullstack",
         features: [
-          "Student Management",
+          "Admissions & Enrollment",
+          "Student & Staff Records",
           "Parent Portal",
-          "Teacher Dashboard",
-          "Financial Modules",
+          "Finance & Reporting",
+        ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Organized around school administration workflows so admissions, records, and finance modules could evolve independently.",
+          },
+          {
+            label: "Data Management",
+            text: "Designed around student, staff, and parent records with reporting-ready structures for administrative visibility.",
+          },
+          {
+            label: "Business Value",
+            text: "Reduced manual coordination by bringing academic, parent-facing, and finance processes into one system.",
+          },
         ],
         github: "#",
         demo: "#",
@@ -70,25 +98,102 @@ const Projects = () => {
         id: 3,
         title: "Donor Management System",
         description:
-          "Modern donor management platform with Laravel backend and React frontend for streamlined contribution tracking and analytics.",
+          "Donor and campaign management platform with Laravel and React for contribution tracking, reporting, and outreach workflows.",
         image: "/images/projects/donor-management.webp",
         technologies: ["Laravel", "React", "MySQL", "JavaScript"],
         category: "fullstack",
         features: [
-          "Donor Portal",
-          "Contribution Tracking",
-          "Analytics Dashboard",
-          "Payment Integration",
+          "Donor Profiles",
+          "Campaign Tracking",
+          "Contribution Reports",
+          "Payment Integrations",
+        ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Built as a Laravel-backed admin platform with React-driven screens for fast donor and campaign operations.",
+          },
+          {
+            label: "Workflow Design",
+            text: "Focused on contribution lifecycle handling, from donor profiles to campaign reporting and payment touchpoints.",
+          },
+          {
+            label: "Business Value",
+            text: "Helps fundraising teams track contributions, measure campaigns, and keep reporting aligned with real activity.",
+          },
         ],
         github: "#",
         demo: "#",
       },
       {
         id: 4,
+        title: "Task Manager",
+        description:
+          "Task management system built with Symfony for structured workflows, team collaboration, and role-based access.",
+        image: "/images/projects/task-manager.png",
+        technologies: ["Symfony", "PHP", "MySQL", "Twig", "JavaScript"],
+        category: "fullstack",
+        features: [
+          "Task Tracking",
+          "Role-Based Access",
+          "Status Workflows",
+          "Team Collaboration",
+        ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Implemented as a Symfony application with clear separation between task workflow logic, roles, and UI actions.",
+          },
+          {
+            label: "Workflow Design",
+            text: "Supports status-driven task movement so team members can manage work through predictable stages.",
+          },
+          {
+            label: "Business Value",
+            text: "Improves delivery coordination by giving teams a shared space for tasks, ownership, and progress tracking.",
+          },
+        ],
+        github: "https://github.com/abdullahrather/TaskManager-Symfony",
+        demo: "#",
+      },
+      {
+        id: 5,
+        title: "Portfolio Website",
+        description:
+          "Job-centric personal portfolio built with React, Vite, and Tailwind CSS, featuring animation, project highlights, and EmailJS contact automation.",
+        image: "/images/projects/portfolio-website.png",
+        technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
+        category: "web",
+        features: [
+          "Responsive Layout",
+          "GSAP Animations",
+          "Project Showcase",
+          "EmailJS Contact Automation",
+          "Custom Autoresponder & Reply Templates",
+        ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Built as a React and Vite single-page experience with animation-driven sections and reusable content blocks.",
+          },
+          {
+            label: "Automation Workflow",
+            text: "Integrated EmailJS to route contact submissions into a branded autoresponder and reply notification flow.",
+          },
+          {
+            label: "Business Value",
+            text: "Turns the portfolio into a live lead-capture surface instead of a static showcase page.",
+          },
+        ],
+        github: "https://github.com/abdullahrather/abdullahrather.github.io",
+        demo: "https://abdullahrather.github.io/",
+      },
+      {
+        id: 6,
         title: "Currency Converter App",
         description:
-          "Real-time currency conversion web application with live exchange rates, currency switching, and responsive design using Laravel.",
-        image: "/images/projects/currency-converter.webp",
+          "Real-time currency conversion application built with Laravel, live exchange rates, and responsive currency switching.",
+        image: "/images/projects/currency-converter.png",
         technologies: [
           "Laravel",
           "GuzzleHttp",
@@ -102,14 +207,28 @@ const Projects = () => {
           "Error Handling",
           "Responsive Design",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Kept API access and conversion logic in Laravel so rate retrieval and UI behavior stayed easy to maintain.",
+          },
+          {
+            label: "API Reliability",
+            text: "Used Guzzle-based requests with fallback handling to keep the conversion flow predictable when rates change.",
+          },
+          {
+            label: "Business Value",
+            text: "Provides a lightweight financial utility with current exchange data and a simple user experience.",
+          },
+        ],
         github: "https://github.com/abdullahrather/Currency-Converter-Laravel",
         demo: "#",
       },
       {
-        id: 5,
+        id: 7,
         title: "Ticket Management System",
         description:
-          "Sophisticated workflow management system with advanced routing, notifications, user roles, and comprehensive reporting features.",
+          "Workflow-driven ticket management system with routing, notifications, user roles, and reporting features.",
         image: "/images/projects/ticket-management.webp",
         technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
         category: "fullstack",
@@ -119,14 +238,28 @@ const Projects = () => {
           "Role Management",
           "Comprehensive Reporting",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Designed around ticket states and role-specific actions so support processes stay organized and traceable.",
+          },
+          {
+            label: "Workflow Automation",
+            text: "Built routing and notification logic to surface the right tickets to the right users at the right time.",
+          },
+          {
+            label: "Business Value",
+            text: "Improves support throughput and visibility by reducing manual ticket handling.",
+          },
+        ],
         github: "#",
         demo: "#",
       },
       {
-        id: 6,
+        id: 8,
         title: "Employee Performance Tracker",
         description:
-          "Advanced HR management system with performance metrics, data visualization, analytics dashboard, and export capabilities.",
+          "HR performance tracking system with metrics, dashboards, analytics, and export capabilities.",
         image: "/images/projects/employee-performance.webp",
         technologies: ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
         category: "fullstack",
@@ -136,14 +269,28 @@ const Projects = () => {
           "CSV/PDF Export",
           "Employee Dashboard",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Built as an analytics-oriented HR dashboard where performance data and exports remain easy to extend.",
+          },
+          {
+            label: "Reporting Layer",
+            text: "Focused on visual scorecards and downloadable reports so managers can review performance quickly.",
+          },
+          {
+            label: "Business Value",
+            text: "Turns employee tracking into a measurable process instead of a manual spreadsheet workflow.",
+          },
+        ],
         github: "#",
         demo: "#",
       },
       {
-        id: 7,
+        id: 9,
         title: "Laravel Auth & Role Management App",
         description:
-          "Comprehensive Laravel application featuring advanced authentication, authorization, and role-based access control with Gates policies and Eloquent relationships.",
+          "Laravel application focused on authentication, authorization, and role-based access control with Gates, policies, and Eloquent relationships.",
         image: "/images/projects/laravel-auth-role.webp",
         technologies: [
           "Laravel",
@@ -163,14 +310,28 @@ const Projects = () => {
           "Eloquent Relationships",
           "Database Seeding for Roles",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Structured around authentication and access-control boundaries so each role sees only the right screens and actions.",
+          },
+          {
+            label: "Security Model",
+            text: "Applied Gates, policies, and role-aware views to keep authorization rules consistent across the app.",
+          },
+          {
+            label: "Business Value",
+            text: "Provides a reusable foundation for secure, role-driven admin systems and CRUD-heavy business tools.",
+          },
+        ],
         github: "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
         demo: "#",
       },
       {
-        id: 8,
+        id: 10,
         title: "Academic Institution Website",
         description:
-          "A custom-built academic institution website featuring secure user authentication with CAPTCHA-protected registration and password recovery, role-based dashboard, student performance modules, news/events sections, committee and application form management, developed using PHP and MySQL.",
+          "Custom academic institution website with CAPTCHA-protected authentication, role-based dashboards, performance modules, and form management.",
         image: "/images/projects/academic-institution.webp",
         technologies: ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
         category: "web",
@@ -183,14 +344,28 @@ const Projects = () => {
           "Event & Committee Management",
           "Application Form Submission",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Designed as a role-aware school website with separate public pages and private dashboards for operations.",
+          },
+          {
+            label: "User Experience",
+            text: "Included CAPTCHA-backed registration and recovery flows to reduce abuse while keeping access straightforward.",
+          },
+          {
+            label: "Business Value",
+            text: "Supports academic communication, student data, and application handling in a single web platform.",
+          },
+        ],
         github: "https://github.com/abdullahrather/CustomAcademy-PHP",
         demo: "#",
       },
       {
-        id: 9,
+        id: 11,
         title: "Laravel Authentication & CRUD System",
         description:
-          "An authentication system combined with product management CRUD operations built on Laravel 10's MVC framework, including secure user registration and login alongside full product lifecycle handling.",
+          "Laravel 10 MVC system combining authentication with product management CRUD operations and secure user access.",
         image: "/images/projects/laravel-auth-crud.webp",
         technologies: [
           "Laravel 10",
@@ -208,14 +383,28 @@ const Projects = () => {
           "MVC Routing",
           "Blade Templating",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Built on Laravel MVC conventions to keep authentication and product management logic cleanly separated.",
+          },
+          {
+            label: "Form Handling",
+            text: "Used validation and CRUD flow control to keep product actions safe and predictable.",
+          },
+          {
+            label: "Business Value",
+            text: "Acts as a practical foundation for internal admin tools that need secure login plus content management.",
+          },
+        ],
         github: "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
         demo: "#",
       },
       {
-        id: 10,
+        id: 12,
         title: "Corporate Insurance Website",
         description:
-          "A custom-built insurance company website with a dynamic form submission module for user inquiries and application processing, supported by SQL schema scripts and styled components.",
+          "Corporate insurance website with dynamic inquiry submission, application processing, SQL schema scripts, and styled components.",
         image: "/images/projects/corporate-insurance.webp",
         technologies: ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
         category: "web",
@@ -226,14 +415,28 @@ const Projects = () => {
           "Client-Side Validation",
           "Responsive Design",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Created as a custom PHP site with separate front-end pages and back-end form handling for inquiries.",
+          },
+          {
+            label: "Lead Capture",
+            text: "Focused on converting site visits into actionable inquiries through a clear submission flow.",
+          },
+          {
+            label: "Business Value",
+            text: "Helps insurance teams collect and process customer requests with less manual effort.",
+          },
+        ],
         github: "https://github.com/abdullahrather/CustomWebsite-PHP",
         demo: "#",
       },
       {
-        id: 11,
+        id: 13,
         title: "Laravel Authentication Showcase",
         description:
-          "A Laravel project showcasing built-in authentication features including registration, login/logout, password reset, and email verification using Laravel's scaffolding and middleware.",
+          "Laravel authentication showcase covering registration, login/logout, password reset, and email verification through scaffolding and middleware.",
         image: "/images/projects/laravel-auth-showcase.webp",
         technologies: [
           "Laravel",
@@ -251,14 +454,28 @@ const Projects = () => {
           "Email Verification",
           "Authentication Middleware",
         ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Built to demonstrate Laravel's auth scaffolding and middleware flow in a clean, inspectable structure.",
+          },
+          {
+            label: "Security & Access",
+            text: "Covers the full user lifecycle with password recovery and verification to reinforce account safety.",
+          },
+          {
+            label: "Business Value",
+            text: "Useful as a reference implementation for teams needing a baseline authentication setup.",
+          },
+        ],
         github: "https://github.com/abdullahrather/Auth-Laravel",
         demo: "#",
       },
       {
-        id: 12,
+        id: 14,
         title: "Laravel MVC CRUD Application",
         description:
-          "An example Laravel application demonstrating Create, Read, Update, and Delete operations for generic resources, emphasizing MVC conventions and form request validation.",
+          "Laravel MVC example demonstrating create, read, update, and delete operations with form request validation.",
         image: "/images/projects/laravel-mvc-crud.webp",
         technologies: ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
         category: "web",
@@ -268,6 +485,20 @@ const Projects = () => {
           "Form Request Validation",
           "Blade View Rendering",
           "Database Migrations",
+        ],
+        developmentDetails: [
+          {
+            label: "Architecture",
+            text: "Built around resourceful routing and MVC conventions to keep CRUD behavior easy to extend.",
+          },
+          {
+            label: "Data Layer",
+            text: "Uses migrations and model binding to keep data changes and controller actions aligned.",
+          },
+          {
+            label: "Business Value",
+            text: "Provides a practical blueprint for Laravel CRUD apps that need predictable structure and validation.",
+          },
         ],
         github: "https://github.com/abdullahrather/CrudOperations-Laravel",
         demo: "#",
@@ -279,6 +510,7 @@ const Projects = () => {
   const categories = useMemo(
     () => [
       { id: "all", name: "All Projects" },
+      { id: "public", name: "Public Repos" },
       { id: "fullstack", name: "Full-Stack" },
       { id: "web", name: "Web Apps" },
     ],
@@ -287,6 +519,11 @@ const Projects = () => {
 
   const filteredProjects = useMemo(() => {
     if (filter === "all") return projects;
+    if (filter === "public") {
+      return projects.filter(
+        (project) => project.github && !isPrivateRepo(project.github)
+      );
+    }
     return projects.filter((project) => project.category === filter);
   }, [filter, projects]);
 
@@ -422,17 +659,17 @@ const Projects = () => {
               id='projectsTitle'
               className='text-4xl font-bold mb-4 transform opacity-0 translate-y-6'
             >
-              Success Stories
+              Featured Projects
             </h2>
             <p className='text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
-              Here are some of the projects I've worked on, showcasing my
-              expertise in full-stack development.
+              Selected work highlighting enterprise platforms, integrations,
+              and end-to-end delivery.
             </p>
           </div>
 
           {/* Filter Buttons */}
           <div className='flex justify-center mb-12'>
-            <div className='flex space-x-4 bg-white/60 dark:bg-slate-800/60 p-2 rounded-lg shadow-md backdrop-blur ring-1 ring-white/20'>
+            <div className='flex flex-wrap justify-center gap-3 bg-white/60 dark:bg-slate-800/60 p-2 rounded-lg shadow-md backdrop-blur ring-1 ring-white/20'>
               {categories.map((category) => (
                 <button
                   key={category.id}
@@ -831,36 +1068,21 @@ const Projects = () => {
                       Development Details
                     </h3>
                     <div className='space-y-3'>
-                      <div className='p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg'>
-                        <h4 className='font-medium text-slate-900 dark:text-white mb-2'>
-                          Architecture
-                        </h4>
-                        <p className='text-slate-600 dark:text-slate-300 text-sm'>
-                          Built with modern software architecture patterns
-                          ensuring scalability, maintainability, and
-                          performance.
-                        </p>
-                      </div>
-                      <div className='p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg'>
-                        <h4 className='font-medium text-slate-900 dark:text-white mb-2'>
-                          Database Design
-                        </h4>
-                        <p className='text-slate-600 dark:text-slate-300 text-sm'>
-                          Optimized database schema with proper indexing,
-                          relationships, and query optimization for excellent
-                          performance.
-                        </p>
-                      </div>
-                      <div className='p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg'>
-                        <h4 className='font-medium text-slate-900 dark:text-white mb-2'>
-                          Security Features
-                        </h4>
-                        <p className='text-slate-600 dark:text-slate-300 text-sm'>
-                          Implemented comprehensive security measures including
-                          authentication, authorization, input validation, and
-                          protection against common vulnerabilities.
-                        </p>
-                      </div>
+                      {(selectedProject.developmentDetails || []).map(
+                        (detail, index) => (
+                          <div
+                            key={index}
+                            className='p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg'
+                          >
+                            <h4 className='font-medium text-slate-900 dark:text-white mb-2'>
+                              {detail.label}
+                            </h4>
+                            <p className='text-slate-600 dark:text-slate-300 text-sm'>
+                              {detail.text}
+                            </p>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>

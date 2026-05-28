@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { trackEvent } from "../lib/analytics";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import emailjs from "@emailjs/browser";
@@ -99,6 +100,12 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus("");
 
+    try {
+      trackEvent("contact_submit_attempt", { configured: IS_FORM_ENABLED });
+    } catch (error) {
+      void error;
+    }
+
     const now = new Date();
 
     const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -167,12 +174,23 @@ const Contact = () => {
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
 
+      try {
+        trackEvent("contact_submit_success", { method: "emailjs" });
+      } catch (error) {
+        void error;
+      }
+
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
       setRecaptchaToken(null);
     } catch (error) {
       console.error("EmailJS Error:", error);
+      try {
+        trackEvent("contact_submit_error", { error: error?.message || String(error) });
+      } catch (trackError) {
+        void trackError;
+      }
       setSubmitStatus("error");
 
       if (recaptchaRef.current) {
@@ -389,6 +407,11 @@ const Contact = () => {
                 <a
                   key={idx}
                   href={info.link}
+                  onClick={() =>
+                    trackEvent(`contact_link_${String(info.title).toLowerCase().replace(/\s+/g, "_")}`, {
+                      link: info.link,
+                    })
+                  }
                   className='flex items-center p-4 bg-slate-100/80 dark:bg-slate-800/60 rounded-lg hover:bg-slate-200/80 dark:hover:bg-slate-700/60 transition-colors backdrop-blur ring-1 ring-slate-200/50 dark:ring-white/20'
                 >
                   <div className='text-indigo-600 dark:text-indigo-400 mr-4'>
@@ -413,6 +436,11 @@ const Contact = () => {
                     href={social.url}
                     target='_blank'
                     rel='noopener noreferrer'
+                    onClick={() =>
+                      trackEvent(`social_click_${String(social.name).toLowerCase()}`, {
+                        link: social.url,
+                      })
+                    }
                     className={`social-icon social-${social.name.toLowerCase()} flex items-center px-4 py-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 rounded-full hover:bg-indigo-200 dark:hover:bg-indigo-800/50 transition-all duration-300`}
                   >
                     <span className='mr-2'>{social.icon}</span>

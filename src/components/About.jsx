@@ -1,11 +1,19 @@
 import React, { useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useExperienceYears } from "../lib/experience";
 
 const About = () => {
+  const experienceYears = useExperienceYears();
+
   const stats = useMemo(
     () => [
-      { number: "5+", label: "Years Experience", targetValue: 5, suffix: "+" },
+      {
+        number: `${experienceYears}+`,
+        label: "Years Experience",
+        targetValue: experienceYears,
+        suffix: "+",
+      },
       {
         number: "20+",
         label: "Enterprise Integrations",
@@ -25,7 +33,7 @@ const About = () => {
         suffix: "+",
       },
     ],
-    []
+    [experienceYears]
   );
 
   const skills = useMemo(
@@ -388,8 +396,8 @@ const About = () => {
             <div className='about-content-left opacity-0 transform translate-x-[-30px]'>
               <h3 className='text-2xl font-bold mb-6'>Experience Snapshot</h3>
               <p className='text-slate-600 dark:text-slate-300 mb-4'>
-                I'm a Backend / Full-Stack Developer with 5+ years building
-                enterprise web apps, REST APIs, internal platforms, and
+                I'm a Backend / Full-Stack Developer with {experienceYears}+ years
+                building enterprise web apps, REST APIs, internal platforms, and
                 database-driven business systems. My core stack includes
                 Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.
               </p>

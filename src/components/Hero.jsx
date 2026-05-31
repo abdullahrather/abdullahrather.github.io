@@ -1,17 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { trackEvent } from "../lib/analytics";
+import { getExperienceLabel, getExperienceSummary, useExperienceYears } from "../lib/experience";
 import { Link as ScrollLink } from "react-scroll";
 import { gsap } from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 import Lenis from "lenis";
 
-const HERO_SUMMARY_TEXT =
-  "I design and deliver APIs and data-driven platforms that improve reliability and automation in production. Skilled in backend frameworks, relational databases, Docker containers, and CI/CD pipelines.";
-
 const Hero = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isResumeMenuOpen, setIsResumeMenuOpen] = useState(false);
   const resumeMenuRef = useRef(null);
+  const experienceYears = useExperienceYears();
+  const heroSummaryText = getExperienceSummary(experienceYears);
 
   const professionalProfiles = useMemo(
     () => [
@@ -166,7 +166,7 @@ const Hero = () => {
       document.removeEventListener("touchstart", handleOutsideClick);
       document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
+  }, [heroSummaryText]);
 
   useEffect(() => {
     // Register GSAP plugins
@@ -203,7 +203,6 @@ const Hero = () => {
 
     const heroAvatar = document.getElementById("heroAvatar");
     const heroTitle = document.getElementById("heroTitle");
-    const heroSummary = document.getElementById("heroSummary");
     const heroBadges = document.getElementById("heroBadges");
 
     const slideIn = (target, delay = 0) => {
@@ -234,29 +233,6 @@ const Hero = () => {
 
     slideIn(heroTitle);
     slideIn(heroBadges, 0.2);
-
-    if (heroSummary) {
-      // Clear initial text so TextPlugin can animate typing
-      heroSummary.textContent = "";
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroSummary,
-          start: isMobile ? "top 95%" : "top 90%",
-        },
-      });
-
-      // Fade/slide in, then type the full summary text
-      tl.fromTo(
-        heroSummary,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
-      ).to(heroSummary, {
-        duration: 2.2,
-        text: HERO_SUMMARY_TEXT,
-        ease: "none",
-      });
-    }
 
     const animationIntensity = isMobile ? 0.5 : 1;
 
@@ -345,11 +321,46 @@ const Hero = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const heroSummary = document.getElementById("heroSummary");
+    if (!heroSummary) return;
+
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) || window.innerWidth <= 768;
+
+    heroSummary.textContent = "";
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroSummary,
+        start: isMobile ? "top 95%" : "top 90%",
+      },
+    });
+
+    timeline
+      .fromTo(
+        heroSummary,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
+      )
+      .to(heroSummary, {
+        duration: 2.2,
+        text: heroSummaryText,
+        ease: "none",
+      });
+
+    return () => {
+      timeline.kill();
+    };
+  }, [heroSummaryText]);
+
   return (
     <>
       <section
         id='hero'
-        className='relative z-0 min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 sm:pt-32 pb-16 sm:pb-20 lg:pt-0 lg:pb-0 text-center overflow-visible'
+        className='relative z-20 min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 sm:pt-32 pb-16 sm:pb-20 lg:pt-0 lg:pb-0 text-center overflow-visible'
       >
         {/* 🎯 KEEP: Animated background shapes */}
         <div className='animated-background absolute inset-0 -z-10 overflow-hidden w-full'>
@@ -450,8 +461,8 @@ const Hero = () => {
                   <p className='text-lg font-semibold text-white dark:text-slate-900'>
                     Abdullah Rather
                   </p>
-                  <p className='text-sm text-indigo-100 dark:text-slate-700'>
-                    Backend / Full-Stack Developer - APIs & systems that scale
+                  <p className='text-lg text-indigo-100 dark:text-slate-700'>
+                    Backend / Full-Stack Developer
                   </p>
                 </div>
               </div>
@@ -470,7 +481,7 @@ const Hero = () => {
                   id='heroSummary'
                   className='text-lg md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium opacity-0 transform translate-y-4'
                 >
-                  {HERO_SUMMARY_TEXT}
+                  {heroSummaryText}
                 </p>
                 <div className='mt-4 flex flex-col sm:flex-row gap-3 text-sm text-slate-600 dark:text-slate-300'>
                   <div className='inline-flex items-start gap-2'>
@@ -500,7 +511,7 @@ const Hero = () => {
                       clipRule='evenodd'
                     />
                   </svg>
-                  5+ Years Experience
+                  {getExperienceLabel(experienceYears)}
                 </span>
                 <span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-200'>
                   <svg

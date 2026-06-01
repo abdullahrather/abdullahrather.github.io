@@ -1,8 +1,8 @@
 import Layout from "./components/Layout";
 import Hero from "./components/Hero";
-import About from "./components/About";
+import Skills from "./components/Skills";
 import WorkExperience from "./components/WorkExperience";
-import Services from "./components/Services";
+import Expertise from "./components/Expertise";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import "./styles.css";
@@ -11,9 +11,9 @@ function App() {
   return (
     <Layout>
       <Hero />
-      <About />
+      <Skills />
       <WorkExperience />
-      <Services />
+      <Expertise />
       <Projects />
       <Contact />
     </Layout>

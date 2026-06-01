@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
-const Services = () => {
+const Expertise = () => {
   const [visibleCount, setVisibleCount] = useState(() => {
     if (typeof window === "undefined") {
       return 3;
@@ -14,7 +14,7 @@ const Services = () => {
   });
   const [showAll, setShowAll] = useState(false);
 
-  const services = useMemo(
+  const expertise = useMemo(
     () => [
       {
         icon: (
@@ -175,12 +175,12 @@ const Services = () => {
     []
   );
 
-  const visibleServices = useMemo(() => {
-    if (showAll) return services;
-    return services.slice(0, visibleCount);
-  }, [services, showAll, visibleCount]);
+  const visibleExpertise = useMemo(() => {
+    if (showAll) return expertise;
+    return expertise.slice(0, visibleCount);
+  }, [expertise, showAll, visibleCount]);
 
-  const canToggleServices = services.length > visibleCount;
+  const canToggleExpertise = expertise.length > visibleCount;
 
   useEffect(() => {
     const handleResize = () => {
@@ -211,9 +211,9 @@ const Services = () => {
 
     if (!isMobile) {
       // Desktop: animated loading
-      gsap.to("#servicesTitle", {
+      gsap.to("#expertiseTitle", {
         scrollTrigger: {
-          trigger: "#servicesTitle",
+          trigger: "#expertiseTitle",
           start: "top 95%",
         },
         opacity: 1,
@@ -238,7 +238,7 @@ const Services = () => {
       });
     } else {
       // Mobile: show everything immediately
-      gsap.set("#servicesTitle", { opacity: 1, y: 0 });
+      gsap.set("#expertiseTitle", { opacity: 1, y: 0 });
       gsap.set(".service-card", { opacity: 1, y: 0 });
       gsap.utils.toArray(".service-card").forEach((card) => {
         card.classList.add("animation-complete");
@@ -275,19 +275,19 @@ const Services = () => {
         });
       });
     });
-  }, [visibleServices.length]);
+  }, [visibleExpertise.length]);
 
   return (
-    <section id='services' className='mx-auto max-w-7xl px-6 py-28'>
+    <section id='expertise' className='mx-auto max-w-7xl px-6 py-28'>
       <h2
-        id='servicesTitle'
+        id='expertiseTitle'
         className='mb-16 text-center text-4xl font-extrabold transform opacity-0 translate-y-6'
       >
         Core Focus
       </h2>
 
       <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3'>
-        {visibleServices.map((service, index) => (
+        {visibleExpertise.map((service, index) => (
           <div
             key={index}
             className='service-card rounded-3xl bg-white/60 dark:bg-slate-800/60 p-8 shadow-xl backdrop-blur ring-1 ring-white/20 dark:ring-slate-700/20 opacity-0 transform translate-y-12 transition-all duration-300 hover:transform hover:translate-y-[-8px] hover:shadow-2xl hover:shadow-indigo-500/10'
@@ -312,7 +312,7 @@ const Services = () => {
         ))}
       </div>
 
-      {canToggleServices && (
+      {canToggleExpertise && (
         <div className='mt-12 flex flex-col items-center gap-3'>
           <button
             type='button'
@@ -322,7 +322,7 @@ const Services = () => {
             {showAll ? "Show Less" : "View All Focus Areas"}
           </button>
           <p className='text-sm text-slate-500 dark:text-slate-400'>
-            Showing {visibleServices.length} of {services.length}
+            Showing {visibleExpertise.length} of {expertise.length}
           </p>
         </div>
       )}
@@ -330,4 +330,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Expertise;

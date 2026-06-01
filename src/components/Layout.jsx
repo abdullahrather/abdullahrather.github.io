@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { Link as ScrollLink } from "react-scroll";
 
 const Layout = ({ children }) => {
@@ -54,9 +55,9 @@ const Layout = ({ children }) => {
     const updateActiveSection = () => {
       const sections = [
         "hero",
-        "about",
+        "skills",
         "work-experience",
-        "services",
+        "expertise",
         "projects",
         "contact",
       ];
@@ -173,9 +174,9 @@ const Layout = ({ children }) => {
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
-                  { to: "about", label: "About" },
+                  { to: "skills", label: "Skills" },
                   { to: "work-experience", label: "Experience" },
-                  { to: "services", label: "Services" },
+                  { to: "expertise", label: "Expertise" },
                   { to: "projects", label: "Projects" },
                 ].map((item, index) => (
                   <ScrollLink
@@ -199,11 +200,11 @@ const Layout = ({ children }) => {
                   }`}
                   style={{
                     left:
-                      activeSection === "about"
+                      activeSection === "skills"
                         ? "0%"
                         : activeSection === "work-experience"
                         ? "25%"
-                        : activeSection === "services"
+                        : activeSection === "expertise"
                         ? "50%"
                         : activeSection === "projects"
                         ? "75%"
@@ -214,6 +215,7 @@ const Layout = ({ children }) => {
               </div>
 
               <div className='ml-8 flex items-center gap-4'>
+                <LanguageSwitcher />
                 <button
                   onClick={toggleDarkMode}
                   className='p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors'
@@ -255,6 +257,7 @@ const Layout = ({ children }) => {
 
             {/* Mobile Controls */}
             <div className='flex items-center lg:hidden gap-2'>
+              <LanguageSwitcher />
               <button
                 onClick={toggleDarkMode}
                 className='p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors'
@@ -368,7 +371,7 @@ const Layout = ({ children }) => {
             <div className='flex flex-col p-6 space-y-4 mt-4'>
               {[
                 {
-                  to: "about",
+                  to: "skills",
                   icon: (
                     <svg
                       className='h-6 w-6'
@@ -384,7 +387,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "About",
+                  label: "Skills",
                 },
                 {
                   to: "work-experience",
@@ -406,7 +409,7 @@ const Layout = ({ children }) => {
                   label: "Experience",
                 },
                 {
-                  to: "services",
+                  to: "expertise",
                   icon: (
                     <svg
                       className='h-6 w-6'
@@ -422,7 +425,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "Services",
+                  label: "Expertise",
                 },
                 {
                   to: "projects",

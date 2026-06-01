@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useExperienceYears } from "../lib/experience";
 
-const About = () => {
+const Skills = () => {
   const experienceYears = useExperienceYears();
 
   const stats = useMemo(
@@ -219,9 +219,9 @@ const About = () => {
     // Mobile detection
     const isMobile = window.innerWidth <= 768;
 
-    gsap.to(".about-content-left", {
+    gsap.to(".skills-content-left", {
       scrollTrigger: {
-        trigger: ".about-content-left",
+        trigger: ".skills-content-left",
         start: isMobile ? "top 95%" : "top 90%",
       },
       opacity: 1,
@@ -343,10 +343,10 @@ const About = () => {
       );
     });
 
-    const textReveal = document.querySelector("#aboutTextReveal");
+    const textReveal = document.querySelector("#skillsTextReveal");
     if (textReveal) {
       // Set initial state
-      gsap.set("#aboutTextReveal", { opacity: 1, y: 0 });
+      gsap.set("#skillsTextReveal", { opacity: 1, y: 0 });
 
       const words = textReveal.querySelectorAll("span");
       const totalWords = words.length;
@@ -386,14 +386,14 @@ const About = () => {
 
   return (
     <>
-      {/* About Section */}
+      {/* Skills Section */}
       <section
-        id='about'
+        id='skills'
         className='py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900'
       >
         <div className='container mx-auto px-6'>
           <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div className='about-content-left opacity-0 transform translate-x-[-30px]'>
+            <div className='skills-content-left opacity-0 transform translate-x-[-30px]'>
               <h3 className='text-2xl font-bold mb-6'>Experience Snapshot</h3>
               <p className='text-slate-600 dark:text-slate-300 mb-4'>
                 I'm a Backend / Full-Stack Developer with {experienceYears}+ years
@@ -471,7 +471,7 @@ const About = () => {
         <div className='max-w-5xl mx-auto px-6'>
           <div className='text-reveal-container'>
             <p
-              id='aboutTextReveal'
+              id='skillsTextReveal'
               className='text-reveal text-3xl md:text-4xl font-medium leading-relaxed'
             >
               <span>I</span>&nbsp;<span>specialize</span>&nbsp;<span>in</span>{" "}
@@ -495,4 +495,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Skills;

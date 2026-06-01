@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "title": "About Me",
+    "role": "Backend / Full-Stack Developer",
+    "summary": "I design and deliver APIs and data-driven platforms that improve reliability and automation in production. Skilled in backend frameworks, relational databases, Docker containers, and CI/CD pipelines. With {years}+ years of experience building enterprise web applications, REST APIs, internal platforms, and database-driven business systems.",
+    "badges": {
+      "delivery": "Delivered 15+ production deployments with automated CI/CD.",
+      "integration": "Built integrations used in enterprise workflows (20+).",
+      "experience": "{years}+ Years Experience",
+      "backend_apis": "Backend APIs",
+      "location": "Based in Germany",
+      "tooling": "Docker & CI/CD"
+    },
+    "buttons": {
+      "projects": "Projects",
+      "experience": "Experience",
+      "resume": "Resume",
+      "view_resume": "View Resume",
+      "download_resume": "Download Resume"
+    },
+    "modal": {
+      "title": "Professional Profiles",
+      "connect_title": "Let's Connect!",
+      "connect_text": "I'm always open to discussing new opportunities, collaborations, or just connecting with fellow developers. Feel free to reach out through any of these platforms.",
+      "connect_subtitle": "Connect with me on various platforms",
+      "profiles": {
+        "linkedin": {
+          "name": "LinkedIn",
+          "description": "Professional network & career highlights"
+        },
+        "github": {
+          "name": "GitHub",
+          "description": "Open source projects & code repositories"
+        },
+        "xing": {
+          "name": "Xing",
+          "description": "German professional network"
+        },
+        "email": {
+          "name": "Email",
+          "description": "Direct professional contact"
+        }
+      }
+    }
+  }
+}

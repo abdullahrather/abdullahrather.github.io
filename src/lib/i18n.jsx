@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
+import en from "../languages/en.json";
 
 const DEFAULT_LANG = "en";
 
@@ -30,14 +31,14 @@ export const TranslationProvider = ({ children }) => {
   // Available languages can be expanded later when locale files are added.
   const available = useMemo(() => [{ code: "en", label: "EN", name: "English" }], []);
 
-  // Basic translator: if a global translations map is present on window, use it.
+  const translations = useMemo(() => ({ en }), []);
+
+  // Basic translator: resolve from the loaded locale map and substitute variables.
   const t = (key, vars) => {
     try {
-      const map = (typeof window !== "undefined" && window.__TRANSLATIONS__) || {};
-      const bucket = map[lang] || {};
+      const bucket = translations[lang] || translations.en || {};
       let value = key.split(".").reduce((acc, part) => (acc && acc[part] ? acc[part] : undefined), bucket);
       if (value === undefined) {
-        // fallback: return the key so existing components keep showing original English
         return key;
       }
 

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
 import en from "../languages/en.json";
+import de from "../languages/de.json";
 
 const DEFAULT_LANG = "en";
 
@@ -29,9 +30,15 @@ export const TranslationProvider = ({ children }) => {
   };
 
   // Available languages can be expanded later when locale files are added.
-  const available = useMemo(() => [{ code: "en", label: "EN", name: "English" }], []);
+  const available = useMemo(
+    () => [
+      { code: "en", label: "EN", name: "English" },
+      { code: "de", label: "DE", name: "Deutsch" },
+    ],
+    []
+  );
 
-  const translations = useMemo(() => ({ en }), []);
+  const translations = useMemo(() => ({ en, de }), []);
 
   // Basic translator: resolve from the loaded locale map and substitute variables.
   const t = (key, vars) => {

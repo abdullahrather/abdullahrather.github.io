@@ -12,8 +12,12 @@ const Hero = () => {
   const [isResumeMenuOpen, setIsResumeMenuOpen] = useState(false);
   const resumeMenuRef = useRef(null);
   const experienceYears = useExperienceYears();
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const heroSummaryText = t("hero.summary", { years: experienceYears });
+
+  // Locale-aware resume paths
+  const resumePath = lang === "de" ? "/assets/Resume_de.pdf" : "/assets/Resume.pdf";
+  const resumeFileName = lang === "de" ? "Abdullah_Rather_Lebenslauf.pdf" : "Abdullah_Rather_Resume.pdf";
 
   const professionalProfiles = useMemo(
     () => [
@@ -586,9 +590,8 @@ const Hero = () => {
                     <span className='absolute inset-0 rounded-full bg-indigo-700 opacity-0 transition-opacity group-hover:opacity-10'></span>
                     <span>{t("hero.buttons.resume")}</span>
                     <svg
-                      className={`h-4 w-4 transition-transform duration-300 ${
-                        isResumeMenuOpen ? "rotate-180" : ""
-                      }`}
+                      className={`h-4 w-4 transition-transform duration-300 ${isResumeMenuOpen ? "rotate-180" : ""
+                        }`}
                       fill='none'
                       stroke='currentColor'
                       viewBox='0 0 24 24'
@@ -605,14 +608,13 @@ const Hero = () => {
                   <div
                     role='menu'
                     aria-label='Resume actions'
-                    className={`absolute left-1/2 top-full z-50 mt-3 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/40 bg-white/95 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl transition-all duration-300 dark:border-slate-700/50 dark:bg-slate-900/95 ${
-                      isResumeMenuOpen
-                        ? "pointer-events-auto translate-y-0 opacity-100"
-                        : "pointer-events-none -translate-y-2 opacity-0"
-                    }`}
+                    className={`absolute left-1/2 top-full z-50 mt-3 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/40 bg-white/95 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl transition-all duration-300 dark:border-slate-700/50 dark:bg-slate-900/95 ${isResumeMenuOpen
+                      ? "pointer-events-auto translate-y-0 opacity-100"
+                      : "pointer-events-none -translate-y-2 opacity-0"
+                      }`}
                   >
                     <a
-                      href='/assets/Resume.pdf'
+                      href={resumePath}
                       target='_blank'
                       rel='noopener noreferrer'
                       onClick={() => {
@@ -629,8 +631,8 @@ const Hero = () => {
                       <span className='flex-1 text-left'>{t("hero.buttons.view_resume")}</span>
                     </a>
                     <a
-                      href='/assets/Resume.pdf'
-                      download
+                      href={resumePath}
+                      download={resumeFileName}
                       onClick={() => {
                         handleResumeDownload();
                         closeResumeMenu();

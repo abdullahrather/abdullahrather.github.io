@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "../lib/i18n";
 
-const EXPERIENCE_DATE_FORMAT = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
-});
 
 const formatDuration = (startDate, endDate = new Date(), labels) => {
   const start = new Date(startDate);
@@ -33,15 +29,22 @@ const formatDuration = (startDate, endDate = new Date(), labels) => {
   return parts.join(" ");
 };
 
-const formatPeriodLabel = (startDate, endDate, presentLabel) => {
-  const startLabel = EXPERIENCE_DATE_FORMAT.format(new Date(startDate));
-  const endLabel = endDate ? EXPERIENCE_DATE_FORMAT.format(new Date(endDate)) : presentLabel;
-  return `${startLabel} - ${endLabel}`;
+const formatPeriodLabel = (startDate, endDate, presentLabel, formatter) => {
+  const startLabel = formatter.format(new Date(startDate));
+  const endLabel = endDate ? formatter.format(new Date(endDate)) : presentLabel;
+  return `${startLabel} – ${endLabel}`;
 };
 
 const WorkExperience = () => {
   const [currentDate, setCurrentDate] = useState(() => new Date());
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
+
+  const dateFormatter = useMemo(() => {
+    if (lang === "de") {
+      return new Intl.DateTimeFormat("de-DE", { month: "2-digit", year: "numeric" });
+    }
+    return new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" });
+  }, [lang]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -93,7 +96,7 @@ const WorkExperience = () => {
                     {experience.tag || "Experience"}
                   </span>
                   <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-200">
-                    {formatPeriodLabel(experience.startDate, experience.endDate, t("workExperience.present"))}
+                    {formatPeriodLabel(experience.startDate, experience.endDate, t("workExperience.present"), dateFormatter)}
                   </span>
                   <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-200">
                     {t("workExperience.duration_label")}: {formatDuration(experience.startDate, experience.endDate || currentDate, durationLabels)}

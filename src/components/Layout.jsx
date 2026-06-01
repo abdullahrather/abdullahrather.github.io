@@ -74,16 +74,27 @@ const Layout = ({ children }) => {
       }
     };
 
+    // rAF throttle: runs at most once per display frame (~16ms at 60fps)
+    // instead of on every scroll microtask (up to 60+ calls/sec)
+    let rafId = null;
     const handleScroll = () => {
-      updateScrollProgress();
-      updateActiveSection();
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        updateScrollProgress();
+        updateActiveSection();
+        rafId = null;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
+
 
   useEffect(() => {
     const observerOptions = {

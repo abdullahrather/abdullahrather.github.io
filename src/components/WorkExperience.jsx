@@ -65,7 +65,7 @@ const WorkExperience = () => {
     [t]
   );
 
-  const experiences = t("workExperience.entries");
+  const experiences = useMemo(() => t("workExperience.entries") || [], [t]);
 
   return (
     <section id="work-experience" className="mx-auto max-w-7xl px-6 py-28">

@@ -25,7 +25,7 @@ const Expertise = () => {
   });
   const [showAll, setShowAll] = useState(false);
 
-  const expertise = t("expertise.items");
+  const expertise = useMemo(() => t("expertise.items") || [], [t]);
 
   const visibleExpertise = useMemo(() => {
     if (showAll) return expertise;

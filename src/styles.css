@@ -26,6 +26,19 @@
   overscroll-behavior: none;
 }
 
+/* content-visibility: auto — browser skips layout/paint for off-screen sections.
+   contain-intrinsic-size preserves scrollbar accuracy with an estimated height.
+   Hero (#hero) is excluded — it's always the first visible section. */
+#skills,
+#work-experience,
+#expertise,
+#projects,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 700px;
+}
+
+
 /* The inner scroll container */
 .modal-body {
   overscroll-behavior: contain;
@@ -739,10 +752,8 @@ body.modal-open {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.inline-flex:hover {
-  transform: translateY(-2px) scale(1.05);
-  transition: all 0.2s ease;
-}
+
+
 
 .bg-clip-text {
   background-size: 200% 100%;

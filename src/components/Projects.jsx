@@ -18,11 +18,22 @@ const Projects = () => {
   });
   const [showAll, setShowAll] = useState(false);
 
-  const projects = t("projects.items");
-  const categories = t("projects.filters");
-  const card = t("projects.card");
-  const toggle = t("projects.toggle");
-  const modal = t("projects.modal");
+  const {
+    projects,
+    categories,
+    card,
+    toggle,
+    modal,
+  } = useMemo(
+    () => ({
+      projects:   t("projects.items")   || [],
+      categories: t("projects.filters") || [],
+      card:       t("projects.card")    || {},
+      toggle:     t("projects.toggle")  || {},
+      modal:      t("projects.modal")   || {},
+    }),
+    [t]
+  );
 
   const filteredProjects = useMemo(() => {
     if (filter === "all") return projects;
@@ -196,6 +207,8 @@ const Projects = () => {
                       <img
                         src={project.image}
                         alt={project.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-48 object-cover rounded-t-xl"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

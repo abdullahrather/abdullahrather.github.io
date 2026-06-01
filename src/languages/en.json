@@ -154,5 +154,82 @@
         "tag": "Internship"
       }
     ]
+  },
+  "expertise": {
+    "heading": "Core Focus",
+    "show_less": "Show Less",
+    "view_all": "View All Focus Areas",
+    "showing": "Showing {visible} of {total}",
+    "items": [
+      {
+        "title": "Enterprise Platforms & Workflow Systems",
+        "description": "Internal platforms for operations, project tracking, document handling, and multi-role workflows.",
+        "features": [
+          "Workflow & Ticket Modules",
+          "Document Management",
+          "Role-based Access Control (RBAC)",
+          "Multi-language Support"
+        ],
+        "iconPath": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+      },
+      {
+        "title": "API Integrations & Automation",
+        "description": "Integrations and automation for third-party systems, including German accounting standards.",
+        "features": [
+          "REST API Integrations",
+          "DATEV & ZUGFeRD Compliance",
+          "Data Sync & Automation",
+          "Secure Webhooks"
+        ],
+        "iconPaths": [
+          "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+          "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+        ]
+      },
+      {
+        "title": "PHP Backend Engineering",
+        "description": "Backend services with clean architecture, testing, and scalable APIs.",
+        "features": [
+          "Laravel / Yii / Symfony",
+          "REST API Design",
+          "Authentication & RBAC",
+          "PHPUnit Testing"
+        ],
+        "iconPath": "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+      },
+      {
+        "title": "Full-Stack Web Delivery",
+        "description": "Modern front ends connected to reliable APIs for data-heavy apps.",
+        "features": [
+          "React UI Development",
+          "Admin Dashboards",
+          "State Management",
+          "Performance Tuning"
+        ],
+        "iconPath": "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+      },
+      {
+        "title": "Legacy Modernization & Performance",
+        "description": "Upgrade and refactor legacy PHP systems for stability, security, and speed.",
+        "features": [
+          "PHP 7.4 to 8.2 Upgrades",
+          "Legacy Refactors",
+          "OOP Design Patterns",
+          "Performance Optimization"
+        ],
+        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+      },
+      {
+        "title": "Technical Leadership",
+        "description": "Lead teams and deliver predictable releases with clear standards.",
+        "features": [
+          "Team Mentoring",
+          "Code Reviews",
+          "Release Planning",
+          "Agile Delivery"
+        ],
+        "iconPath": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+      }
+    ]
   }
 }

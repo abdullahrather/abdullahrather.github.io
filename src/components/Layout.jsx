@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { Link as ScrollLink } from "react-scroll";
+import { useTranslation } from "../lib/i18n";
 
 const Layout = ({ children }) => {
+  const { t } = useTranslation();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -54,9 +57,9 @@ const Layout = ({ children }) => {
     const updateActiveSection = () => {
       const sections = [
         "hero",
-        "about",
+        "skills",
         "work-experience",
-        "services",
+        "expertise",
         "projects",
         "contact",
       ];
@@ -71,16 +74,27 @@ const Layout = ({ children }) => {
       }
     };
 
+    // rAF throttle: runs at most once per display frame (~16ms at 60fps)
+    // instead of on every scroll microtask (up to 60+ calls/sec)
+    let rafId = null;
     const handleScroll = () => {
-      updateScrollProgress();
-      updateActiveSection();
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        updateScrollProgress();
+        updateActiveSection();
+        rafId = null;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
+
 
   useEffect(() => {
     const observerOptions = {
@@ -173,10 +187,10 @@ const Layout = ({ children }) => {
             <nav className='hidden lg:flex items-center nav-desktop'>
               <div className='relative flex items-center'>
                 {[
-                  { to: "about", label: "About" },
-                  { to: "work-experience", label: "Experience" },
-                  { to: "services", label: "Services" },
-                  { to: "projects", label: "Projects" },
+                  { to: "skills", label: t("layout.nav.skills") },
+                  { to: "work-experience", label: t("layout.nav.experience") },
+                  { to: "expertise", label: t("layout.nav.expertise") },
+                  { to: "projects", label: t("layout.nav.projects") },
                 ].map((item, index) => (
                   <ScrollLink
                     key={item.to}
@@ -199,11 +213,11 @@ const Layout = ({ children }) => {
                   }`}
                   style={{
                     left:
-                      activeSection === "about"
+                      activeSection === "skills"
                         ? "0%"
                         : activeSection === "work-experience"
                         ? "25%"
-                        : activeSection === "services"
+                        : activeSection === "expertise"
                         ? "50%"
                         : activeSection === "projects"
                         ? "75%"
@@ -214,6 +228,7 @@ const Layout = ({ children }) => {
               </div>
 
               <div className='ml-8 flex items-center gap-4'>
+                <LanguageSwitcher />
                 <button
                   onClick={toggleDarkMode}
                   className='p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors'
@@ -248,13 +263,14 @@ const Layout = ({ children }) => {
                     activeSection === "contact" ? "ring-2 ring-indigo-300" : ""
                   }`}
                 >
-                  Get In Touch
+                  {t("layout.nav.cta")}
                 </ScrollLink>
               </div>
             </nav>
 
             {/* Mobile Controls */}
             <div className='flex items-center lg:hidden gap-2'>
+              <LanguageSwitcher />
               <button
                 onClick={toggleDarkMode}
                 className='p-2 rounded-full hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors'
@@ -368,7 +384,7 @@ const Layout = ({ children }) => {
             <div className='flex flex-col p-6 space-y-4 mt-4'>
               {[
                 {
-                  to: "about",
+                  to: "skills",
                   icon: (
                     <svg
                       className='h-6 w-6'
@@ -384,7 +400,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "About",
+                  label: t("layout.nav.skills"),
                 },
                 {
                   to: "work-experience",
@@ -403,10 +419,10 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "Experience",
+                  label: t("layout.nav.experience"),
                 },
                 {
-                  to: "services",
+                  to: "expertise",
                   icon: (
                     <svg
                       className='h-6 w-6'
@@ -422,7 +438,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "Services",
+                  label: t("layout.nav.expertise"),
                 },
                 {
                   to: "projects",
@@ -441,7 +457,7 @@ const Layout = ({ children }) => {
                       />
                     </svg>
                   ),
-                  label: "Projects",
+                  label: t("layout.nav.projects"),
                 },
               ].map((item) => (
                 <ScrollLink
@@ -492,7 +508,7 @@ const Layout = ({ children }) => {
                   activeSection === "contact" ? "ring-2 ring-indigo-300" : ""
                 }`}
               >
-                Get Started
+                {t("layout.mobile_menu.cta")}
               </ScrollLink>
             </div>
           </div>
@@ -512,7 +528,7 @@ const Layout = ({ children }) => {
             © {new Date().getFullYear()} Abdullah Rather.
           </p>
           <p className='opacity-60 mt-2'>
-            Built with ❤️ and passion for innovation
+            {t("layout.footer.built_with")}
           </p>
         </div>
       </footer>

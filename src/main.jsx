@@ -3,10 +3,13 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { trackLink } from "./lib/analytics";
+import { TranslationProvider } from "./lib/i18n";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <TranslationProvider>
+      <App />
+    </TranslationProvider>
   </StrictMode>
 );
 

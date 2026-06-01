@@ -26,6 +26,19 @@
   overscroll-behavior: none;
 }
 
+/* content-visibility: auto — browser skips layout/paint for off-screen sections.
+   contain-intrinsic-size preserves scrollbar accuracy with an estimated height.
+   Hero (#hero) is excluded — it's always the first visible section. */
+#skills,
+#work-experience,
+#expertise,
+#projects,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 700px;
+}
+
+
 /* The inner scroll container */
 .modal-body {
   overscroll-behavior: contain;
@@ -739,10 +752,8 @@ body.modal-open {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.inline-flex:hover {
-  transform: translateY(-2px) scale(1.05);
-  transition: all 0.2s ease;
-}
+
+
 
 .bg-clip-text {
   background-size: 200% 100%;
@@ -1307,142 +1318,12 @@ html.dark .nav-mobile-item:hover {
   border-radius: 0.5rem;
 }
 
-/* Loading state transitions */
-.content-loading {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
-}
-
-.content-loaded {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-enter {
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-}
-
-.section-enter-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.section-exit {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.section-exit-active {
-  opacity: 0;
-  transform: translateY(-20px) scale(1.05);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Enhanced page transitions */
-.page-transition {
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stagger-animation>* {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.stagger-animation>*:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.stagger-animation>*:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.stagger-animation>*:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.stagger-animation>*:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-.stagger-animation>*:nth-child(5) {
-  animation-delay: 0.5s;
-}
-
-.stagger-animation>*:nth-child(6) {
-  animation-delay: 0.6s;
-}
-
-/* Loading screen styles */
-.loading-screen {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  /* Ensure proper positioning */
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 9999 !important;
-}
-
-.loading-particle {
-  box-shadow: 0 0 15px rgba(165, 180, 252, 0.6),
-    0 0 30px rgba(129, 140, 248, 0.3);
-}
-
-.loading-screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(2px 2px at 20px 30px,
-      rgba(255, 255, 255, 0.3),
-      transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(165, 180, 252, 0.4), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(129, 140, 248, 0.3), transparent),
-    radial-gradient(1px 1px at 130px 80px,
-      rgba(255, 255, 255, 0.2),
-      transparent);
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  animation: sparkle-move 20s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes sparkle-move {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-
-  100% {
-    transform: translateX(-150px) translateY(-150px);
-  }
-}
 
 .nav-container,
 .project-card,
 .service-card,
 .contact-card,
-.about-content-left,
+.skills-content-left,
 .skills-section {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);

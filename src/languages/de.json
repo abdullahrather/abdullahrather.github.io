@@ -1,0 +1,892 @@
+{
+  "hero": {
+    "title": "Über mich",
+    "role": "Backend / Full-Stack Entwickler",
+    "summary": "Ich entwerfe und liefere APIs und datengesteuerte Plattformen, die die Zuverlässigkeit und Automatisierung in der Produktion verbessern. Erfahren mit Backend-Frameworks, relationalen Datenbanken, Docker-Containern und CI/CD-Pipelines. Mit {years}+ Jahren Erfahrung im Aufbau von Enterprise-Web-Anwendungen, REST-APIs, internen Plattformen und datenbankgesteuerten Geschäftssystemen.",
+    "badges": {
+      "delivery": "Über 15 Produktions-Deployments mit automatisierter CI/CD.",
+      "integration": "Integrationen für Enterprise-Workflows entwickelt (20+).",
+      "experience": "{years}+ Jahre Erfahrung",
+      "backend_apis": "Backend APIs",
+      "location": "Mit Sitz in Deutschland",
+      "tooling": "Docker & CI/CD"
+    },
+    "buttons": {
+      "projects": "Projekte",
+      "experience": "Erfahrung",
+      "resume": "Lebenslauf",
+      "view_resume": "Lebenslauf ansehen",
+      "download_resume": "Lebenslauf herunterladen"
+    },
+    "modal": {
+      "title": "Berufliche Profile",
+      "connect_title": "Lassen Sie uns in Kontakt treten!",
+      "connect_text": "Ich bin immer offen für Gespräche über neue Möglichkeiten, Kooperationen oder einfach für den Austausch mit anderen Entwicklern. Kontaktieren Sie mich gerne über eine dieser Plattformen.",
+      "connect_subtitle": "Kontaktieren Sie mich auf verschiedenen Plattformen",
+      "profiles": {
+        "linkedin": {
+          "name": "LinkedIn",
+          "description": "Berufliches Netzwerk & Karriere-Highlights"
+        },
+        "github": {
+          "name": "GitHub",
+          "description": "Open Source Projekte & Code-Repositories"
+        },
+        "xing": {
+          "name": "Xing",
+          "description": "Deutsches berufliches Netzwerk"
+        },
+        "email": {
+          "name": "E-Mail",
+          "description": "Direkter beruflicher Kontakt"
+        }
+      }
+    }
+  },
+  "skills": {
+    "stats": {
+      "years_experience": "Jahre Erfahrung",
+      "enterprise_integrations": "Enterprise-Integrationen",
+      "production_deployments": "Produktions-Deployments",
+      "core_technologies": "Kerntechnologien"
+    },
+    "headings": {
+      "experience_snapshot": "Erfahrungsüberblick",
+      "major_technical_skills": "Wichtigste technische Fähigkeiten"
+    },
+    "intro": {
+      "paragraph1": "Ich bin ein Backend / Full-Stack Entwickler mit {years}+ Jahren Erfahrung im Aufbau von Enterprise-Web-Apps, REST-APIs, internen Plattformen und datenbankgesteuerten Geschäftssystemen. Mein Tech-Stack umfasst Laravel, Yii, Symfony, MySQL/MariaDB, Docker und CI/CD.",
+      "paragraph2": "Ich habe Unternehmensmanagement-, EMIS- und Spendenmanagementsysteme geliefert, Teams geleitet und die Verantwortung von den Anforderungen bis zum Deployment übernommen. Mein Fokus liegt auf sauberer Architektur, Berichterstattung, zuverlässigen Integrationen (einschließlich DATEV) und wartbarem Code."
+    },
+    "items": {
+      "backend_stack": "PHP, Laravel, Symfony, Yii",
+      "devops": "Docker & CI/CD",
+      "frontend": "JavaScript & React",
+      "python": "Python & Flask",
+      "databases": "MySQL & PostgreSQL",
+      "api_integrations": "REST APIs & Integrationen",
+      "git_ci": "Git & GitHub Actions",
+      "architecture": "Systemarchitektur",
+      "leadership": "Technische Leitung"
+    },
+    "levels": {
+      "expert": "Experte",
+      "advanced": "Fortgeschritten",
+      "intermediate": "Mittel"
+    },
+    "mission": "Ich bin darauf spezialisiert, erstklassige Softwarelösungen zu entwerfen und zu implementieren, die komplexe geschäftliche Herausforderungen lösen. Dabei kombiniere ich moderne Entwicklungspraktiken mit zuverlässigen Integrationen, um messbare Ergebnisse zu liefern."
+  },
+  "workExperience": {
+    "badge": "Karriere-Zeitachse",
+    "heading": "Berufserfahrung",
+    "description": "Ein kompakter Überblick über die Rollen hinter dem Lebenslauf, mit Fokus auf Backend-Verantwortung, Systemdenken und Lieferung in Produktionsumgebungen.",
+    "duration_label": "Dauer",
+    "key_impact": "Wichtigste Erfolge",
+    "present": "Heute",
+    "less_than_month": "Weniger als 1 Monat",
+    "year": "Jahr",
+    "years": "Jahre",
+    "month": "Monat",
+    "months": "Monate",
+    "entries": [
+      {
+        "company": "APS Services GmbH",
+        "website": "https://www.apsservices.de/",
+        "location": "Neckarsulm, Deutschland",
+        "role": "Softwareentwickler",
+        "summary": "Weiterentwicklung und Pflege eines umfassenden Unternehmensmanagementsystems zur Unterstützung von Kunden, Tickets, Angeboten, Aufträgen, Rechnungsstellung, Projekt-Workflows, Mitarbeiterzeiterfassung und Reporting.",
+        "highlights": [
+          "Entwicklung von REST-Integrationen, einschließlich DATEV-bezogener Workflows, und Beitrag zu sicherer Authentifizierung, rollenbasierter Zugriffskontrolle und geschäftskritischer Automatisierung interner Prozesse.",
+          "Entwicklung von Reporting-, Export- und Dashboard-Funktionen bei gleichzeitiger Verbesserung von Wartbarkeit, Benutzerfreundlichkeit und Leistung durch Code-Optimierung und Verfeinerung von Datenbankabfragen.",
+          "Beitrag zur Modernisierung von Legacy-Anwendungsbereichen durch strukturierte Backend-Logik, Refactoring, Testing und Continuous-Integration-Praktiken.",
+          "Erstellung responsiver interner Schnittstellen und AJAX-basierter Workflows zur Unterstützung effizienter täglicher Abläufe in mehreren Modulen."
+        ],
+        "accent": "from-indigo-500 to-cyan-500",
+        "startDate": "2024-07-01",
+        "endDate": null,
+        "tag": "Teilzeit"
+      },
+      {
+        "company": "Qualven Pvt Ltd",
+        "website": "https://qualven.com/qv-web/",
+        "location": "Islamabad, Pakistan",
+        "role": "Technischer Teamleiter",
+        "summary": "Leitung eines fünfköpfigen Teams bei gleichzeitiger starker praktischer Beteiligung an Design, Entwicklung, Tests, Deployment und Wartung von PHP-basierten Geschäftsanwendungen.",
+        "highlights": [
+          "Aufbau der Backend-Logik, Integration von APIs, Implementierung von Frontend-Backend-Workflows und direkter Beitrag zu neuen Funktionen über mehrere Webanwendungen hinweg.",
+          "Arbeit an Datenbankdesign, Schemaänderungen, Optimierung und Datenverarbeitung zur Unterstützung sich entwickelnder Backend-Anforderungen und neu eingeführter Geschäftsfunktionen.",
+          "Verwaltung von Deployments und Anwendungsaktualisierungen über Hosting-Umgebungen und Linux-basierte lokale Netzwerksysteme, einschließlich SSH-basierter Workflows und Produktionsunterstützung.",
+          "Aufrechterhaltung von Codierungsstandards, Code-Reviews, Dokumentation und sicheren, wartbaren Implementierungspraktiken bei gleichzeitiger Behebung technischer Blockaden und Unterstützung einer zuverlässigen Softwarebereitstellung."
+        ],
+        "accent": "from-emerald-500 to-teal-500",
+        "startDate": "2021-11-01",
+        "endDate": "2024-04-01",
+        "tag": "Vollzeit Vor Ort"
+      },
+      {
+        "company": "The Science School",
+        "website": "https://thescienceschool.edu.pk/tss-web/index.php",
+        "location": "Islamabad, Pakistan",
+        "role": "Software-Ingenieur",
+        "summary": "Leitung der Entwicklung und Wartung eines zentralisierten Education Management Information Systems zur Unterstützung von Workflows für Schüler, Mitarbeiter, Finanzen und Benutzerverwaltung.",
+        "highlights": [
+          "Verwaltung relationaler Datenbankstrukturen, Backend-Logik und sicherer Zugriffsabläufe mit starkem Fokus auf Datenintegrität, Zuverlässigkeit und Wartbarkeit.",
+          "Implementierung von Authentifizierung, Autorisierung und rollenbasierter Zugriffskontrolle für Administratoren und Mitarbeiter in mehreren Modulen.",
+          "Verbesserung der Systemleistung, Sicherheit und Kompatibilität durch strukturierte Upgrades, Infrastrukturverbesserungen und kontinuierliche Anwendungsverfeinerung."
+        ],
+        "accent": "from-purple-500 to-fuchsia-500",
+        "startDate": "2022-04-01",
+        "endDate": "2024-04-01",
+        "tag": "Vollzeit Remote"
+      },
+      {
+        "company": "Qualven Pvt Ltd",
+        "website": "https://qualven.com/qv-web/",
+        "location": "Islamabad, Pakistan",
+        "role": "Technischer Praktikant",
+        "summary": "Beitrag zur Full-Stack-Funktionsentwicklung über PHP-Backends und HTML/CSS, JavaScript und Bootstrap-Frontendkomponenten hinweg.",
+        "highlights": [
+          "Unterstützung von Deployments, Dokumentation, Wartung, Benutzerschulung und internen/Kunden-Präsentationen."
+        ],
+        "accent": "from-amber-500 to-orange-500",
+        "startDate": "2021-01-01",
+        "endDate": "2021-07-01",
+        "tag": "Praktikum"
+      }
+    ]
+  },
+  "expertise": {
+    "heading": "Kernfokus",
+    "show_less": "Weniger anzeigen",
+    "view_all": "Alle Fokusbereiche anzeigen",
+    "showing": "Zeige {visible} von {total}",
+    "items": [
+      {
+        "title": "Enterprise-Plattformen & Workflow-Systeme",
+        "description": "Interne Plattformen für den Betrieb, die Projektverfolgung, die Dokumentenverarbeitung und Rollen-Workflows.",
+        "features": [
+          "Workflow- & Ticketmodule",
+          "Dokumentenmanagement",
+          "Rollenbasierte Zugriffskontrolle (RBAC)",
+          "Mehrsprachige Unterstützung"
+        ],
+        "iconPath": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+      },
+      {
+        "title": "API-Integrationen & Automatisierung",
+        "description": "Integrationen und Automatisierung für Drittanbieter-Systeme, einschließlich deutscher Buchhaltungsstandards.",
+        "features": [
+          "REST API-Integrationen",
+          "DATEV & ZUGFeRD Konformität",
+          "Datensynchronisation & Automatisierung",
+          "Sichere Webhooks"
+        ],
+        "iconPaths": [
+          "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+          "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+        ]
+      },
+      {
+        "title": "PHP Backend-Engineering",
+        "description": "Backend-Dienste mit sauberer Architektur, Testing und skalierbaren APIs.",
+        "features": [
+          "Laravel / Yii / Symfony",
+          "REST API Design",
+          "Authentifizierung & RBAC",
+          "PHPUnit Testing"
+        ],
+        "iconPath": "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+      },
+      {
+        "title": "Full-Stack Web-Bereitstellung",
+        "description": "Moderne Frontends verbunden mit zuverlässigen APIs für datenintensive Apps.",
+        "features": [
+          "React UI-Entwicklung",
+          "Admin-Dashboards",
+          "State Management",
+          "Performance-Tuning"
+        ],
+        "iconPath": "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+      },
+      {
+        "title": "Legacy-Modernisierung & Leistung",
+        "description": "Aktualisierung und Refactoring von Legacy-PHP-Systemen für Stabilität, Sicherheit und Geschwindigkeit.",
+        "features": [
+          "PHP 7.4 auf 8.2 Upgrades",
+          "Legacy-Refactorings",
+          "OOP-Designmuster",
+          "Leistungsoptimierung"
+        ],
+        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+      },
+      {
+        "title": "Technische Leitung",
+        "description": "Leitung von Teams und Lieferung berechenbarer Releases mit klaren Standards.",
+        "features": [
+          "Team-Mentoring",
+          "Code-Reviews",
+          "Release-Planung",
+          "Agile Lieferung"
+        ],
+        "iconPath": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Kontakt aufnehmen",
+    "subheading": "Bereit für eine Zusammenarbeit bei Ihrem nächsten Projekt? Lassen Sie uns besprechen, wie ich helfen kann, skalierbare Lösungen für Ihre Geschäftsanforderungen zu entwickeln.",
+    "info_heading": "Kontaktinformationen",
+    "connect_heading": "Verbinden Sie sich mit mir:",
+    "form_heading": "Nachricht senden",
+    "recaptcha_unavailable": "reCAPTCHA ist in dieser Umgebung nicht verfügbar.",
+    "alert_recaptcha": "Bitte füllen Sie das reCAPTCHA vor dem Absenden aus.",
+    "status": {
+      "success_title": "Erfolg!",
+      "success_body": "Nachricht erfolgreich gesendet! Ich melde mich bald bei Ihnen.",
+      "error": "❌ Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut oder kontaktieren Sie mich direkt.",
+      "config_missing": "Das Kontaktformular ist in dieser Umgebung nicht konfiguriert. Bitte verwenden Sie stattdessen den E-Mail-Link.",
+      "not_configured": "Das Kontaktformular ist hier nicht konfiguriert. Bitte verwenden Sie den E-Mail-Link, um Kontakt aufzunehmen."
+    },
+    "form": {
+      "name": "Ihr Name",
+      "email": "E-Mail-Adresse",
+      "subject": "Betreff",
+      "message": "Nachricht",
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet..."
+    },
+    "contact_info": [
+      {
+        "title": "E-Mail",
+        "value": "abdullahrather19@gmail.com",
+        "link": "mailto:abdullahrather19@gmail.com",
+        "iconPath": "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      },
+      {
+        "title": "Standort",
+        "value": "Deutschland (Offen für Umzug)",
+        "link": "#",
+        "iconPaths": [
+          "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
+          "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+        ]
+      },
+      {
+        "title": "Aktuelle Rolle",
+        "value": "Full-Stack Softwareentwickler",
+        "link": "#",
+        "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"
+      },
+      {
+        "title": "Verfügbarkeit",
+        "value": "Offen für Vollzeitrollen (Freelance möglich)",
+        "link": "#",
+        "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+      }
+    ],
+    "social_links": [
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/abdullahrather"
+      },
+      {
+        "name": "Xing",
+        "url": "https://www.xing.com/profile/Abdullah_Rather"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/abdullahrather"
+      },
+      {
+        "name": "E-Mail",
+        "url": "mailto:abdullahrather19@gmail.com"
+      }
+    ]
+  },
+  "layout": {
+    "nav": {
+      "skills": "Fähigkeiten",
+      "experience": "Erfahrung",
+      "expertise": "Expertise",
+      "projects": "Projekte",
+      "cta": "Kontakt"
+    },
+    "mobile_menu": {
+      "cta": "Loslegen"
+    },
+    "footer": {
+      "built_with": "Entwickelt mit ❤️ und Leidenschaft für Innovation"
+    }
+  },
+  "projects": {
+    "heading": "Ausgewählte Projekte",
+    "subheading": "Ausgewählte Arbeiten, die Unternehmensplattformen, Integrationen und End-to-End-Bereitstellung hervorheben.",
+    "filters": [
+      {
+        "id": "all",
+        "name": "Alle Projekte"
+      },
+      {
+        "id": "public",
+        "name": "Öffentliche Repos"
+      },
+      {
+        "id": "fullstack",
+        "name": "Full-Stack"
+      },
+      {
+        "id": "web",
+        "name": "Web-Apps"
+      }
+    ],
+    "card": {
+      "key_features": "Hauptmerkmale:",
+      "more": "mehr",
+      "flip_title": "Karte für Kurzinfos umdrehen",
+      "github_title": "Auf GitHub ansehen",
+      "details_title": "Details ansehen",
+      "category_label": "Kategorie:",
+      "technologies_label": "Technologien:",
+      "features_label": "Funktionen:",
+      "repository_label": "Repository:",
+      "private": "Privat",
+      "public": "Öffentlich",
+      "view_full_details": "Vollständige Details ansehen",
+      "view_source": "Quellcode ansehen"
+    },
+    "toggle": {
+      "show_less": "Weniger anzeigen",
+      "view_all": "Alle Projekte ansehen",
+      "showing": "Zeige {visible} von {total}"
+    },
+    "modal": {
+      "overview": "Projektübersicht",
+      "technologies": "Verwendete Technologien",
+      "key_features": "Hauptmerkmale",
+      "dev_details": "Entwicklungsdetails",
+      "private_repo": "Privates Repository",
+      "view_github": "Auf GitHub ansehen",
+      "close": "Schließen"
+    },
+    "items": [
+      {
+        "id": 1,
+        "title": "Unternehmensmanagementsystem",
+        "description": "Unternehmensplattform für Abläufe, Dokumentenverarbeitung und Compliance-lastige Workflows mit DATEV-Integration und Mehrsprachigkeit in Yii.",
+        "image": "/images/projects/enterprise-management.webp",
+        "technologies": [
+          "Yii Framework",
+          "PHP",
+          "MySQL",
+          "JavaScript",
+          "DATEV API",
+          "Bootstrap"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Projektmanagement",
+          "DATEV-Integration",
+          "ZUGFeRD-XML-Generierung",
+          "Mehrsprachigkeit"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Strukturiert als Multi-Modul-Yii-Anwendung, um Admin-Workflows, Dokumentenhandhabung und Integrationen isoliert und wartbar zu halten."
+          },
+          {
+            "label": "Daten & Compliance",
+            "text": "DATEV- und ZUGFeRD-Abläufe implementiert, um den finanzorientierten Dokumentenaustausch mit konsistenter Datenhandhabung zu unterstützen."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Bietet operativen Teams einen zentralisierten Arbeitsbereich für Projektverfolgung, Dokumentenverarbeitung und mehrsprachige Zusammenarbeit."
+          }
+        ],
+        "github": "#",
+        "demo": "#"
+      },
+      {
+        "id": 2,
+        "title": "Education Management Information System (EMIS)",
+        "description": "Bildungsmanagementsystem für Zulassungen, Schüler- und Mitarbeiterdaten, Elternzugang und Finanz-Workflows, entwickelt mit PHP.",
+        "image": "/images/projects/education-management.webp",
+        "technologies": [
+          "PHP",
+          "PHPMaker",
+          "JavaScript",
+          "jQuery",
+          "MySQL"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Zulassungen & Einschreibung",
+          "Schüler- & Mitarbeiterdaten",
+          "Elternportal",
+          "Finanzen & Berichte"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Rund um Schulverwaltungs-Workflows organisiert, sodass sich Zulassungs-, Aufzeichnungs- und Finanzmodule unabhängig voneinander weiterentwickeln können."
+          },
+          {
+            "label": "Datenmanagement",
+            "text": "Entworfen um Schüler-, Mitarbeiter- und Elterndatensätze mit berichtfertigen Strukturen für administrative Übersicht."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Reduzierte manuelle Koordination durch Zusammenführung akademischer, elternbezogener und finanzieller Prozesse in ein einziges System."
+          }
+        ],
+        "github": "#",
+        "demo": "#"
+      },
+      {
+        "id": 3,
+        "title": "Spendenmanagementsystem",
+        "description": "Plattform für Spender- und Kampagnenmanagement mit Laravel und React für Beitragsverfolgung, Berichterstattung und Outreach-Workflows.",
+        "image": "/images/projects/donor-management.webp",
+        "technologies": [
+          "Laravel",
+          "React",
+          "MySQL",
+          "JavaScript"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Spenderprofile",
+          "Kampagnen-Tracking",
+          "Beitragsberichte",
+          "Zahlungsintegrationen"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Gebaut als Laravel-gestützte Admin-Plattform mit React-gesteuerten Bildschirmen für schnelle Spender- und Kampagnenoperationen."
+          },
+          {
+            "label": "Workflow-Design",
+            "text": "Fokus auf die Verwaltung des Beitragslebenszyklus, von Spenderprofilen über Kampagnenberichte bis hin zu Zahlungspunkten."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Hilft Fundraising-Teams, Beiträge zu verfolgen, Kampagnen zu messen und die Berichterstattung an den tatsächlichen Aktivitäten auszurichten."
+          }
+        ],
+        "github": "#",
+        "demo": "#"
+      },
+      {
+        "id": 4,
+        "title": "Task Manager",
+        "description": "Aufgabenverwaltungssystem mit Symfony für strukturierte Workflows, Teamzusammenarbeit und rollenbasierte Zugriffssteuerung.",
+        "image": "/images/projects/task-manager.png",
+        "technologies": [
+          "Symfony",
+          "PHP",
+          "MySQL",
+          "Twig",
+          "JavaScript"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Aufgabenverfolgung",
+          "Rollenbasierter Zugriff",
+          "Status-Workflows",
+          "Team-Zusammenarbeit"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Implementiert als Symfony-Anwendung mit klarer Trennung zwischen Aufgaben-Workflow-Logik, Rollen und UI-Aktionen."
+          },
+          {
+            "label": "Workflow-Design",
+            "text": "Unterstützt statusgesteuerte Aufgabenbewegungen, damit Teammitglieder Arbeit durch vorhersehbare Phasen verwalten können."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Verbessert die Lieferkoordination, indem es Teams einen gemeinsamen Raum für Aufgaben, Verantwortlichkeiten und Fortschrittsverfolgung bietet."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/TaskManager-Symfony",
+        "demo": "#"
+      },
+      {
+        "id": 5,
+        "title": "Portfolio Website",
+        "description": "Joborientiertes persönliches Portfolio, erstellt mit React, Vite und Tailwind CSS, mit Animationen, Projekthighlights und EmailJS-Kontaktautomatisierung.",
+        "image": "/images/projects/portfolio-website.png",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "JavaScript"
+        ],
+        "category": "web",
+        "features": [
+          "Responsives Layout",
+          "GSAP-Animationen",
+          "Projektpräsentation",
+          "EmailJS-Kontaktautomatisierung",
+          "Benutzerdefinierte Autoresponder & Antwortvorlagen"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Als React- und Vite-Single-Page-Erlebnis mit animationsgesteuerten Bereichen und wiederverwendbaren Inhaltsblöcken erstellt."
+          },
+          {
+            "label": "Automatisierungs-Workflow",
+            "text": "EmailJS integriert, um Kontaktübermittlungen in einen markengerechten Autoresponder und Antwortbenachrichtigungsablauf zu leiten."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Macht aus dem Portfolio eine aktive Lead-Erfassungsfläche anstelle einer statischen Showcase-Seite."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/abdullahrather.github.io",
+        "demo": "https://abdullahrather.github.io/"
+      },
+      {
+        "id": 6,
+        "title": "Währungsrechner App",
+        "description": "Echtzeit-Währungsumrechnungsanwendung, erstellt mit Laravel, Live-Wechselkursen und reaktionsschneller Währungsumschaltung.",
+        "image": "/images/projects/currency-converter.png",
+        "technologies": [
+          "Laravel",
+          "GuzzleHttp",
+          "ExchangeRate API",
+          "PHP 8.2+"
+        ],
+        "category": "web",
+        "features": [
+          "Echtzeit-Wechselkurse",
+          "Währungswechselfunktion",
+          "Fehlerbehandlung",
+          "Responsives Design"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "API-Zugriff und Konvertierungslogik in Laravel beibehalten, damit Ratenabruf und UI-Verhalten leicht zu pflegen sind."
+          },
+          {
+            "label": "API-Zuverlässigkeit",
+            "text": "Guzzle-basierte Anfragen mit Fallback-Handling verwendet, um den Konvertierungsablauf vorhersehbar zu halten, wenn sich Raten ändern."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Bietet ein schlankes Finanzhilfsmittel mit aktuellen Austauschdaten und einem einfachen Benutzererlebnis."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/Currency-Converter-Laravel",
+        "demo": "#"
+      },
+      {
+        "id": 7,
+        "title": "Ticketmanagementsystem",
+        "description": "Workflow-gesteuertes Ticketverwaltungssystem mit Routing, Benachrichtigungen, Benutzerrollen und Berichtsfunktionen.",
+        "image": "/images/projects/ticket-management.webp",
+        "technologies": [
+          "PHP",
+          "Laravel",
+          "MySQL",
+          "JavaScript",
+          "AJAX"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Erweiterter Workflow",
+          "Benachrichtigungssystem",
+          "Rollenmanagement",
+          "Umfassende Berichterstattung"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Entworfen um Ticket-Zustände und rollenspezifische Aktionen, sodass Support-Prozesse organisiert und nachvollziehbar bleiben."
+          },
+          {
+            "label": "Workflow-Automatisierung",
+            "text": "Routing- und Benachrichtigungslogik integriert, um die richtigen Tickets zur richtigen Zeit den richtigen Benutzern zu präsentieren."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Verbessert den Support-Durchsatz und die Sichtbarkeit durch Reduzierung manueller Ticketbearbeitung."
+          }
+        ],
+        "github": "#",
+        "demo": "#"
+      },
+      {
+        "id": 8,
+        "title": "Mitarbeiter-Leistungs-Tracker",
+        "description": "HR-Leistungsverfolgungssystem mit Kennzahlen, Dashboards, Analysen und Exportfunktionen.",
+        "image": "/images/projects/employee-performance.webp",
+        "technologies": [
+          "PHP",
+          "Laravel",
+          "ApexCharts.js",
+          "MySQL",
+          "CSS"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Leistungsanalyse",
+          "Datenvisualisierung",
+          "CSV/PDF-Export",
+          "Mitarbeiter-Dashboard"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Als analytikorientiertes HR-Dashboard aufgebaut, in dem Leistungsdaten und Exporte leicht erweiterbar bleiben."
+          },
+          {
+            "label": "Berichtsebene",
+            "text": "Fokus auf visuelle Scorecards und herunterladbare Berichte, damit Manager die Leistung schnell überprüfen können."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Verwandelt die Mitarbeiterverfolgung in einen messbaren Prozess anstelle eines manuellen Tabellenkalkulations-Workflows."
+          }
+        ],
+        "github": "#",
+        "demo": "#"
+      },
+      {
+        "id": 9,
+        "title": "Laravel Auth & Rollenmanagement App",
+        "description": "Laravel-Anwendung mit Schwerpunkt auf Authentifizierung, Autorisierung und rollenbasierter Zugriffskontrolle mit Gates, Richtlinien und Eloquent-Beziehungen.",
+        "image": "/images/projects/laravel-auth-role.webp",
+        "technologies": [
+          "Laravel",
+          "PHP",
+          "MariaDB",
+          "Blade",
+          "Bootstrap 5",
+          "Eloquent ORM"
+        ],
+        "category": "fullstack",
+        "features": [
+          "Benutzerauthentifizierung & Registrierung",
+          "Rollenbasierte Autorisierung",
+          "Implementierung von Gates & Richtlinien",
+          "Rollenspezifische Ansichten & Berechtigungen",
+          "CRUD-Operationen mit Zugriffskontrolle",
+          "Eloquent-Beziehungen",
+          "Datenbank-Seeding für Rollen"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Strukturiert um Authentifizierungs- und Zugriffskontrollgrenzen, sodass jede Rolle nur die richtigen Bildschirme und Aktionen sieht."
+          },
+          {
+            "label": "Sicherheitsmodell",
+            "text": "Gates, Richtlinien und rollenbewusste Ansichten angewendet, um Autorisierungsregeln in der gesamten App konsistent zu halten."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Bietet eine wiederverwendbare Grundlage für sichere, rollengesteuerte Admin-Systeme und CRUD-lastige Business-Tools."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
+        "demo": "#"
+      },
+      {
+        "id": 10,
+        "title": "Website für akademische Einrichtungen",
+        "description": "Maßgeschneiderte Website für akademische Institutionen mit CAPTCHA-geschützter Authentifizierung, rollenbasierten Dashboards, Leistungsmodulen und Formularmanagement.",
+        "image": "/images/projects/academic-institution.webp",
+        "technologies": [
+          "PHP",
+          "MySQL",
+          "JavaScript",
+          "CSS",
+          "HTML",
+          "CAPTCHA"
+        ],
+        "category": "web",
+        "features": [
+          "Sichere Benutzerregistrierung & Anmeldung",
+          "Passwort-Reset mit CAPTCHA-Verifizierung",
+          "Rollenbasiertes Dashboard",
+          "Noten & Top-Performer",
+          "Neuigkeiten & Ankündigungen",
+          "Event- & Komiteemanagement",
+          "Einreichung von Antragsformularen"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Entworfen als rollenbewusste Schulwebsite mit separaten öffentlichen Seiten und privaten Dashboards für Abläufe."
+          },
+          {
+            "label": "Benutzererlebnis",
+            "text": "Enthielt CAPTCHA-gestützte Registrierungs- und Wiederherstellungsabläufe, um Missbrauch zu reduzieren und den Zugriff unkompliziert zu halten."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Unterstützt akademische Kommunikation, Schülerdaten und Antragsbearbeitung auf einer einzigen Webplattform."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/CustomAcademy-PHP",
+        "demo": "#"
+      },
+      {
+        "id": 11,
+        "title": "Laravel Authentication & CRUD System",
+        "description": "Laravel 10 MVC-System, das Authentifizierung mit Produktmanagement-CRUD-Operationen und sicherem Benutzerzugriff kombiniert.",
+        "image": "/images/projects/laravel-auth-crud.webp",
+        "technologies": [
+          "Laravel 10",
+          "PHP",
+          "MySQL",
+          "Blade",
+          "JavaScript",
+          "CSS"
+        ],
+        "category": "web",
+        "features": [
+          "Benutzerregistrierung & Anmeldung",
+          "Produkt Erstellen/Lesen/Aktualisieren/Löschen",
+          "Formularvalidierung",
+          "MVC-Routing",
+          "Blade-Templating"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Basiert auf Laravel-MVC-Konventionen, um Authentifizierungs- und Produktmanagementlogik sauber getrennt zu halten."
+          },
+          {
+            "label": "Formularhandhabung",
+            "text": "Verwendete Validierung und CRUD-Ablaufsteuerung, um Produktaktionen sicher und vorhersehbar zu halten."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Dient als praktische Grundlage für interne Verwaltungstools, die sicheres Login sowie Content-Management erfordern."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
+        "demo": "#"
+      },
+      {
+        "id": 12,
+        "title": "Website für Unternehmensversicherungen",
+        "description": "Unternehmensversicherungs-Website mit dynamischer Anfrageübermittlung, Antragsbearbeitung, SQL-Schema-Skripten und gestalteten Komponenten.",
+        "image": "/images/projects/corporate-insurance.webp",
+        "technologies": [
+          "PHP",
+          "JavaScript",
+          "CSS",
+          "MySQL",
+          "Hack"
+        ],
+        "category": "web",
+        "features": [
+          "Dynamische Formularübermittlung",
+          "SQL-Schema-Einrichtung",
+          "Benutzerdefinierte PHP-Seiten",
+          "Clientseitige Validierung",
+          "Responsives Design"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Erstellt als benutzerdefinierte PHP-Seite mit separaten Frontend-Seiten und Backend-Formularbehandlung für Anfragen."
+          },
+          {
+            "label": "Lead-Erfassung",
+            "text": "Fokus auf die Konvertierung von Website-Besuchen in umsetzbare Anfragen durch einen klaren Übermittlungsablauf."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Hilft Versicherungsteams, Kundenanfragen mit weniger manuellem Aufwand zu erfassen und zu bearbeiten."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/CustomWebsite-PHP",
+        "demo": "#"
+      },
+      {
+        "id": 13,
+        "title": "Laravel Authentication Showcase",
+        "description": "Laravel-Authentifizierungs-Showcase zu Registrierung, An-/Abmeldung, Zurücksetzen des Passworts und E-Mail-Verifizierung durch Scaffolding und Middleware.",
+        "image": "/images/projects/laravel-auth-showcase.webp",
+        "technologies": [
+          "Laravel",
+          "PHP",
+          "Blade",
+          "MySQL",
+          "CSS",
+          "JavaScript"
+        ],
+        "category": "web",
+        "features": [
+          "Benutzerregistrierung",
+          "Anmelden & Abmelden",
+          "Passwort zurücksetzen",
+          "E-Mail-Verifizierung",
+          "Authentifizierungs-Middleware"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Entwickelt, um das Auth-Scaffolding und den Middleware-Ablauf von Laravel in einer sauberen, überprüfbaren Struktur zu demonstrieren."
+          },
+          {
+            "label": "Sicherheit & Zugriff",
+            "text": "Deckt den gesamten Benutzerlebenszyklus mit Passwortwiederherstellung und Verifizierung ab, um die Kontosicherheit zu stärken."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Nützlich als Referenzimplementierung für Teams, die eine grundlegende Authentifizierungseinrichtung benötigen."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/Auth-Laravel",
+        "demo": "#"
+      },
+      {
+        "id": 14,
+        "title": "Laravel MVC CRUD Application",
+        "description": "Laravel-MVC-Beispiel, das Erstellen, Lesen, Aktualisieren und Löschen (CRUD) mit Formularanforderungsvalidierung demonstriert.",
+        "image": "/images/projects/laravel-mvc-crud.webp",
+        "technologies": [
+          "Laravel",
+          "PHP",
+          "Blade",
+          "MySQL",
+          "CSS",
+          "JavaScript"
+        ],
+        "category": "web",
+        "features": [
+          "Ressourcenbasiertes Routing",
+          "Model-Controller-Bindung",
+          "Validierung von Formularanforderungen",
+          "Blade View Rendering",
+          "Datenbank-Migrationen"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Rund um ressourcenbasiertes Routing und MVC-Konventionen gebaut, um das CRUD-Verhalten leicht erweiterbar zu halten."
+          },
+          {
+            "label": "Datenschicht",
+            "text": "Verwendet Migrationen und Modellbindung, um Datenänderungen und Controller-Aktionen in Einklang zu halten."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Bietet einen praktischen Entwurf für Laravel-CRUD-Apps, die vorhersehbare Struktur und Validierung benötigen."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/CrudOperations-Laravel",
+        "demo": "#"
+      }
+    ]
+  }
+}

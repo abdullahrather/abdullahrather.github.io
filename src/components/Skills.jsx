@@ -2,44 +2,49 @@ import React, { useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useExperienceYears } from "../lib/experience";
+import { useTranslation } from "../lib/i18n";
 
-const About = () => {
+const Skills = () => {
   const experienceYears = useExperienceYears();
+  const { t } = useTranslation();
+
+  const missionText = t("skills.mission");
+  const missionTokens = useMemo(() => missionText.split(/(\s+)/), [missionText]);
 
   const stats = useMemo(
     () => [
       {
         number: `${experienceYears}+`,
-        label: "Years Experience",
+        label: t("skills.stats.years_experience"),
         targetValue: experienceYears,
         suffix: "+",
       },
       {
         number: "20+",
-        label: "Enterprise Integrations",
+        label: t("skills.stats.enterprise_integrations"),
         targetValue: 20,
         suffix: "+",
       },
       {
         number: "15+",
-        label: "Production Deployments",
+        label: t("skills.stats.production_deployments"),
         targetValue: 15,
         suffix: "+",
       },
       {
         number: "10+",
-        label: "Core Technologies",
+        label: t("skills.stats.core_technologies"),
         targetValue: 10,
         suffix: "+",
       },
     ],
-    [experienceYears]
+    [experienceYears, t]
   );
 
   const skills = useMemo(
     () => [
       {
-        name: "PHP, Laravel, Symfony, Yii",
+        name: t("skills.items.backend_stack"),
         level: 95,
         icon: (
           <svg
@@ -58,7 +63,7 @@ const About = () => {
         ),
       },
       {
-        name: "Docker & CI/CD",
+        name: t("skills.items.devops"),
         level: 82,
         icon: (
           <svg
@@ -95,7 +100,7 @@ const About = () => {
         ),
       },
       {
-        name: "JavaScript & React",
+        name: t("skills.items.frontend"),
         level: 85,
         icon: (
           <svg
@@ -108,7 +113,7 @@ const About = () => {
         ),
       },
       {
-        name: "Python & Flask",
+        name: t("skills.items.python"),
         level: 86,
         icon: (
           <svg
@@ -121,7 +126,7 @@ const About = () => {
         ),
       },
       {
-        name: "MySQL & PostgreSQL",
+        name: t("skills.items.databases"),
         level: 90,
         icon: (
           <svg
@@ -140,7 +145,7 @@ const About = () => {
         ),
       },
       {
-        name: "REST APIs & Integrations",
+        name: t("skills.items.api_integrations"),
         level: 90,
         icon: (
           <svg
@@ -159,7 +164,7 @@ const About = () => {
         ),
       },
       {
-        name: "Git & GitHub Actions",
+        name: t("skills.items.git_ci"),
         level: 85,
         icon: (
           <svg
@@ -172,7 +177,7 @@ const About = () => {
         ),
       },
       {
-        name: "System Architecture",
+        name: t("skills.items.architecture"),
         level: 88,
         icon: (
           <svg
@@ -191,7 +196,7 @@ const About = () => {
         ),
       },
       {
-        name: "Team Leadership",
+        name: t("skills.items.leadership"),
         level: 85,
         icon: (
           <svg
@@ -210,7 +215,7 @@ const About = () => {
         ),
       },
     ],
-    []
+    [t]
   );
 
   useEffect(() => {
@@ -219,9 +224,9 @@ const About = () => {
     // Mobile detection
     const isMobile = window.innerWidth <= 768;
 
-    gsap.to(".about-content-left", {
+    gsap.to(".skills-content-left", {
       scrollTrigger: {
-        trigger: ".about-content-left",
+        trigger: ".skills-content-left",
         start: isMobile ? "top 95%" : "top 90%",
       },
       opacity: 1,
@@ -343,10 +348,10 @@ const About = () => {
       );
     });
 
-    const textReveal = document.querySelector("#aboutTextReveal");
+    const textReveal = document.querySelector("#skillsTextReveal");
     if (textReveal) {
       // Set initial state
-      gsap.set("#aboutTextReveal", { opacity: 1, y: 0 });
+      gsap.set("#skillsTextReveal", { opacity: 1, y: 0 });
 
       const words = textReveal.querySelectorAll("span");
       const totalWords = words.length;
@@ -386,26 +391,22 @@ const About = () => {
 
   return (
     <>
-      {/* About Section */}
+      {/* Skills Section */}
       <section
-        id='about'
+        id='skills'
         className='py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900'
       >
         <div className='container mx-auto px-6'>
           <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div className='about-content-left opacity-0 transform translate-x-[-30px]'>
-              <h3 className='text-2xl font-bold mb-6'>Experience Snapshot</h3>
+            <div className='skills-content-left opacity-0 transform translate-x-[-30px]'>
+              <h3 className='text-2xl font-bold mb-6'>
+                {t("skills.headings.experience_snapshot")}
+              </h3>
               <p className='text-slate-600 dark:text-slate-300 mb-4'>
-                I'm a Backend / Full-Stack Developer with {experienceYears}+ years
-                building enterprise web apps, REST APIs, internal platforms, and
-                database-driven business systems. My core stack includes
-                Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.
+                {t("skills.intro.paragraph1", { years: experienceYears })}
               </p>
               <p className='text-slate-600 dark:text-slate-300 mb-6'>
-                I've delivered enterprise management, EMIS, and donor management
-                systems, leading teams and owning delivery from requirements to
-                deployment. I focus on clean architecture, reporting, reliable
-                integrations (including DATEV), and maintainable code.
+                {t("skills.intro.paragraph2")}
               </p>
 
               <div className='grid grid-cols-2 gap-4'>
@@ -427,7 +428,7 @@ const About = () => {
 
             <div className='skills-section opacity-0 transform translate-x-[30px]'>
               <h3 className='text-2xl font-bold mb-6'>
-                Major Technical Skills
+                {t("skills.headings.major_technical_skills")}
               </h3>
               <div className='space-y-4'>
                 {skills.map((skill, index) => (
@@ -442,10 +443,10 @@ const About = () => {
                       <div className='flex items-center space-x-2'>
                         <span className='skill-badge opacity-0 px-2 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white'>
                           {skill.level >= 90
-                            ? "Expert"
+                            ? t("skills.levels.expert")
                             : skill.level >= 80
-                            ? "Advanced"
-                            : "Intermediate"}
+                            ? t("skills.levels.advanced")
+                            : t("skills.levels.intermediate")}
                         </span>
                         <span className='skill-percentage text-slate-600 dark:text-slate-300'>
                           0%
@@ -471,22 +472,16 @@ const About = () => {
         <div className='max-w-5xl mx-auto px-6'>
           <div className='text-reveal-container'>
             <p
-              id='aboutTextReveal'
+              id='skillsTextReveal'
               className='text-reveal text-3xl md:text-4xl font-medium leading-relaxed'
             >
-              <span>I</span>&nbsp;<span>specialize</span>&nbsp;<span>in</span>{" "}
-              <span>designing</span>&nbsp;
-              <span>and</span>&nbsp;<span>implementing</span>{" "}
-              <span>enterprise-grade</span>&nbsp;
-              <span>software</span>&nbsp;<span>solutions</span>&nbsp;
-              <span>that</span> <span>solve</span>&nbsp;
-              <span>complex</span>&nbsp;<span>business</span>{" "}
-              <span>challenges,</span>&nbsp;<span>combining</span>&nbsp;
-              <span>modern</span>&nbsp;<span>development</span>{" "}
-              <span>practices</span>&nbsp;<span>with</span>&nbsp;
-              <span>reliable</span>&nbsp;<span>integrations</span>&nbsp;
-              <span>to</span> <span>deliver</span>&nbsp;
-              <span>measurable</span>&nbsp;<span>results.</span>
+                  {missionTokens.map((token, index) =>
+                    token.trim() === "" ? (
+                      token
+                    ) : (
+                      <span key={`${token}-${index}`}>{token}</span>
+                    )
+                  )}
             </p>
           </div>
         </div>
@@ -495,4 +490,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Skills;

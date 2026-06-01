@@ -14,7 +14,7 @@ export const HeroSkeleton = () => (
   </section>
 );
 
-export const AboutSkeleton = () => (
+export const SkillsSkeleton = () => (
   <section className='py-20'>
     <div className='container mx-auto px-6'>
       <div className='text-center mb-16'>
@@ -43,7 +43,7 @@ export const AboutSkeleton = () => (
   </section>
 );
 
-export const ServicesSkeleton = () => (
+export const ExpertiseSkeleton = () => (
   <section className='py-20'>
     <div className='container mx-auto px-6'>
       <div className='text-center mb-16'>

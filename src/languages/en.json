@@ -290,5 +290,20 @@
       { "name": "GitHub", "url": "https://github.com/abdullahrather" },
       { "name": "Email", "url": "mailto:abdullahrather19@gmail.com" }
     ]
+  },
+  "layout": {
+    "nav": {
+      "skills": "Skills",
+      "experience": "Experience",
+      "expertise": "Expertise",
+      "projects": "Projects",
+      "cta": "Get In Touch"
+    },
+    "mobile_menu": {
+      "cta": "Get Started"
+    },
+    "footer": {
+      "built_with": "Built with ❤️ and passion for innovation"
+    }
   }
 }

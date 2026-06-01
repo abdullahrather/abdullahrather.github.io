@@ -42,5 +42,38 @@
         }
       }
     }
+  },
+  "skills": {
+    "stats": {
+      "years_experience": "Years Experience",
+      "enterprise_integrations": "Enterprise Integrations",
+      "production_deployments": "Production Deployments",
+      "core_technologies": "Core Technologies"
+    },
+    "headings": {
+      "experience_snapshot": "Experience Snapshot",
+      "major_technical_skills": "Major Technical Skills"
+    },
+    "intro": {
+      "paragraph1": "I'm a Backend / Full-Stack Developer with {years}+ years building enterprise web apps, REST APIs, internal platforms, and database-driven business systems. My core stack includes Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.",
+      "paragraph2": "I've delivered enterprise management, EMIS, and donor management systems, leading teams and owning delivery from requirements to deployment. I focus on clean architecture, reporting, reliable integrations (including DATEV), and maintainable code."
+    },
+    "items": {
+      "backend_stack": "PHP, Laravel, Symfony, Yii",
+      "devops": "Docker & CI/CD",
+      "frontend": "JavaScript & React",
+      "python": "Python & Flask",
+      "databases": "MySQL & PostgreSQL",
+      "api_integrations": "REST APIs & Integrations",
+      "git_ci": "Git & GitHub Actions",
+      "architecture": "System Architecture",
+      "leadership": "Team Leadership"
+    },
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate"
+    },
+    "mission": "I specialize in designing and implementing enterprise-grade software solutions that solve complex business challenges, combining modern development practices with reliable integrations to deliver measurable results."
   }
 }

@@ -100,7 +100,7 @@ const getCountryFromTimezone = (timezone) => {
 };
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -224,6 +224,35 @@ const Contact = () => {
       country: getCountryFromTimezone(currentTimezone),
     };
 
+    // Locale-aware email strings — drive the {{variables}} in the AutoReply template
+    const isDE = lang === "de";
+    const emailStrings = {
+      email_subject: isDE
+        ? `Vielen Dank für Ihre Nachricht, ${formData.name.trim()}!`
+        : `Thanks for reaching out, ${formData.name.trim()}!`,
+      email_subtitle: isDE ? "Full-Stack Software-Entwickler" : "Full-Stack Software Engineer",
+      email_badge: isDE ? "✅ Nachricht erfolgreich erhalten" : "✅ Message Received Successfully",
+      email_heading: isDE ? "Vielen Dank für Ihre Nachricht!" : "Thank you for reaching out!",
+      email_greeting: isDE
+        ? `Hallo ${formData.name.trim()}, ich habe Ihre Nachricht erhalten und werde mich in Kürze bei Ihnen melden.`
+        : `Hi ${formData.name.trim()}, I've received your message and will respond soon.`,
+      email_summary_title: isDE ? "📋 Ihre Nachrichtenübersicht" : "📋 Your Message Summary",
+      email_label_subject: isDE ? "Betreff" : "Subject",
+      email_label_message: isDE ? "Ihre Nachricht" : "Your Message",
+      email_label_submitted: isDE ? "Eingereicht am" : "Submitted",
+      email_next_title: isDE ? "⏱️ Was passiert als Nächstes?" : "⏱️ What happens next?",
+      email_step1: isDE ? "Ich werde Ihre Nachricht innerhalb von 24 Stunden prüfen" : "I'll review your message within 24 hours",
+      email_step2: isDE ? "Sie erhalten eine ausführliche Antwort auf Ihre Anfrage" : "You'll receive a detailed response to your inquiry",
+      email_step3: isDE ? "Bei dringenden Angelegenheiten können Sie mich gerne direkt kontaktieren" : "For urgent matters, feel free to reach out directly",
+      email_immediate_title: isDE ? "Sofortige Unterstützung benötigt?" : "Need immediate assistance?",
+      email_label_email: isDE ? "E-Mail:" : "Email:",
+      email_label_location: isDE ? "Standort:" : "Location:",
+      email_label_spec: isDE ? "Spezialisierung:" : "Specialization:",
+      email_social_title: isDE ? "Verbinden Sie sich mit mir in sozialen Netzwerken:" : "Connect with me on social media:",
+      email_signoff: isDE ? "Mit freundlichen Grüßen," : "Best regards,",
+      email_tagline: isDE ? "Skalierbare Lösungen mit modernen Technologien" : "Building scalable solutions with modern technologies",
+    };
+
     const templateParams = {
       from_name: formData.name.trim(),
       from_email: formData.email.trim(),
@@ -237,6 +266,7 @@ const Contact = () => {
       recipient_timezone: currentTimezone,
       recipient_location: `${locationContext.city}, ${locationContext.country}`,
       "g-recaptcha-response": recaptchaToken,
+      ...emailStrings,
     };
 
     try {
@@ -449,11 +479,10 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || !IS_FORM_ENABLED}
-                className={`submit-btn w-full py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 ${
-                  isSubmitting || !IS_FORM_ENABLED
-                    ? "bg-slate-400 dark:bg-slate-600 cursor-not-allowed"
-                    : "bg-gradient-to-r from-indigo-600 to-indigo-700 hover:shadow-xl hover:shadow-indigo-500/20"
-                } text-white`}
+                className={`submit-btn w-full py-3 px-6 rounded-lg font-semibold shadow-lg transition-all duration-300 ${isSubmitting || !IS_FORM_ENABLED
+                  ? "bg-slate-400 dark:bg-slate-600 cursor-not-allowed"
+                  : "bg-gradient-to-r from-indigo-600 to-indigo-700 hover:shadow-xl hover:shadow-indigo-500/20"
+                  } text-white`}
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">

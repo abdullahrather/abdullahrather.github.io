@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "../lib/i18n";
 
 const EXPERIENCE_DATE_FORMAT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "numeric",
 });
 
-const formatDuration = (startDate, endDate = new Date()) => {
+const formatDuration = (startDate, endDate = new Date(), labels) => {
   const start = new Date(startDate);
   const end = endDate instanceof Date ? endDate : new Date(endDate);
 
@@ -19,27 +20,28 @@ const formatDuration = (startDate, endDate = new Date()) => {
 
   const parts = [];
   if (years > 0) {
-    parts.push(`${years} year${years > 1 ? "s" : ""}`);
+    parts.push(`${years} ${years > 1 ? labels.years : labels.year}`);
   }
   if (months > 0) {
-    parts.push(`${months} month${months > 1 ? "s" : ""}`);
+    parts.push(`${months} ${months > 1 ? labels.months : labels.month}`);
   }
 
   if (!parts.length) {
-    parts.push("Less than 1 month");
+    parts.push(labels.less_than_month);
   }
 
   return parts.join(" ");
 };
 
-const formatPeriodLabel = (startDate, endDate) => {
+const formatPeriodLabel = (startDate, endDate, presentLabel) => {
   const startLabel = EXPERIENCE_DATE_FORMAT.format(new Date(startDate));
-  const endLabel = endDate ? EXPERIENCE_DATE_FORMAT.format(new Date(endDate)) : "Present";
+  const endLabel = endDate ? EXPERIENCE_DATE_FORMAT.format(new Date(endDate)) : presentLabel;
   return `${startLabel} - ${endLabel}`;
 };
 
 const WorkExperience = () => {
   const [currentDate, setCurrentDate] = useState(() => new Date());
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -49,90 +51,30 @@ const WorkExperience = () => {
     return () => window.clearInterval(timer);
   }, []);
 
-  const experiences = useMemo(
-    () => [
-      {
-        company: "APS Services GmbH",
-        website: "https://www.apsservices.de/",
-        location: "Neckarsulm, Germany",
-        role: "Software Developer",
-        summary:
-          "Further developed and maintained a comprehensive enterprise management system supporting customers, tickets, offers, orders, invoicing, project workflows, employee time tracking, and reporting.",
-        highlights: [
-          "Built REST integrations, including DATEV-related workflows, and contributed to secure authentication, role-based access control, and business-critical internal process automation.",
-          "Developed reporting, export, and dashboard functionality while improving maintainability, usability, and performance through code optimization and database query refinement.",
-          "Contributed to modernization of legacy application areas through structured backend logic, refactoring, testing, and continuous integration practices.",
-          "Built responsive internal interfaces and AJAX-based workflows to support efficient day-to-day operations across multiple modules.",
-        ],
-        accent: "from-indigo-500 to-cyan-500",
-        startDate: "2024-07-01",
-        endDate: null,
-        tag: "Part-Time",
-      },
-      {
-        company: "Qualven Pvt Ltd",
-        website: "https://qualven.com/qv-web/",
-        location: "Islamabad, Pakistan",
-        role: "Technical Team Lead",
-        summary:
-          "Led a team of five while remaining deeply hands-on in the design, development, testing, deployment, and maintenance of PHP-based business applications.",
-        highlights: [
-          "Built backend logic, integrated APIs, implemented frontend-backend workflows, and contributed directly to new features across multiple web applications.",
-          "Worked on database design, schema changes, optimization, and data handling to support evolving backend requirements and newly introduced business features.",
-          "Managed deployments and application updates across hosting environments and Linux-based local network systems, including SSH-based workflows and production support.",
-          "Maintained coding standards, code reviews, documentation, and secure, maintainable implementation practices while resolving technical blockers and supporting reliable software delivery.",
-        ],
-        accent: "from-emerald-500 to-teal-500",
-        startDate: "2021-11-01",
-        endDate: "2024-04-01",
-        tag: "Full-Time Onsite",
-      },
-      {
-        company: "The Science School",
-        website: "https://thescienceschool.edu.pk/tss-web/index.php",
-        location: "Islamabad, Pakistan",
-        role: "Software Engineer",
-        summary:
-          "Led the development and maintenance of a centralized Education Management Information System supporting student, staff, finance, and user administration workflows.",
-        highlights: [
-          "Managed relational database structures, backend logic, and secure access flows with a strong focus on data integrity, reliability, and maintainability.",
-          "Implemented authentication, authorization, and role-based access control for administrators and staff across multiple modules.",
-          "Improved system performance, security, and compatibility through structured upgrades, infrastructure improvements, and ongoing application refinement.",
-        ],
-        accent: "from-purple-500 to-fuchsia-500",
-        startDate: "2022-04-01",
-        endDate: "2024-04-01",
-        tag: "Full-Time Remote",
-      },
-      {
-        company: "Qualven Pvt Ltd",
-        website: "https://qualven.com/qv-web/",
-        location: "Islamabad, Pakistan",
-        role: "Technical Intern",
-        period: "01.2021 - 07.2021",
-        summary:
-          "Contributed to full-stack feature development across PHP backend and HTML/CSS, JavaScript, and Bootstrap frontend components.",
-        highlights: ["Supported deployments, documentation, maintenance, user training, and internal/client presentations."],
-        accent: "from-amber-500 to-orange-500",
-        startDate: "2021-01-01",
-        endDate: "2021-07-01",
-        tag: "Internship",
-      },
-    ],
-    []
+  const durationLabels = useMemo(
+    () => ({
+      year: t("workExperience.year"),
+      years: t("workExperience.years"),
+      month: t("workExperience.month"),
+      months: t("workExperience.months"),
+      less_than_month: t("workExperience.less_than_month"),
+    }),
+    [t]
   );
+
+  const experiences = t("workExperience.entries");
 
   return (
     <section id="work-experience" className="mx-auto max-w-7xl px-6 py-28">
       <div className="mb-14 text-center">
         <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700 dark:border-indigo-800/60 dark:bg-indigo-950/50 dark:text-indigo-200">
-          Career Timeline
+          {t("workExperience.badge")}
         </span>
         <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-          Work Experience
+          {t("workExperience.heading")}
         </h2>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
-          A concise view of the roles behind the resume, focused on backend ownership, systems thinking, and delivery in production environments.
+          {t("workExperience.description")}
         </p>
       </div>
 
@@ -151,10 +93,10 @@ const WorkExperience = () => {
                     {experience.tag || "Experience"}
                   </span>
                   <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-200">
-                    {formatPeriodLabel(experience.startDate, experience.endDate)}
+                    {formatPeriodLabel(experience.startDate, experience.endDate, t("workExperience.present"))}
                   </span>
                   <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-200">
-                    Duration: {formatDuration(experience.startDate, experience.endDate || currentDate)}
+                    {t("workExperience.duration_label")}: {formatDuration(experience.startDate, experience.endDate || currentDate, durationLabels)}
                   </span>
                 </div>
 
@@ -191,7 +133,7 @@ const WorkExperience = () => {
                 <div className="rounded-2xl border border-slate-200/70 bg-slate-50/90 p-4 dark:border-slate-700/70 dark:bg-slate-800/70">
                   <div className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
                     <span className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${experience.accent}`} />
-                    Key Impact
+                    {t("workExperience.key_impact")}
                   </div>
                   <ul className="space-y-3">
                     {experience.highlights.map((highlight) => (

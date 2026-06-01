@@ -75,5 +75,84 @@
       "intermediate": "Intermediate"
     },
     "mission": "I specialize in designing and implementing enterprise-grade software solutions that solve complex business challenges, combining modern development practices with reliable integrations to deliver measurable results."
+  },
+  "workExperience": {
+    "badge": "Career Timeline",
+    "heading": "Work Experience",
+    "description": "A concise view of the roles behind the resume, focused on backend ownership, systems thinking, and delivery in production environments.",
+    "duration_label": "Duration",
+    "key_impact": "Key Impact",
+    "present": "Present",
+    "less_than_month": "Less than 1 month",
+    "year": "year",
+    "years": "years",
+    "month": "month",
+    "months": "months",
+    "entries": [
+      {
+        "company": "APS Services GmbH",
+        "website": "https://www.apsservices.de/",
+        "location": "Neckarsulm, Germany",
+        "role": "Software Developer",
+        "summary": "Further developed and maintained a comprehensive enterprise management system supporting customers, tickets, offers, orders, invoicing, project workflows, employee time tracking, and reporting.",
+        "highlights": [
+          "Built REST integrations, including DATEV-related workflows, and contributed to secure authentication, role-based access control, and business-critical internal process automation.",
+          "Developed reporting, export, and dashboard functionality while improving maintainability, usability, and performance through code optimization and database query refinement.",
+          "Contributed to modernization of legacy application areas through structured backend logic, refactoring, testing, and continuous integration practices.",
+          "Built responsive internal interfaces and AJAX-based workflows to support efficient day-to-day operations across multiple modules."
+        ],
+        "accent": "from-indigo-500 to-cyan-500",
+        "startDate": "2024-07-01",
+        "endDate": null,
+        "tag": "Part-Time"
+      },
+      {
+        "company": "Qualven Pvt Ltd",
+        "website": "https://qualven.com/qv-web/",
+        "location": "Islamabad, Pakistan",
+        "role": "Technical Team Lead",
+        "summary": "Led a team of five while remaining deeply hands-on in the design, development, testing, deployment, and maintenance of PHP-based business applications.",
+        "highlights": [
+          "Built backend logic, integrated APIs, implemented frontend-backend workflows, and contributed directly to new features across multiple web applications.",
+          "Worked on database design, schema changes, optimization, and data handling to support evolving backend requirements and newly introduced business features.",
+          "Managed deployments and application updates across hosting environments and Linux-based local network systems, including SSH-based workflows and production support.",
+          "Maintained coding standards, code reviews, documentation, and secure, maintainable implementation practices while resolving technical blockers and supporting reliable software delivery."
+        ],
+        "accent": "from-emerald-500 to-teal-500",
+        "startDate": "2021-11-01",
+        "endDate": "2024-04-01",
+        "tag": "Full-Time Onsite"
+      },
+      {
+        "company": "The Science School",
+        "website": "https://thescienceschool.edu.pk/tss-web/index.php",
+        "location": "Islamabad, Pakistan",
+        "role": "Software Engineer",
+        "summary": "Led the development and maintenance of a centralized Education Management Information System supporting student, staff, finance, and user administration workflows.",
+        "highlights": [
+          "Managed relational database structures, backend logic, and secure access flows with a strong focus on data integrity, reliability, and maintainability.",
+          "Implemented authentication, authorization, and role-based access control for administrators and staff across multiple modules.",
+          "Improved system performance, security, and compatibility through structured upgrades, infrastructure improvements, and ongoing application refinement."
+        ],
+        "accent": "from-purple-500 to-fuchsia-500",
+        "startDate": "2022-04-01",
+        "endDate": "2024-04-01",
+        "tag": "Full-Time Remote"
+      },
+      {
+        "company": "Qualven Pvt Ltd",
+        "website": "https://qualven.com/qv-web/",
+        "location": "Islamabad, Pakistan",
+        "role": "Technical Intern",
+        "summary": "Contributed to full-stack feature development across PHP backend and HTML/CSS, JavaScript, and Bootstrap frontend components.",
+        "highlights": [
+          "Supported deployments, documentation, maintenance, user training, and internal/client presentations."
+        ],
+        "accent": "from-amber-500 to-orange-500",
+        "startDate": "2021-01-01",
+        "endDate": "2021-07-01",
+        "tag": "Internship"
+      }
+    ]
   }
 }

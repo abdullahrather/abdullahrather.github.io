@@ -29,14 +29,11 @@
 /* content-visibility: auto — browser skips layout/paint for off-screen sections.
    contain-intrinsic-size preserves scrollbar accuracy with an estimated height.
    Hero (#hero) is excluded — it's always the first visible section. */
-#skills,
-#work-experience,
-#expertise,
-#projects,
-#contact {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 700px;
-}
+#skills            { content-visibility: auto; contain-intrinsic-size: 0 1200px; }
+#work-experience   { content-visibility: auto; contain-intrinsic-size: 0 2800px; }
+#expertise         { content-visibility: auto; contain-intrinsic-size: 0 900px;  }
+#projects          { content-visibility: auto; contain-intrinsic-size: 0 1150px; }
+#contact           { content-visibility: auto; contain-intrinsic-size: 0 1100px; }
 
 
 /* The inner scroll container */
@@ -70,7 +67,7 @@ body {
   border-radius: 60% 40% 50% 70%;
   animation: blob 8s ease-in-out infinite;
   filter: blur(40px);
-  transition: all 1s ease;
+  transition: transform 1s ease;
 }
 
 /* Advanced navigation with sliding active indicator */
@@ -84,15 +81,13 @@ body {
   height: 3px;
   background: linear-gradient(90deg, #4f46e5, #8b5cf6);
   border-radius: 2px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  transform: scaleX(0);
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
-.nav-active-indicator.active {
-  opacity: 1;
-  transform: scaleX(1);
-}
 
 /* Enhanced nav links for active state */
 .nav-link {
@@ -100,7 +95,7 @@ body {
   padding: 0.75rem 1rem;
   margin: 0 0.25rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
   border-radius: 0.5rem;
 }
 
@@ -152,7 +147,7 @@ body {
   border-bottom: 2px solid rgba(148, 163, 184, 0.3);
   z-index: 9999;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 0 0 8px 8px;
@@ -307,7 +302,7 @@ body {
 /* Smooth section transitions */
 .section-transition {
   transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-transition.in-view {
@@ -325,7 +320,7 @@ body {
 }
 
 .card {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   transform: translateY(12px);
 }
 
@@ -345,7 +340,7 @@ body {
   background-clip: text;
   color: transparent;
   position: relative;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
   z-index: 2;
 }
 
@@ -429,7 +424,7 @@ body {
 /* Enhanced brand container for active state with reduced opacity */
 .brand-container {
   position: relative;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
@@ -457,7 +452,7 @@ body {
 
 .nav-container {
   position: relative;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-container::after {
@@ -691,7 +686,7 @@ body.modal-open {
 .profile-modal-enter-active {
   opacity: 1;
   transform: scale(1) translateY(0);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-avatar-large::before {
@@ -744,7 +739,7 @@ body.modal-open {
 }
 
 .profile-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-card-hover:hover {
@@ -791,11 +786,11 @@ body.modal-open {
 }
 
 .skill-icon {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .skill-icon-container {
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .skill-item:hover .skill-icon {
@@ -811,7 +806,7 @@ body.modal-open {
 }
 
 .skill-badge {
-  transition: all 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
   transform: translateX(20px);
 }
 
@@ -889,7 +884,7 @@ body.modal-open {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
@@ -931,7 +926,7 @@ body.modal-open {
 }
 
 .social-icon {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
   transform-origin: center;
 }
 
@@ -987,12 +982,11 @@ body.modal-open {
 
 .form-field {
   position: relative;
-  transition: all 0.3s ease;
 }
 
 .form-field input,
 .form-field textarea {
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
   border: 2px solid transparent;
   background: rgba(241, 245, 249, 0.8);
 }
@@ -1017,7 +1011,7 @@ body.modal-open {
 }
 
 .form-field label {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
   transform-origin: left top;
 }
 
@@ -1043,7 +1037,7 @@ body.modal-open {
 .submit-btn {
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .submit-btn:hover {
@@ -1178,8 +1172,7 @@ body.modal-open {
   backdrop-filter: blur(8px);
   border: 1px solid rgba(203, 213, 225, 0.4);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .dark .nav-mobile-item {

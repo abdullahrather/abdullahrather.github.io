@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Link as ScrollLink } from "react-scroll";
 import { useTranslation } from "../lib/i18n";
@@ -8,7 +8,10 @@ const Layout = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const navContainerRef = useRef(null);
+  const progressBarRef = useRef(null);
+  const progressContainerRef = useRef(null);
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
     // Check for saved preference or system preference
@@ -43,14 +46,52 @@ const Layout = ({ children }) => {
     document.body.style.overflow = "";
   };
 
+  // Measure the active nav link and slide the underline to fit it exactly
   useEffect(() => {
-    // Scroll progress tracking
+    const navSections = ["skills", "work-experience", "expertise", "projects"];
+    const container = navContainerRef.current;
+
+    if (!navSections.includes(activeSection) || !container) {
+      setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
+      return;
+    }
+
+    const measure = () => {
+      const activeEl = document.getElementById(`nav-item-${activeSection}`);
+      if (!activeEl) return;
+      const containerRect = container.getBoundingClientRect();
+      const elRect = activeEl.getBoundingClientRect();
+      setIndicatorStyle({
+        left: elRect.left - containerRect.left,
+        width: elRect.width,
+        opacity: 1,
+      });
+    };
+
+    // Small rAF to ensure DOM is painted before measuring
+    const id = requestAnimationFrame(measure);
+    const ro = new ResizeObserver(measure);
+    ro.observe(container);
+    return () => { cancelAnimationFrame(id); ro.disconnect(); };
+  }, [activeSection, t]);
+
+  useEffect(() => {
+    // Scroll progress tracking — direct DOM mutation, no React re-render
     const updateScrollProgress = () => {
       const scrollTop = window.pageYOffset;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (progressBarRef.current) {
+        progressBarRef.current.style.transform = `scaleX(${progress / 100})`;
+      }
+      if (progressContainerRef.current) {
+        progressContainerRef.current.dataset.progress = Math.round(progress);
+        if (progress > 0) {
+          progressContainerRef.current.classList.add("visible");
+        } else {
+          progressContainerRef.current.classList.remove("visible");
+        }
+      }
     };
 
     // Active section tracking
@@ -136,18 +177,18 @@ const Layout = ({ children }) => {
       {/* Header */}
       <header id='navbar' className='fixed inset-x-0 top-0 z-50'>
         <div
-          className={`scroll-progress-container ${
-            scrollProgress > 0 ? "visible" : ""
-          }`}
-          data-progress={Math.round(scrollProgress)}
+          ref={progressContainerRef}
+          className="scroll-progress-container"
+          data-progress="0"
         >
           <div
+            ref={progressBarRef}
             className='scroll-progress-bar'
-            style={{ transform: `scaleX(${scrollProgress / 100})` }}
+            style={{ transform: 'scaleX(0)' }}
           />
         </div>
 
-        <div className='nav-container bg-white/70 dark:bg-slate-900/70 backdrop-blur-md py-4 px-4 sm:px-6 transition-all duration-500'>
+        <div className='nav-container bg-white/70 dark:bg-slate-900/70 backdrop-blur-md py-4 px-4 sm:px-6'>
           <div className='mx-auto flex max-w-7xl items-center justify-between px-6'>
             <ScrollLink
               to='hero'
@@ -185,16 +226,17 @@ const Layout = ({ children }) => {
             </ScrollLink>
 
             <nav className='hidden lg:flex items-center nav-desktop'>
-              <div className='relative flex items-center'>
+              <div className='relative flex items-center' ref={navContainerRef}>
                 {[
                   { to: "skills", label: t("layout.nav.skills") },
                   { to: "work-experience", label: t("layout.nav.experience") },
                   { to: "expertise", label: t("layout.nav.expertise") },
                   { to: "projects", label: t("layout.nav.projects") },
-                ].map((item, index) => (
+                ].map((item) => (
                   <ScrollLink
                     key={item.to}
                     to={item.to}
+                    id={`nav-item-${item.to}`}
                     smooth
                     duration={500}
                     className={`nav-link text-slate-800 dark:text-slate-200 cursor-pointer ${
@@ -205,24 +247,14 @@ const Layout = ({ children }) => {
                   </ScrollLink>
                 ))}
 
+                {/* Underline tracks the active link's real text width */}
                 <div
-                  className={`nav-active-indicator ${
-                    activeSection !== "hero" && activeSection !== "contact"
-                      ? "active"
-                      : ""
-                  }`}
+                  className="nav-active-indicator"
                   style={{
-                    left:
-                      activeSection === "skills"
-                        ? "0%"
-                        : activeSection === "work-experience"
-                        ? "25%"
-                        : activeSection === "expertise"
-                        ? "50%"
-                        : activeSection === "projects"
-                        ? "75%"
-                        : "0%",
-                    width: "25%",
+                    left: indicatorStyle.left,
+                    width: indicatorStyle.width,
+                    opacity: indicatorStyle.opacity,
+                    transform: indicatorStyle.opacity ? "scaleX(1)" : "scaleX(0)",
                   }}
                 />
               </div>

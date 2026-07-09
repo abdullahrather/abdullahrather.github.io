@@ -56,7 +56,7 @@
     },
     "intro": {
       "paragraph1": "Ich bin ein Backend / Full-Stack Entwickler mit {years}+ Jahren Erfahrung im Aufbau von Enterprise-Web-Apps, REST-APIs, internen Plattformen und datenbankgesteuerten Geschäftssystemen. Mein Tech-Stack umfasst Laravel, Yii, Symfony, MySQL/MariaDB, Docker und CI/CD.",
-      "paragraph2": "Ich habe Unternehmensmanagement-, EMIS- und Spendenmanagementsysteme geliefert, Teams geleitet und die Verantwortung von den Anforderungen bis zum Deployment übernommen. Mein Fokus liegt auf sauberer Architektur, Berichterstattung, zuverlässigen Integrationen (einschließlich DATEV) und wartbarem Code."
+      "paragraph2": "Ich entwickle skalierbare Backend-Systeme, die komplexe Geschäftsabläufe antreiben. Zu meinen Kernprojekten gehören die Architektur eines umfassenden Enterprise-ERP-Systems mit automatisierten DATEV-Finanzpipelines, die Entwicklung eines zentralisierten Education Management Systems sowie die Bereitstellung einer Full-Stack-Plattform für das Spendenmanagement. Egal, ob ich ein technisches Team leite oder als alleiniger Entwickler agiere, ich verantworte den gesamten Bereitstellungszyklus – mit Fokus auf saubere API-Architektur, Datenbankoptimierung und hochsicheren, wartbaren Code."
     },
     "items": {
       "backend_stack": "PHP, Laravel, Symfony, Yii",
@@ -408,7 +408,7 @@
       },
       {
         "id": 2,
-        "title": "Education Management Information System (EMIS)",
+        "title": "Education Management Information System",
         "description": "Bildungsmanagementsystem für Zulassungen, Schüler- und Mitarbeiterdaten, Elternzugang und Finanz-Workflows, entwickelt mit PHP.",
         "image": "/images/projects/education-management.webp",
         "technologies": [
@@ -479,6 +479,44 @@
       },
       {
         "id": 4,
+        "title": "Campaign Analytics Microservice",
+        "description": "Produktionsreifer REST-API-Microservice, entwickelt mit Node.js und TypeScript zur Verwaltung und Analyse von Werbekampagnen.",
+        "image": "/images/projects/campaign-analytics.webp",
+        "technologies": [
+          "Node.js",
+          "TypeScript",
+          "Express",
+          "Prisma",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "category": "web",
+        "features": [
+          "REST API Architektur",
+          "JWT-Authentifizierung",
+          "Datenanalyselogik",
+          "Prisma Datenmodellierung",
+          "Automatisierte Tests (Jest)"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architektur",
+            "text": "Entworfen als entkoppelter Microservice mit Express und TypeScript (Strict Mode) für höchste Zuverlässigkeit und Typsicherheit."
+          },
+          {
+            "label": "Datenschicht",
+            "text": "Nutzung von Prisma ORM mit PostgreSQL für robuste relationale Abfragen, strikte Schema-Definitionen und sichere Datenbankmigrationen."
+          },
+          {
+            "label": "Geschäftswert",
+            "text": "Bietet eine skalierbare, containerisierte Analyse-Engine, die nahtlos in größere E-Commerce- oder Medienarchitekturen integriert werden kann."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/campaign-analytics-microservice",
+        "demo": "#"
+      },
+      {
+        "id": 5,
         "title": "Task Manager",
         "description": "Aufgabenverwaltungssystem mit Symfony für strukturierte Workflows, Teamzusammenarbeit und rollenbasierte Zugriffssteuerung.",
         "image": "/images/projects/task-manager.png",
@@ -514,7 +552,7 @@
         "demo": "#"
       },
       {
-        "id": 5,
+        "id": 6,
         "title": "Portfolio Website",
         "description": "Joborientiertes persönliches Portfolio, erstellt mit React, Vite und Tailwind CSS, mit Animationen, Projekthighlights und EmailJS-Kontaktautomatisierung.",
         "image": "/images/projects/portfolio-website.png",
@@ -550,7 +588,7 @@
         "demo": "https://abdullahrather.com/"
       },
       {
-        "id": 6,
+        "id": 7,
         "title": "Währungsrechner App",
         "description": "Echtzeit-Währungsumrechnungsanwendung, erstellt mit Laravel, Live-Wechselkursen und reaktionsschneller Währungsumschaltung.",
         "image": "/images/projects/currency-converter.png",
@@ -585,7 +623,7 @@
         "demo": "#"
       },
       {
-        "id": 7,
+        "id": 8,
         "title": "Ticketmanagementsystem",
         "description": "Workflow-gesteuertes Ticketverwaltungssystem mit Routing, Benachrichtigungen, Benutzerrollen und Berichtsfunktionen.",
         "image": "/images/projects/ticket-management.webp",
@@ -621,7 +659,7 @@
         "demo": "#"
       },
       {
-        "id": 8,
+        "id": 9,
         "title": "Mitarbeiter-Leistungs-Tracker",
         "description": "HR-Leistungsverfolgungssystem mit Kennzahlen, Dashboards, Analysen und Exportfunktionen.",
         "image": "/images/projects/employee-performance.webp",
@@ -657,7 +695,7 @@
         "demo": "#"
       },
       {
-        "id": 9,
+        "id": 10,
         "title": "Laravel Auth & Rollenmanagement App",
         "description": "Laravel-Anwendung mit Schwerpunkt auf Authentifizierung, Autorisierung und rollenbasierter Zugriffskontrolle mit Gates, Richtlinien und Eloquent-Beziehungen.",
         "image": "/images/projects/laravel-auth-role.webp",
@@ -697,7 +735,7 @@
         "demo": "#"
       },
       {
-        "id": 10,
+        "id": 11,
         "title": "Website für akademische Einrichtungen",
         "description": "Maßgeschneiderte Website für akademische Institutionen mit CAPTCHA-geschützter Authentifizierung, rollenbasierten Dashboards, Leistungsmodulen und Formularmanagement.",
         "image": "/images/projects/academic-institution.webp",
@@ -737,9 +775,9 @@
         "demo": "#"
       },
       {
-        "id": 11,
-        "title": "Laravel Authentication & CRUD System",
-        "description": "Laravel 10 MVC-System, das Authentifizierung mit Produktmanagement-CRUD-Operationen und sicherem Benutzerzugriff kombiniert.",
+        "id": 12,
+        "title": "Laravel Rapid-Development Boilerplate",
+        "description": "Ein wiederverwendbares Laravel 10 MVC-Boilerplate, das entwickelt wurde, um neue Admin-Panels und Microservices mit vorkonfigurierter Validierung und Zugriffskontrolle schnell hochzuziehen.",
         "image": "/images/projects/laravel-auth-crud.webp",
         "technologies": [
           "Laravel 10",
@@ -751,31 +789,31 @@
         ],
         "category": "web",
         "features": [
-          "Benutzerregistrierung & Anmeldung",
-          "Produkt Erstellen/Lesen/Aktualisieren/Löschen",
-          "Formularvalidierung",
-          "MVC-Routing",
-          "Blade-Templating"
+          "Vorkonfigurierte Auth & Registrierung",
+          "Standardisierte CRUD-Generatoren",
+          "Strikte Formularanforderungsvalidierung",
+          "MVC-Routing-Architektur",
+          "Datenbank-Seeders & Migrationen"
         ],
         "developmentDetails": [
           {
             "label": "Architektur",
-            "text": "Basiert auf Laravel-MVC-Konventionen, um Authentifizierungs- und Produktmanagementlogik sauber getrennt zu halten."
+            "text": "Als modularer Startpunkt konzipiert, um die Einrichtungszeit beim Start neuer Laravel-MVC-Projekte zu eliminieren."
           },
           {
-            "label": "Formularhandhabung",
-            "text": "Verwendete Validierung und CRUD-Ablaufsteuerung, um Produktaktionen sicher und vorhersehbar zu halten."
+            "label": "Datenschicht",
+            "text": "Enthält vorgefertigte Migrationen und Modellbindung, um die Handhabung von Datenänderungen und Controller-Aktionen zu standardisieren."
           },
           {
             "label": "Geschäftswert",
-            "text": "Dient als praktische Grundlage für interne Verwaltungstools, die sicheres Login sowie Content-Management erfordern."
+            "text": "Reduziert die Time-to-Market für interne Admin-Tools erheblich, indem es ein sicheres, vorhersehbares Fundament bietet."
           }
         ],
         "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
         "demo": "#"
       },
       {
-        "id": 12,
+        "id": 13,
         "title": "Website für Unternehmensversicherungen",
         "description": "Unternehmensversicherungs-Website mit dynamischer Anfrageübermittlung, Antragsbearbeitung, SQL-Schema-Skripten und gestalteten Komponenten.",
         "image": "/images/projects/corporate-insurance.webp",
@@ -812,9 +850,9 @@
         "demo": "#"
       },
       {
-        "id": 13,
-        "title": "Laravel Authentication Showcase",
-        "description": "Laravel-Authentifizierungs-Showcase zu Registrierung, An-/Abmeldung, Zurücksetzen des Passworts und E-Mail-Verifizierung durch Scaffolding und Middleware.",
+        "id": 14,
+        "title": "Laravel Security & Auth Implementierung",
+        "description": "Eine vollständige Sicherheits-Scaffolding-Referenz, die verifizierte Registrierung, Middleware-Schutz und sicheres Sitzungsmanagement für skalierbare Web-Apps abdeckt.",
         "image": "/images/projects/laravel-auth-showcase.webp",
         "technologies": [
           "Laravel",
@@ -826,65 +864,27 @@
         ],
         "category": "web",
         "features": [
-          "Benutzerregistrierung",
-          "Anmelden & Abmelden",
-          "Passwort zurücksetzen",
-          "E-Mail-Verifizierung",
-          "Authentifizierungs-Middleware"
+          "Verifizierte Benutzerregistrierung",
+          "Sichere Sitzungshandhabung",
+          "Passwort-Reset-Protokolle",
+          "Authentifizierungs-Middleware",
+          "E-Mail-Verifizierungsabläufe"
         ],
         "developmentDetails": [
           {
             "label": "Architektur",
-            "text": "Entwickelt, um das Auth-Scaffolding und den Middleware-Ablauf von Laravel in einer sauberen, überprüfbaren Struktur zu demonstrieren."
+            "text": "Strukturiert als überprüfbare Referenzimplementierung für die sichere Handhabung des gesamten Benutzerlebenszyklus."
           },
           {
             "label": "Sicherheit & Zugriff",
-            "text": "Deckt den gesamten Benutzerlebenszyklus mit Passwortwiederherstellung und Verifizierung ab, um die Kontosicherheit zu stärken."
+            "text": "Implementiert strikte Middleware- und Verifizierungslogik, um die Kontosicherheit gegen unbefugten Zugriff zu stärken."
           },
           {
             "label": "Geschäftswert",
-            "text": "Nützlich als Referenzimplementierung für Teams, die eine grundlegende Authentifizierungseinrichtung benötigen."
+            "text": "Dient als robuste Grundlage für die Authentifizierung und stellt sicher, dass Sicherheits-Best-Practices vom ersten Tag an integriert sind."
           }
         ],
         "github": "https://github.com/abdullahrather/Auth-Laravel",
-        "demo": "#"
-      },
-      {
-        "id": 14,
-        "title": "Laravel MVC CRUD Application",
-        "description": "Laravel-MVC-Beispiel, das Erstellen, Lesen, Aktualisieren und Löschen (CRUD) mit Formularanforderungsvalidierung demonstriert.",
-        "image": "/images/projects/laravel-mvc-crud.webp",
-        "technologies": [
-          "Laravel",
-          "PHP",
-          "Blade",
-          "MySQL",
-          "CSS",
-          "JavaScript"
-        ],
-        "category": "web",
-        "features": [
-          "Ressourcenbasiertes Routing",
-          "Model-Controller-Bindung",
-          "Validierung von Formularanforderungen",
-          "Blade View Rendering",
-          "Datenbank-Migrationen"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Rund um ressourcenbasiertes Routing und MVC-Konventionen gebaut, um das CRUD-Verhalten leicht erweiterbar zu halten."
-          },
-          {
-            "label": "Datenschicht",
-            "text": "Verwendet Migrationen und Modellbindung, um Datenänderungen und Controller-Aktionen in Einklang zu halten."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Bietet einen praktischen Entwurf für Laravel-CRUD-Apps, die vorhersehbare Struktur und Validierung benötigen."
-          }
-        ],
-        "github": "https://github.com/abdullahrather/CrudOperations-Laravel",
         "demo": "#"
       }
     ]

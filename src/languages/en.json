@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "About Me",
-    "role": "Backend / Full-Stack Developer",
+    "role": "Backend / Full-Stack Engineer",
     "summary": "I design and deliver APIs and data-driven platforms that improve reliability and automation in production. Skilled in backend frameworks, relational databases, Docker containers, and CI/CD pipelines. With {years}+ years of experience building enterprise web applications, REST APIs, internal platforms, and database-driven business systems.",
     "badges": {
       "delivery": "Delivered 15+ production deployments with automated CI/CD.",
@@ -21,7 +21,7 @@
     "modal": {
       "title": "Professional Profiles",
       "connect_title": "Let's Connect!",
-      "connect_text": "I'm always open to discussing new opportunities, collaborations, or just connecting with fellow developers. Feel free to reach out through any of these platforms.",
+      "connect_text": "I'm always open to discussing new opportunities, collaborations, or just connecting with fellow Engineers. Feel free to reach out through any of these platforms.",
       "connect_subtitle": "Connect with me on various platforms",
       "profiles": {
         "linkedin": {
@@ -55,8 +55,8 @@
       "major_technical_skills": "Major Technical Skills"
     },
     "intro": {
-      "paragraph1": "I'm a Backend / Full-Stack Developer with {years}+ years building enterprise web apps, REST APIs, internal platforms, and database-driven business systems. My core stack includes Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.",
-      "paragraph2": "I've delivered enterprise management, EMIS, and donor management systems, leading teams and owning delivery from requirements to deployment. I focus on clean architecture, reporting, reliable integrations (including DATEV), and maintainable code."
+      "paragraph1": "I'm a Backend / Full-Stack Engineer with {years}+ years building enterprise web apps, REST APIs, internal platforms, and database-driven business systems. My core stack includes Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.",
+      "paragraph2": "I build scalable backend systems that power complex business operations. My core projects include architecting a comprehensive enterprise ERP with automated DATEV financial pipelines, building a centralized Education Management System, and delivering a full-stack Donor Management platform. Whether leading a technical team or operating as a solo developer, I own the full delivery lifecycle—focusing on clean API architecture, database optimization, and highly secure, maintainable code."
     },
     "items": {
       "backend_stack": "PHP, Laravel, Symfony, Yii",
@@ -93,7 +93,7 @@
         "company": "APS Services GmbH",
         "website": "https://www.apsservices.de/",
         "location": "Neckarsulm, Germany",
-        "role": "Software Developer",
+        "role": "Software Engineer",
         "summary": "Further developed and maintained a comprehensive enterprise management system supporting customers, tickets, offers, orders, invoicing, project workflows, employee time tracking, and reporting.",
         "highlights": [
           "Built REST integrations, including DATEV-related workflows, and contributed to secure authentication, role-based access control, and business-critical internal process automation.",
@@ -273,7 +273,7 @@
       },
       {
         "title": "Current Role",
-        "value": "Full-Stack Software Developer",
+        "value": "Full-Stack Software Engineer",
         "link": "#",
         "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"
       },
@@ -408,7 +408,7 @@
       },
       {
         "id": 2,
-        "title": "Education Management Information System (EMIS)",
+        "title": "Education Management Information System",
         "description": "Education management system for admissions, student and staff records, parent access, and finance workflows built with PHP.",
         "image": "/images/projects/education-management.webp",
         "technologies": [
@@ -479,6 +479,44 @@
       },
       {
         "id": 4,
+        "title": "Campaign Analytics Microservice",
+        "description": "Production-ready REST API microservice built with Node.js and TypeScript for managing and analyzing advertising campaigns.",
+        "image": "/images/projects/campaign-analytics.webp",
+        "technologies": [
+          "Node.js",
+          "TypeScript",
+          "Express",
+          "Prisma",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "category": "web",
+        "features": [
+          "REST API Architecture",
+          "JWT Authentication",
+          "Data Analytics Logic",
+          "Prisma Data Modeling",
+          "Automated Testing (Jest)"
+        ],
+        "developmentDetails": [
+          {
+            "label": "Architecture",
+            "text": "Designed as a decoupled microservice using Express and TypeScript (strict mode) to ensure high reliability and type safety."
+          },
+          {
+            "label": "Data Layer",
+            "text": "Leveraged Prisma ORM with PostgreSQL for robust relational querying, strict schema definitions, and safe database migrations."
+          },
+          {
+            "label": "Business Value",
+            "text": "Provides a scalable, containerized analytics engine ready to plug into larger e-commerce or media architectures."
+          }
+        ],
+        "github": "https://github.com/abdullahrather/campaign-analytics-microservice",
+        "demo": "#"
+      },
+      {
+        "id": 5,
         "title": "Task Manager",
         "description": "Task management system built with Symfony for structured workflows, team collaboration, and role-based access.",
         "image": "/images/projects/task-manager.png",
@@ -514,7 +552,7 @@
         "demo": "#"
       },
       {
-        "id": 5,
+        "id": 6,
         "title": "Portfolio Website",
         "description": "Job-centric personal portfolio built with React, Vite, and Tailwind CSS, featuring animation, project highlights, and EmailJS contact automation.",
         "image": "/images/projects/portfolio-website.png",
@@ -550,7 +588,7 @@
         "demo": "https://abdullahrather.com/"
       },
       {
-        "id": 6,
+        "id": 7,
         "title": "Currency Converter App",
         "description": "Real-time currency conversion application built with Laravel, live exchange rates, and responsive currency switching.",
         "image": "/images/projects/currency-converter.png",
@@ -585,7 +623,7 @@
         "demo": "#"
       },
       {
-        "id": 7,
+        "id": 8,
         "title": "Ticket Management System",
         "description": "Workflow-driven ticket management system with routing, notifications, user roles, and reporting features.",
         "image": "/images/projects/ticket-management.webp",
@@ -621,7 +659,7 @@
         "demo": "#"
       },
       {
-        "id": 8,
+        "id": 9,
         "title": "Employee Performance Tracker",
         "description": "HR performance tracking system with metrics, dashboards, analytics, and export capabilities.",
         "image": "/images/projects/employee-performance.webp",
@@ -657,7 +695,7 @@
         "demo": "#"
       },
       {
-        "id": 9,
+        "id": 10,
         "title": "Laravel Auth & Role Management App",
         "description": "Laravel application focused on authentication, authorization, and role-based access control with Gates, policies, and Eloquent relationships.",
         "image": "/images/projects/laravel-auth-role.webp",
@@ -697,7 +735,7 @@
         "demo": "#"
       },
       {
-        "id": 10,
+        "id": 11,
         "title": "Academic Institution Website",
         "description": "Custom academic institution website with CAPTCHA-protected authentication, role-based dashboards, performance modules, and form management.",
         "image": "/images/projects/academic-institution.webp",
@@ -737,9 +775,9 @@
         "demo": "#"
       },
       {
-        "id": 11,
-        "title": "Laravel Authentication & CRUD System",
-        "description": "Laravel 10 MVC system combining authentication with product management CRUD operations and secure user access.",
+        "id": 12,
+        "title": "Laravel Rapid-Development Boilerplate",
+        "description": "A reusable Laravel 10 MVC boilerplate built to rapidly bootstrap new admin panels and microservices with pre-configured validation and access control.",
         "image": "/images/projects/laravel-auth-crud.webp",
         "technologies": [
           "Laravel 10",
@@ -751,31 +789,31 @@
         ],
         "category": "web",
         "features": [
-          "User Registration & Login",
-          "Product Create/Read/Update/Delete",
-          "Form Validation",
-          "MVC Routing",
-          "Blade Templating"
+          "Pre-configured Auth & Registration",
+          "Standardized CRUD Generators",
+          "Strict Form Request Validation",
+          "MVC Routing Architecture",
+          "Database Seeders & Migrations"
         ],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Built on Laravel MVC conventions to keep authentication and product management logic cleanly separated."
+            "text": "Built as a modular starting point to eliminate setup time when launching new Laravel MVC projects."
           },
           {
-            "label": "Form Handling",
-            "text": "Used validation and CRUD flow control to keep product actions safe and predictable."
+            "label": "Data Layer",
+            "text": "Includes pre-written migrations and model binding to standardize how data changes and controller actions are handled."
           },
           {
             "label": "Business Value",
-            "text": "Acts as a practical foundation for internal admin tools that need secure login plus content management."
+            "text": "Significantly reduces time-to-market for internal admin tools by providing a secure, predictable foundation."
           }
         ],
         "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
         "demo": "#"
       },
       {
-        "id": 12,
+        "id": 13,
         "title": "Corporate Insurance Website",
         "description": "Corporate insurance website with dynamic inquiry submission, application processing, SQL schema scripts, and styled components.",
         "image": "/images/projects/corporate-insurance.webp",
@@ -812,9 +850,9 @@
         "demo": "#"
       },
       {
-        "id": 13,
-        "title": "Laravel Authentication Showcase",
-        "description": "Laravel authentication showcase covering registration, login/logout, password reset, and email verification through scaffolding and middleware.",
+        "id": 14,
+        "title": "Laravel Security & Auth Implementation",
+        "description": "A complete security scaffolding reference covering verified registration, middleware protection, and secure session handling for scalable web apps.",
         "image": "/images/projects/laravel-auth-showcase.webp",
         "technologies": [
           "Laravel",
@@ -826,65 +864,27 @@
         ],
         "category": "web",
         "features": [
-          "User Registration",
-          "Login & Logout",
-          "Password Reset",
-          "Email Verification",
-          "Authentication Middleware"
+          "Verified User Registration",
+          "Secure Session Handling",
+          "Password Reset Protocols",
+          "Authentication Middleware",
+          "Email Verification Flows"
         ],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Built to demonstrate Laravel's auth scaffolding and middleware flow in a clean, inspectable structure."
+            "text": "Structured as an inspectable reference implementation for handling the full user lifecycle securely."
           },
           {
             "label": "Security & Access",
-            "text": "Covers the full user lifecycle with password recovery and verification to reinforce account safety."
+            "text": "Implements strict middleware and verification logic to reinforce account safety against unauthorized access."
           },
           {
             "label": "Business Value",
-            "text": "Useful as a reference implementation for teams needing a baseline authentication setup."
+            "text": "Serves as a robust baseline authentication setup, ensuring security best practices are baked in from day one."
           }
         ],
         "github": "https://github.com/abdullahrather/Auth-Laravel",
-        "demo": "#"
-      },
-      {
-        "id": 14,
-        "title": "Laravel MVC CRUD Application",
-        "description": "Laravel MVC example demonstrating create, read, update, and delete operations with form request validation.",
-        "image": "/images/projects/laravel-mvc-crud.webp",
-        "technologies": [
-          "Laravel",
-          "PHP",
-          "Blade",
-          "MySQL",
-          "CSS",
-          "JavaScript"
-        ],
-        "category": "web",
-        "features": [
-          "Resourceful Routing",
-          "Model-Controller Binding",
-          "Form Request Validation",
-          "Blade View Rendering",
-          "Database Migrations"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Built around resourceful routing and MVC conventions to keep CRUD behavior easy to extend."
-          },
-          {
-            "label": "Data Layer",
-            "text": "Uses migrations and model binding to keep data changes and controller actions aligned."
-          },
-          {
-            "label": "Business Value",
-            "text": "Provides a practical blueprint for Laravel CRUD apps that need predictable structure and validation."
-          }
-        ],
-        "github": "https://github.com/abdullahrather/CrudOperations-Laravel",
         "demo": "#"
       }
     ]

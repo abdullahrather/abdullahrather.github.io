@@ -1,102 +1,114 @@
-<div
-  style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
-  <!-- Header with Logo and Branding -->
-  <div
-    style="background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%); padding: 24px; border-radius: 12px 12px 0 0;">
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <img
-        style="height: 36px; width: 36px; border-radius: 8px; margin-right: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);"
-        height="36px" width="36px" src="https://abdullahrather.com/images/favicons/favicon-512x512.png"
-        alt="Abdullah Rather Logo" />
-      <span style="font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.025em;">
-        Abdullah Rather
-      </span>
-    </div>
-    <div style="text-align: center; margin-top: 8px;">
-      <span style="color: #e0e7ff; font-size: 14px; font-weight: 500;">
-        Backend / Full-Stack Engineer
-      </span>
-    </div>
-  </div>
+<!-- Notification sent to Abdullah for each contact form message (EmailJS template). -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#09090b" style="background-color: #09090b; margin: 0; padding: 0;">
+  <tr>
+    <td align="center" style="padding: 40px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #fafafa;">
 
-  <!-- Main Content -->
-  <div style="padding: 32px 24px; background-color: #ffffff;">
-    <!-- Alert Badge -->
-    <div style="text-align: center; margin-bottom: 24px;">
-      <span
-        style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-        🔔 New Contact Message
-      </span>
-    </div>
+        <!-- Header -->
+        <tr>
+          <td style="padding: 0 4px 28px 4px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="44" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="40" height="40" align="center" valign="middle" bgcolor="#fafafa" style="width: 40px; height: 40px; border-radius: 50%; background-color: #fafafa; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: #09090b; letter-spacing: -0.02em;">AR</td>
+                    </tr>
+                  </table>
+                </td>
+                <td valign="middle" style="padding-left: 12px;">
+                  <div style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: #fafafa;">Abdullah Rather</div>
+                  <div style="font-size: 13px; color: #a1a1aa; margin-top: 2px;">Backend / Full-Stack Engineer</div>
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td bgcolor="#111113" style="background-color: #111113; border: 1px solid #27272a; border-radius: 999px; padding: 6px 12px; font-size: 12px; color: #a1a1aa; white-space: nowrap;">
+                        <span style="color: #818cf8;">&#9679;</span>&nbsp; New message
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
 
-    <!-- User Info Section -->
-    <div
-      style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <!-- User Info -->
-        <div style="flex: 1;">
-          <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
-            {{from_name}}
-          </h3>
-          <p style="margin: 0; font-size: 13px; color: #64748b; font-weight: 500;">
-            {{time}} • Sent from {{user_timezone}}
-          </p>
-        </div>
-      </div>
-    </div>
+        <!-- Accent line -->
+        <tr>
+          <td height="2" bgcolor="#818cf8" style="height: 2px; line-height: 2px; font-size: 0; background-color: #818cf8; background-image: linear-gradient(90deg, #818cf8, #c084fc); border-radius: 2px;">&nbsp;</td>
+        </tr>
 
-    <!-- Message Content Section -->
-    <div
-      style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
-      <div style="margin-bottom: 16px;">
-        <span
-          style="font-size: 12px; font-weight: 600; color: #6366f1; text-transform: uppercase; letter-spacing: 0.05em;">Email</span>
-        <p style="margin: 4px 0 0 0; font-size: 16px; color: #1e293b; font-weight: 500;">{{from_email}}</p>
-      </div>
+        <!-- Sender -->
+        <tr>
+          <td style="padding: 40px 4px 28px 4px;">
+            <p style="margin: 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #a1a1aa;"><span style="color: #818cf8;">&mdash;&mdash;</span>&nbsp; Portfolio contact form</p>
+            <h1 style="margin: 16px 0 0 0; font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.035em; color: #fafafa;">{{from_name}}</h1>
+            <p style="margin: 10px 0 0 0; font-size: 15px;"><a href="mailto:{{from_email}}" style="color: #818cf8; text-decoration: none;">{{from_email}}</a></p>
+            <p style="margin: 6px 0 0 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #71717a;">{{time}} &middot; {{user_timezone}}</p>
 
-      <div style="margin-bottom: 16px;">
-        <span
-          style="font-size: 12px; font-weight: 600; color: #6366f1; text-transform: uppercase; letter-spacing: 0.05em;">Subject</span>
-        <p style="margin: 4px 0 0 0; font-size: 16px; color: #1e293b; font-weight: 600;">{{subject}}</p>
-      </div>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 24px;">
+              <tr>
+                <td bgcolor="#fafafa" style="background-color: #fafafa; border-radius: 999px;">
+                  <a href="mailto:{{from_email}}?subject=Re: {{subject}}" target="_blank" style="display: inline-block; padding: 12px 22px; font-size: 14px; font-weight: 600; color: #09090b; text-decoration: none;">Reply to {{from_name}} &rarr;</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
 
-      <div>
-        <span
-          style="font-size: 12px; font-weight: 600; color: #6366f1; text-transform: uppercase; letter-spacing: 0.05em;">Message</span>
-        <div
-          style="margin: 8px 0 0 0; padding: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #6366f1; border-radius: 4px;">
-          <p style="margin: 0; font-size: 16px; color: #374151; line-height: 1.6; white-space: pre-wrap;">{{message}}
-          </p>
-        </div>
-      </div>
-    </div>
+        <!-- Message -->
+        <tr>
+          <td bgcolor="#18181b" style="background-color: #18181b; border: 1px solid #27272a; border-radius: 20px; padding: 28px;">
+            <p style="margin: 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">Subject</p>
+            <p style="margin: 6px 0 20px 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: #fafafa;">{{subject}}</p>
 
-    <div
-      style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
-      <h4 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #475569;">📅 Time References</h4>
-      <div style="font-size: 13px; color: #64748b; line-height: 1.5;">
-        <div><strong>User's Time:</strong> {{time}}</div>
-        <div><strong>Your Current Time:</strong> {{time_recipient}} ({{recipient_location}})</div>
-        <div><strong>UTC Reference:</strong> {{time_utc}}</div>
-      </div>
-    </div>
+            <p style="margin: 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">Message</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 8px;">
+              <tr>
+                <td bgcolor="#111113" style="background-color: #111113; border: 1px solid #27272a; border-left: 2px solid #818cf8; border-radius: 12px; padding: 18px 20px; font-size: 16px; line-height: 1.65; color: #e4e4e7; white-space: pre-wrap;">{{message}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
 
-    <!-- Quick Actions -->
-    <div style="text-align: center; margin-top: 24px;">
-      <a href="mailto:{{from_email}}?subject=Re: {{subject}}"
-        style="display: inline-block; background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);">
-        📧 Reply Now
-      </a>
-    </div>
-  </div>
+        <tr><td height="16" style="height: 16px; line-height: 16px; font-size: 0;">&nbsp;</td></tr>
 
-  <!-- Footer -->
-  <div
-    style="background: #f8fafc; padding: 20px 24px; border-radius: 0 0 12px 12px; border-top: 1px solid #e2e8f0; text-align: center;">
-    <p style="margin: 0; font-size: 13px; color: #64748b;">
-      This notification was sent from your portfolio contact form<br>
-      <a href="https://abdullahrather.com"
-        style="color: #6366f1; text-decoration: none; font-weight: 500;">abdullahrather.com</a>
-    </p>
-  </div>
-</div>
+        <!-- Time references -->
+        <tr>
+          <td bgcolor="#18181b" style="background-color: #18181b; border: 1px solid #27272a; border-radius: 20px; padding: 24px 28px;">
+            <p style="margin: 0 0 14px 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #a1a1aa;"><span style="color: #818cf8;">&mdash;&mdash;</span>&nbsp; Time references</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size: 13px;">
+              <tr>
+                <td width="120" style="padding: 8px 0; border-top: 1px solid #27272a; color: #71717a;">Their time</td>
+                <td style="padding: 8px 0; border-top: 1px solid #27272a; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #d4d4d8;">{{time}}</td>
+              </tr>
+              <tr>
+                <td width="120" style="padding: 8px 0; border-top: 1px solid #27272a; color: #71717a;">Your time</td>
+                <td style="padding: 8px 0; border-top: 1px solid #27272a; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #d4d4d8;">{{time_recipient}} <span style="color: #71717a;">({{recipient_location}})</span></td>
+              </tr>
+              <tr>
+                <td width="120" style="padding: 8px 0; border-top: 1px solid #27272a; color: #71717a;">UTC</td>
+                <td style="padding: 8px 0; border-top: 1px solid #27272a; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #d4d4d8;">{{time_utc}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding: 32px 4px 0 4px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="border-top: 1px solid #27272a; padding-top: 20px; font-size: 12px; line-height: 1.6; color: #71717a;">
+                  Sent from the contact form on <a href="https://abdullahrather.com" target="_blank" style="color: #a1a1aa; text-decoration: none;">abdullahrather.com</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>

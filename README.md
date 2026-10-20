@@ -59,3 +59,18 @@ npm run build && npm run preview
 
 Pushing to `main` builds and deploys to the `gh-pages` branch. The EmailJS / reCAPTCHA values are
 read from repository secrets at build time.
+
+## Versioning & releases
+
+Versions follow `vMAJOR.MINOR.PATCH` and are created automatically by
+`.github/workflows/release.yml` whenever a pull request is merged into `main`:
+
+| PR label        | Result                                | Use for                            |
+| --------------- | ------------------------------------- | ---------------------------------- |
+| _(none)_        | patch — `v2.0.1` → `v2.0.2`           | fixes, text/content updates        |
+| `release:minor` | minor — `v2.0.1` → `v2.1.0`           | new section, feature or project    |
+| `release:major` | major — `v2.0.1` → `v3.0.0`           | redesign / rebuild                 |
+| `skip-release`  | no tag                                | changes not worth a version        |
+
+Each release gets a tag and a GitHub Release with auto-generated notes. Dependabot PRs are
+skipped. `v1.0.0` is the original (pre-2026) site; `v2.0.0` is the redesign.

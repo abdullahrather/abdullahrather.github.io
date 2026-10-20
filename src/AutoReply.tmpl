@@ -1,131 +1,155 @@
-<div style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
-  <!-- Header with Logo and Branding -->
-  <div style="background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%); padding: 24px; border-radius: 12px 12px 0 0;">
-    <div style="text-align: center;">
-      <a style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;"
-         href="https://abdullahrather.com" target="_blank">
-        <img style="height: 36px; width: 36px; border-radius: 8px; margin-right: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);"
-             height="36px" width="36px"
-             src="https://abdullahrather.com/images/favicons/favicon-512x512.png"
-             alt="Abdullah Rather Logo" />
-        <span style="font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.025em;">
-          Abdullah Rather
-        </span>
-      </a>
-    </div>
-    <div style="text-align: center; margin-top: 8px;">
-      <span style="color: #e0e7ff; font-size: 14px; font-weight: 500;">
-        {{email_subtitle}}
-      </span>
-    </div>
-  </div>
+<!-- Auto-reply sent to the visitor (EmailJS template). Variables are filled by src/components/Contact.jsx. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#09090b" style="background-color: #09090b; margin: 0; padding: 0;">
+  <tr>
+    <td align="center" style="padding: 40px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #fafafa;">
 
-  <!-- Main Content -->
-  <div style="padding: 32px 24px; background-color: #ffffff;">
-    <!-- Success Badge -->
-    <div style="text-align: center; margin-bottom: 24px;">
-      <span style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-        {{email_badge}}
-      </span>
-    </div>
+        <!-- Header -->
+        <tr>
+          <td style="padding: 0 4px 28px 4px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="44" valign="middle">
+                  <a href="https://abdullahrather.com" target="_blank" style="text-decoration: none;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="40" height="40" align="center" valign="middle" bgcolor="#fafafa" style="width: 40px; height: 40px; border-radius: 50%; background-color: #fafafa; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; color: #09090b; letter-spacing: -0.02em;">AR</td>
+                      </tr>
+                    </table>
+                  </a>
+                </td>
+                <td valign="middle" style="padding-left: 12px;">
+                  <a href="https://abdullahrather.com" target="_blank" style="text-decoration: none; color: #fafafa; font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">Abdullah Rather</a>
+                  <div style="font-size: 13px; color: #a1a1aa; margin-top: 2px;">{{email_subtitle}}</div>
+                </td>
+                <td align="right" valign="middle" style="font-size: 12px;">
+                  <a href="https://abdullahrather.com" target="_blank" style="color: #a1a1aa; text-decoration: none;">abdullahrather.com &#8599;</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
 
-    <!-- Greeting -->
-    <div style="text-align: center; margin-bottom: 32px;">
-      <h2 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 700; color: #1e293b; line-height: 1.2;">
-        {{email_heading}}
-      </h2>
-      <p style="margin: 0; font-size: 16px; color: #64748b; font-weight: 500;">
-        {{email_greeting}}
-      </p>
-    </div>
+        <!-- Accent line -->
+        <tr>
+          <td height="2" bgcolor="#818cf8" style="height: 2px; line-height: 2px; font-size: 0; background-color: #818cf8; background-image: linear-gradient(90deg, #818cf8, #c084fc); border-radius: 2px;">&nbsp;</td>
+        </tr>
 
-    <!-- Message Summary -->
-    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
-      <h3 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 700; color: #1e293b; display: flex; align-items: center;">
-        {{email_summary_title}}
-      </h3>
+        <!-- Intro -->
+        <tr>
+          <td style="padding: 40px 4px 32px 4px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td bgcolor="#111113" style="background-color: #111113; border: 1px solid #27272a; border-radius: 999px; padding: 6px 14px; font-size: 12px; color: #a1a1aa;">
+                  <span style="color: #4ade80;">&#9679;</span>&nbsp; {{email_badge}}
+                </td>
+              </tr>
+            </table>
+            <h1 style="margin: 24px 0 0 0; font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.035em; color: #fafafa;">{{email_heading}}</h1>
+            <p style="margin: 14px 0 0 0; font-size: 16px; line-height: 1.6; color: #a1a1aa;">{{email_greeting}}</p>
+          </td>
+        </tr>
 
-      <div style="margin-bottom: 16px;">
-        <span style="font-size: 12px; font-weight: 600; color: #6366f1; text-transform: uppercase; letter-spacing: 0.05em;">{{email_label_subject}}</span>
-        <p style="margin: 4px 0 0 0; font-size: 16px; color: #1e293b; font-weight: 600;">"{{subject}}"</p>
-      </div>
+        <!-- Message summary -->
+        <tr>
+          <td bgcolor="#18181b" style="background-color: #18181b; border: 1px solid #27272a; border-radius: 20px; padding: 28px;">
+            <p style="margin: 0 0 22px 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #a1a1aa;"><span style="color: #818cf8;">&mdash;&mdash;</span>&nbsp; {{email_summary_title}}</p>
 
-      <div style="margin-bottom: 16px;">
-        <span style="font-size: 12px; font-weight: 600; color: #6366f1; text-transform: uppercase; letter-spacing: 0.05em;">{{email_label_message}}</span>
-        <div style="margin: 8px 0 0 0; padding: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #6366f1; border-radius: 4px;">
-          <p style="margin: 0; font-size: 15px; color: #374151; line-height: 1.6; white-space: pre-wrap;">{{message}}</p>
-        </div>
-      </div>
+            <p style="margin: 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">{{email_label_subject}}</p>
+            <p style="margin: 6px 0 20px 0; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #fafafa;">{{subject}}</p>
 
-      <div>
-        <span style="font-size: 12px; font-weight: 600; color: #6366f1; text-transform: uppercase; letter-spacing: 0.05em;">{{email_label_submitted}}</span>
-        <p style="margin: 4px 0 0 0; font-size: 14px; color: #64748b; font-weight: 500;">{{time}}</p>
-      </div>
-    </div>
+            <p style="margin: 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">{{email_label_message}}</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin: 8px 0 20px 0;">
+              <tr>
+                <td bgcolor="#111113" style="background-color: #111113; border: 1px solid #27272a; border-left: 2px solid #818cf8; border-radius: 12px; padding: 16px 18px; font-size: 15px; line-height: 1.65; color: #d4d4d8; white-space: pre-wrap;">{{message}}</td>
+              </tr>
+            </table>
 
-    <!-- What Happens Next -->
-    <div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
-      <h3 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: #92400e; display: flex; align-items: center;">
-        {{email_next_title}}
-      </h3>
-      <ul style="margin: 0; padding-left: 16px; color: #92400e; font-size: 14px; line-height: 1.6;">
-        <li style="margin-bottom: 4px;">{{email_step1}}</li>
-        <li style="margin-bottom: 4px;">{{email_step2}}</li>
-        <li>{{email_step3}}</li>
-      </ul>
-    </div>
+            <p style="margin: 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">{{email_label_submitted}}</p>
+            <p style="margin: 6px 0 0 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; color: #a1a1aa;">{{time}}</p>
+          </td>
+        </tr>
 
-    <!-- Contact Information -->
-    <div style="text-align: center; margin-bottom: 24px;">
-      <h3 style="margin: 0 0 16px 0; font-size: 18px; font-weight: 700; color: #1e293b;">
-        {{email_immediate_title}}
-      </h3>
+        <tr><td height="16" style="height: 16px; line-height: 16px; font-size: 0;">&nbsp;</td></tr>
 
-      <div style="display: inline-block; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; text-align: left;">
-        <p style="margin: 0 0 8px 0; font-size: 14px; color: #64748b; font-weight: 500;">
-          📧 <strong style="color: #1e293b;">{{email_label_email}}</strong> abdullahrather19@gmail.com
-        </p>
-        <p style="margin: 0 0 8px 0; font-size: 14px; color: #64748b; font-weight: 500;">
-          🌍 <strong style="color: #1e293b;">{{email_label_location}}</strong> Berlin, Germany
-        </p>
-        <p style="margin: 0; font-size: 14px; color: #64748b; font-weight: 500;">
-          💼 <strong style="color: #1e293b;">{{email_label_spec}}</strong> Full-Stack Development
-        </p>
-      </div>
-    </div>
+        <!-- What happens next -->
+        <tr>
+          <td bgcolor="#18181b" style="background-color: #18181b; border: 1px solid #27272a; border-radius: 20px; padding: 28px;">
+            <p style="margin: 0 0 20px 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #a1a1aa;"><span style="color: #818cf8;">&mdash;&mdash;</span>&nbsp; {{email_next_title}}</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="36" valign="top" style="padding: 0 0 14px 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #818cf8;">01</td>
+                <td valign="top" style="padding: 0 0 14px 0; font-size: 15px; line-height: 1.5; color: #d4d4d8;">{{email_step1}}</td>
+              </tr>
+              <tr>
+                <td width="36" valign="top" style="padding: 0 0 14px 0; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #818cf8;">02</td>
+                <td valign="top" style="padding: 0 0 14px 0; font-size: 15px; line-height: 1.5; color: #d4d4d8;">{{email_step2}}</td>
+              </tr>
+              <tr>
+                <td width="36" valign="top" style="font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: #818cf8;">03</td>
+                <td valign="top" style="font-size: 15px; line-height: 1.5; color: #d4d4d8;">{{email_step3}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
 
-    <!-- Social Links -->
-    <div style="text-align: center; margin-bottom: 24px;">
-      <p style="margin: 0 0 12px 0; font-size: 14px; color: #64748b; font-weight: 500;">
-        {{email_social_title}}
-      </p>
-      <div style="display: inline-block;">
-        <a href="https://linkedin.com/in/abdullahrather" target="_blank"
-           style="display: inline-block; margin: 0 8px; padding: 8px 12px; background: #0077b5; color: white; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600;">
-          LinkedIn
-        </a>
-        <a href="https://github.com/abdullahrather" target="_blank"
-           style="display: inline-block; margin: 0 8px; padding: 8px 12px; background: #333; color: white; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600;">
-          GitHub
-        </a>
-        <a href="https://www.xing.com/profile/Abdullah_Rather" target="_blank"
-           style="display: inline-block; margin: 0 8px; padding: 8px 12px; background: #026466; color: white; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600;">
-          Xing
-        </a>
-      </div>
-    </div>
-  </div>
+        <tr><td height="16" style="height: 16px; line-height: 16px; font-size: 0;">&nbsp;</td></tr>
 
-  <!-- Footer -->
-  <div style="background: #f8fafc; padding: 20px 24px; border-radius: 0 0 12px 12px; border-top: 1px solid #e2e8f0; text-align: center;">
-    <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #1e293b;">
-      {{email_signoff}}<br>
-      <span style="color: #6366f1;">Abdullah Rather</span>
-    </p>
-    <p style="margin: 0; font-size: 13px; color: #64748b; line-height: 1.5;">
-      {{email_subtitle}}<br>
-      {{email_tagline}}<br>
-      <a href="https://abdullahrather.com" style="color: #6366f1; text-decoration: none; font-weight: 500;">abdullahrather.com</a>
-    </p>
-  </div>
-</div>
+        <!-- Direct contact -->
+        <tr>
+          <td bgcolor="#18181b" style="background-color: #18181b; border: 1px solid #27272a; border-radius: 20px; padding: 28px;">
+            <p style="margin: 0 0 18px 0; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #fafafa;">{{email_immediate_title}}</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size: 14px;">
+              <tr>
+                <td width="130" style="padding: 10px 0; border-top: 1px solid #27272a; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">{{email_label_email}}</td>
+                <td style="padding: 10px 0; border-top: 1px solid #27272a;"><a href="mailto:abdullahrather19@gmail.com" style="color: #818cf8; text-decoration: none;">abdullahrather19@gmail.com</a></td>
+              </tr>
+              <tr>
+                <td width="130" style="padding: 10px 0; border-top: 1px solid #27272a; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">{{email_label_location}}</td>
+                <td style="padding: 10px 0; border-top: 1px solid #27272a; color: #d4d4d8;">Germany</td>
+              </tr>
+              <tr>
+                <td width="130" style="padding: 10px 0; border-top: 1px solid #27272a; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #71717a;">{{email_label_spec}}</td>
+                <td style="padding: 10px 0; border-top: 1px solid #27272a; color: #d4d4d8;">Backend / Full-Stack Engineering</td>
+              </tr>
+            </table>
+
+            <p style="margin: 22px 0 12px 0; font-size: 13px; color: #a1a1aa;">{{email_social_title}}</p>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="border: 1px solid #3f3f46; border-radius: 999px; padding: 7px 14px;"><a href="https://github.com/abdullahrather" target="_blank" style="color: #fafafa; text-decoration: none; font-size: 13px; font-weight: 500;">GitHub &#8599;</a></td>
+                <td width="8" style="font-size: 0;">&nbsp;</td>
+                <td style="border: 1px solid #3f3f46; border-radius: 999px; padding: 7px 14px;"><a href="https://linkedin.com/in/abdullahrather" target="_blank" style="color: #fafafa; text-decoration: none; font-size: 13px; font-weight: 500;">LinkedIn &#8599;</a></td>
+                <td width="8" style="font-size: 0;">&nbsp;</td>
+                <td style="border: 1px solid #3f3f46; border-radius: 999px; padding: 7px 14px;"><a href="https://www.xing.com/profile/Abdullah_Rather" target="_blank" style="color: #fafafa; text-decoration: none; font-size: 13px; font-weight: 500;">Xing &#8599;</a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Sign-off -->
+        <tr>
+          <td style="padding: 40px 4px 0 4px;">
+            <p style="margin: 0; font-size: 15px; color: #a1a1aa;">{{email_signoff}}</p>
+            <p style="margin: 6px 0 0 0; font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif; font-style: italic; font-size: 32px; line-height: 1.1; color: #a5b4fc;">Abdullah Rather</p>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding: 32px 4px 0 4px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="border-top: 1px solid #27272a; padding-top: 20px; font-size: 12px; line-height: 1.6; color: #71717a;">
+                  {{email_subtitle}} &middot; {{email_tagline}}<br>
+                  <a href="https://abdullahrather.com" target="_blank" style="color: #a1a1aa; text-decoration: none;">abdullahrather.com</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>

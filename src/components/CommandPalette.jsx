@@ -4,6 +4,7 @@ import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useTheme } from "../lib/theme";
 import { useCopy } from "../lib/hooks";
+import { toast } from "../lib/toast";
 import { EMAIL, SECTIONS, SOCIALS, getResume } from "../lib/site";
 
 const SECTION_ICONS = { about: "sparkle", experience: "briefcase", expertise: "layers", projects: "file", contact: "mail" };
@@ -59,7 +60,7 @@ const CommandPalette = ({ open, onOpenChange }) => {
         items: [
           { id: "theme", label: t("ui.cmd.theme"), icon: "sun", run: () => toggleTheme() },
           { id: "lang", label: t("ui.cmd.lang"), icon: "globe", run: () => setLang(lang === "de" ? "en" : "de") },
-          { id: "copy", label: t("ui.cmd.copy"), icon: "copy", hint: EMAIL, run: () => copy(EMAIL) },
+          { id: "copy", label: t("ui.cmd.copy"), icon: "copy", hint: EMAIL, run: async () => { if (await copy(EMAIL)) toast(t("ui.contact.copied")); } },
           { id: "view-resume", label: t("ui.cmd.view_resume"), icon: "file", run: () => { trackEvent("resume_view"); visit(resume.href)(); } },
           {
             id: "resume",

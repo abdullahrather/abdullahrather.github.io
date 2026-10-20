@@ -85,11 +85,12 @@ const Nav = ({ onOpenCommand }) => {
             <button
               type="button"
               onClick={onOpenCommand}
-              aria-label={t("ui.cmd.open")}
+              title={t("ui.cmd.open")}
               className="hidden h-9 items-center gap-2 rounded-full border border-line px-3 text-xs text-muted transition-colors hover:border-line-strong hover:text-fg sm:flex"
             >
               <Icon name="search" className="size-3.5" />
-              <span className="flex gap-0.5">
+              <span className="sr-only">{t("ui.cmd.open")}</span>
+              <span className="flex gap-0.5" aria-hidden="true">
                 <kbd className="kbd">{isMac ? "⌘" : "Ctrl"}</kbd>
                 <kbd className="kbd">K</kbd>
               </span>

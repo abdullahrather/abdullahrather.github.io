@@ -1,12 +1,13 @@
 import React from "react";
 import { Icon } from "./Icons";
 import { useTranslation } from "../lib/i18n";
-import { useClock } from "../lib/hooks";
+import { useClock, useNow } from "../lib/hooks";
 import { EMAIL, SECTIONS, SOCIALS, TIMEZONE } from "../lib/site";
 
 const Footer = () => {
   const { t, lang } = useTranslation();
   const time = useClock(TIMEZONE, lang === "de" ? "de-DE" : "en-GB");
+  const year = useNow().getFullYear();
 
   return (
     <footer className="relative overflow-hidden border-t border-line">
@@ -55,7 +56,7 @@ const Footer = () => {
         </p>
 
         <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 text-xs text-subtle sm:flex-row">
-          <p>© {new Date().getFullYear()} Abdullah Rather. {t("ui.footer.rights")}</p>
+          <p>© {year} Abdullah Rather. {t("ui.footer.rights")}</p>
           <p className="hidden md:block">{t("ui.footer.built")}</p>
           <a href="#top" className="inline-flex items-center gap-1.5 transition-colors hover:text-fg">
             {t("ui.footer.top")}

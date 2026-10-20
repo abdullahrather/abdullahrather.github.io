@@ -10,6 +10,11 @@ const AVAILABLE = [
   { code: "de", label: "DE", name: "Deutsch" },
 ];
 
+/** Fetches a lazily loaded locale; resolves immediately when already available. */
+export const loadLocale = async (lang) => {
+  if (!TRANSLATIONS[lang] && LOADERS[lang]) TRANSLATIONS[lang] = (await LOADERS[lang]()).default;
+};
+
 const I18nContext = createContext({
   lang: DEFAULT_LANG,
   setLang: () => {},
@@ -17,7 +22,7 @@ const I18nContext = createContext({
   t: (key) => key,
 });
 
-const detectLang = () => {
+export const getInitialLang = () => {
   try {
     const saved = localStorage.getItem("lang");
     if (saved && AVAILABLE.some((l) => l.code === saved)) return saved;
@@ -30,8 +35,8 @@ const detectLang = () => {
   return DEFAULT_LANG;
 };
 
-export const TranslationProvider = ({ children }) => {
-  const [lang, setLangState] = useState(detectLang);
+export const TranslationProvider = ({ children, initialLang }) => {
+  const [lang, setLangState] = useState(() => initialLang ?? getInitialLang());
   const [, setLoaded] = useState(0);
 
   const setLang = useCallback((newLang) => {
@@ -46,10 +51,7 @@ export const TranslationProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.lang = lang;
     if (TRANSLATIONS[lang] || !LOADERS[lang]) return;
-    LOADERS[lang]().then((mod) => {
-      TRANSLATIONS[lang] = mod.default;
-      setLoaded((n) => n + 1);
-    });
+    loadLocale(lang).then(() => setLoaded((n) => n + 1));
   }, [lang]);
 
   const ready = Boolean(TRANSLATIONS[lang]);

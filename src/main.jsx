@@ -1,17 +1,28 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { trackLink } from "./lib/analytics";
-import { TranslationProvider } from "./lib/i18n";
+import { TranslationProvider, getInitialLang, loadLocale } from "./lib/i18n";
 
-createRoot(document.getElementById("root")).render(
+const container = document.getElementById("root");
+const lang = getInitialLang();
+
+const app = (
   <StrictMode>
-    <TranslationProvider>
+    <TranslationProvider initialLang={lang}>
       <App />
     </TranslationProvider>
   </StrictMode>
 );
+
+// The HTML is pre-rendered in English. Hydrate it when it matches the visitor's language;
+// otherwise fetch their locale first and render fresh.
+if (container.hasChildNodes() && lang === "en") {
+  hydrateRoot(container, app);
+} else {
+  loadLocale(lang).finally(() => createRoot(container).render(app));
+}
 
 // Delegated link-click analytics
 document.addEventListener(

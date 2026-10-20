@@ -156,8 +156,9 @@ const Hero = () => {
         <p className="container-x mb-6 text-center font-mono text-xs uppercase tracking-[0.2em] text-subtle">
           {t("ui.hero.stack_label")}
         </p>
-        <div className="mask-x group flex overflow-hidden" aria-label={STACK.join(", ")}>
-          <ul className="flex shrink-0 animate-marquee items-center gap-10 pr-10 group-hover:[animation-play-state:paused]" aria-hidden="true">
+        <p className="sr-only">{STACK.join(", ")}</p>
+        <div className="mask-x group flex overflow-hidden" aria-hidden="true">
+          <ul className="flex shrink-0 animate-marquee items-center gap-10 pr-10 group-hover:[animation-play-state:paused]">
             {[...STACK, ...STACK].map((name, i) => (
               <li key={i} className="flex items-center gap-10 whitespace-nowrap text-lg font-medium tracking-tight text-subtle sm:text-xl">
                 {name}

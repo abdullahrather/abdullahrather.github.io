@@ -2,11 +2,11 @@ import React, { useMemo } from "react";
 import SectionHeader from "./SectionHeader";
 import { Icon } from "./Icons";
 import { useTranslation } from "../lib/i18n";
-import { useReveal } from "../lib/hooks";
+import { useNow, useReveal } from "../lib/hooks";
 
-const formatDuration = (startDate, endDate, labels) => {
+const formatDuration = (startDate, endDate, now, labels) => {
   const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
+  const end = endDate ? new Date(endDate) : now;
 
   let years = end.getFullYear() - start.getFullYear();
   let months = end.getMonth() - start.getMonth();
@@ -21,7 +21,7 @@ const formatDuration = (startDate, endDate, labels) => {
   return parts.length ? parts.join(" ") : labels.less_than_month;
 };
 
-const Role = ({ experience, index, formatter, labels, present, impactLabel }) => {
+const Role = ({ experience, index, now, formatter, labels, present, impactLabel }) => {
   const reveal = useReveal();
   const isCurrent = !experience.endDate;
   const period = `${formatter.format(new Date(experience.startDate))} — ${
@@ -40,7 +40,7 @@ const Role = ({ experience, index, formatter, labels, present, impactLabel }) =>
 
       <div className="md:pl-8">
         <p className="font-mono text-xs tabular-nums text-muted">{period}</p>
-        <p className="mt-1 font-mono text-xs text-subtle">{formatDuration(experience.startDate, experience.endDate, labels)}</p>
+        <p className="mt-1 font-mono text-xs text-subtle">{formatDuration(experience.startDate, experience.endDate, now, labels)}</p>
         <span className="chip mt-3">{experience.tag}</span>
       </div>
 
@@ -82,6 +82,7 @@ const Role = ({ experience, index, formatter, labels, present, impactLabel }) =>
 
 const WorkExperience = () => {
   const { t, lang } = useTranslation();
+  const now = useNow();
 
   const formatter = useMemo(
     () => new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-US", { month: "short", year: "numeric" }),
@@ -117,6 +118,7 @@ const WorkExperience = () => {
               key={`${experience.company}-${experience.role}`}
               experience={experience}
               index={index}
+              now={now}
               formatter={formatter}
               labels={labels}
               present={t("workExperience.present")}

@@ -9,6 +9,8 @@ export default defineConfig({
   define: {
     // react-google-recaptcha still references `global`
     global: "globalThis",
+    // Shared by the client and pre-render builds so date-based text hydrates identically
+    "import.meta.env.VITE_BUILD_TIME": JSON.stringify(process.env.VITE_BUILD_TIME || new Date().toISOString()),
   },
   build: {
     target: "es2022",

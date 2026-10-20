@@ -63,18 +63,22 @@ export const useActiveSection = (ids) => {
   return active;
 };
 
-/** Animates a number from 0 to `target` once the element is visible. */
+/**
+ * Animates a number from 0 to `target` once the element is visible.
+ * Renders the final value first (pre-rendered HTML / no-JS), and only resets to 0
+ * on the client when the element is still off-screen.
+ */
 export const useCountUp = (target, duration = 1400) => {
   const ref = useRef(null);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(target);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return undefined;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setValue(target);
-      return undefined;
-    }
+    setValue(target);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    if (node.getBoundingClientRect().top < window.innerHeight) return undefined;
+    setValue(0);
 
     let frame;
     const observer = new IntersectionObserver(
@@ -101,20 +105,34 @@ export const useCountUp = (target, duration = 1400) => {
   return [ref, value];
 };
 
-/** Current time in a given IANA timezone, refreshed every 30 s. */
-export const useClock = (timeZone, locale) => {
-  const format = useCallback(
-    () =>
-      new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", timeZone }).format(new Date()),
-    [timeZone, locale]
-  );
-  const [time, setTime] = useState(format);
+// The page is pre-rendered at build time. Date-dependent output starts from the build
+// timestamp so the first client render matches the static HTML, then moves to "now".
+const BUILD_DATE = new Date(import.meta.env.VITE_BUILD_TIME || Date.now());
+
+/** Current date, starting at build time and refreshed hourly after hydration. */
+export const useNow = () => {
+  const [now, setNow] = useState(BUILD_DATE);
 
   useEffect(() => {
+    setNow(new Date());
+    const id = window.setInterval(() => setNow(new Date()), 60 * 60 * 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  return now;
+};
+
+/** Current time in a given IANA timezone, refreshed every 30 s. Empty until mounted. */
+export const useClock = (timeZone, locale) => {
+  const [time, setTime] = useState("--:--");
+
+  useEffect(() => {
+    const format = () =>
+      new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", timeZone }).format(new Date());
     setTime(format());
     const id = window.setInterval(() => setTime(format()), 30_000);
     return () => window.clearInterval(id);
-  }, [format]);
+  }, [timeZone, locale]);
 
   return time;
 };

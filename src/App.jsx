@@ -8,6 +8,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CommandPalette from "./components/CommandPalette";
+import Toaster from "./components/Toaster";
 import { useTranslation } from "./lib/i18n";
 
 /** Fixed decorative backdrop: fading grid, accent glow and film grain. */
@@ -45,6 +46,7 @@ function App() {
       </main>
       <Footer />
       <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} />
+      <Toaster />
     </>
   );
 }

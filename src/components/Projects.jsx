@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import SectionHeader from "./SectionHeader";
 import { Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
@@ -10,6 +11,22 @@ const INITIAL_COUNT = 6;
 
 const hasDemo = (p) => p.demo && p.demo !== "#";
 
+/**
+ * Runs a grid update inside a View Transition so cards glide to their new positions.
+ * Card names are only applied (via .vt-cards) for the duration of the transition so they
+ * do not interfere with the root-level theme transition.
+ */
+const withGridTransition = (grid, update) => {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!document.startViewTransition || reduce || !grid) {
+    update();
+    return;
+  }
+  grid.classList.add("vt-cards");
+  const transition = document.startViewTransition(() => flushSync(update));
+  transition.finished.finally(() => grid.classList.remove("vt-cards"));
+};
+
 const ProjectCard = ({ project, index, onOpen }) => {
   const { t } = useTranslation();
   const reveal = useReveal();
@@ -20,8 +37,8 @@ const ProjectCard = ({ project, index, onOpen }) => {
     <article
       ref={reveal}
       onPointerMove={spotlight}
-      style={{ "--delay": `${(index % 3) * 70}ms` }}
-      className="card spotlight group flex flex-col overflow-hidden p-2 transition-colors duration-300 hover:border-line-strong"
+      style={{ "--delay": `${(index % 3) * 70}ms`, "--vt": `project-${project.id}` }}
+      className="project-card card spotlight group flex flex-col overflow-hidden p-2 transition-colors duration-300 hover:border-line-strong"
     >
       <button
         type="button"
@@ -31,6 +48,8 @@ const ProjectCard = ({ project, index, onOpen }) => {
       >
         <img
           src={project.image}
+          srcSet={`${project.image.replace(/\.webp$/, "-640.webp")} 640w, ${project.image} 1200w`}
+          sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
           alt=""
           loading="lazy"
           decoding="async"
@@ -187,6 +206,7 @@ const Projects = () => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState("all");
   const [showAll, setShowAll] = useState(false);
+  const gridRef = useRef(null);
   const [selected, setSelected] = useState(null);
 
   const projects = useMemo(() => t("projects.items") || [], [t]);
@@ -223,8 +243,10 @@ const Projects = () => {
                 aria-pressed={isActive}
                 type="button"
                 onClick={() => {
-                  setFilter(f.id);
-                  setShowAll(false);
+                  withGridTransition(gridRef.current, () => {
+                    setFilter(f.id);
+                    setShowAll(false);
+                  });
                 }}
                 className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 ${
                   isActive
@@ -239,9 +261,9 @@ const Projects = () => {
           })}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((project, i) => (
-            <ProjectCard key={`${filter}-${project.id}`} project={project} index={i} onOpen={openProject} />
+            <ProjectCard key={project.id} project={project} index={i} onOpen={openProject} />
           ))}
         </div>
 

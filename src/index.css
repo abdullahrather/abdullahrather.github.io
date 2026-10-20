@@ -11,7 +11,7 @@
   --bg: oklch(0.985 0.002 286);
   --fg: oklch(0.21 0.006 286);
   --muted: oklch(0.47 0.012 286);
-  --subtle: oklch(0.6 0.01 286);
+  --subtle: oklch(0.52 0.012 286);
   --line: oklch(0.21 0.006 286 / 0.09);
   --line-strong: oklch(0.21 0.006 286 / 0.16);
   --card: oklch(1 0 0 / 0.7);
@@ -27,7 +27,7 @@
   --bg: oklch(0.141 0.004 286);
   --fg: oklch(0.97 0.002 286);
   --muted: oklch(0.71 0.012 286);
-  --subtle: oklch(0.55 0.012 286);
+  --subtle: oklch(0.63 0.012 286);
   --line: oklch(1 0 0 / 0.08);
   --line-strong: oklch(1 0 0 / 0.14);
   --card: oklch(0.2 0.006 286 / 0.55);
@@ -324,4 +324,13 @@ dialog[open]::backdrop {
     translate: none;
     filter: none;
   }
+}
+
+/* Project filter reflow (View Transitions) — names applied only while .vt-cards is set */
+.vt-cards .project-card {
+  view-transition-name: var(--vt);
+}
+::view-transition-group(*) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }

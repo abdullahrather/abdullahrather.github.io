@@ -7,7 +7,7 @@ import { EMAIL, SECTIONS, SOCIALS, TIMEZONE } from "../lib/site";
 const Footer = () => {
   const { t, lang } = useTranslation();
   const time = useClock(TIMEZONE, lang === "de" ? "de-DE" : "en-GB");
-  const year = useNow().getFullYear();
+  const year = useNow().getUTCFullYear();
 
   return (
     <footer className="relative overflow-hidden border-t border-line">

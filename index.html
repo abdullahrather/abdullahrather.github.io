@@ -13,8 +13,19 @@
         var saved = localStorage.getItem("theme");
         var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.classList.toggle("dark", dark);
-        var lang = localStorage.getItem("lang");
-        if (lang) document.documentElement.lang = lang;
+      } catch (e) {}
+      // The pre-rendered HTML is English. For other languages (same rule as getInitialLang in
+      // src/lib/i18n.jsx) hide the page until React swaps the text, with a safety timeout.
+      try {
+        var root = document.documentElement;
+        var lang = null;
+        try { lang = localStorage.getItem("lang"); } catch (e) {}
+        if (lang !== "en" && lang !== "de") lang = /^de/i.test(navigator.language || "") ? "de" : "en";
+        root.lang = lang;
+        if (lang !== "en") {
+          root.dataset.langPending = "";
+          setTimeout(function () { delete root.dataset.langPending; }, 2500);
+        }
       } catch (e) {}
     })();
   </script>

@@ -6,22 +6,33 @@ import { trackLink } from "./lib/analytics";
 import { TranslationProvider, getInitialLang, loadLocale } from "./lib/i18n";
 
 const container = document.getElementById("root");
-const lang = getInitialLang();
+const preferred = getInitialLang();
 
-const app = (
+const app = (initialLang, preferredLang) => (
   <StrictMode>
-    <TranslationProvider initialLang={lang}>
+    <TranslationProvider initialLang={initialLang} preferredLang={preferredLang}>
       <App />
     </TranslationProvider>
   </StrictMode>
 );
 
-// The HTML is pre-rendered in English. Hydrate it when it matches the visitor's language;
-// otherwise fetch their locale first and render fresh.
-if (container.hasChildNodes() && lang === "en") {
-  hydrateRoot(container, app);
+if (container.hasChildNodes()) {
+  // Production: the HTML is pre-rendered in English. Hydrate it as-is; the provider then
+  // switches to the visitor's language in place (index.html hides the page meanwhile).
+  hydrateRoot(container, app("en", preferred));
 } else {
-  loadLocale(lang).finally(() => createRoot(container).render(app));
+  // Dev server: nothing pre-rendered, so load the locale first and render directly.
+  loadLocale(preferred)
+    .then(() => preferred, () => "en")
+    .then((lang) => createRoot(container).render(app(lang)));
+}
+
+// Section ids changed in the 2026 redesign; keep old shared links (#work-experience …) working.
+const LEGACY_ANCHORS = { "#hero": "#top", "#skills": "#about", "#work-experience": "#experience" };
+const legacyTarget = LEGACY_ANCHORS[window.location.hash];
+if (legacyTarget) {
+  history.replaceState(null, "", legacyTarget);
+  requestAnimationFrame(() => document.querySelector(legacyTarget)?.scrollIntoView());
 }
 
 // Delegated link-click analytics

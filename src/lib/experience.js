@@ -6,10 +6,12 @@ export const getExperienceYears = (startDate = CAREER_START_DATE, asOf = new Dat
   const start = new Date(startDate);
   const end = asOf instanceof Date ? asOf : new Date(asOf);
 
-  let years = end.getFullYear() - start.getFullYear();
+  // UTC fields: "YYYY-MM-DD" strings parse as UTC midnight, so local getters would
+  // shift by a day/month for visitors west of UTC.
+  let years = end.getUTCFullYear() - start.getUTCFullYear();
   if (
-    end.getMonth() < start.getMonth() ||
-    (end.getMonth() === start.getMonth() && end.getDate() < start.getDate())
+    end.getUTCMonth() < start.getUTCMonth() ||
+    (end.getUTCMonth() === start.getUTCMonth() && end.getUTCDate() < start.getUTCDate())
   ) {
     years -= 1;
   }

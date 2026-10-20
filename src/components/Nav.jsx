@@ -6,7 +6,8 @@ import { useTheme } from "../lib/theme";
 import { useActiveSection } from "../lib/hooks";
 import { SECTIONS } from "../lib/site";
 
-const SECTION_IDS = SECTIONS.map((s) => s.id);
+// "top" (the hero) is tracked too so the highlight clears when scrolling back up.
+const TRACKED_IDS = ["top", ...SECTIONS.map((s) => s.id)];
 
 export const ThemeToggle = () => {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ export const ThemeToggle = () => {
 
 const Nav = ({ onOpenCommand }) => {
   const { t } = useTranslation();
-  const active = useActiveSection(SECTION_IDS);
+  const active = useActiveSection(TRACKED_IDS);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMac, setIsMac] = useState(false);
@@ -34,11 +35,19 @@ const Nav = ({ onOpenCommand }) => {
   }, []);
 
   useEffect(() => {
-    document.documentElement.style.overflow = menuOpen ? "hidden" : "";
     if (!menuOpen) return undefined;
-    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    document.documentElement.style.overflow = "hidden";
+    const close = () => setMenuOpen(false);
+    const onKey = (e) => e.key === "Escape" && close();
+    // The menu is md:hidden — close it (and release the scroll lock) when the viewport widens.
+    const desktop = window.matchMedia("(min-width: 768px)");
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    desktop.addEventListener("change", close);
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", close);
+    };
   }, [menuOpen]);
 
   return (

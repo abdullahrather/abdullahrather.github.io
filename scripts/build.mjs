@@ -24,7 +24,9 @@ await build({
 const { render } = await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
 let html = fs.readFileSync(indexPath, "utf8");
 if (!html.includes(marker)) throw new Error(`prerender: ${marker} not found in dist/index.html`);
-html = html.replace(marker, `<div id="root">${render()}</div>`);
+// Replacer function: a string replacement would interpret $&, $' etc. inside the content.
+const rendered = render();
+html = html.replace(marker, () => `<div id="root">${rendered}</div>`);
 
 // Inline the (single, ~12 kB gzipped) stylesheet to save a render-blocking round trip.
 html = html.replace(/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/, (_, href) => {

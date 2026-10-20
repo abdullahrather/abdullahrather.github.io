@@ -18,14 +18,21 @@ const getRevealObserver = () => {
   return revealObserver;
 };
 
-/** Ref callback: fades/blurs the element in the first time it enters the viewport. */
+/**
+ * Ref callback: fades/blurs the element in the first time it enters the viewport.
+ * Elements already on screen when attached (e.g. pre-rendered content at hydration)
+ * are left alone so they don't flash out and back in.
+ */
 export const useReveal = () =>
   useCallback((node) => {
-    if (!node) return;
-    node.classList.add("reveal");
+    if (!node) return undefined;
     const observer = getRevealObserver();
-    if (observer) observer.observe(node);
-    else node.classList.add("is-in");
+    const rect = node.getBoundingClientRect();
+    if (!observer || (rect.top < window.innerHeight && rect.bottom > 0)) return undefined;
+
+    node.classList.add("reveal");
+    observer.observe(node);
+    return () => observer.unobserve(node);
   }, []);
 
 /** Pointer handler that feeds the .spotlight radial gradient. */
@@ -107,6 +114,8 @@ export const useCountUp = (target, duration = 1400) => {
 
 // The page is pre-rendered at build time. Date-dependent output starts from the build
 // timestamp so the first client render matches the static HTML, then moves to "now".
+// Calendar maths (durations, years) uses UTC fields throughout so the server and every
+// visitor's time zone produce the same text.
 const BUILD_DATE = new Date(import.meta.env.VITE_BUILD_TIME || Date.now());
 
 /** Current date, starting at build time and refreshed hourly after hydration. */

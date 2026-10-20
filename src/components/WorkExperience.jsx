@@ -8,8 +8,9 @@ const formatDuration = (startDate, endDate, now, labels) => {
   const start = new Date(startDate);
   const end = endDate ? new Date(endDate) : now;
 
-  let years = end.getFullYear() - start.getFullYear();
-  let months = end.getMonth() - start.getMonth();
+  // UTC fields keep durations identical across time zones (dates are UTC-midnight strings)
+  let years = end.getUTCFullYear() - start.getUTCFullYear();
+  let months = end.getUTCMonth() - start.getUTCMonth();
   if (months < 0) {
     years -= 1;
     months += 12;
@@ -85,7 +86,7 @@ const WorkExperience = () => {
   const now = useNow();
 
   const formatter = useMemo(
-    () => new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-US", { month: "short", year: "numeric" }),
+    () => new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-US", { month: "short", year: "numeric", timeZone: "UTC" }),
     [lang]
   );
 

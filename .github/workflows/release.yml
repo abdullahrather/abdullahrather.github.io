@@ -1,0 +1,68 @@
+name: Tag & release merged PRs
+
+# Every PR merged into main gets the next semantic version tag and a GitHub Release.
+#   default            -> patch  (v2.0.1 -> v2.0.2)
+#   label release:minor -> minor  (v2.0.1 -> v2.1.0)
+#   label release:major -> major  (v2.0.1 -> v3.0.0)
+#   label skip-release  -> no release (Dependabot PRs are skipped automatically)
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write # create the release labels if they don't exist yet
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
+      !contains(github.event.pull_request.labels.*.name, 'skip-release')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      LABELS: ${{ toJSON(github.event.pull_request.labels.*.name) }}
+      MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+      PR_TITLE: ${{ github.event.pull_request.title }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+
+    steps:
+      - name: Check out (with tags)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Make sure the release labels exist
+        run: |
+          gh label create release:minor --color 0E8A16 --description "Merge creates a minor release (new feature/section)" --force
+          gh label create release:major --color B60205 --description "Merge creates a major release (redesign/rebuild)" --force
+          gh label create skip-release  --color BFBFBF --description "Merge does not create a release" --force
+
+      - name: Work out the next version
+        id: version
+        run: |
+          latest=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n1)
+          latest=${latest:-v0.0.0}
+          IFS=. read -r major minor patch <<< "${latest#v}"
+
+          if   echo "$LABELS" | grep -q '"release:major"'; then bump=major; major=$((major + 1)); minor=0; patch=0
+          elif echo "$LABELS" | grep -q '"release:minor"'; then bump=minor; minor=$((minor + 1)); patch=0
+          else bump=patch; patch=$((patch + 1)); fi
+
+          next="v${major}.${minor}.${patch}"
+          echo "Latest $latest -> $next ($bump)"
+          echo "next=$next" >> "$GITHUB_OUTPUT"
+
+      - name: Create tag and GitHub Release
+        run: |
+          gh release create "${{ steps.version.outputs.next }}" \
+            --target "$MERGE_SHA" \
+            --title "${{ steps.version.outputs.next }} — $PR_TITLE" \
+            --generate-notes

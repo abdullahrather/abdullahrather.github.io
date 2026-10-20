@@ -275,7 +275,7 @@
         "title": "Current Role",
         "value": "Full-Stack Software Engineer",
         "link": "#",
-        "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"
+        "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       },
       {
         "title": "Availability",
@@ -519,7 +519,7 @@
         "id": 5,
         "title": "Task Manager",
         "description": "Task management system built with Symfony for structured workflows, team collaboration, and role-based access.",
-        "image": "/images/projects/task-manager.png",
+        "image": "/images/projects/task-manager.webp",
         "technologies": [
           "Symfony",
           "PHP",
@@ -555,7 +555,7 @@
         "id": 6,
         "title": "Portfolio Website",
         "description": "Job-centric personal portfolio built with React, Vite, and Tailwind CSS, featuring animation, project highlights, and EmailJS contact automation.",
-        "image": "/images/projects/portfolio-website.png",
+        "image": "/images/projects/portfolio-website.webp",
         "technologies": [
           "React",
           "Vite",
@@ -591,7 +591,7 @@
         "id": 7,
         "title": "Currency Converter App",
         "description": "Real-time currency conversion application built with Laravel, live exchange rates, and responsive currency switching.",
-        "image": "/images/projects/currency-converter.png",
+        "image": "/images/projects/currency-converter.webp",
         "technologies": [
           "Laravel",
           "GuzzleHttp",
@@ -888,5 +888,90 @@
         "demo": "#"
       }
     ]
+  },
+  "ui": {
+    "skip": "Skip to content",
+    "available": "Open to new opportunities",
+    "menu": "Menu",
+    "close": "Close",
+    "theme": "Toggle theme",
+    "nav": {
+      "about": "About",
+      "experience": "Experience",
+      "expertise": "Focus",
+      "projects": "Work",
+      "contact": "Contact"
+    },
+    "hero": {
+      "greeting": "Hi, I'm Abdullah Rather",
+      "headline_a": "I build",
+      "headline_em": "reliable",
+      "headline_b": "backends for real businesses.",
+      "cta_work": "View my work",
+      "cta_contact": "Get in touch",
+      "stack_label": "Working with",
+      "role_short": "Software Engineer",
+      "now": "Currently at"
+    },
+    "about": {
+      "eyebrow": "About",
+      "heading_a": "Engineering the systems",
+      "heading_em": "behind the screens",
+      "location": "Based in",
+      "location_value": "Germany",
+      "relocation": "Open to relocation",
+      "local_time": "Local time",
+      "skills": "Technical skills",
+      "mission": "Mission"
+    },
+    "experience": {
+      "eyebrow": "Experience"
+    },
+    "expertise": {
+      "eyebrow": "Focus",
+      "heading_a": "Where I add the",
+      "heading_em": "most value"
+    },
+    "projects": {
+      "eyebrow": "Selected work",
+      "details": "Details",
+      "source": "Source",
+      "private": "Private repository",
+      "live": "Live site",
+      "count": "{count} projects"
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "heading_a": "Let's build",
+      "heading_em": "something",
+      "heading_b": "together.",
+      "copy": "Copy email",
+      "copied": "Copied to clipboard",
+      "or": "or send a message",
+      "response": "I usually reply within 24 hours.",
+      "recaptcha_hint": "Verification loads when you start typing."
+    },
+    "footer": {
+      "rights": "All rights reserved.",
+      "top": "Back to top",
+      "built": "Designed & built with React, Vite and Tailwind CSS.",
+      "local": "Germany"
+    },
+    "cmd": {
+      "open": "Open command menu",
+      "placeholder": "Type a command or search…",
+      "empty": "No results found.",
+      "nav": "Navigate",
+      "actions": "Actions",
+      "links": "Links",
+      "theme": "Toggle light / dark theme",
+      "lang": "Auf Deutsch wechseln",
+      "resume": "Download resume",
+      "view_resume": "View resume",
+      "copy": "Copy email address",
+      "hint_select": "select",
+      "hint_nav": "navigate",
+      "hint_close": "close"
+    }
   }
 }

@@ -30,4 +30,13 @@ export default [
       ],
     },
   },
+  {
+    files: ['vite.config.js', 'scripts/**/*.{js,mjs}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.node,
+    },
+    rules: js.configs.recommended.rules,
+  },
 ]

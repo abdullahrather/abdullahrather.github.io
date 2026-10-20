@@ -24,6 +24,7 @@ const withGridTransition = (grid, update) => {
   }
   grid.classList.add("vt-cards");
   const transition = document.startViewTransition(() => flushSync(update));
+  transition.ready.catch(() => {}); // skipped by a newer transition — the update still applies
   transition.finished.finally(() => grid.classList.remove("vt-cards"));
 };
 

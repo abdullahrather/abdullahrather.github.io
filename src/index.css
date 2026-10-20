@@ -79,6 +79,11 @@
     background: var(--bg);
   }
 
+  /* Set by index.html while a non-English visitor's language is swapped in */
+  html[data-lang-pending] #root {
+    visibility: hidden;
+  }
+
   /* Native <dialog> modals lock page scroll without JS */
   html:has(dialog[open]) {
     overflow: hidden;
@@ -184,7 +189,7 @@
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-fg/[0.03] px-2.5 py-1 font-mono text-[11px] text-muted;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-fg/3 px-2.5 py-1 font-mono text-[11px] text-muted;
   }
 
   .kbd {
@@ -192,7 +197,7 @@
   }
 
   .field {
-    @apply w-full rounded-xl border border-line-strong bg-fg/[0.02] px-4 py-3 text-sm text-fg outline-none transition placeholder:text-subtle focus:border-accent focus:bg-fg/[0.04];
+    @apply w-full rounded-xl border border-line-strong bg-fg/2 px-4 py-3 text-sm text-fg outline-none transition placeholder:text-subtle focus:border-accent focus:bg-fg/4;
     box-shadow: 0 0 0 0 var(--glow);
   }
   .field:focus {

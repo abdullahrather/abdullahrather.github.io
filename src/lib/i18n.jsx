@@ -35,26 +35,53 @@ export const getInitialLang = () => {
   return DEFAULT_LANG;
 };
 
-export const TranslationProvider = ({ children, initialLang }) => {
-  const [lang, setLangState] = useState(() => initialLang ?? getInitialLang());
-  const [, setLoaded] = useState(0);
+/**
+ * `initialLang` must already be loaded (English, or a locale main.jsx preloaded).
+ * `preferredLang`, when different, is switched to in place after mount — used when
+ * hydrating the English pre-render for a visitor who prefers another language.
+ */
+export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, preferredLang }) => {
+  const [lang, setLangState] = useState(initialLang);
 
-  const setLang = useCallback((newLang) => {
-    setLangState(newLang);
-    try {
-      localStorage.setItem("lang", newLang);
-    } catch {
-      // ignore
-    }
+  // Only switch once the locale has loaded, so the UI never claims a language it can't show.
+  const activate = useCallback(
+    (next) =>
+      loadLocale(next)
+        .then(() => {
+          setLangState(next);
+          return true;
+        })
+        .catch((error) => {
+          console.warn(`Could not load "${next}" translations`, error);
+          return false;
+        }),
+    []
+  );
+
+  const setLang = useCallback(
+    (next) =>
+      activate(next).then((ok) => {
+        if (!ok) return;
+        try {
+          localStorage.setItem("lang", next);
+        } catch {
+          // ignore
+        }
+      }),
+    [activate]
+  );
+
+  useEffect(() => {
+    const reveal = () => delete document.documentElement.dataset.langPending;
+    if (preferredLang && preferredLang !== initialLang) activate(preferredLang).finally(reveal);
+    else reveal();
+    // Mount-only: the preferred language is resolved once at startup.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    if (TRANSLATIONS[lang] || !LOADERS[lang]) return;
-    loadLocale(lang).then(() => setLoaded((n) => n + 1));
   }, [lang]);
-
-  const ready = Boolean(TRANSLATIONS[lang]);
 
   // Resolve a dotted key from the active locale (falling back to English) and substitute {vars}.
   const t = useCallback(
@@ -73,9 +100,7 @@ export const TranslationProvider = ({ children, initialLang }) => {
       }
       return value;
     },
-    // `ready` re-creates t once a lazily loaded locale arrives
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [lang, ready]
+    [lang]
   );
 
   const value = useMemo(() => ({ lang, setLang, available: AVAILABLE, t }), [lang, setLang, t]);

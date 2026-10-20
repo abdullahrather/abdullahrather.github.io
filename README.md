@@ -1,66 +1,53 @@
-# 🚀 Abdullah Rather - Premium Portfolio
+# Abdullah Rather — Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Portfolio-blue?style=for-the-badge&logo=github-pages)](https://abdullahrather.github.io)
-[![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![GSAP](https://img.shields.io/badge/GSAP-Professional-88CE02?style=for-the-badge&logo=greensock)](https://greensock.com/)
+Personal portfolio of Abdullah Rather, Backend / Full-Stack Engineer based in Germany.
+Live at **[abdullahrather.com](https://abdullahrather.com)**.
 
-> **A modern, interactive portfolio showcasing full-stack development expertise with premium animations and cutting-edge web technologies.**
+## Stack
 
----
+| Area      | Choice                                                                 |
+| --------- | ---------------------------------------------------------------------- |
+| Framework | React 19 + Vite 8                                                      |
+| Styling   | Tailwind CSS 4 (CSS-first `@theme` tokens in `src/index.css`)          |
+| Fonts     | Geist, Geist Mono, Instrument Serif — self-hosted via Fontsource       |
+| Contact   | EmailJS + reCAPTCHA v2 (both lazy-loaded on first form interaction)    |
+| i18n      | English / German JSON locales, German fetched on demand                |
+| Hosting   | GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)       |
 
-## ✨ **Features & Highlights**
+## Features
 
-### 🎭 **Premium User Experience**
-- **Dynamic Loading Screen** with personalized 3-phase messaging
-- **Custom Cursor System** with interactive hover states and particle effects
-- **Advanced Scroll Controls** with progress indicators and smooth animations
-- **Responsive Design** optimized for all devices and screen sizes
+- Dark-first design with light mode; theme switches with a View Transitions circle reveal and no flash on load
+- `⌘K` / `Ctrl+K` command palette: jump to sections, toggle theme or language, copy email, get the resume
+- Bento-style About section, count-up stats, live Germany local time
+- Filterable project grid with native `<dialog>` case-study modal
+- Scroll reveals via a single shared `IntersectionObserver`; CSS scroll-driven progress bar
+- Respects `prefers-reduced-motion`, skip link, focus-visible styles, semantic landmarks
+- No animation libraries — all motion is CSS
 
-### 🎨 **Advanced Animations**
-- **GSAP-Powered Transitions** for professional-grade motion design
-- **Particle Systems** for dynamic background effects
-- **3D Card Interactions** with flip animations on project cards
-- **Micro-Interactions** throughout the interface for enhanced engagement
+## Project structure
 
-### 🔧 **Technical Excellence**
-- **React 18** with modern hooks and functional components
-- **Vite** for lightning-fast development and optimized builds
-- **Tailwind CSS** for maintainable, utility-first styling
-- **Performance Optimized** with lazy loading and efficient animations
+```
+src/
+  components/      Nav, Hero, About, WorkExperience, Expertise, Projects, Contact, Footer, CommandPalette
+  languages/       en.json, de.json — all copy and content (projects, experience, …)
+  lib/             i18n, theme, hooks (reveal, spotlight, count-up, clock), site constants, analytics
+  index.css        Design tokens + Tailwind theme
+public/
+  assets/          Resume PDFs (EN / DE)
+  images/          Optimized AVIF/WebP images, favicons, OG image
+```
 
----
+Editing content: change `src/languages/en.json` **and** `src/languages/de.json`.
+Section headings and UI strings live under the `ui` key in each file.
 
-## 🛠️ **Tech Stack**
-
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | React 18, Vite, JavaScript ES6+ |
-| **Styling** | Tailwind CSS, CSS3, Responsive Design |
-| **Animations** | GSAP, CSS Animations, ScrollTrigger |
-| **Tools** | ESLint, PostCSS, Git, GitHub Pages |
-| **Performance** | Code Splitting, Lazy Loading, Optimization |
-
----
-
-## 🚀 **Quick Start**
-
-### **Prerequisites**
-- Node.js (v18 or higher)
-- npm or yarn package manager
-
-### **Installation**
+## Development
 
 ```bash
-# Clone the repository
-git clone https://github.com/abdullahrather/abdullahrather.github.io.git
-
-# Navigate to project directory
-cd abdullahrather.github.io
-
-# Install dependencies
 npm install
-
-# Start development server
+cp .env.example .env   # EmailJS + reCAPTCHA keys; the form shows a notice when they are missing
 npm run dev
+npm run build && npm run preview
+```
+
+Pushing to `main` builds and deploys to the `gh-pages` branch. The EmailJS / reCAPTCHA values are
+read from repository secrets at build time.

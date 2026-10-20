@@ -275,7 +275,7 @@
         "title": "Aktuelle Rolle",
         "value": "Full-Stack Softwareentwickler",
         "link": "#",
-        "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"
+        "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       },
       {
         "title": "Verfügbarkeit",
@@ -519,7 +519,7 @@
         "id": 5,
         "title": "Task Manager",
         "description": "Aufgabenverwaltungssystem mit Symfony für strukturierte Workflows, Teamzusammenarbeit und rollenbasierte Zugriffssteuerung.",
-        "image": "/images/projects/task-manager.png",
+        "image": "/images/projects/task-manager.webp",
         "technologies": [
           "Symfony",
           "PHP",
@@ -555,7 +555,7 @@
         "id": 6,
         "title": "Portfolio Website",
         "description": "Joborientiertes persönliches Portfolio, erstellt mit React, Vite und Tailwind CSS, mit Animationen, Projekthighlights und EmailJS-Kontaktautomatisierung.",
-        "image": "/images/projects/portfolio-website.png",
+        "image": "/images/projects/portfolio-website.webp",
         "technologies": [
           "React",
           "Vite",
@@ -591,7 +591,7 @@
         "id": 7,
         "title": "Währungsrechner App",
         "description": "Echtzeit-Währungsumrechnungsanwendung, erstellt mit Laravel, Live-Wechselkursen und reaktionsschneller Währungsumschaltung.",
-        "image": "/images/projects/currency-converter.png",
+        "image": "/images/projects/currency-converter.webp",
         "technologies": [
           "Laravel",
           "GuzzleHttp",
@@ -888,5 +888,90 @@
         "demo": "#"
       }
     ]
+  },
+  "ui": {
+    "skip": "Zum Inhalt springen",
+    "available": "Offen für neue Möglichkeiten",
+    "menu": "Menü",
+    "close": "Schließen",
+    "theme": "Design umschalten",
+    "nav": {
+      "about": "Über mich",
+      "experience": "Erfahrung",
+      "expertise": "Fokus",
+      "projects": "Projekte",
+      "contact": "Kontakt"
+    },
+    "hero": {
+      "greeting": "Hallo, ich bin Abdullah Rather",
+      "headline_a": "Ich entwickle",
+      "headline_em": "zuverlässige",
+      "headline_b": "Backends für echte Geschäftsprozesse.",
+      "cta_work": "Projekte ansehen",
+      "cta_contact": "Kontakt aufnehmen",
+      "stack_label": "Ich arbeite mit",
+      "role_short": "Softwareentwickler",
+      "now": "Aktuell bei"
+    },
+    "about": {
+      "eyebrow": "Über mich",
+      "heading_a": "Ich entwickle die Systeme",
+      "heading_em": "hinter den Kulissen",
+      "location": "Standort",
+      "location_value": "Deutschland",
+      "relocation": "Offen für Umzug",
+      "local_time": "Ortszeit",
+      "skills": "Technische Fähigkeiten",
+      "mission": "Mission"
+    },
+    "experience": {
+      "eyebrow": "Erfahrung"
+    },
+    "expertise": {
+      "eyebrow": "Fokus",
+      "heading_a": "Wo ich den",
+      "heading_em": "größten Mehrwert schaffe"
+    },
+    "projects": {
+      "eyebrow": "Ausgewählte Arbeiten",
+      "details": "Details",
+      "source": "Code",
+      "private": "Privates Repository",
+      "live": "Live-Seite",
+      "count": "{count} Projekte"
+    },
+    "contact": {
+      "eyebrow": "Kontakt",
+      "heading_a": "Lassen Sie uns",
+      "heading_em": "gemeinsam",
+      "heading_b": "etwas bauen.",
+      "copy": "E-Mail kopieren",
+      "copied": "In die Zwischenablage kopiert",
+      "or": "oder senden Sie eine Nachricht",
+      "response": "Ich antworte in der Regel innerhalb von 24 Stunden.",
+      "recaptcha_hint": "Die Verifizierung wird geladen, sobald Sie mit der Eingabe beginnen."
+    },
+    "footer": {
+      "rights": "Alle Rechte vorbehalten.",
+      "top": "Nach oben",
+      "built": "Gestaltet & entwickelt mit React, Vite und Tailwind CSS.",
+      "local": "Deutschland"
+    },
+    "cmd": {
+      "open": "Befehlsmenü öffnen",
+      "placeholder": "Befehl eingeben oder suchen…",
+      "empty": "Keine Ergebnisse.",
+      "nav": "Navigation",
+      "actions": "Aktionen",
+      "links": "Links",
+      "theme": "Helles / dunkles Design umschalten",
+      "lang": "Switch to English",
+      "resume": "Lebenslauf herunterladen",
+      "view_resume": "Lebenslauf ansehen",
+      "copy": "E-Mail-Adresse kopieren",
+      "hint_select": "auswählen",
+      "hint_nav": "navigieren",
+      "hint_close": "schließen"
+    }
   }
 }

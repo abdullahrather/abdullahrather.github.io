@@ -1,12 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   base: "/",
   define: {
-    // Add this to prevent issues with external scripts
+    // react-google-recaptcha still references `global`
     global: "globalThis",
+  },
+  build: {
+    target: "es2022",
   },
 });

@@ -1,0 +1,12 @@
+{
+  "name": "Abdullah Rather — Backend / Full-Stack Engineer",
+  "short_name": "Abdullah Rather",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    { "src": "/images/favicons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/favicons/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

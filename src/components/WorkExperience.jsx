@@ -8,12 +8,16 @@ const formatDuration = (startDate, endDate, now, labels) => {
   const start = new Date(startDate);
   const end = endDate ? new Date(endDate) : now;
 
-  // UTC fields keep durations identical across time zones (dates are UTC-midnight strings)
+  // UTC fields keep durations identical across time zones (dates are UTC-midnight strings).
+  // Both the start and end month count, as on LinkedIn (Oct–Oct = 1 month).
   let years = end.getUTCFullYear() - start.getUTCFullYear();
-  let months = end.getUTCMonth() - start.getUTCMonth();
+  let months = end.getUTCMonth() - start.getUTCMonth() + 1;
   if (months < 0) {
     years -= 1;
     months += 12;
+  } else if (months >= 12) {
+    years += 1;
+    months -= 12;
   }
 
   const parts = [];
@@ -48,15 +52,19 @@ const Role = ({ experience, index, now, formatter, labels, present, impactLabel 
       <div>
         <h3 className="text-2xl font-semibold tracking-tight">{experience.role}</h3>
         <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
-          <a
-            href={experience.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group/link inline-flex items-center gap-1 font-medium text-fg underline-offset-4 hover:underline"
-          >
-            {experience.company}
-            <Icon name="arrowUpRight" className="size-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-          </a>
+          {experience.website ? (
+            <a
+              href={experience.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link inline-flex items-center gap-1 font-medium text-fg underline-offset-4 hover:underline"
+            >
+              {experience.company}
+              <Icon name="arrowUpRight" className="size-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+            </a>
+          ) : (
+            <span className="font-medium text-fg">{experience.company}</span>
+          )}
           <span aria-hidden="true" className="text-subtle">·</span>
           <span>{experience.location}</span>
         </p>

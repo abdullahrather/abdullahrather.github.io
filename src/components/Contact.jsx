@@ -41,7 +41,7 @@ const formatTime = (date, timeZone) =>
 // Locale-aware strings that drive the {{variables}} in the AutoReply template.
 const buildEmailStrings = (isDE, name) => ({
   email_subject: isDE ? `Vielen Dank für Ihre Nachricht, ${name}!` : `Thanks for reaching out, ${name}!`,
-  email_subtitle: isDE ? "Backend / Full-Stack Entwickler" : "Backend / Full-Stack Engineer",
+  email_subtitle: isDE ? "KI-Entwickler · PHP Backend / Full-Stack" : "AI Software Engineer · PHP Backend / Full-Stack",
   email_badge: isDE ? "Nachricht erfolgreich erhalten" : "Message received",
   email_heading: isDE ? "Vielen Dank für Ihre Nachricht!" : "Thank you for reaching out!",
   email_greeting: isDE

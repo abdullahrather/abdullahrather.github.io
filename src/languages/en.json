@@ -1,14 +1,14 @@
 {
   "hero": {
     "title": "About Me",
-    "role": "Backend / Full-Stack Engineer",
-    "summary": "I design and deliver APIs and data-driven platforms that improve reliability and automation in production. Skilled in backend frameworks, relational databases, Docker containers, and CI/CD pipelines. With {years}+ years of experience building enterprise web applications, REST APIs, internal platforms, and database-driven business systems.",
+    "role": "AI Software Engineer · PHP Backend",
+    "summary": "I build enterprise web platforms, internal tools and the integrations behind them, and bring AI features into everyday business workflows. {years}+ years of experience with PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST APIs, Docker and CI/CD, from legacy modernization to new modules in production.",
     "badges": {
       "delivery": "Delivered 15+ production deployments with automated CI/CD.",
       "integration": "Built integrations used in enterprise workflows (20+).",
       "experience": "{years}+ Years Experience",
       "backend_apis": "Backend APIs",
-      "location": "Based in Germany",
+      "location": "Heilbronn, Germany",
       "tooling": "Docker & CI/CD"
     },
     "buttons": {
@@ -55,8 +55,8 @@
       "major_technical_skills": "Major Technical Skills"
     },
     "intro": {
-      "paragraph1": "I'm a Backend / Full-Stack Engineer with {years}+ years building enterprise web apps, REST APIs, internal platforms, and database-driven business systems. My core stack includes Laravel, Yii, Symfony, MySQL/MariaDB, Docker, and CI/CD.",
-      "paragraph2": "I build scalable backend systems that power complex business operations. My core projects include architecting a comprehensive enterprise ERP with automated DATEV financial pipelines, building a centralized Education Management System, and delivering a full-stack Donor Management platform. Whether leading a technical team or operating as a solo developer, I own the full delivery lifecycle—focusing on clean API architecture, database optimization, and highly secure, maintainable code."
+      "paragraph1": "I'm an AI Software Engineer and PHP backend / full-stack developer with {years}+ years of experience building enterprise web applications, internal platforms and database-driven business systems. My core stack is PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST APIs, Docker and CI/CD.",
+      "paragraph2": "Today I work on a central business platform used across a group of companies for customers, tickets, offers, orders, invoicing, projects and time tracking. I bring AI into everyday workflows, such as AI-based ticket assignment and an AI-assisted search across customer history, and build new modules like an in-house HR and time-tracking system. Earlier, I led a team of five developers and developed an Education Management Information System. Throughout, I care about clean, testable code, safe data handling and reliable releases."
     },
     "items": {
       "backend_stack": "PHP, Laravel, Symfony, Yii",
@@ -67,14 +67,15 @@
       "api_integrations": "REST APIs & Integrations",
       "git_ci": "Git & GitHub Actions",
       "architecture": "System Architecture",
-      "leadership": "Team Leadership"
+      "leadership": "Team Leadership",
+      "ai": "AI & LLM Integration"
     },
     "levels": {
       "expert": "Expert",
       "advanced": "Advanced",
       "intermediate": "Intermediate"
     },
-    "mission": "I specialize in designing and implementing enterprise-grade software solutions that solve complex business challenges, combining modern development practices with reliable integrations to deliver measurable results."
+    "mission": "I build business software that solves real problems: solid engineering, reliable integrations and practical AI, delivered as maintainable, production-ready code."
   },
   "workExperience": {
     "badge": "Career Timeline",
@@ -90,67 +91,97 @@
     "months": "months",
     "entries": [
       {
+        "company": "APS AG",
+        "website": "",
+        "location": "Neckarsulm, Germany",
+        "role": "AI Software Engineer",
+        "summary": "Bringing AI into the company's central business platform and building new modules: the same platform I developed at APS Services, now full-time and with a wider scope.",
+        "highlights": [
+          "Built an in-house HR module replacing an external time-tracking tool: clock-in/out with breaks, time accounts with target hours, public holidays and statutory break rules, a live attendance overview, logged time corrections, and vacation and absence management.",
+          "Developed AI features for the platform, including AI-based ticket assignment suggestions with server-side access control.",
+          "Designed and built an AI-assisted search across customer history (tickets and order items).",
+          "Integrated a telephony system and moved the UI to a modern Bootstrap 5 admin template.",
+          "Ensured production quality through code reviews, automated tests and concurrency-safe database transactions."
+        ],
+        "startDate": "2026-10-01",
+        "endDate": null,
+        "accent": "from-violet-500 to-fuchsia-500",
+        "tag": "Full-Time"
+      },
+      {
         "company": "APS Services GmbH",
         "website": "https://www.apsservices.de/",
         "location": "Neckarsulm, Germany",
         "role": "Software Engineer",
-        "summary": "Further developed and maintained a comprehensive enterprise management system supporting customers, tickets, offers, orders, invoicing, project workflows, employee time tracking, and reporting.",
+        "summary": "Developed and maintained the group's central business platform (customers, tickets, offers, orders, invoicing, projects, time tracking and reporting), running as separate instances for several group companies.",
         "highlights": [
-          "Built REST integrations, including DATEV-related workflows, and contributed to secure authentication, role-based access control, and business-critical internal process automation.",
-          "Developed reporting, export, and dashboard functionality while improving maintainability, usability, and performance through code optimization and database query refinement.",
-          "Contributed to modernization of legacy application areas through structured backend logic, refactoring, testing, and continuous integration practices.",
-          "Built responsive internal interfaces and AJAX-based workflows to support efficient day-to-day operations across multiple modules."
+          "Built REST integrations, including DATEV-related workflows, and contributed to authentication, role-based access control and internal process automation.",
+          "Developed reporting, export and dashboard features; improved performance through query optimization and removal of N+1 queries.",
+          "Modernized legacy areas through OOP refactoring, automated tests and continuous integration.",
+          "Built responsive AJAX-based interfaces for day-to-day operations across multiple modules."
         ],
-        "accent": "from-indigo-500 to-cyan-500",
         "startDate": "2024-07-01",
-        "endDate": null,
-        "tag": "Part-Time"
+        "endDate": "2026-09-01",
+        "accent": "from-indigo-500 to-cyan-500",
+        "tag": "Part-Time · Remote"
       },
       {
         "company": "Qualven Pvt Ltd",
         "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Technical Team Lead",
-        "summary": "Led a team of five while remaining deeply hands-on in the design, development, testing, deployment, and maintenance of PHP-based business applications.",
+        "summary": "Led a team of five through the design, development, deployment and support of business web applications, while staying hands-on in development.",
         "highlights": [
-          "Built backend logic, integrated APIs, implemented frontend-backend workflows, and contributed directly to new features across multiple web applications.",
-          "Worked on database design, schema changes, optimization, and data handling to support evolving backend requirements and newly introduced business features.",
-          "Managed deployments and application updates across hosting environments and Linux-based local network systems, including SSH-based workflows and production support.",
-          "Maintained coding standards, code reviews, documentation, and secure, maintainable implementation practices while resolving technical blockers and supporting reliable software delivery."
+          "Designed REST APIs and relational database schemas for growing data volumes; managed deployments on Docker and Linux/CentOS with CI/CD.",
+          "Ran code reviews, set coding standards and wrote technical documentation; turned client requirements into deliverable solutions."
         ],
-        "accent": "from-emerald-500 to-teal-500",
-        "startDate": "2021-11-01",
+        "startDate": "2023-01-01",
         "endDate": "2024-04-01",
-        "tag": "Full-Time Onsite"
+        "accent": "from-emerald-500 to-teal-500",
+        "tag": "Full-Time · On-site"
+      },
+      {
+        "company": "Qualven Pvt Ltd",
+        "website": "https://qualven.com/qv-web/",
+        "location": "Islamabad, Pakistan",
+        "role": "Software Engineer",
+        "summary": "Developed frontend and backend features for client web applications in PHP and JavaScript.",
+        "highlights": [
+          "Acted as the team's point of contact when leads were absent, keeping coordination and delivery on track."
+        ],
+        "startDate": "2021-11-01",
+        "endDate": "2023-01-01",
+        "accent": "from-emerald-500 to-teal-500",
+        "tag": "Full-Time · On-site"
       },
       {
         "company": "The Science School",
         "website": "https://thescienceschool.edu.pk/tss-web/index.php",
         "location": "Islamabad, Pakistan",
         "role": "Software Engineer",
-        "summary": "Led the development and maintenance of a centralized Education Management Information System supporting student, staff, finance, and user administration workflows.",
+        "summary": "Developed and maintained the school's Education Management Information System in PHP, covering student, staff, finance and user-administration modules.",
         "highlights": [
-          "Managed relational database structures, backend logic, and secure access flows with a strong focus on data integrity, reliability, and maintainability.",
-          "Implemented authentication, authorization, and role-based access control for administrators and staff across multiple modules.",
-          "Improved system performance, security, and compatibility through structured upgrades, infrastructure improvements, and ongoing application refinement."
+          "Managed the relational database with a focus on data integrity and performance.",
+          "Implemented authentication and role-based access control for administrators and staff.",
+          "Worked with school management on requirements, new features and fixes; carried out system upgrades and troubleshooting."
         ],
-        "accent": "from-purple-500 to-fuchsia-500",
         "startDate": "2022-04-01",
         "endDate": "2024-04-01",
-        "tag": "Full-Time Remote"
+        "accent": "from-purple-500 to-fuchsia-500",
+        "tag": "Full-Time · Remote"
       },
       {
         "company": "Qualven Pvt Ltd",
         "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Technical Intern",
-        "summary": "Contributed to full-stack feature development across PHP backend and HTML/CSS, JavaScript, and Bootstrap frontend components.",
+        "summary": "Contributed to full-stack feature development: PHP backend logic and HTML/CSS, JavaScript and Bootstrap frontends.",
         "highlights": [
-          "Supported deployments, documentation, maintenance, user training, and internal/client presentations."
+          "Supported deployments, technical documentation, user training and client presentations."
         ],
-        "accent": "from-amber-500 to-orange-500",
         "startDate": "2021-01-01",
         "endDate": "2021-07-01",
+        "accent": "from-amber-500 to-orange-500",
         "tag": "Internship"
       }
     ]
@@ -162,11 +193,23 @@
     "showing": "Showing {visible} of {total}",
     "items": [
       {
+        "title": "AI Features & LLM Integration",
+        "description": "AI built into everyday business workflows: practical, access-controlled and production-ready.",
+        "features": [
+          "LLM API Integration",
+          "AI Ticket Assignment",
+          "AI-Assisted Search",
+          "Prompt Design"
+        ],
+        "iconPath": "M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
+      },
+      {
         "title": "Enterprise Platforms & Workflow Systems",
         "description": "Internal platforms for operations, project tracking, document handling, and multi-role workflows.",
         "features": [
           "Workflow & Ticket Modules",
           "Document Management",
+          "HR & Time Tracking",
           "Role-based Access Control (RBAC)",
           "Multi-language Support"
         ],
@@ -187,26 +230,16 @@
         ]
       },
       {
-        "title": "PHP Backend Engineering",
-        "description": "Backend services with clean architecture, testing, and scalable APIs.",
+        "title": "PHP Backend & Full-Stack",
+        "description": "Backend services and APIs with clean architecture and tests, plus the dashboards and interfaces on top.",
         "features": [
           "Laravel / Yii / Symfony",
           "REST API Design",
           "Authentication & RBAC",
-          "PHPUnit Testing"
+          "PHPUnit & PHPStan",
+          "React & Admin Dashboards"
         ],
-        "iconPath": "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-      },
-      {
-        "title": "Full-Stack Web Delivery",
-        "description": "Modern front ends connected to reliable APIs for data-heavy apps.",
-        "features": [
-          "React UI Development",
-          "Admin Dashboards",
-          "State Management",
-          "Performance Tuning"
-        ],
-        "iconPath": "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+        "iconPath": "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
       },
       {
         "title": "Legacy Modernization & Performance",
@@ -234,7 +267,7 @@
   },
   "contact": {
     "heading": "Get In Touch",
-    "subheading": "Ready to collaborate on your next project? Let's discuss how I can help build scalable solutions for your business needs.",
+    "subheading": "Questions, ideas, or want to talk about backend engineering or practical AI in business software? I'm happy to hear from you.",
     "info_heading": "Contact Information",
     "connect_heading": "Connect with me:",
     "form_heading": "Send Message",
@@ -264,7 +297,7 @@
       },
       {
         "title": "Location",
-        "value": "Germany (Open to Relocation)",
+        "value": "Heilbronn, Germany",
         "link": "#",
         "iconPaths": [
           "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
@@ -273,13 +306,13 @@
       },
       {
         "title": "Current Role",
-        "value": "Full-Stack Software Engineer",
+        "value": "AI Software Engineer at APS AG",
         "link": "#",
         "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       },
       {
         "title": "Availability",
-        "value": "Open to Full-Time Roles & Freelance Projects",
+        "value": "Open to interesting conversations",
         "link": "#",
         "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
       }
@@ -372,7 +405,7 @@
       {
         "id": 1,
         "title": "Enterprise Management System",
-        "description": "Enterprise platform for operations, document handling, and compliance-heavy workflows with DATEV integration and multi-language support on Yii.",
+        "description": "Central business platform for customers, tickets, offers, orders, invoicing, projects and time tracking, running for several group companies, with DATEV integration, ZUGFeRD e-invoicing, AI features and an in-house HR module.",
         "image": "/images/projects/enterprise-management.webp",
         "technologies": [
           "Yii Framework",
@@ -380,13 +413,16 @@
           "MySQL",
           "JavaScript",
           "DATEV API",
-          "Bootstrap"
+          "Bootstrap",
+          "LLM APIs"
         ],
         "category": "fullstack",
         "features": [
-          "Project Management",
+          "Ticketing & Order Management",
           "DATEV Integration",
           "ZUGFeRD XML Generation",
+          "AI Ticket Assignment",
+          "HR & Time Tracking",
           "Multi-language Support"
         ],
         "developmentDetails": [
@@ -397,6 +433,10 @@
           {
             "label": "Data & Compliance",
             "text": "Implemented DATEV and ZUGFeRD flows to support finance-oriented document exchange with consistent data handling."
+          },
+          {
+            "label": "AI & New Modules",
+            "text": "Added AI-based ticket assignment suggestions and an AI-assisted search across customer history, plus an in-house HR module for time tracking, absences and attendance."
           },
           {
             "label": "Business Value",
@@ -891,7 +931,7 @@
   },
   "ui": {
     "skip": "Skip to content",
-    "available": "Open to new opportunities",
+    "available": "AI Software Engineer at APS AG",
     "menu": "Menu",
     "close": "Close",
     "theme": "Toggle theme",
@@ -918,11 +958,11 @@
       "heading_a": "Engineering the systems",
       "heading_em": "behind the screens",
       "location": "Based in",
-      "location_value": "Germany",
-      "relocation": "Open to relocation",
+      "location_value": "Heilbronn",
       "local_time": "Local time",
       "skills": "Technical skills",
-      "mission": "Mission"
+      "mission": "Mission",
+      "region": "Baden-Württemberg, Germany"
     },
     "experience": {
       "eyebrow": "Experience"

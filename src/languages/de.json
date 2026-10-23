@@ -1,14 +1,14 @@
 {
   "hero": {
     "title": "Über mich",
-    "role": "Backend / Full-Stack Entwickler",
-    "summary": "Ich entwerfe und liefere APIs und datengesteuerte Plattformen, die die Zuverlässigkeit und Automatisierung in der Produktion verbessern. Erfahren mit Backend-Frameworks, relationalen Datenbanken, Docker-Containern und CI/CD-Pipelines. Mit {years}+ Jahren Erfahrung im Aufbau von Enterprise-Web-Anwendungen, REST-APIs, internen Plattformen und datenbankgesteuerten Geschäftssystemen.",
+    "role": "KI-Entwickler · PHP Backend",
+    "summary": "Ich entwickle Enterprise-Webplattformen, interne Tools und die Integrationen dahinter und bringe KI-Funktionen in alltägliche Geschäftsabläufe. {years}+ Jahre Erfahrung mit PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST-APIs, Docker und CI/CD – von der Modernisierung bestehender Systeme bis zu neuen Modulen im Produktivbetrieb.",
     "badges": {
       "delivery": "Über 15 Produktions-Deployments mit automatisierter CI/CD.",
       "integration": "Integrationen für Enterprise-Workflows entwickelt (20+).",
       "experience": "{years}+ Jahre Erfahrung",
       "backend_apis": "Backend APIs",
-      "location": "Mit Sitz in Deutschland",
+      "location": "Heilbronn, Deutschland",
       "tooling": "Docker & CI/CD"
     },
     "buttons": {
@@ -55,8 +55,8 @@
       "major_technical_skills": "Wichtigste technische Fähigkeiten"
     },
     "intro": {
-      "paragraph1": "Ich bin ein Backend / Full-Stack Entwickler mit {years}+ Jahren Erfahrung im Aufbau von Enterprise-Web-Apps, REST-APIs, internen Plattformen und datenbankgesteuerten Geschäftssystemen. Mein Tech-Stack umfasst Laravel, Yii, Symfony, MySQL/MariaDB, Docker und CI/CD.",
-      "paragraph2": "Ich entwickle skalierbare Backend-Systeme, die komplexe Geschäftsabläufe antreiben. Zu meinen Kernprojekten gehören die Architektur eines umfassenden Enterprise-ERP-Systems mit automatisierten DATEV-Finanzpipelines, die Entwicklung eines zentralisierten Education Management Systems sowie die Bereitstellung einer Full-Stack-Plattform für das Spendenmanagement. Egal, ob ich ein technisches Team leite oder als alleiniger Entwickler agiere, ich verantworte den gesamten Bereitstellungszyklus – mit Fokus auf saubere API-Architektur, Datenbankoptimierung und hochsicheren, wartbaren Code."
+      "paragraph1": "Ich bin KI-Entwickler und PHP Backend / Full-Stack Entwickler mit {years}+ Jahren Erfahrung in der Entwicklung von Enterprise-Webanwendungen, internen Plattformen und datenbankgestützten Geschäftssystemen. Mein Kern-Stack: PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST-APIs, Docker und CI/CD.",
+      "paragraph2": "Heute arbeite ich an einer zentralen Geschäftsplattform, die in einer Unternehmensgruppe für Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung genutzt wird. Ich bringe KI in alltägliche Abläufe, etwa mit KI-basierter Ticketzuweisung und einer KI-gestützten Suche in der Kundenhistorie, und entwickle neue Module wie ein eigenes HR- und Zeiterfassungssystem. Zuvor habe ich ein Team von fünf Entwicklern geleitet und ein Education Management Information System entwickelt. Dabei sind mir sauberer, testbarer Code, sicherer Umgang mit Daten und zuverlässige Releases wichtig."
     },
     "items": {
       "backend_stack": "PHP, Laravel, Symfony, Yii",
@@ -67,14 +67,15 @@
       "api_integrations": "REST APIs & Integrationen",
       "git_ci": "Git & GitHub Actions",
       "architecture": "Systemarchitektur",
-      "leadership": "Technische Leitung"
+      "leadership": "Technische Leitung",
+      "ai": "KI- & LLM-Integration"
     },
     "levels": {
       "expert": "Experte",
       "advanced": "Fortgeschritten",
       "intermediate": "Mittel"
     },
-    "mission": "Ich bin darauf spezialisiert, erstklassige Softwarelösungen zu entwerfen und zu implementieren, die komplexe geschäftliche Herausforderungen lösen. Dabei kombiniere ich moderne Entwicklungspraktiken mit zuverlässigen Integrationen, um messbare Ergebnisse zu liefern."
+    "mission": "Ich entwickle Geschäftssoftware, die echte Probleme löst: solides Engineering, zuverlässige Integrationen und praxisnahe KI – umgesetzt als wartbarer, produktionsreifer Code."
   },
   "workExperience": {
     "badge": "Karriere-Zeitachse",
@@ -90,67 +91,97 @@
     "months": "Monate",
     "entries": [
       {
+        "company": "APS AG",
+        "website": "",
+        "location": "Neckarsulm, Deutschland",
+        "role": "KI-Entwickler (AI Software Engineer)",
+        "summary": "Integration von KI in die zentrale Geschäftsplattform des Unternehmens und Entwicklung neuer Module – dieselbe Plattform, die ich bei der APS Services entwickelt habe, jetzt in Vollzeit und mit erweitertem Verantwortungsbereich.",
+        "highlights": [
+          "Entwicklung eines eigenen HR-Moduls als Ersatz für ein externes Zeiterfassungstool: Kommen/Gehen-Buchungen mit Pausen, Zeitkonten mit Sollstunden, Feiertage und gesetzliche Pausenregelungen, Live-Anwesenheitsübersicht, protokollierte Zeitkorrekturen sowie Urlaubs- und Abwesenheitsverwaltung.",
+          "Entwicklung von KI-Funktionen für die Plattform, darunter KI-basierte Vorschläge zur Ticketzuweisung mit serverseitiger Zugriffskontrolle.",
+          "Konzeption und Umsetzung einer KI-gestützten Suche in der Kundenhistorie (Tickets und Auftragspositionen).",
+          "Integration einer Telefonanlage und Umstellung der Benutzeroberfläche auf ein modernes Bootstrap-5-Admin-Template.",
+          "Sicherstellung der Produktionsqualität durch Code-Reviews, automatisierte Tests und nebenläufigkeitssichere Datenbanktransaktionen."
+        ],
+        "startDate": "2026-10-01",
+        "endDate": null,
+        "accent": "from-violet-500 to-fuchsia-500",
+        "tag": "Vollzeit"
+      },
+      {
         "company": "APS Services GmbH",
         "website": "https://www.apsservices.de/",
         "location": "Neckarsulm, Deutschland",
         "role": "Softwareentwickler",
-        "summary": "Weiterentwicklung und Pflege eines umfassenden Unternehmensmanagementsystems zur Unterstützung von Kunden, Tickets, Angeboten, Aufträgen, Rechnungsstellung, Projekt-Workflows, Mitarbeiterzeiterfassung und Reporting.",
+        "summary": "Entwicklung und Wartung der zentralen Geschäftsplattform der Unternehmensgruppe (Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte, Zeiterfassung und Reporting), die als separate Instanzen für mehrere Gruppenunternehmen betrieben wird.",
         "highlights": [
-          "Entwicklung von REST-Integrationen, einschließlich DATEV-bezogener Workflows, und Beitrag zu sicherer Authentifizierung, rollenbasierter Zugriffskontrolle und geschäftskritischer Automatisierung interner Prozesse.",
-          "Entwicklung von Reporting-, Export- und Dashboard-Funktionen bei gleichzeitiger Verbesserung von Wartbarkeit, Benutzerfreundlichkeit und Leistung durch Code-Optimierung und Verfeinerung von Datenbankabfragen.",
-          "Beitrag zur Modernisierung von Legacy-Anwendungsbereichen durch strukturierte Backend-Logik, Refactoring, Testing und Continuous-Integration-Praktiken.",
-          "Erstellung responsiver interner Schnittstellen und AJAX-basierter Workflows zur Unterstützung effizienter täglicher Abläufe in mehreren Modulen."
+          "Entwicklung von REST-Integrationen, u. a. für DATEV-bezogene Workflows, sowie Mitwirkung an Authentifizierung, rollenbasierter Zugriffskontrolle und interner Prozessautomatisierung.",
+          "Entwicklung von Reporting-, Export- und Dashboard-Funktionen; Performance-Verbesserungen durch Abfrageoptimierung und Beseitigung von N+1-Abfragen.",
+          "Modernisierung von Legacy-Bereichen durch OOP-Refactoring, automatisierte Tests und Continuous Integration.",
+          "Entwicklung responsiver, AJAX-basierter Oberflächen für das Tagesgeschäft in mehreren Modulen."
         ],
-        "accent": "from-indigo-500 to-cyan-500",
         "startDate": "2024-07-01",
-        "endDate": null,
-        "tag": "Teilzeit"
+        "endDate": "2026-09-01",
+        "accent": "from-indigo-500 to-cyan-500",
+        "tag": "Teilzeit · Remote"
       },
       {
         "company": "Qualven Pvt Ltd",
         "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Technischer Teamleiter",
-        "summary": "Leitung eines fünfköpfigen Teams bei gleichzeitiger starker praktischer Beteiligung an Design, Entwicklung, Tests, Deployment und Wartung von PHP-basierten Geschäftsanwendungen.",
+        "summary": "Leitung eines fünfköpfigen Teams bei Konzeption, Entwicklung, Deployment und Support von Geschäftsanwendungen bei gleichzeitiger aktiver Mitarbeit in der Entwicklung.",
         "highlights": [
-          "Aufbau der Backend-Logik, Integration von APIs, Implementierung von Frontend-Backend-Workflows und direkter Beitrag zu neuen Funktionen über mehrere Webanwendungen hinweg.",
-          "Arbeit an Datenbankdesign, Schemaänderungen, Optimierung und Datenverarbeitung zur Unterstützung sich entwickelnder Backend-Anforderungen und neu eingeführter Geschäftsfunktionen.",
-          "Verwaltung von Deployments und Anwendungsaktualisierungen über Hosting-Umgebungen und Linux-basierte lokale Netzwerksysteme, einschließlich SSH-basierter Workflows und Produktionsunterstützung.",
-          "Aufrechterhaltung von Codierungsstandards, Code-Reviews, Dokumentation und sicheren, wartbaren Implementierungspraktiken bei gleichzeitiger Behebung technischer Blockaden und Unterstützung einer zuverlässigen Softwarebereitstellung."
+          "Entwurf von REST-APIs und relationalen Datenbankschemas für wachsende Datenmengen; Verantwortung für Deployments auf Docker und Linux/CentOS mit CI/CD.",
+          "Durchführung von Code-Reviews, Festlegung von Coding-Standards und Erstellung technischer Dokumentation; Umsetzung von Kundenanforderungen in einsatzfähige Lösungen."
         ],
-        "accent": "from-emerald-500 to-teal-500",
-        "startDate": "2021-11-01",
+        "startDate": "2023-01-01",
         "endDate": "2024-04-01",
-        "tag": "Vollzeit Vor Ort"
+        "accent": "from-emerald-500 to-teal-500",
+        "tag": "Vollzeit · Vor Ort"
+      },
+      {
+        "company": "Qualven Pvt Ltd",
+        "website": "https://qualven.com/qv-web/",
+        "location": "Islamabad, Pakistan",
+        "role": "Softwareentwickler",
+        "summary": "Entwicklung von Frontend- und Backend-Funktionen für Kunden-Webanwendungen mit PHP und JavaScript.",
+        "highlights": [
+          "Ansprechpartner des Teams bei Abwesenheit der Teamleitung zur Sicherstellung von Koordination und termingerechter Umsetzung."
+        ],
+        "startDate": "2021-11-01",
+        "endDate": "2023-01-01",
+        "accent": "from-emerald-500 to-teal-500",
+        "tag": "Vollzeit · Vor Ort"
       },
       {
         "company": "The Science School",
         "website": "https://thescienceschool.edu.pk/tss-web/index.php",
         "location": "Islamabad, Pakistan",
-        "role": "Software-Ingenieur",
-        "summary": "Leitung der Entwicklung und Wartung eines zentralisierten Education Management Information Systems zur Unterstützung von Workflows für Schüler, Mitarbeiter, Finanzen und Benutzerverwaltung.",
+        "role": "Softwareentwickler",
+        "summary": "Entwicklung und Wartung des Education Management Information Systems der Schule in PHP mit Modulen für Schüler, Personal, Finanzen und Benutzerverwaltung.",
         "highlights": [
-          "Verwaltung relationaler Datenbankstrukturen, Backend-Logik und sicherer Zugriffsabläufe mit starkem Fokus auf Datenintegrität, Zuverlässigkeit und Wartbarkeit.",
-          "Implementierung von Authentifizierung, Autorisierung und rollenbasierter Zugriffskontrolle für Administratoren und Mitarbeiter in mehreren Modulen.",
-          "Verbesserung der Systemleistung, Sicherheit und Kompatibilität durch strukturierte Upgrades, Infrastrukturverbesserungen und kontinuierliche Anwendungsverfeinerung."
+          "Verwaltung der relationalen Datenbank mit Fokus auf Datenintegrität und Performance.",
+          "Implementierung von Authentifizierung und rollenbasierter Zugriffskontrolle für Administratoren und Mitarbeitende.",
+          "Abstimmung mit der Schulleitung zu Anforderungen, neuen Funktionen und Fehlerbehebungen; Durchführung von System-Upgrades und Fehleranalysen."
         ],
-        "accent": "from-purple-500 to-fuchsia-500",
         "startDate": "2022-04-01",
         "endDate": "2024-04-01",
-        "tag": "Vollzeit Remote"
+        "accent": "from-purple-500 to-fuchsia-500",
+        "tag": "Vollzeit · Remote"
       },
       {
         "company": "Qualven Pvt Ltd",
         "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Technischer Praktikant",
-        "summary": "Beitrag zur Full-Stack-Funktionsentwicklung über PHP-Backends und HTML/CSS, JavaScript und Bootstrap-Frontendkomponenten hinweg.",
+        "summary": "Mitarbeit an der Full-Stack-Entwicklung: PHP-Backend-Logik sowie Frontends mit HTML/CSS, JavaScript und Bootstrap.",
         "highlights": [
-          "Unterstützung von Deployments, Dokumentation, Wartung, Benutzerschulung und internen/Kunden-Präsentationen."
+          "Unterstützung bei Deployments, technischer Dokumentation, Anwenderschulungen und Kundenpräsentationen."
         ],
-        "accent": "from-amber-500 to-orange-500",
         "startDate": "2021-01-01",
         "endDate": "2021-07-01",
+        "accent": "from-amber-500 to-orange-500",
         "tag": "Praktikum"
       }
     ]
@@ -162,11 +193,23 @@
     "showing": "Zeige {visible} von {total}",
     "items": [
       {
+        "title": "KI-Funktionen & LLM-Integration",
+        "description": "KI in alltäglichen Geschäftsabläufen: praxisnah, zugriffsgeschützt und produktionsreif.",
+        "features": [
+          "LLM-API-Integration",
+          "KI-Ticketzuweisung",
+          "KI-gestützte Suche",
+          "Prompt Design"
+        ],
+        "iconPath": "M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
+      },
+      {
         "title": "Enterprise-Plattformen & Workflow-Systeme",
         "description": "Interne Plattformen für den Betrieb, die Projektverfolgung, die Dokumentenverarbeitung und Rollen-Workflows.",
         "features": [
           "Workflow- & Ticketmodule",
           "Dokumentenmanagement",
+          "HR & Zeiterfassung",
           "Rollenbasierte Zugriffskontrolle (RBAC)",
           "Mehrsprachige Unterstützung"
         ],
@@ -187,26 +230,16 @@
         ]
       },
       {
-        "title": "PHP Backend-Engineering",
-        "description": "Backend-Dienste mit sauberer Architektur, Testing und skalierbaren APIs.",
+        "title": "PHP Backend & Full-Stack",
+        "description": "Backend-Dienste und APIs mit sauberer Architektur und Tests – plus die Dashboards und Oberflächen darauf.",
         "features": [
           "Laravel / Yii / Symfony",
           "REST API Design",
           "Authentifizierung & RBAC",
-          "PHPUnit Testing"
+          "PHPUnit & PHPStan",
+          "React & Admin-Dashboards"
         ],
-        "iconPath": "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-      },
-      {
-        "title": "Full-Stack Web-Bereitstellung",
-        "description": "Moderne Frontends verbunden mit zuverlässigen APIs für datenintensive Apps.",
-        "features": [
-          "React UI-Entwicklung",
-          "Admin-Dashboards",
-          "State Management",
-          "Performance-Tuning"
-        ],
-        "iconPath": "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+        "iconPath": "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
       },
       {
         "title": "Legacy-Modernisierung & Leistung",
@@ -234,7 +267,7 @@
   },
   "contact": {
     "heading": "Kontakt aufnehmen",
-    "subheading": "Bereit für eine Zusammenarbeit bei Ihrem nächsten Projekt? Lassen Sie uns besprechen, wie ich helfen kann, skalierbare Lösungen für Ihre Geschäftsanforderungen zu entwickeln.",
+    "subheading": "Fragen, Ideen oder Lust auf einen Austausch über Backend-Entwicklung oder praxisnahe KI in Geschäftssoftware? Ich freue mich auf Ihre Nachricht.",
     "info_heading": "Kontaktinformationen",
     "connect_heading": "Verbinden Sie sich mit mir:",
     "form_heading": "Nachricht senden",
@@ -264,7 +297,7 @@
       },
       {
         "title": "Standort",
-        "value": "Deutschland (Offen für Umzug)",
+        "value": "Heilbronn, Deutschland",
         "link": "#",
         "iconPaths": [
           "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
@@ -273,13 +306,13 @@
       },
       {
         "title": "Aktuelle Rolle",
-        "value": "Full-Stack Softwareentwickler",
+        "value": "KI-Entwickler bei der APS AG",
         "link": "#",
         "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       },
       {
         "title": "Verfügbarkeit",
-        "value": "Offen für Vollzeitrollen & Freelance-Projekte",
+        "value": "Offen für interessante Gespräche",
         "link": "#",
         "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
       }
@@ -372,7 +405,7 @@
       {
         "id": 1,
         "title": "Unternehmensmanagementsystem",
-        "description": "Unternehmensplattform für Abläufe, Dokumentenverarbeitung und Compliance-lastige Workflows mit DATEV-Integration und Mehrsprachigkeit in Yii.",
+        "description": "Zentrale Geschäftsplattform für Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung, betrieben für mehrere Gruppenunternehmen – mit DATEV-Integration, ZUGFeRD-E-Rechnungen, KI-Funktionen und eigenem HR-Modul.",
         "image": "/images/projects/enterprise-management.webp",
         "technologies": [
           "Yii Framework",
@@ -380,13 +413,16 @@
           "MySQL",
           "JavaScript",
           "DATEV API",
-          "Bootstrap"
+          "Bootstrap",
+          "LLM APIs"
         ],
         "category": "fullstack",
         "features": [
-          "Projektmanagement",
+          "Ticket- & Auftragsverwaltung",
           "DATEV-Integration",
           "ZUGFeRD-XML-Generierung",
+          "KI-Ticketzuweisung",
+          "HR & Zeiterfassung",
           "Mehrsprachigkeit"
         ],
         "developmentDetails": [
@@ -397,6 +433,10 @@
           {
             "label": "Daten & Compliance",
             "text": "DATEV- und ZUGFeRD-Abläufe implementiert, um den finanzorientierten Dokumentenaustausch mit konsistenter Datenhandhabung zu unterstützen."
+          },
+          {
+            "label": "KI & neue Module",
+            "text": "KI-basierte Vorschläge zur Ticketzuweisung und eine KI-gestützte Suche in der Kundenhistorie ergänzt, dazu ein eigenes HR-Modul für Zeiterfassung, Abwesenheiten und Anwesenheit."
           },
           {
             "label": "Geschäftswert",
@@ -891,7 +931,7 @@
   },
   "ui": {
     "skip": "Zum Inhalt springen",
-    "available": "Offen für neue Möglichkeiten",
+    "available": "KI-Entwickler bei der APS AG",
     "menu": "Menü",
     "close": "Schließen",
     "theme": "Design umschalten",
@@ -918,11 +958,11 @@
       "heading_a": "Ich entwickle die Systeme",
       "heading_em": "hinter den Kulissen",
       "location": "Standort",
-      "location_value": "Deutschland",
-      "relocation": "Offen für Umzug",
+      "location_value": "Heilbronn",
       "local_time": "Ortszeit",
       "skills": "Technische Fähigkeiten",
-      "mission": "Mission"
+      "mission": "Mission",
+      "region": "Baden-Württemberg, Deutschland"
     },
     "experience": {
       "eyebrow": "Erfahrung"

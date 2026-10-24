@@ -11,6 +11,7 @@ const SKILLS = [
   { key: "databases", level: 90 },
   { key: "api_integrations", level: 90 },
   { key: "architecture", level: 88 },
+  { key: "ai", level: 86 },
   { key: "python", level: 86 },
   { key: "frontend", level: 85 },
   { key: "git_ci", level: 85 },
@@ -87,7 +88,7 @@ const About = () => {
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("ui.about.location")}</p>
                 <p className="mt-3 text-3xl font-semibold tracking-tight">{t("ui.about.location_value")}</p>
-                <p className="mt-1 text-sm text-muted">{t("ui.about.relocation")}</p>
+                <p className="mt-1 text-sm text-muted">{t("ui.about.region")}</p>
               </div>
               <Icon name="globe" className="size-10 text-accent/70" strokeWidth={1.2} />
             </div>

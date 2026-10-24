@@ -104,7 +104,7 @@ const Hero = () => {
         <div className="grid items-center gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-10">
           <div className="text-center lg:text-left">
             <a
-              href="#contact"
+              href="#experience"
               className="enter group inline-flex items-center gap-2.5 rounded-full border border-line bg-card py-1.5 pl-2 pr-3.5 text-xs text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-fg"
             >
               <span className="relative flex size-2">

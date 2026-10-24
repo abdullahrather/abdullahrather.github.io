@@ -92,9 +92,9 @@
     "entries": [
       {
         "company": "APS AG",
-        "website": "",
+        "website": "https://www.aps.ag",
         "location": "Neckarsulm, Deutschland",
-        "role": "KI-Entwickler (AI Software Engineer)",
+        "role": "KI-Entwickler",
         "summary": "Integration von KI in die zentrale Geschäftsplattform des Unternehmens und Entwicklung neuer Module – dieselbe Plattform, die ich bei der APS Services entwickelt habe, jetzt in Vollzeit und mit erweitertem Verantwortungsbereich.",
         "highlights": [
           "Entwicklung eines eigenen HR-Moduls als Ersatz für ein externes Zeiterfassungstool: Kommen/Gehen-Buchungen mit Pausen, Zeitkonten mit Sollstunden, Feiertage und gesetzliche Pausenregelungen, Live-Anwesenheitsübersicht, protokollierte Zeitkorrekturen sowie Urlaubs- und Abwesenheitsverwaltung.",

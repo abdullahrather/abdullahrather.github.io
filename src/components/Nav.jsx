@@ -99,7 +99,7 @@ const Nav = ({ onOpenCommand }) => {
             >
               <Icon name="search" className="size-3.5" />
               <span className="sr-only">{t("ui.cmd.open")}</span>
-              <span className="flex gap-0.5" aria-hidden="true">
+              <span className="flex gap-0.5 pointer-coarse:hidden" aria-hidden="true">
                 <kbd className="kbd">{isMac ? "⌘" : "Ctrl"}</kbd>
                 <kbd className="kbd">K</kbd>
               </span>

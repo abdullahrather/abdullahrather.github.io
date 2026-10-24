@@ -142,7 +142,16 @@ const CommandPalette = ({ open, onOpenChange }) => {
           aria-controls="cmd-list"
           aria-activedescendant={flat[index] ? `cmd-${flat[index].id}` : undefined}
         />
-        <kbd className="kbd">Esc</kbd>
+        {/* Keyboard users see the Esc hint; touch users get a tappable close button */}
+        <button
+          type="button"
+          onClick={() => onOpenChange(false)}
+          aria-label={t("ui.close")}
+          className="grid min-h-8 min-w-8 place-items-center rounded-lg text-subtle transition-colors hover:text-fg"
+        >
+          <kbd className="kbd pointer-coarse:hidden">Esc</kbd>
+          <Icon name="x" className="size-5 pointer-fine:hidden" />
+        </button>
       </div>
 
       <div ref={listRef} id="cmd-list" role="listbox" className="max-h-[min(60dvh,24rem)] overflow-y-auto p-2">
@@ -177,7 +186,8 @@ const CommandPalette = ({ open, onOpenChange }) => {
         ))}
       </div>
 
-      <div className="flex items-center gap-4 border-t border-line px-4 py-2.5 font-mono text-[10px] text-subtle">
+      {/* Keyboard shortcut hints — only meaningful with a mouse/trackpad + keyboard */}
+      <div className="flex items-center gap-4 border-t border-line px-4 py-2.5 font-mono text-[10px] text-subtle pointer-coarse:hidden">
         <span className="flex items-center gap-1.5"><kbd className="kbd">↵</kbd>{t("ui.cmd.hint_select")}</span>
         <span className="flex items-center gap-1.5"><kbd className="kbd">↑</kbd><kbd className="kbd">↓</kbd>{t("ui.cmd.hint_nav")}</span>
         <span className="ml-auto flex items-center gap-1.5"><kbd className="kbd">Esc</kbd>{t("ui.cmd.hint_close")}</span>

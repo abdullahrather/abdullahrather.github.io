@@ -108,6 +108,12 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
     [lang]
   );
 
+  // The tab title and description follow the language; index.html holds the English defaults.
+  useEffect(() => {
+    document.title = t("ui.meta.title");
+    document.querySelector('meta[name="description"]')?.setAttribute("content", t("ui.meta.description"));
+  }, [t]);
+
   const value = useMemo(() => ({ lang, setLang, available: AVAILABLE, t }), [lang, setLang, t]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

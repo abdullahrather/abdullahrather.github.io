@@ -1,4 +1,3 @@
-import React from "react";
 
 // Stroke icons (Lucide-style, 24×24). Each entry is a list of path `d` strings.
 const STROKE = {

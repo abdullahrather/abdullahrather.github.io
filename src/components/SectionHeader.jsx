@@ -1,4 +1,3 @@
-import React from "react";
 import { useReveal } from "../lib/hooks";
 
 /** Eyebrow + display heading (with an optional serif-italic accent) + lead paragraph. */

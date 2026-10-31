@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
 import { useExperienceYears } from "../lib/experience";

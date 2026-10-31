@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";

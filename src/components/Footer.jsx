@@ -1,4 +1,3 @@
-import React from "react";
 import { Icon } from "./Icons";
 import { useTranslation } from "../lib/i18n";
 import { useClock, useNow } from "../lib/hooks";

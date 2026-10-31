@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Component, Suspense, lazy, useEffect, useRef, useState } from "react";
 import SectionHeader from "./SectionHeader";
 import { ContentIcon, Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
@@ -20,7 +20,7 @@ const IS_FORM_ENABLED = Boolean(
 const ReCAPTCHA = lazy(() => import("react-google-recaptcha"));
 
 // A failed chunk download must not take the whole page down with it.
-class RecaptchaBoundary extends React.Component {
+class RecaptchaBoundary extends Component {
   state = { failed: false };
 
   static getDerivedStateFromError() {

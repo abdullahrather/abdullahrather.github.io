@@ -52,9 +52,9 @@ jobs:
           latest=${latest:-v0.0.0}
           IFS=. read -r major minor patch <<< "${latest#v}"
 
-          if   echo "$LABELS" | grep -q '"release:major"'; then bump=major; major=$((major + 1)); minor=0; patch=0
-          elif echo "$LABELS" | grep -q '"release:minor"'; then bump=minor; minor=$((minor + 1)); patch=0
-          else bump=patch; patch=$((patch + 1)); fi
+          if   echo "$LABELS" | grep -q '"release:major"'; then bump="major"; major=$((major + 1)); minor=0; patch=0
+          elif echo "$LABELS" | grep -q '"release:minor"'; then bump="minor"; minor=$((minor + 1)); patch=0
+          else bump="patch"; patch=$((patch + 1)); fi
 
           next="v${major}.${minor}.${patch}"
           echo "Latest $latest -> $next ($bump)"

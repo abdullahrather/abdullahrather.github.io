@@ -66,8 +66,6 @@
     "months": "Monate",
     "entries": [
       {
-        "company": "APS AG",
-        "website": "https://www.aps.ag",
         "location": "Neckarsulm, Deutschland",
         "role": "KI-Entwickler",
         "summary": "Integration von KI in die zentrale Geschäftsplattform des Unternehmens und Entwicklung neuer Module – dieselbe Plattform, die ich bei der APS Services entwickelt habe, jetzt in Vollzeit und mit erweitertem Verantwortungsbereich.",
@@ -78,13 +76,9 @@
           "Integration einer Telefonanlage und Umstellung der Benutzeroberfläche auf ein modernes Bootstrap-5-Admin-Template.",
           "Sicherstellung der Produktionsqualität durch Code-Reviews, automatisierte Tests und nebenläufigkeitssichere Datenbanktransaktionen."
         ],
-        "startDate": "2026-10-01",
-        "endDate": null,
         "tag": "Vollzeit"
       },
       {
-        "company": "APS Services GmbH",
-        "website": "https://www.apsservices.de/",
         "location": "Neckarsulm, Deutschland",
         "role": "Softwareentwickler",
         "summary": "Entwicklung und Wartung der zentralen Geschäftsplattform der Unternehmensgruppe (Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte, Zeiterfassung und Reporting), die als separate Instanzen für mehrere Gruppenunternehmen betrieben wird.",
@@ -94,13 +88,9 @@
           "Modernisierung von Legacy-Bereichen durch OOP-Refactoring, automatisierte Tests und Continuous Integration.",
           "Entwicklung responsiver, AJAX-basierter Oberflächen für das Tagesgeschäft in mehreren Modulen."
         ],
-        "startDate": "2024-07-01",
-        "endDate": "2026-09-01",
         "tag": "Teilzeit · Remote"
       },
       {
-        "company": "Qualven Pvt Ltd",
-        "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Technischer Teamleiter",
         "summary": "Leitung eines fünfköpfigen Teams bei Konzeption, Entwicklung, Deployment und Support von Geschäftsanwendungen bei gleichzeitiger aktiver Mitarbeit in der Entwicklung.",
@@ -108,26 +98,18 @@
           "Entwurf von REST-APIs und relationalen Datenbankschemas für wachsende Datenmengen; Verantwortung für Deployments auf Docker und Linux/CentOS mit CI/CD.",
           "Durchführung von Code-Reviews, Festlegung von Coding-Standards und Erstellung technischer Dokumentation; Umsetzung von Kundenanforderungen in einsatzfähige Lösungen."
         ],
-        "startDate": "2023-01-01",
-        "endDate": "2024-04-01",
         "tag": "Vollzeit · Vor Ort"
       },
       {
-        "company": "Qualven Pvt Ltd",
-        "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Softwareentwickler",
         "summary": "Entwicklung von Frontend- und Backend-Funktionen für Kunden-Webanwendungen mit PHP und JavaScript.",
         "highlights": [
           "Ansprechpartner des Teams bei Abwesenheit der Teamleitung zur Sicherstellung von Koordination und termingerechter Umsetzung."
         ],
-        "startDate": "2021-11-01",
-        "endDate": "2023-01-01",
         "tag": "Vollzeit · Vor Ort"
       },
       {
-        "company": "The Science School",
-        "website": "https://thescienceschool.edu.pk/tss-web/index.php",
         "location": "Islamabad, Pakistan",
         "role": "Softwareentwickler",
         "summary": "Entwicklung und Wartung des Education Management Information Systems der Schule in PHP mit Modulen für Schüler, Personal, Finanzen und Benutzerverwaltung.",
@@ -136,21 +118,15 @@
           "Implementierung von Authentifizierung und rollenbasierter Zugriffskontrolle für Administratoren und Mitarbeitende.",
           "Abstimmung mit der Schulleitung zu Anforderungen, neuen Funktionen und Fehlerbehebungen; Durchführung von System-Upgrades und Fehleranalysen."
         ],
-        "startDate": "2022-04-01",
-        "endDate": "2024-04-01",
         "tag": "Vollzeit · Remote"
       },
       {
-        "company": "Qualven Pvt Ltd",
-        "website": "https://qualven.com/qv-web/",
         "location": "Islamabad, Pakistan",
         "role": "Technischer Praktikant",
         "summary": "Mitarbeit an der Full-Stack-Entwicklung: PHP-Backend-Logik sowie Frontends mit HTML/CSS, JavaScript und Bootstrap.",
         "highlights": [
           "Unterstützung bei Deployments, technischer Dokumentation, Anwenderschulungen und Kundenpräsentationen."
         ],
-        "startDate": "2021-01-01",
-        "endDate": "2021-07-01",
         "tag": "Praktikum"
       }
     ]
@@ -165,8 +141,7 @@
           "KI-Ticketzuweisung",
           "KI-gestützte Suche",
           "Prompt Design"
-        ],
-        "iconPath": "M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
+        ]
       },
       {
         "title": "Enterprise-Plattformen & Workflow-Systeme",
@@ -177,8 +152,7 @@
           "HR & Zeiterfassung",
           "Rollenbasierte Zugriffskontrolle (RBAC)",
           "Mehrsprachige Unterstützung"
-        ],
-        "iconPath": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        ]
       },
       {
         "title": "API-Integrationen & Automatisierung",
@@ -188,10 +162,6 @@
           "DATEV & ZUGFeRD Konformität",
           "Datensynchronisation & Automatisierung",
           "Sichere Webhooks"
-        ],
-        "iconPaths": [
-          "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
-          "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
         ]
       },
       {
@@ -203,8 +173,7 @@
           "Authentifizierung & RBAC",
           "PHPUnit & PHPStan",
           "React & Admin-Dashboards"
-        ],
-        "iconPath": "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+        ]
       },
       {
         "title": "Legacy-Modernisierung & Leistung",
@@ -214,8 +183,7 @@
           "Legacy-Refactorings",
           "OOP-Designmuster",
           "Leistungsoptimierung"
-        ],
-        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+        ]
       },
       {
         "title": "Technische Leitung",
@@ -225,8 +193,7 @@
           "Code-Reviews",
           "Release-Planung",
           "Agile Lieferung"
-        ],
-        "iconPath": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        ]
       }
     ]
   },
@@ -254,30 +221,19 @@
     "contact_info": [
       {
         "title": "E-Mail",
-        "value": "abdullahrather19@gmail.com",
-        "link": "mailto:abdullahrather19@gmail.com",
-        "iconPath": "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        "value": "abdullahrather19@gmail.com"
       },
       {
         "title": "Standort",
-        "value": "Heilbronn, Deutschland",
-        "link": "#",
-        "iconPaths": [
-          "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
-          "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-        ]
+        "value": "Heilbronn, Deutschland"
       },
       {
         "title": "Aktuelle Rolle",
-        "value": "KI-Entwickler bei der APS AG",
-        "link": "#",
-        "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        "value": "KI-Entwickler bei der APS AG"
       },
       {
         "title": "Verfügbarkeit",
-        "value": "Offen für interessante Gespräche",
-        "link": "#",
-        "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        "value": "Offen für interessante Gespräche"
       }
     ]
   },
@@ -324,17 +280,6 @@
         "id": 1,
         "title": "Unternehmensmanagementsystem",
         "description": "Zentrale Geschäftsplattform für Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung, betrieben für mehrere Gruppenunternehmen – mit DATEV-Integration, ZUGFeRD-E-Rechnungen, KI-Funktionen und eigenem HR-Modul.",
-        "image": "/images/projects/enterprise-management.webp",
-        "technologies": [
-          "Yii Framework",
-          "PHP",
-          "MySQL",
-          "JavaScript",
-          "DATEV API",
-          "Bootstrap",
-          "LLM APIs"
-        ],
-        "category": "fullstack",
         "features": [
           "Ticket- & Auftragsverwaltung",
           "DATEV-Integration",
@@ -360,23 +305,12 @@
             "label": "Geschäftswert",
             "text": "Bietet operativen Teams einen zentralisierten Arbeitsbereich für Projektverfolgung, Dokumentenverarbeitung und mehrsprachige Zusammenarbeit."
           }
-        ],
-        "github": "#",
-        "demo": "#"
+        ]
       },
       {
         "id": 2,
         "title": "Education Management Information System",
         "description": "Bildungsmanagementsystem für Zulassungen, Schüler- und Mitarbeiterdaten, Elternzugang und Finanz-Workflows, entwickelt mit PHP.",
-        "image": "/images/projects/education-management.webp",
-        "technologies": [
-          "PHP",
-          "PHPMaker",
-          "JavaScript",
-          "jQuery",
-          "MySQL"
-        ],
-        "category": "fullstack",
         "features": [
           "Zulassungen & Einschreibung",
           "Schüler- & Mitarbeiterdaten",
@@ -396,22 +330,12 @@
             "label": "Geschäftswert",
             "text": "Reduzierte manuelle Koordination durch Zusammenführung akademischer, elternbezogener und finanzieller Prozesse in ein einziges System."
           }
-        ],
-        "github": "#",
-        "demo": "#"
+        ]
       },
       {
         "id": 3,
         "title": "Spendenmanagementsystem",
         "description": "Plattform für Spender- und Kampagnenmanagement mit Laravel und React für Beitragsverfolgung, Berichterstattung und Outreach-Workflows.",
-        "image": "/images/projects/donor-management.webp",
-        "technologies": [
-          "Laravel",
-          "React",
-          "MySQL",
-          "JavaScript"
-        ],
-        "category": "fullstack",
         "features": [
           "Spenderprofile",
           "Kampagnen-Tracking",
@@ -431,24 +355,12 @@
             "label": "Geschäftswert",
             "text": "Hilft Fundraising-Teams, Beiträge zu verfolgen, Kampagnen zu messen und die Berichterstattung an den tatsächlichen Aktivitäten auszurichten."
           }
-        ],
-        "github": "#",
-        "demo": "#"
+        ]
       },
       {
         "id": 4,
         "title": "Campaign Analytics Microservice",
         "description": "Produktionsreifer REST-API-Microservice, entwickelt mit Node.js und TypeScript zur Verwaltung und Analyse von Werbekampagnen.",
-        "image": "/images/projects/campaign-analytics.webp",
-        "technologies": [
-          "Node.js",
-          "TypeScript",
-          "Express",
-          "Prisma",
-          "PostgreSQL",
-          "Docker"
-        ],
-        "category": "web",
         "features": [
           "REST API Architektur",
           "JWT-Authentifizierung",
@@ -469,23 +381,12 @@
             "label": "Geschäftswert",
             "text": "Bietet eine skalierbare, containerisierte Analyse-Engine, die nahtlos in größere E-Commerce- oder Medienarchitekturen integriert werden kann."
           }
-        ],
-        "github": "https://github.com/abdullahrather/campaign-analytics-microservice",
-        "demo": "#"
+        ]
       },
       {
         "id": 5,
         "title": "Task Manager",
         "description": "Aufgabenverwaltungssystem mit Symfony für strukturierte Workflows, Teamzusammenarbeit und rollenbasierte Zugriffssteuerung.",
-        "image": "/images/projects/task-manager.webp",
-        "technologies": [
-          "Symfony",
-          "PHP",
-          "MySQL",
-          "Twig",
-          "JavaScript"
-        ],
-        "category": "fullstack",
         "features": [
           "Aufgabenverfolgung",
           "Rollenbasierter Zugriff",
@@ -505,22 +406,12 @@
             "label": "Geschäftswert",
             "text": "Verbessert die Lieferkoordination, indem es Teams einen gemeinsamen Raum für Aufgaben, Verantwortlichkeiten und Fortschrittsverfolgung bietet."
           }
-        ],
-        "github": "https://github.com/abdullahrather/TaskManager-Symfony",
-        "demo": "#"
+        ]
       },
       {
         "id": 6,
         "title": "Portfolio Website",
         "description": "Persönliches Portfolio mit React, Vite und Tailwind CSS: vorgerendertes HTML, Befehlsmenü, Inhalte auf Englisch und Deutsch sowie EmailJS-Kontaktautomatisierung.",
-        "image": "/images/projects/portfolio-website.webp",
-        "technologies": [
-          "React",
-          "Vite",
-          "Tailwind CSS",
-          "JavaScript"
-        ],
-        "category": "web",
         "features": [
           "Vorgerendertes HTML",
           "Befehlsmenü",
@@ -541,22 +432,12 @@
             "label": "Geschäftswert",
             "text": "Schnell, barrierearm und leicht aktuell zu halten, mit zentral gepflegten Inhalten für beide Sprachen."
           }
-        ],
-        "github": "https://github.com/abdullahrather/abdullahrather.github.io",
-        "demo": "https://abdullahrather.com/"
+        ]
       },
       {
         "id": 7,
         "title": "Währungsrechner App",
         "description": "Echtzeit-Währungsumrechnungsanwendung, erstellt mit Laravel, Live-Wechselkursen und reaktionsschneller Währungsumschaltung.",
-        "image": "/images/projects/currency-converter.webp",
-        "technologies": [
-          "Laravel",
-          "GuzzleHttp",
-          "ExchangeRate API",
-          "PHP 8.2+"
-        ],
-        "category": "web",
         "features": [
           "Echtzeit-Wechselkurse",
           "Währungswechselfunktion",
@@ -576,23 +457,12 @@
             "label": "Geschäftswert",
             "text": "Bietet ein schlankes Finanzhilfsmittel mit aktuellen Austauschdaten und einem einfachen Benutzererlebnis."
           }
-        ],
-        "github": "https://github.com/abdullahrather/Currency-Converter-Laravel",
-        "demo": "#"
+        ]
       },
       {
         "id": 8,
         "title": "Ticketmanagementsystem",
         "description": "Workflow-gesteuertes Ticketverwaltungssystem mit Routing, Benachrichtigungen, Benutzerrollen und Berichtsfunktionen.",
-        "image": "/images/projects/ticket-management.webp",
-        "technologies": [
-          "PHP",
-          "Laravel",
-          "MySQL",
-          "JavaScript",
-          "AJAX"
-        ],
-        "category": "fullstack",
         "features": [
           "Erweiterter Workflow",
           "Benachrichtigungssystem",
@@ -612,23 +482,12 @@
             "label": "Geschäftswert",
             "text": "Verbessert den Support-Durchsatz und die Sichtbarkeit durch Reduzierung manueller Ticketbearbeitung."
           }
-        ],
-        "github": "#",
-        "demo": "#"
+        ]
       },
       {
         "id": 9,
         "title": "Mitarbeiter-Leistungs-Tracker",
         "description": "HR-Leistungsverfolgungssystem mit Kennzahlen, Dashboards, Analysen und Exportfunktionen.",
-        "image": "/images/projects/employee-performance.webp",
-        "technologies": [
-          "PHP",
-          "Laravel",
-          "ApexCharts.js",
-          "MySQL",
-          "CSS"
-        ],
-        "category": "fullstack",
         "features": [
           "Leistungsanalyse",
           "Datenvisualisierung",
@@ -648,24 +507,12 @@
             "label": "Geschäftswert",
             "text": "Verwandelt die Mitarbeiterverfolgung in einen messbaren Prozess anstelle eines manuellen Tabellenkalkulations-Workflows."
           }
-        ],
-        "github": "#",
-        "demo": "#"
+        ]
       },
       {
         "id": 10,
         "title": "Laravel Auth & Rollenmanagement App",
         "description": "Laravel-Anwendung mit Schwerpunkt auf Authentifizierung, Autorisierung und rollenbasierter Zugriffskontrolle mit Gates, Richtlinien und Eloquent-Beziehungen.",
-        "image": "/images/projects/laravel-auth-role.webp",
-        "technologies": [
-          "Laravel",
-          "PHP",
-          "MariaDB",
-          "Blade",
-          "Bootstrap 5",
-          "Eloquent ORM"
-        ],
-        "category": "fullstack",
         "features": [
           "Benutzerauthentifizierung & Registrierung",
           "Rollenbasierte Autorisierung",
@@ -688,24 +535,12 @@
             "label": "Geschäftswert",
             "text": "Bietet eine wiederverwendbare Grundlage für sichere, rollengesteuerte Admin-Systeme und CRUD-lastige Business-Tools."
           }
-        ],
-        "github": "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
-        "demo": "#"
+        ]
       },
       {
         "id": 11,
         "title": "Website für akademische Einrichtungen",
         "description": "Maßgeschneiderte Website für akademische Institutionen mit CAPTCHA-geschützter Authentifizierung, rollenbasierten Dashboards, Leistungsmodulen und Formularmanagement.",
-        "image": "/images/projects/academic-institution.webp",
-        "technologies": [
-          "PHP",
-          "MySQL",
-          "JavaScript",
-          "CSS",
-          "HTML",
-          "CAPTCHA"
-        ],
-        "category": "web",
         "features": [
           "Sichere Benutzerregistrierung & Anmeldung",
           "Passwort-Reset mit CAPTCHA-Verifizierung",
@@ -728,24 +563,12 @@
             "label": "Geschäftswert",
             "text": "Unterstützt akademische Kommunikation, Schülerdaten und Antragsbearbeitung auf einer einzigen Webplattform."
           }
-        ],
-        "github": "https://github.com/abdullahrather/CustomAcademy-PHP",
-        "demo": "#"
+        ]
       },
       {
         "id": 12,
         "title": "Laravel Rapid-Development Boilerplate",
         "description": "Ein wiederverwendbares Laravel 10 MVC-Boilerplate, das entwickelt wurde, um neue Admin-Panels und Microservices mit vorkonfigurierter Validierung und Zugriffskontrolle schnell hochzuziehen.",
-        "image": "/images/projects/laravel-auth-crud.webp",
-        "technologies": [
-          "Laravel 10",
-          "PHP",
-          "MySQL",
-          "Blade",
-          "JavaScript",
-          "CSS"
-        ],
-        "category": "web",
         "features": [
           "Vorkonfigurierte Auth & Registrierung",
           "Standardisierte CRUD-Generatoren",
@@ -766,23 +589,12 @@
             "label": "Geschäftswert",
             "text": "Reduziert die Time-to-Market für interne Admin-Tools erheblich, indem es ein sicheres, vorhersehbares Fundament bietet."
           }
-        ],
-        "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
-        "demo": "#"
+        ]
       },
       {
         "id": 13,
         "title": "Website für Unternehmensversicherungen",
         "description": "Unternehmensversicherungs-Website mit dynamischer Anfrageübermittlung, Antragsbearbeitung, SQL-Schema-Skripten und gestalteten Komponenten.",
-        "image": "/images/projects/corporate-insurance.webp",
-        "technologies": [
-          "PHP",
-          "JavaScript",
-          "CSS",
-          "MySQL",
-          "Hack"
-        ],
-        "category": "web",
         "features": [
           "Dynamische Formularübermittlung",
           "SQL-Schema-Einrichtung",
@@ -803,24 +615,12 @@
             "label": "Geschäftswert",
             "text": "Hilft Versicherungsteams, Kundenanfragen mit weniger manuellem Aufwand zu erfassen und zu bearbeiten."
           }
-        ],
-        "github": "https://github.com/abdullahrather/CustomWebsite-PHP",
-        "demo": "#"
+        ]
       },
       {
         "id": 14,
         "title": "Laravel Security & Auth Implementierung",
         "description": "Eine vollständige Sicherheits-Scaffolding-Referenz, die verifizierte Registrierung, Middleware-Schutz und sicheres Sitzungsmanagement für skalierbare Web-Apps abdeckt.",
-        "image": "/images/projects/laravel-auth-showcase.webp",
-        "technologies": [
-          "Laravel",
-          "PHP",
-          "Blade",
-          "MySQL",
-          "CSS",
-          "JavaScript"
-        ],
-        "category": "web",
         "features": [
           "Verifizierte Benutzerregistrierung",
           "Sichere Sitzungshandhabung",
@@ -841,9 +641,7 @@
             "label": "Geschäftswert",
             "text": "Dient als robuste Grundlage für die Authentifizierung und stellt sicher, dass Sicherheits-Best-Practices vom ersten Tag an integriert sind."
           }
-        ],
-        "github": "https://github.com/abdullahrather/Auth-Laravel",
-        "demo": "#"
+        ]
       }
     ]
   },

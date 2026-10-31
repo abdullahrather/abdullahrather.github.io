@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Icon } from "./Icons";
 import { useTranslation } from "../lib/i18n";

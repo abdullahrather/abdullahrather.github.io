@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Abdullah Rather</title>
+  <meta name="description" content="How abdullahrather.com handles visitor data, cookies and analytics." />
+  <link rel="canonical" href="https://abdullahrather.com/privacy/" />
+  <link rel="icon" href="/images/favicons/favicon.ico" sizes="any" />
+  <script>
+    // Follow the theme and language chosen on the main site.
+    try {
+      var theme = localStorage.getItem("theme");
+      if (theme) document.documentElement.classList.add(theme);
+      var lang = localStorage.getItem("lang") || navigator.language.slice(0, 2);
+      if (lang === "de" && !location.hash) location.replace("#de");
+    } catch (e) {}
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fafafa;
+      --fg: #18181b;
+      --muted: #52525b;
+      --line: #e4e4e7;
+      --accent: #4f46e5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light) {
+        color-scheme: dark;
+        --bg: #09090b;
+        --fg: #fafafa;
+        --muted: #a1a1aa;
+        --line: #27272a;
+        --accent: #a5b4fc;
+      }
+    }
+
+    :root.dark {
+      color-scheme: dark;
+      --bg: #09090b;
+      --fg: #fafafa;
+      --muted: #a1a1aa;
+      --line: #27272a;
+      --accent: #a5b4fc;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 2rem 1rem 5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 3rem 0 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      line-height: 1.35;
+      margin: 2.25rem 0 0.25rem;
+    }
+
+    p,
+    li,
+    td {
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 4rem 0 0;
+    }
+
+    .table {
+      overflow-x: auto;
+      margin-top: 0.75rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    th,
+    td {
+      padding: 0.6rem 0.75rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    code {
+      font-family: ui-monospace, Consolas, monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <nav>
+      <a href="/">← abdullahrather.com</a>
+      <a href="#de" lang="de">Deutsch</a>
+    </nav>
+
+    <h1>Privacy Policy</h1>
+    <p>Last updated: 31 October 2026</p>
+
+    <h2>1. Who is responsible</h2>
+    <p>Abdullah Rather, Heilbronn, Germany<br />Email: <a href="mailto:abdullahrather19@gmail.com">abdullahrather19@gmail.com</a></p>
+
+    <h2>2. Hosting</h2>
+    <p>This site is hosted on GitHub Pages by GitHub, Inc. (USA). When you visit, GitHub processes technical data such as your IP address to deliver the site and keep it secure. The legal basis is my legitimate interest in running a secure website (Art. 6(1)(f) GDPR).</p>
+
+    <h2>3. Analytics, only with your consent</h2>
+    <p>If you accept, this site uses Google Analytics 4 from Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. If you decline, Google Analytics is not loaded and nothing is sent to Google for analytics.</p>
+    <p>With your consent it records how the site is used: pages and sections viewed, projects opened, resume views and downloads, links clicked, contact form use, language and theme choices, and general data such as approximate location (country or city), device, browser and referring site. Advertising features and Google signals are turned off.</p>
+    <p>Google may process this data in the United States. Google LLC is certified under the EU–US Data Privacy Framework. The legal basis is your consent (Art. 6(1)(a) GDPR and § 25(1) TDDDG). Analytics data is deleted after 14 months at the latest.</p>
+    <p>You can withdraw or change your consent at any time: <a href="/#cookie-settings">open cookie settings</a>. Declining removes the analytics cookies from your browser.</p>
+
+    <h2>4. Cookies and browser storage</h2>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Kept for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>_ga</code>, <code>_ga_*</code></td>
+            <td>Google Analytics visitor and session cookies. Only set with your consent.</td>
+            <td>Up to 2 years</td>
+          </tr>
+          <tr>
+            <td><code>analytics-consent</code></td>
+            <td>Remembers your analytics choice in your browser's local storage.</td>
+            <td>Until you clear it</td>
+          </tr>
+          <tr>
+            <td><code>theme</code>, <code>lang</code></td>
+            <td>Remember your theme and language in local storage.</td>
+            <td>Until you clear it</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Local storage stays in your browser and is not sent to me. Fonts are served from this site, not from a third party.</p>
+
+    <h2>5. Contact form</h2>
+    <p>If you send a message, your name, email address, subject, message and time zone are processed by EmailJS to deliver it to me and to send you a confirmation. I use your message only to reply to you and delete it when it is no longer needed. The legal basis is Art. 6(1)(b) or (f) GDPR.</p>
+    <p>When you start using the form, Google reCAPTCHA loads to prevent spam. Google receives technical data such as your IP address and may set cookies. The legal basis is my legitimate interest in preventing abuse (Art. 6(1)(f) GDPR). To avoid it, email me directly.</p>
+
+    <h2>6. Your rights</h2>
+    <p>You have the right to access, correct, delete or restrict your data, to data portability, to object to processing, and to withdraw consent with effect for the future. Email me to use these rights. You can also complain to a data protection authority. Mine is the State Commissioner for Data Protection and Freedom of Information of Baden-Württemberg.</p>
+    <p>You are not required to provide personal data to read this site, and I do not use automated decision-making.</p>
+
+    <hr />
+
+    <div lang="de">
+      <h1 id="de">Datenschutzerklärung</h1>
+      <p>Stand: 31. Oktober 2026</p>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>Abdullah Rather, Heilbronn, Deutschland<br />E-Mail: <a href="mailto:abdullahrather19@gmail.com">abdullahrather19@gmail.com</a></p>
+
+      <h2>2. Hosting</h2>
+      <p>Diese Website wird über GitHub Pages von GitHub, Inc. (USA) bereitgestellt. Beim Besuch verarbeitet GitHub technische Daten wie Ihre IP-Adresse, um die Website auszuliefern und abzusichern. Rechtsgrundlage ist mein berechtigtes Interesse an einem sicheren Betrieb (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+      <h2>3. Analyse nur mit Ihrer Einwilligung</h2>
+      <p>Wenn Sie zustimmen, nutzt diese Website Google Analytics 4 der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wenn Sie ablehnen, wird Google Analytics nicht geladen und es werden keine Analysedaten an Google gesendet.</p>
+      <p>Mit Ihrer Einwilligung wird die Nutzung erfasst: aufgerufene Seiten und Bereiche, geöffnete Projekte, Aufrufe und Downloads des Lebenslaufs, angeklickte Links, Nutzung des Kontaktformulars, Sprach- und Designauswahl sowie allgemeine Daten wie ungefährer Standort (Land oder Stadt), Gerät, Browser und verweisende Website. Werbefunktionen und Google Signals sind deaktiviert.</p>
+      <p>Google kann diese Daten in den USA verarbeiten. Die Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Analysedaten werden spätestens nach 14 Monaten gelöscht.</p>
+      <p>Sie können Ihre Einwilligung jederzeit widerrufen oder ändern: <a href="/#cookie-settings">Cookie-Einstellungen öffnen</a>. Wenn Sie ablehnen, werden die Analyse-Cookies aus Ihrem Browser entfernt.</p>
+
+      <h2>4. Cookies und Speicherung im Browser</h2>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Zweck</th>
+              <th scope="col">Speicherdauer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>_ga</code>, <code>_ga_*</code></td>
+              <td>Besucher- und Sitzungs-Cookies von Google Analytics. Werden nur mit Ihrer Einwilligung gesetzt.</td>
+              <td>Bis zu 2 Jahre</td>
+            </tr>
+            <tr>
+              <td><code>analytics-consent</code></td>
+              <td>Speichert Ihre Analyse-Auswahl im lokalen Speicher Ihres Browsers.</td>
+              <td>Bis Sie sie löschen</td>
+            </tr>
+            <tr>
+              <td><code>theme</code>, <code>lang</code></td>
+              <td>Speichern Ihr Design und Ihre Sprache im lokalen Speicher.</td>
+              <td>Bis Sie sie löschen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Der lokale Speicher bleibt in Ihrem Browser und wird nicht an mich übermittelt. Schriftarten werden von dieser Website selbst geladen, nicht von Dritten.</p>
+
+      <h2>5. Kontaktformular</h2>
+      <p>Wenn Sie eine Nachricht senden, werden Ihr Name, Ihre E-Mail-Adresse, der Betreff, die Nachricht und Ihre Zeitzone von EmailJS verarbeitet, um mir die Nachricht zuzustellen und Ihnen eine Bestätigung zu senden. Ich verwende Ihre Nachricht nur zur Beantwortung und lösche sie, sobald sie nicht mehr benötigt wird. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b oder f DSGVO.</p>
+      <p>Wenn Sie das Formular verwenden, wird Google reCAPTCHA zum Schutz vor Spam geladen. Google erhält technische Daten wie Ihre IP-Adresse und kann Cookies setzen. Rechtsgrundlage ist mein berechtigtes Interesse an der Missbrauchsabwehr (Art. 6 Abs. 1 lit. f DSGVO). Wenn Sie das vermeiden möchten, schreiben Sie mir direkt eine E-Mail.</p>
+
+      <h2>6. Ihre Rechte</h2>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, eine Einwilligung mit Wirkung für die Zukunft zu widerrufen. Schreiben Sie mir dazu eine E-Mail. Außerdem können Sie sich bei einer Datenschutzbehörde beschweren. Für mich zuständig ist der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg.</p>
+      <p>Sie müssen keine personenbezogenen Daten angeben, um diese Website zu lesen, und ich setze keine automatisierte Entscheidungsfindung ein.</p>
+    </div>
+  </main>
+</body>
+
+</html>

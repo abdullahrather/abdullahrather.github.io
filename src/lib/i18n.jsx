@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent } from "./analytics";
 import en from "../languages/en.json";
 import { withFacts } from "./facts";
 
@@ -65,6 +66,7 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
     (next) =>
       activate(next).then((ok) => {
         if (!ok) return;
+        trackEvent("language_change", { language: next });
         try {
           localStorage.setItem("lang", next);
         } catch {

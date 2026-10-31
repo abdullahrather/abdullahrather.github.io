@@ -1,4 +1,5 @@
 import { Icon } from "./Icons";
+import { openConsentSettings } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useClock, useNow } from "../lib/hooks";
 import { EMAIL, SECTIONS, SOCIALS, TIMEZONE } from "../lib/site";
@@ -65,9 +66,17 @@ const Footer = () => {
         </p>
 
         <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 text-xs text-subtle sm:flex-row">
-          <p>
-            © {year} Abdullah Rather. {t("ui.footer.rights")}
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <p>
+              © {year} Abdullah Rather. {t("ui.footer.rights")}
+            </p>
+            <a href="/privacy/" className="transition-colors hover:text-fg">
+              {t("ui.consent.privacy")}
+            </a>
+            <button type="button" onClick={openConsentSettings} className="transition-colors hover:text-fg">
+              {t("ui.consent.settings")}
+            </button>
+          </div>
           <p className="hidden md:block">{t("ui.footer.built")}</p>
           <a href="#top" className="inline-flex items-center gap-1.5 transition-colors hover:text-fg">
             {t("ui.footer.top")}

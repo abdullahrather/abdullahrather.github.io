@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import SectionHeader from "./SectionHeader";
 import { Icon } from "./Icons";
+import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useNow, useReveal } from "../lib/hooks";
 
@@ -82,7 +83,14 @@ const Role = ({ experience, index, now, formatter, labels, present, impactLabel 
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">{experience.summary}</p>
 
         <details className="impact-details group/details mt-5 max-w-2xl" open={index === 0}>
-          <summary className="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-fg/80 transition-colors hover:text-fg [&::-webkit-details-marker]:hidden">
+          <summary
+            onClick={(e) => {
+              if (!e.currentTarget.parentElement.open) {
+                trackEvent("key_impact_open", { company: experience.company, start: experience.startDate });
+              }
+            }}
+            className="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-fg/80 transition-colors hover:text-fg [&::-webkit-details-marker]:hidden"
+          >
             <Icon
               name="chevronDown"
               className="size-4 -rotate-90 transition-transform duration-300 group-open/details:rotate-0"

@@ -705,6 +705,14 @@
     "meta": {
       "title": "Abdullah Rather — KI-Entwickler · PHP Backend / Full-Stack",
       "description": "KI-Entwickler und PHP Backend / Full-Stack Entwickler in Heilbronn: Enterprise-Webplattformen, REST-APIs, Integrationen und KI-Funktionen mit Yii, Laravel, Symfony, MySQL, Docker und CI/CD."
+    },
+    "consent": {
+      "title": "Analyse-Cookies",
+      "text": "Mit Ihrer Einwilligung zeigt mir Google Analytics, welche Bereiche dieser Website genutzt werden und woher Besucher ungefähr kommen. Wenn Sie ablehnen, bleibt es deaktiviert.",
+      "accept": "Akzeptieren",
+      "decline": "Ablehnen",
+      "privacy": "Datenschutzerklärung",
+      "settings": "Cookie-Einstellungen"
     }
   }
 }

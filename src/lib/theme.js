@@ -1,4 +1,5 @@
 import { useCallback, useSyncExternalStore } from "react";
+import { trackEvent } from "./analytics";
 
 const subscribe = (callback) => {
   const observer = new MutationObserver(callback);
@@ -31,6 +32,7 @@ export const useTheme = () => {
 
   const toggleTheme = useCallback((event) => {
     const next = !document.documentElement.classList.contains("dark");
+    trackEvent("theme_change", { theme: next ? "dark" : "light" });
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (!document.startViewTransition || reduceMotion) {

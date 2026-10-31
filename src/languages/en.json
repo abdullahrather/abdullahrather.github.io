@@ -688,6 +688,14 @@
     "meta": {
       "title": "Abdullah Rather — AI Software Engineer · PHP Backend / Full-Stack",
       "description": "AI Software Engineer and PHP backend / full-stack developer in Heilbronn, Germany, building enterprise web platforms, REST APIs, integrations and AI features with Yii, Laravel, Symfony, MySQL, Docker and CI/CD."
+    },
+    "consent": {
+      "title": "Analytics cookies",
+      "text": "With your consent, Google Analytics shows me which parts of this site are used and roughly where visitors come from. It stays off if you decline.",
+      "accept": "Accept",
+      "decline": "Decline",
+      "privacy": "Privacy Policy",
+      "settings": "Cookie settings"
     }
   }
 }

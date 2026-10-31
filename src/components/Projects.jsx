@@ -13,6 +13,8 @@ const FILTERED_COUNT = 6;
 
 const hasDemo = (p) => p.demo && p.demo !== "#";
 
+// Stable across languages, so one project isn't split into two rows in reports.
+
 /**
  * Runs a grid update inside a View Transition so cards glide to their new positions.
  * Card names are only applied (via .vt-cards) for the duration of the transition so they
@@ -166,7 +168,7 @@ const ProjectDialog = ({ project, onClose }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
-              onClick={() => trackEvent("project_source", { project: project.title })}
+              onClick={() => trackEvent("project_source", { project: project.id })}
             >
               <Icon name="github" />
               {t("projects.modal.view_github")}
@@ -252,7 +254,7 @@ const Projects = () => {
 
   const openProject = (project) => {
     setSelectedId(project.id);
-    trackEvent("project_open", { project: project.title });
+    trackEvent("project_open", { project: project.id });
   };
 
   return (
@@ -279,6 +281,7 @@ const Projects = () => {
                 aria-pressed={isActive}
                 type="button"
                 onClick={() => {
+                  trackEvent("project_filter", { filter: f.id });
                   withGridTransition(gridRef.current, () => {
                     setFilter(f.id);
                     setShowAll(false);
@@ -314,6 +317,7 @@ const Projects = () => {
               className="btn btn-ghost"
               onClick={() => {
                 if (showAll) document.getElementById("projects")?.scrollIntoView();
+                else trackEvent("projects_view_all", { filter });
                 setShowAll((v) => !v);
               }}
             >

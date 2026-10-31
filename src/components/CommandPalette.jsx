@@ -129,6 +129,7 @@ const CommandPalette = ({ open, onOpenChange }) => {
 
   const runItem = (item) => {
     onOpenChange(false);
+    trackEvent("command_palette_action", { action: item.id });
     // Scrolling waits for the dialog to release its scroll lock. Other actions stay in the
     // click itself, because browsers can block window.open and clipboard writes otherwise.
     if (item.scrolls) requestAnimationFrame(() => item.run());

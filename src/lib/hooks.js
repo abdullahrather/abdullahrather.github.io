@@ -125,7 +125,7 @@ export const useNow = () => {
   useEffect(() => {
     setNow(new Date());
     const id = window.setInterval(() => setNow(new Date()), 60 * 60 * 1000);
-    return () => window.clearInterval(id);
+    return undefined;
   }, []);
 
   return now;
@@ -140,7 +140,7 @@ export const useClock = (timeZone, locale) => {
       new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", timeZone }).format(new Date());
     setTime(format());
     const id = window.setInterval(() => setTime(format()), 30_000);
-    return () => window.clearInterval(id);
+    return undefined;
   }, [timeZone, locale]);
 
   return time;

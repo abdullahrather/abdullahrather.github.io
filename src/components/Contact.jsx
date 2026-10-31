@@ -11,10 +11,9 @@ const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID || "";
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
 const NOTIFY_TO_EMAIL = import.meta.env.VITE_EMAILJS_NOTIFY_TO || "";
 const TEMPLATE_NOTIFY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY || "";
-const TEMPLATE_REPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY || "";
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 const IS_FORM_ENABLED = Boolean(
-  USER_ID && SERVICE_ID && NOTIFY_TO_EMAIL && TEMPLATE_NOTIFY_ID && TEMPLATE_REPLY_ID && RECAPTCHA_SITE_KEY
+  USER_ID && SERVICE_ID && NOTIFY_TO_EMAIL && TEMPLATE_NOTIFY_ID && RECAPTCHA_SITE_KEY
 );
 
 // reCAPTCHA (and its Google script) only loads once the visitor starts filling in the form.
@@ -154,12 +153,8 @@ const Contact = () => {
     try {
       const { default: emailjs } = await import("@emailjs/browser");
       const options = { publicKey: USER_ID };
+      // The auto-reply is linked to this template in EmailJS, which sends it after this one.
       await emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY_ID, templateParams, options);
-      // The message has arrived by now, so a failed auto-reply isn't a failed submission.
-      await emailjs.send(SERVICE_ID, TEMPLATE_REPLY_ID, templateParams, options).catch((error) => {
-        console.warn("Auto-reply failed:", error);
-        trackEvent("contact_reply_error", { error: error?.text || String(error?.status) });
-      });
       setStatus("success");
       setFormData(EMPTY_FORM);
       trackEvent("contact_submit_success", { method: "emailjs" });

@@ -40,7 +40,6 @@ jobs:
           VITE_EMAILJS_SERVICE_ID:     ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_NOTIFY_TO:      ${{ secrets.VITE_EMAILJS_NOTIFY_TO }}
           VITE_EMAILJS_TEMPLATE_NOTIFY: ${{ secrets.VITE_EMAILJS_TEMPLATE_NOTIFY }}
-          VITE_EMAILJS_TEMPLATE_REPLY:  ${{ secrets.VITE_EMAILJS_TEMPLATE_REPLY }}
           VITE_RECAPTCHA_SITE_KEY:     ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
 
       - name: Deploy to GitHub Pages

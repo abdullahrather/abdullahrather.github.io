@@ -7,7 +7,9 @@ import { useTranslation } from "../lib/i18n";
 import { spotlight, useReveal } from "../lib/hooks";
 import { isPrivateRepo } from "../lib/site";
 
-const INITIAL_COUNT = 6;
+// One full-width featured card plus two rows of three.
+const FEATURED_COUNT = 7;
+const FILTERED_COUNT = 6;
 
 const hasDemo = (p) => p.demo && p.demo !== "#";
 
@@ -28,7 +30,7 @@ const withGridTransition = (grid, update) => {
   transition.finished.finally(() => grid.classList.remove("vt-cards"));
 };
 
-const ProjectCard = ({ project, index, onOpen }) => {
+const ProjectCard = ({ project, index, onOpen, featured = false }) => {
   const { t } = useTranslation();
   const reveal = useReveal();
   const isPrivate = isPrivateRepo(project.github);
@@ -39,18 +41,20 @@ const ProjectCard = ({ project, index, onOpen }) => {
       ref={reveal}
       onPointerMove={spotlight}
       style={{ "--delay": `${(index % 3) * 70}ms`, "--vt": `project-${project.id}` }}
-      className="project-card card spotlight group flex flex-col overflow-hidden p-2 transition-colors duration-300 hover:border-line-strong"
+      className={`project-card card spotlight group flex flex-col overflow-hidden p-2 transition-colors duration-300 hover:border-line-strong ${
+        featured ? "sm:col-span-2 lg:col-span-3 lg:flex-row" : ""
+      }`}
     >
       <button
         type="button"
         onClick={() => onOpen(project)}
-        className="relative block aspect-16/10 overflow-hidden rounded-[1.1rem] bg-fg/5"
+        className={`relative block aspect-16/10 overflow-hidden rounded-[1.1rem] bg-fg/5 ${featured ? "lg:w-3/5 lg:shrink-0" : ""}`}
         aria-label={`${t("ui.projects.details")}: ${project.title}`}
       >
         <img
           src={project.image}
           srcSet={`${project.image.replace(/\.webp$/, "-640.webp")} 640w, ${project.image} 1200w`}
-          sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+          sizes={featured ? "(min-width: 1024px) 660px, 100vw" : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"}
           alt=""
           loading="lazy"
           decoding="async"
@@ -64,9 +68,10 @@ const ProjectCard = ({ project, index, onOpen }) => {
         </span>
       </button>
 
-      <div className="flex flex-1 flex-col px-4 pb-4 pt-5">
+      <div className={`flex flex-1 flex-col px-4 pb-4 pt-5 ${featured ? "lg:justify-center lg:px-8" : ""}`}>
+        {featured && <p className="eyebrow mb-4">{t("ui.projects.featured")}</p>}
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-lg font-semibold leading-snug tracking-tight">{project.title}</h3>
+          <h3 className={`font-semibold leading-snug tracking-tight ${featured ? "text-2xl lg:text-3xl" : "text-lg"}`}>{project.title}</h3>
           {isPrivate ? (
             <span className="mt-1 shrink-0 text-subtle" title={t("ui.projects.private")}>
               <Icon name="lock" className="size-4" />
@@ -84,8 +89,8 @@ const ProjectCard = ({ project, index, onOpen }) => {
             </a>
           )}
         </div>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{project.description}</p>
-        <ul className="mt-auto flex flex-wrap gap-1.5 pt-5">
+        <p className={`mt-2 text-sm leading-relaxed text-muted ${featured ? "lg:mt-4 lg:text-base" : "line-clamp-2"}`}>{project.description}</p>
+        <ul className={`flex flex-wrap gap-1.5 pt-5 ${featured ? "" : "mt-auto"}`}>
           {project.technologies.slice(0, 4).map((tech) => (
             <li key={tech} className="chip">
               {tech}
@@ -217,7 +222,8 @@ const Projects = () => {
     id === "all" ? true : id === "public" ? !isPrivateRepo(p.github) : p.category === id;
 
   const filtered = useMemo(() => projects.filter((p) => matches(p, filter)), [projects, filter]);
-  const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
+  const initialCount = filter === "all" ? FEATURED_COUNT : FILTERED_COUNT;
+  const visible = showAll ? filtered : filtered.slice(0, initialCount);
 
   const openProject = (project) => {
     setSelected(project);
@@ -264,11 +270,11 @@ const Projects = () => {
 
         <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} onOpen={openProject} />
+            <ProjectCard key={project.id} project={project} index={i} onOpen={openProject} featured={filter === "all" && i === 0} />
           ))}
         </div>
 
-        {filtered.length > INITIAL_COUNT && (
+        {filtered.length > initialCount && (
           <div className="mt-12 flex flex-col items-center gap-3">
             <button
               type="button"

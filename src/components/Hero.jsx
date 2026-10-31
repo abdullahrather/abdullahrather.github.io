@@ -55,8 +55,7 @@ const ResumeMenu = () => {
   );
 };
 
-const Portrait = ({ years }) => {
-  const { t } = useTranslation();
+const Portrait = () => {
   return (
     <div className="enter relative order-first mx-auto w-full max-w-56 sm:max-w-88 lg:order-none" style={delay(200)}>
       {/* Glow */}
@@ -77,18 +76,6 @@ const Portrait = ({ years }) => {
             />
           </picture>
         </div>
-      </div>
-
-      {/* Floating chips */}
-      <div className="card absolute -left-8 bottom-6 flex items-center gap-3 rounded-2xl px-3 py-2 shadow-xl sm:-left-10 sm:bottom-10 sm:px-3.5 sm:py-2.5">
-        <span className="font-serif text-2xl italic leading-none text-accent sm:text-3xl">{years}+</span>
-        <span className="text-xs leading-tight text-muted">
-          {t("skills.stats.years_experience")}
-        </span>
-      </div>
-      <div className="card absolute -right-10 top-4 flex items-center gap-2 rounded-2xl px-3 py-2 shadow-xl sm:-right-8 sm:top-8 sm:px-3.5 sm:py-2.5">
-        <Icon name="mapPin" className="size-4 text-accent" />
-        <span className="text-xs font-medium">{t("hero.badges.location")}</span>
       </div>
     </div>
   );
@@ -147,7 +134,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <Portrait years={years} />
+          <Portrait />
         </div>
       </div>
 

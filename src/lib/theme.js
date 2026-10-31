@@ -10,6 +10,10 @@ const getSnapshot = () => document.documentElement.classList.contains("dark");
 
 const applyTheme = (dark) => {
   document.documentElement.classList.toggle("dark", dark);
+  // Keep the mobile browser bar in step with a manually chosen theme.
+  document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+    meta.content = dark ? "#09090b" : "#fafafa";
+  });
   try {
     localStorage.setItem("theme", dark ? "dark" : "light");
   } catch {

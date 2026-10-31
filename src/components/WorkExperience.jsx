@@ -70,7 +70,7 @@ const Role = ({ experience, index, now, formatter, labels, present, impactLabel 
         </p>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">{experience.summary}</p>
 
-        <details className="group/details mt-5 max-w-2xl" open={index === 0}>
+        <details className="impact-details group/details mt-5 max-w-2xl" open={index === 0}>
           <summary className="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-fg/80 transition-colors hover:text-fg [&::-webkit-details-marker]:hidden">
             <Icon name="chevronDown" className="size-4 -rotate-90 transition-transform duration-300 group-open/details:rotate-0" />
             {impactLabel}
@@ -121,20 +121,23 @@ const WorkExperience = () => {
           lead={t("workExperience.description")}
         />
 
-        <ol className="relative divide-y divide-line border-y border-line md:border-l md:border-y-0 md:divide-y-0">
-          {experiences.map((experience, index) => (
-            <Role
-              key={`${experience.company}-${experience.role}`}
-              experience={experience}
-              index={index}
-              now={now}
-              formatter={formatter}
-              labels={labels}
-              present={t("workExperience.present")}
-              impactLabel={t("workExperience.key_impact")}
-            />
-          ))}
-        </ol>
+        <div className="relative">
+          <span aria-hidden="true" className="timeline-fill absolute left-0 top-0 hidden h-full w-px origin-top bg-linear-to-b from-accent to-accent-2 md:block" />
+          <ol className="relative divide-y divide-line border-y border-line md:border-l md:border-y-0 md:divide-y-0">
+            {experiences.map((experience, index) => (
+              <Role
+                key={`${experience.company}-${experience.role}`}
+                experience={experience}
+                index={index}
+                now={now}
+                formatter={formatter}
+                labels={labels}
+                present={t("workExperience.present")}
+                impactLabel={t("workExperience.key_impact")}
+              />
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

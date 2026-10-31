@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Icon } from "./Icons";
 import { useTranslation } from "../lib/i18n";
@@ -25,6 +25,34 @@ const Nav = ({ onOpenCommand }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMac, setIsMac] = useState(false);
+  const linksRef = useRef(null);
+  const [pill, setPill] = useState({ left: 0, width: 0, visible: false });
+  const [pillReady, setPillReady] = useState(false);
+
+  // Slide one shared highlight to the active link; re-measure on language or size changes.
+  useEffect(() => {
+    const list = linksRef.current;
+    if (!list) return undefined;
+    const measure = () => {
+      const link = list.querySelector('[aria-current="true"]');
+      setPill((prev) =>
+        link ? { left: link.offsetLeft, width: link.offsetWidth, visible: true } : { ...prev, visible: false }
+      );
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(list);
+    // A web font swap can change link widths without resizing the list.
+    document.fonts?.ready.then(measure);
+    return () => observer.disconnect();
+  }, [active, t]);
+
+  // Enable sliding after the first placement, so the pill appears instead of growing in.
+  useEffect(() => {
+    if (!pill.visible || pillReady) return undefined;
+    const frame = requestAnimationFrame(() => setPillReady(true));
+    return () => cancelAnimationFrame(frame);
+  }, [pill.visible, pillReady]);
 
   useEffect(() => {
     setIsMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
@@ -71,19 +99,22 @@ const Nav = ({ onOpenCommand }) => {
             <span className="hidden text-sm font-medium tracking-tight sm:block">Abdullah Rather</span>
           </a>
 
-          <ul className="hidden items-center gap-0.5 md:flex">
+          <ul ref={linksRef} className="relative hidden items-center gap-0.5 md:flex">
+            <li
+              role="presentation"
+              aria-hidden="true"
+              className={`absolute inset-y-0 left-0 rounded-full bg-fg/7 ring-1 ring-line ${pillReady ? "transition-[transform,width,opacity] duration-500 ease-out-expo" : ""} ${pill.visible ? "opacity-100" : "opacity-0"}`}
+              style={{ width: pill.width, transform: `translateX(${pill.left}px)` }}
+            />
             {SECTIONS.map(({ id, key }) => (
               <li key={id}>
                 <a
                   href={`#${id}`}
                   aria-current={active === id ? "true" : undefined}
-                  className={`relative isolate rounded-full px-3.5 py-1.5 text-sm transition-colors ${
+                  className={`relative block rounded-full px-3.5 py-1.5 text-sm transition-colors ${
                     active === id ? "text-fg" : "text-muted hover:text-fg"
                   }`}
                 >
-                  {active === id && (
-                    <span aria-hidden="true" className="absolute inset-0 -z-10 rounded-full bg-fg/7 ring-1 ring-line" />
-                  )}
                   {t(key)}
                 </a>
               </li>

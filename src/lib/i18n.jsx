@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import en from "../languages/en.json";
 
 const DEFAULT_LANG = "en";
@@ -44,17 +44,22 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
   const [lang, setLangState] = useState(initialLang);
 
   // Only switch once the locale has loaded, so the UI never claims a language it can't show.
+  const latestRequest = useRef(null);
   const activate = useCallback(
-    (next) =>
-      loadLocale(next)
+    (next) => {
+      latestRequest.current = next;
+      return loadLocale(next)
         .then(() => {
+          // A slower, earlier request must not override the visitor's latest choice.
+          if (latestRequest.current !== next) return false;
           setLangState(next);
           return true;
         })
         .catch((error) => {
           console.warn(`Could not load "${next}" translations`, error);
           return false;
-        }),
+        });
+    },
     []
   );
 
@@ -110,4 +115,3 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
 
 export const useTranslation = () => useContext(I18nContext);
 
-export default I18nContext;

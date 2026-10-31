@@ -8,6 +8,7 @@
 /* ───────────────────────── Design tokens ───────────────────────── */
 
 :root {
+  color-scheme: light;
   --bg: oklch(0.985 0.002 286);
   --fg: oklch(0.21 0.006 286);
   --muted: oklch(0.47 0.012 286);
@@ -18,12 +19,12 @@
   --card-solid: oklch(1 0 0);
   --accent: oklch(0.55 0.22 277);
   --accent-2: oklch(0.62 0.2 320);
-  --accent-fg: oklch(0.99 0 0);
   --glow: oklch(0.6 0.22 277 / 0.18);
   --ok: oklch(0.68 0.17 155);
 }
 
 .dark {
+  color-scheme: dark;
   --bg: oklch(0.141 0.004 286);
   --fg: oklch(0.97 0.002 286);
   --muted: oklch(0.71 0.012 286);
@@ -34,7 +35,6 @@
   --card-solid: oklch(0.18 0.005 286);
   --accent: oklch(0.7 0.18 277);
   --accent-2: oklch(0.74 0.16 320);
-  --accent-fg: oklch(0.15 0.01 286);
   --glow: oklch(0.6 0.22 277 / 0.22);
   --ok: oklch(0.78 0.17 155);
 }
@@ -54,14 +54,12 @@
   --color-card-solid: var(--card-solid);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
-  --color-accent-fg: var(--accent-fg);
   --color-ok: var(--ok);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-ping-slow: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-  --animate-spin-slow: spin 8s linear infinite;
 }
 
 @keyframes marquee {
@@ -73,6 +71,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
@@ -156,7 +155,7 @@
     @apply relative rounded-3xl border border-line bg-card backdrop-blur-sm;
   }
 
-  /* Cursor-following spotlight — position fed by the useSpotlight handler */
+  /* Cursor-following spotlight — position fed by the spotlight handler */
   .spotlight {
     isolation: isolate;
   }
@@ -197,7 +196,7 @@
   }
 
   .field {
-    @apply w-full rounded-xl border border-line-strong bg-fg/2 px-4 py-3 text-sm text-fg outline-none transition placeholder:text-subtle focus:border-accent focus:bg-fg/4;
+    @apply w-full rounded-xl border border-line-strong bg-fg/2 px-4 py-3 text-base text-fg sm:text-sm outline-none transition placeholder:text-subtle focus:border-accent focus:bg-fg/4;
     box-shadow: 0 0 0 0 var(--glow);
   }
   .field:focus {
@@ -231,17 +230,17 @@
 }
 
 /* Animated conic ring around the portrait */
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
 .ring-conic {
-  background: conic-gradient(from var(--angle), var(--accent), var(--accent-2), transparent 40%, transparent 60%, var(--accent));
-  animation: ring-rotate 6s linear infinite;
+  overflow: hidden;
+  isolation: isolate;
 }
-@keyframes ring-rotate {
-  to { --angle: 360deg; }
+.ring-conic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: conic-gradient(var(--accent), var(--accent-2), transparent 40%, transparent 60%, var(--accent));
+  animation: spin 6s linear infinite;
 }
 
 /* Reading progress bar — pure CSS scroll-driven animation where supported */
@@ -267,8 +266,9 @@
   transition:
     opacity 0.8s var(--ease-out-expo),
     translate 0.8s var(--ease-out-expo),
-    filter 0.8s var(--ease-out-expo);
-  transition-delay: var(--delay, 0ms);
+    filter 0.8s var(--ease-out-expo),
+    border-color 0.3s;
+  transition-delay: var(--delay, 0ms), var(--delay, 0ms), var(--delay, 0ms), 0ms;
 }
 .reveal.is-in {
   opacity: 1;
@@ -379,5 +379,14 @@ dialog[open]::backdrop {
   }
   .impact-details::details-content {
     transition: none;
+  }
+}
+
+/* Printing or saving as PDF must include sections that were never scrolled to */
+@media print {
+  .reveal {
+    opacity: 1;
+    translate: none;
+    filter: none;
   }
 }

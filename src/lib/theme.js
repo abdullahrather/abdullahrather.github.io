@@ -38,8 +38,10 @@ export const useTheme = () => {
       return;
     }
 
-    const x = event?.clientX ?? window.innerWidth / 2;
-    const y = event?.clientY ?? 0;
+    // detail is 0 for keyboard clicks, which report no useful pointer position.
+    const fromPointer = event?.detail > 0;
+    const x = fromPointer ? event.clientX : window.innerWidth / 2;
+    const y = fromPointer ? event.clientY : 0;
     const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
 
     const transition = document.startViewTransition(() => applyTheme(next));

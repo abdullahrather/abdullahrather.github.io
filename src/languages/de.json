@@ -1,15 +1,7 @@
 {
   "hero": {
-    "title": "Über mich",
     "role": "KI-Entwickler · PHP Backend",
     "summary": "Ich entwickle Enterprise-Webplattformen, interne Tools und die Integrationen dahinter und bringe KI-Funktionen in alltägliche Geschäftsabläufe. {years}+ Jahre Erfahrung mit PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST-APIs, Docker und CI/CD – von der Modernisierung bestehender Systeme bis zu neuen Modulen im Produktivbetrieb.",
-    "badges": {
-      "delivery": "Über 15 Produktions-Deployments mit automatisierter CI/CD.",
-      "integration": "Integrationen für Enterprise-Workflows entwickelt (20+).",
-      "experience": "{years}+ Jahre Erfahrung",
-      "backend_apis": "Backend APIs",
-      "tooling": "Docker & CI/CD"
-    },
     "buttons": {
       "projects": "Projekte",
       "experience": "Erfahrung",
@@ -18,23 +10,7 @@
       "download_resume": "Lebenslauf herunterladen"
     },
     "modal": {
-      "title": "Berufliche Profile",
-      "connect_title": "Lassen Sie uns in Kontakt treten!",
-      "connect_text": "Ich bin immer offen für Gespräche über neue Möglichkeiten, Kooperationen oder einfach für den Austausch mit anderen Entwicklern. Kontaktieren Sie mich gerne über eine dieser Plattformen.",
-      "connect_subtitle": "Kontaktieren Sie mich auf verschiedenen Plattformen",
       "profiles": {
-        "linkedin": {
-          "name": "LinkedIn",
-          "description": "Berufliches Netzwerk & Karriere-Highlights"
-        },
-        "github": {
-          "name": "GitHub",
-          "description": "Open Source Projekte & Code-Repositories"
-        },
-        "xing": {
-          "name": "Xing",
-          "description": "Deutsches berufliches Netzwerk"
-        },
         "email": {
           "name": "E-Mail",
           "description": "Direkter beruflicher Kontakt"
@@ -104,7 +80,6 @@
         ],
         "startDate": "2026-10-01",
         "endDate": null,
-        "accent": "from-violet-500 to-fuchsia-500",
         "tag": "Vollzeit"
       },
       {
@@ -121,7 +96,6 @@
         ],
         "startDate": "2024-07-01",
         "endDate": "2026-09-01",
-        "accent": "from-indigo-500 to-cyan-500",
         "tag": "Teilzeit · Remote"
       },
       {
@@ -136,7 +110,6 @@
         ],
         "startDate": "2023-01-01",
         "endDate": "2024-04-01",
-        "accent": "from-emerald-500 to-teal-500",
         "tag": "Vollzeit · Vor Ort"
       },
       {
@@ -150,7 +123,6 @@
         ],
         "startDate": "2021-11-01",
         "endDate": "2023-01-01",
-        "accent": "from-emerald-500 to-teal-500",
         "tag": "Vollzeit · Vor Ort"
       },
       {
@@ -166,7 +138,6 @@
         ],
         "startDate": "2022-04-01",
         "endDate": "2024-04-01",
-        "accent": "from-purple-500 to-fuchsia-500",
         "tag": "Vollzeit · Remote"
       },
       {
@@ -180,16 +151,11 @@
         ],
         "startDate": "2021-01-01",
         "endDate": "2021-07-01",
-        "accent": "from-amber-500 to-orange-500",
         "tag": "Praktikum"
       }
     ]
   },
   "expertise": {
-    "heading": "Kernfokus",
-    "show_less": "Weniger anzeigen",
-    "view_all": "Alle Fokusbereiche anzeigen",
-    "showing": "Zeige {visible} von {total}",
     "items": [
       {
         "title": "KI-Funktionen & LLM-Integration",
@@ -267,8 +233,6 @@
   "contact": {
     "heading": "Kontakt aufnehmen",
     "subheading": "Fragen, Ideen oder Lust auf einen Austausch über Backend-Entwicklung oder praxisnahe KI in Geschäftssoftware? Ich freue mich auf Ihre Nachricht.",
-    "info_heading": "Kontaktinformationen",
-    "connect_heading": "Verbinden Sie sich mit mir:",
     "form_heading": "Nachricht senden",
     "recaptcha_unavailable": "reCAPTCHA ist in dieser Umgebung nicht verfügbar.",
     "alert_recaptcha": "Bitte füllen Sie das reCAPTCHA vor dem Absenden aus.",
@@ -315,40 +279,7 @@
         "link": "#",
         "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
       }
-    ],
-    "social_links": [
-      {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/in/abdullahrather"
-      },
-      {
-        "name": "Xing",
-        "url": "https://www.xing.com/profile/Abdullah_Rather"
-      },
-      {
-        "name": "GitHub",
-        "url": "https://github.com/abdullahrather"
-      },
-      {
-        "name": "E-Mail",
-        "url": "mailto:abdullahrather19@gmail.com"
-      }
     ]
-  },
-  "layout": {
-    "nav": {
-      "skills": "Fähigkeiten",
-      "experience": "Erfahrung",
-      "expertise": "Expertise",
-      "projects": "Projekte",
-      "cta": "Kontakt"
-    },
-    "mobile_menu": {
-      "cta": "Loslegen"
-    },
-    "footer": {
-      "built_with": "Entwickelt mit ❤️ und Leidenschaft für Innovation"
-    }
   },
   "projects": {
     "heading": "Ausgewählte Projekte",
@@ -372,19 +303,7 @@
       }
     ],
     "card": {
-      "key_features": "Hauptmerkmale:",
-      "more": "mehr",
-      "flip_title": "Karte für Kurzinfos umdrehen",
-      "github_title": "Auf GitHub ansehen",
-      "details_title": "Details ansehen",
-      "category_label": "Kategorie:",
-      "technologies_label": "Technologien:",
-      "features_label": "Funktionen:",
-      "repository_label": "Repository:",
-      "private": "Privat",
-      "public": "Öffentlich",
-      "view_full_details": "Vollständige Details ansehen",
-      "view_source": "Quellcode ansehen"
+      "github_title": "Auf GitHub ansehen"
     },
     "toggle": {
       "show_less": "Weniger anzeigen",
@@ -989,7 +908,8 @@
       "copied": "In die Zwischenablage kopiert",
       "or": "oder senden Sie eine Nachricht",
       "response": "Ich antworte in der Regel innerhalb von 24 Stunden.",
-      "recaptcha_hint": "Die Verifizierung wird geladen, sobald Sie mit der Eingabe beginnen."
+      "recaptcha_hint": "Die Verifizierung wird geladen, sobald Sie mit der Eingabe beginnen.",
+      "incomplete": "Bitte geben Sie Ihren Namen, den Betreff und Ihre Nachricht ein."
     },
     "footer": {
       "rights": "Alle Rechte vorbehalten.",
@@ -1012,6 +932,12 @@
       "hint_select": "auswählen",
       "hint_nav": "navigieren",
       "hint_close": "schließen"
+    },
+    "a11y": {
+      "nav": "Hauptnavigation",
+      "language": "Sprache",
+      "filter": "Projekte filtern",
+      "portrait": "Porträt von Abdullah Rather"
     }
   }
 }

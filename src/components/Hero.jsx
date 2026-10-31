@@ -56,6 +56,7 @@ const ResumeMenu = () => {
 };
 
 const Portrait = () => {
+  const { t } = useTranslation();
   return (
     <div className="enter relative order-first mx-auto w-full max-w-56 sm:max-w-88 lg:order-none" style={delay(200)}>
       {/* Glow */}
@@ -67,7 +68,7 @@ const Portrait = () => {
             <source srcSet="/images/profile-avatar.avif" type="image/avif" />
             <img
               src="/images/profile-avatar.webp"
-              alt="Portrait of Abdullah Rather"
+              alt={t("ui.a11y.portrait")}
               width="640"
               height="640"
               fetchPriority="high"

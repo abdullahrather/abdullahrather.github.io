@@ -126,7 +126,7 @@ const WorkExperience = () => {
           <ol className="relative divide-y divide-line border-y border-line md:border-l md:border-y-0 md:divide-y-0">
             {experiences.map((experience, index) => (
               <Role
-                key={`${experience.company}-${experience.role}`}
+                key={experience.startDate}
                 experience={experience}
                 index={index}
                 now={now}

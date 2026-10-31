@@ -9,7 +9,7 @@ import { SECTIONS } from "../lib/site";
 // "top" (the hero) is tracked too so the highlight clears when scrolling back up.
 const TRACKED_IDS = ["top", ...SECTIONS.map((s) => s.id)];
 
-export const ThemeToggle = () => {
+const ThemeToggle = () => {
   const { t } = useTranslation();
   const { isDark, toggleTheme } = useTheme();
   return (
@@ -85,7 +85,7 @@ const Nav = ({ onOpenCommand }) => {
 
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
         <nav
-          aria-label="Primary"
+          aria-label={t("ui.a11y.nav")}
           className={`mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 rounded-full border pl-2 pr-2 transition-all duration-500 ease-out-expo sm:pl-3 ${
             scrolled || menuOpen
               ? "border-line bg-bg/70 shadow-[0_8px_32px_-12px_rgb(0_0_0/0.25)] backdrop-blur-xl backdrop-saturate-150"

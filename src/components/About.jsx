@@ -101,7 +101,7 @@ const About = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 lg:col-span-6 lg:grid-cols-4">
             {stats.map((s, i) => (
-              <Tile key={s.label} className="p-0! sm:p-0!" delay={i * 60}>
+              <Tile key={i} className="p-0! sm:p-0!" delay={i * 60}>
                 <Stat {...s} />
               </Tile>
             ))}

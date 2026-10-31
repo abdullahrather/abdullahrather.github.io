@@ -594,7 +594,7 @@
       {
         "id": 6,
         "title": "Portfolio Website",
-        "description": "Job-centric personal portfolio built with React, Vite, and Tailwind CSS, featuring animation, project highlights, and EmailJS contact automation.",
+        "description": "Personal portfolio built with React, Vite and Tailwind CSS: pre-rendered HTML, a command menu, English and German content, and EmailJS contact automation.",
         "image": "/images/projects/portfolio-website.webp",
         "technologies": [
           "React",
@@ -604,24 +604,24 @@
         ],
         "category": "web",
         "features": [
-          "Responsive Layout",
-          "GSAP Animations",
-          "Project Showcase",
-          "EmailJS Contact Automation",
-          "Custom Autoresponder & Reply Templates"
+          "Pre-rendered HTML",
+          "Command Menu",
+          "CSS-Only Animations",
+          "English & German Content",
+          "EmailJS Contact Automation"
         ],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Built as a React and Vite single-page experience with animation-driven sections and reusable content blocks."
+            "text": "A React and Vite page pre-rendered to static HTML at build time, then hydrated, so content appears before JavaScript loads."
           },
           {
             "label": "Automation Workflow",
-            "text": "Integrated EmailJS to route contact submissions into a branded autoresponder and reply notification flow."
+            "text": "EmailJS routes contact messages into a branded notification and auto-reply; GitHub Actions deploys each merge and creates versioned releases."
           },
           {
             "label": "Business Value",
-            "text": "Turns the portfolio into a live lead-capture surface instead of a static showcase page."
+            "text": "Fast, accessible and easy to keep current, with content managed in one place for both languages."
           }
         ],
         "github": "https://github.com/abdullahrather/abdullahrather.github.io",
@@ -978,7 +978,8 @@
       "source": "Source",
       "private": "Private repository",
       "live": "Live site",
-      "count": "{count} projects"
+      "count": "{count} projects",
+      "featured": "Featured"
     },
     "contact": {
       "eyebrow": "Contact",

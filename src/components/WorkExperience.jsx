@@ -121,7 +121,9 @@ const WorkExperience = () => {
           lead={t("workExperience.description")}
         />
 
-        <ol className="relative divide-y divide-line border-y border-line md:border-l md:border-y-0 md:divide-y-0">
+        <div className="relative">
+          <span aria-hidden="true" className="timeline-fill absolute left-0 top-0 z-10 hidden h-full w-px origin-top bg-linear-to-b from-accent to-accent-2 md:block" />
+          <ol className="relative divide-y divide-line border-y border-line md:border-l md:border-y-0 md:divide-y-0">
           {experiences.map((experience, index) => (
             <Role
               key={`${experience.company}-${experience.role}`}
@@ -134,7 +136,8 @@ const WorkExperience = () => {
               impactLabel={t("workExperience.key_impact")}
             />
           ))}
-        </ol>
+          </ol>
+        </div>
       </div>
     </section>
   );

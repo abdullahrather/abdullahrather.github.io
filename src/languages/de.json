@@ -594,7 +594,7 @@
       {
         "id": 6,
         "title": "Portfolio Website",
-        "description": "Joborientiertes persönliches Portfolio, erstellt mit React, Vite und Tailwind CSS, mit Animationen, Projekthighlights und EmailJS-Kontaktautomatisierung.",
+        "description": "Persönliches Portfolio mit React, Vite und Tailwind CSS: vorgerendertes HTML, Befehlsmenü, Inhalte auf Englisch und Deutsch sowie EmailJS-Kontaktautomatisierung.",
         "image": "/images/projects/portfolio-website.webp",
         "technologies": [
           "React",
@@ -604,24 +604,24 @@
         ],
         "category": "web",
         "features": [
-          "Responsives Layout",
-          "GSAP-Animationen",
-          "Projektpräsentation",
-          "EmailJS-Kontaktautomatisierung",
-          "Benutzerdefinierte Autoresponder & Antwortvorlagen"
+          "Vorgerendertes HTML",
+          "Befehlsmenü",
+          "Reine CSS-Animationen",
+          "Inhalte auf Englisch & Deutsch",
+          "EmailJS-Kontaktautomatisierung"
         ],
         "developmentDetails": [
           {
             "label": "Architektur",
-            "text": "Als React- und Vite-Single-Page-Erlebnis mit animationsgesteuerten Bereichen und wiederverwendbaren Inhaltsblöcken erstellt."
+            "text": "Eine React- und Vite-Seite, die beim Build zu statischem HTML vorgerendert und anschließend hydriert wird, sodass Inhalte vor dem JavaScript erscheinen."
           },
           {
-            "label": "Automatisierungs-Workflow",
-            "text": "EmailJS integriert, um Kontaktübermittlungen in einen markengerechten Autoresponder und Antwortbenachrichtigungsablauf zu leiten."
+            "label": "Automatisierung",
+            "text": "EmailJS leitet Kontaktnachrichten in eine gestaltete Benachrichtigung und automatische Antwort; GitHub Actions deployt jeden Merge und erstellt versionierte Releases."
           },
           {
             "label": "Geschäftswert",
-            "text": "Macht aus dem Portfolio eine aktive Lead-Erfassungsfläche anstelle einer statischen Showcase-Seite."
+            "text": "Schnell, barrierearm und leicht aktuell zu halten, mit zentral gepflegten Inhalten für beide Sprachen."
           }
         ],
         "github": "https://github.com/abdullahrather/abdullahrather.github.io",
@@ -978,7 +978,8 @@
       "source": "Code",
       "private": "Privates Repository",
       "live": "Live-Seite",
-      "count": "{count} Projekte"
+      "count": "{count} Projekte",
+      "featured": "Hervorgehoben"
     },
     "contact": {
       "eyebrow": "Kontakt",

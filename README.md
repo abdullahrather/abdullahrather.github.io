@@ -69,6 +69,7 @@ Every pull request runs `.github/workflows/ci.yml`:
 | Check | What it does | Run locally |
 | ----- | ------------ | ----------- |
 | Lint | ESLint with no warnings allowed | `npm run lint` |
+| Format | Prettier code formatting (`npm run format` fixes it) | `npm run format:check` |
 | Content | Matching EN/DE keys, placeholders, images and facts | `npm run check:content` |
 | Build | Production build and pre-render | `npm run build` |
 | Dependency audit | Fails on high or critical vulnerabilities | `npm audit --audit-level=high` |

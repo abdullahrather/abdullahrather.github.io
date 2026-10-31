@@ -1,24 +1,48 @@
-
 // Stroke icons (Lucide-style, 24×24). Each entry is a list of path `d` strings.
 const STROKE = {
   arrowRight: ["M5 12h14", "m12 5 7 7-7 7"],
   arrowUpRight: ["M7 7h10v10", "M7 17 17 7"],
   arrowUp: ["m5 12 7-7 7 7", "M12 19V5"],
   download: ["M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", "m7 10 5 5 5-5", "M12 15V3"],
-  file: ["M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", "M14 2v4a2 2 0 0 0 2 2h4", "M10 13h4", "M10 17h4"],
-  sun: ["M12 3v1", "M12 20v1", "m4.93 4.93.7.7", "m18.37 18.37.7.7", "M3 12h1", "M20 12h1", "m4.93 19.07.7-.7", "m18.37 5.63.7-.7", "M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"],
+  file: [
+    "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",
+    "M14 2v4a2 2 0 0 0 2 2h4",
+    "M10 13h4",
+    "M10 17h4",
+  ],
+  sun: [
+    "M12 3v1",
+    "M12 20v1",
+    "m4.93 4.93.7.7",
+    "m18.37 18.37.7.7",
+    "M3 12h1",
+    "M20 12h1",
+    "m4.93 19.07.7-.7",
+    "m18.37 5.63.7-.7",
+    "M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z",
+  ],
   moon: ["M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"],
   command: ["M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"],
   menu: ["M4 8h16", "M4 16h16"],
   x: ["M18 6 6 18", "m6 6 12 12"],
   check: ["M20 6 9 17l-5-5"],
-  copy: ["M10 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z","M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"],
+  copy: [
+    "M10 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z",
+    "M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2",
+  ],
   search: ["M21 21l-4.35-4.35", "M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"],
-  globe: ["M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z", "M2 12h20", "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"],
+  globe: [
+    "M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
+    "M2 12h20",
+    "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z",
+  ],
   lock: ["M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z", "M7 11V7a5 5 0 0 1 10 0v4"],
   chevronDown: ["m6 9 6 6 6-6"],
   send: ["M22 2 11 13", "M22 2 15 22l-4-9-9-4Z"],
-  briefcase: ["M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", "M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"],
+  briefcase: [
+    "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",
+    "M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z",
+  ],
   layers: ["m12 2 10 5-10 5L2 7Z", "m2 17 10 5 10-5", "m2 12 10 5 10-5"],
   mail: ["M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2Z", "m22 6-10 7L2 6"],
   sparkle: ["M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2Z"],
@@ -73,7 +97,16 @@ export const Icon = ({ name, className = "size-4", strokeWidth = 1.75, ...props 
 export const ContentIcon = ({ item, className = "size-5" }) => {
   const paths = item.iconPaths ?? (item.iconPath ? [item.iconPath] : []);
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
       {paths.map((d) => (
         <path key={d} d={d} />
       ))}

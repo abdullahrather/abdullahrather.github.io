@@ -124,9 +124,7 @@
         "location": "Islamabad, Pakistan",
         "role": "Technical Intern",
         "summary": "Contributed to full-stack feature development: PHP backend logic and HTML/CSS, JavaScript and Bootstrap frontends.",
-        "highlights": [
-          "Supported deployments, technical documentation, user training and client presentations."
-        ],
+        "highlights": ["Supported deployments, technical documentation, user training and client presentations."],
         "tag": "Internship"
       }
     ]
@@ -136,12 +134,7 @@
       {
         "title": "AI Features & LLM Integration",
         "description": "AI built into everyday business workflows: practical, access-controlled and production-ready.",
-        "features": [
-          "LLM API Integration",
-          "AI Ticket Assignment",
-          "AI-Assisted Search",
-          "Prompt Design"
-        ]
+        "features": ["LLM API Integration", "AI Ticket Assignment", "AI-Assisted Search", "Prompt Design"]
       },
       {
         "title": "Enterprise Platforms & Workflow Systems",
@@ -157,12 +150,7 @@
       {
         "title": "API Integrations & Automation",
         "description": "Integrations and automation for third-party systems, including German accounting standards.",
-        "features": [
-          "REST API Integrations",
-          "DATEV & ZUGFeRD Compliance",
-          "Data Sync & Automation",
-          "Secure Webhooks"
-        ]
+        "features": ["REST API Integrations", "DATEV & ZUGFeRD Compliance", "Data Sync & Automation", "Secure Webhooks"]
       },
       {
         "title": "PHP Backend & Full-Stack",
@@ -178,22 +166,12 @@
       {
         "title": "Legacy Modernization & Performance",
         "description": "Upgrade and refactor legacy PHP systems for stability, security, and speed.",
-        "features": [
-          "PHP 7.4 to 8.2 Upgrades",
-          "Legacy Refactors",
-          "OOP Design Patterns",
-          "Performance Optimization"
-        ]
+        "features": ["PHP 7.4 to 8.2 Upgrades", "Legacy Refactors", "OOP Design Patterns", "Performance Optimization"]
       },
       {
         "title": "Technical Leadership",
         "description": "Lead teams and deliver predictable releases with clear standards.",
-        "features": [
-          "Team Mentoring",
-          "Code Reviews",
-          "Release Planning",
-          "Agile Delivery"
-        ]
+        "features": ["Team Mentoring", "Code Reviews", "Release Planning", "Agile Delivery"]
       }
     ]
   },
@@ -311,12 +289,7 @@
         "id": 2,
         "title": "Education Management Information System",
         "description": "Education management system for admissions, student and staff records, parent access, and finance workflows built with PHP.",
-        "features": [
-          "Admissions & Enrollment",
-          "Student & Staff Records",
-          "Parent Portal",
-          "Finance & Reporting"
-        ],
+        "features": ["Admissions & Enrollment", "Student & Staff Records", "Parent Portal", "Finance & Reporting"],
         "developmentDetails": [
           {
             "label": "Architecture",
@@ -336,12 +309,7 @@
         "id": 3,
         "title": "Donor Management System",
         "description": "Donor and campaign management platform with Laravel and React for contribution tracking, reporting, and outreach workflows.",
-        "features": [
-          "Donor Profiles",
-          "Campaign Tracking",
-          "Contribution Reports",
-          "Payment Integrations"
-        ],
+        "features": ["Donor Profiles", "Campaign Tracking", "Contribution Reports", "Payment Integrations"],
         "developmentDetails": [
           {
             "label": "Architecture",
@@ -387,12 +355,7 @@
         "id": 5,
         "title": "Task Manager",
         "description": "Task management system built with Symfony for structured workflows, team collaboration, and role-based access.",
-        "features": [
-          "Task Tracking",
-          "Role-Based Access",
-          "Status Workflows",
-          "Team Collaboration"
-        ],
+        "features": ["Task Tracking", "Role-Based Access", "Status Workflows", "Team Collaboration"],
         "developmentDetails": [
           {
             "label": "Architecture",
@@ -438,12 +401,7 @@
         "id": 7,
         "title": "Currency Converter App",
         "description": "Real-time currency conversion application built with Laravel, live exchange rates, and responsive currency switching.",
-        "features": [
-          "Real-time Exchange Rates",
-          "Currency Switch Function",
-          "Error Handling",
-          "Responsive Design"
-        ],
+        "features": ["Real-time Exchange Rates", "Currency Switch Function", "Error Handling", "Responsive Design"],
         "developmentDetails": [
           {
             "label": "Architecture",
@@ -463,12 +421,7 @@
         "id": 8,
         "title": "Ticket Management System",
         "description": "Workflow-driven ticket management system with routing, notifications, user roles, and reporting features.",
-        "features": [
-          "Advanced Workflow",
-          "Notification System",
-          "Role Management",
-          "Comprehensive Reporting"
-        ],
+        "features": ["Advanced Workflow", "Notification System", "Role Management", "Comprehensive Reporting"],
         "developmentDetails": [
           {
             "label": "Architecture",
@@ -488,12 +441,7 @@
         "id": 9,
         "title": "Employee Performance Tracker",
         "description": "HR performance tracking system with metrics, dashboards, analytics, and export capabilities.",
-        "features": [
-          "Performance Analytics",
-          "Data Visualization",
-          "CSV/PDF Export",
-          "Employee Dashboard"
-        ],
+        "features": ["Performance Analytics", "Data Visualization", "CSV/PDF Export", "Employee Dashboard"],
         "developmentDetails": [
           {
             "label": "Architecture",

@@ -7,7 +7,13 @@ import { useCopy } from "../lib/hooks";
 import { toast } from "../lib/toast";
 import { EMAIL, SECTIONS, SOCIALS, getResume } from "../lib/site";
 
-const SECTION_ICONS = { about: "sparkle", experience: "briefcase", expertise: "layers", projects: "file", contact: "mail" };
+const SECTION_ICONS = {
+  about: "sparkle",
+  experience: "briefcase",
+  expertise: "layers",
+  projects: "file",
+  contact: "mail",
+};
 
 /** ⌘K / Ctrl+K command menu built on the native <dialog> element. */
 const CommandPalette = ({ open, onOpenChange }) => {
@@ -53,15 +59,38 @@ const CommandPalette = ({ open, onOpenChange }) => {
     return [
       {
         label: t("ui.cmd.nav"),
-        items: SECTIONS.map((s) => ({ id: s.id, label: t(s.key), keywords: s.id, scrolls: true, icon: SECTION_ICONS[s.id], run: go(s.id) })),
+        items: SECTIONS.map((s) => ({
+          id: s.id,
+          label: t(s.key),
+          keywords: s.id,
+          scrolls: true,
+          icon: SECTION_ICONS[s.id],
+          run: go(s.id),
+        })),
       },
       {
         label: t("ui.cmd.actions"),
         items: [
           { id: "theme", label: t("ui.cmd.theme"), icon: "sun", run: () => toggleTheme() },
           { id: "lang", label: t("ui.cmd.lang"), icon: "globe", run: () => setLang(lang === "de" ? "en" : "de") },
-          { id: "copy", label: t("ui.cmd.copy"), icon: "copy", hint: EMAIL, run: async () => { if (await copy(EMAIL)) toast(t("ui.contact.copied")); } },
-          { id: "view-resume", label: t("ui.cmd.view_resume"), icon: "file", run: () => { trackEvent("resume_view"); visit(resume.href)(); } },
+          {
+            id: "copy",
+            label: t("ui.cmd.copy"),
+            icon: "copy",
+            hint: EMAIL,
+            run: async () => {
+              if (await copy(EMAIL)) toast(t("ui.contact.copied"));
+            },
+          },
+          {
+            id: "view-resume",
+            label: t("ui.cmd.view_resume"),
+            icon: "file",
+            run: () => {
+              trackEvent("resume_view");
+              visit(resume.href)();
+            },
+          },
           {
             id: "resume",
             label: t("ui.cmd.resume"),
@@ -85,7 +114,10 @@ const CommandPalette = ({ open, onOpenChange }) => {
     const q = query.trim().toLowerCase();
     if (!q) return groups;
     return groups
-      .map((g) => ({ ...g, items: g.items.filter((i) => `${i.label} ${i.hint ?? ""} ${i.keywords ?? ""}`.toLowerCase().includes(q)) }))
+      .map((g) => ({
+        ...g,
+        items: g.items.filter((i) => `${i.label} ${i.hint ?? ""} ${i.keywords ?? ""}`.toLowerCase().includes(q)),
+      }))
       .filter((g) => g.items.length);
   }, [groups, query]);
 
@@ -160,7 +192,9 @@ const CommandPalette = ({ open, onOpenChange }) => {
         {flat.length === 0 && <p className="px-3 py-10 text-center text-sm text-muted">{t("ui.cmd.empty")}</p>}
         {filtered.map((group) => (
           <div key={group.label} role="group" aria-label={group.label} className="mb-1">
-            <p className="px-3 pb-1.5 pt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-subtle">{group.label}</p>
+            <p className="px-3 pb-1.5 pt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-subtle">
+              {group.label}
+            </p>
             {group.items.map((item) => {
               position += 1;
               const i = position;
@@ -190,9 +224,19 @@ const CommandPalette = ({ open, onOpenChange }) => {
 
       {/* Keyboard shortcut hints — only meaningful with a mouse/trackpad + keyboard */}
       <div className="flex items-center gap-4 border-t border-line px-4 py-2.5 font-mono text-[10px] text-subtle pointer-coarse:hidden">
-        <span className="flex items-center gap-1.5"><kbd className="kbd">↵</kbd>{t("ui.cmd.hint_select")}</span>
-        <span className="flex items-center gap-1.5"><kbd className="kbd">↑</kbd><kbd className="kbd">↓</kbd>{t("ui.cmd.hint_nav")}</span>
-        <span className="ml-auto flex items-center gap-1.5"><kbd className="kbd">Esc</kbd>{t("ui.cmd.hint_close")}</span>
+        <span className="flex items-center gap-1.5">
+          <kbd className="kbd">↵</kbd>
+          {t("ui.cmd.hint_select")}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <kbd className="kbd">↑</kbd>
+          <kbd className="kbd">↓</kbd>
+          {t("ui.cmd.hint_nav")}
+        </span>
+        <span className="ml-auto flex items-center gap-1.5">
+          <kbd className="kbd">Esc</kbd>
+          {t("ui.cmd.hint_close")}
+        </span>
       </div>
     </dialog>
   );

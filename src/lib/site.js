@@ -10,8 +10,25 @@ export const SOCIALS = [
 ];
 
 export const STACK = [
-  "PHP", "Yii", "Laravel", "Symfony", "MySQL", "MariaDB", "PostgreSQL", "LLM APIs", "REST APIs", "DATEV",
-  "Docker", "GitHub Actions", "PHPUnit", "PHPStan", "JavaScript", "TypeScript", "React", "Python", "FastAPI",
+  "PHP",
+  "Yii",
+  "Laravel",
+  "Symfony",
+  "MySQL",
+  "MariaDB",
+  "PostgreSQL",
+  "LLM APIs",
+  "REST APIs",
+  "DATEV",
+  "Docker",
+  "GitHub Actions",
+  "PHPUnit",
+  "PHPStan",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Python",
+  "FastAPI",
 ];
 
 export const SECTIONS = [

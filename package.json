@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "node scripts/build.mjs",
     "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "check:content": "node scripts/check-content.mjs",
     "test:smoke": "node tests/smoke.mjs",
     "preview": "vite preview"
@@ -33,6 +35,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "playwright": "^1.64.1",
+    "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.4"
   }

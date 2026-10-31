@@ -87,7 +87,9 @@ try {
       const page = await openPage({ colorScheme, reducedMotion: "reduce" });
       await page.evaluate(() => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in")));
       await page.addScriptTag({ content: axeSource });
-      const violations = await page.evaluate(async () => (await window.axe.run(document)).violations.map((v) => `${v.id} x${v.nodes.length}`));
+      const violations = await page.evaluate(async () =>
+        (await window.axe.run(document)).violations.map((v) => `${v.id} x${v.nodes.length}`),
+      );
       assert.deepEqual(violations, []);
     });
   }

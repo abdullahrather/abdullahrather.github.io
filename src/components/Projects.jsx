@@ -35,8 +35,7 @@ const withGridTransition = (grid, update) => {
   });
 };
 
-const matchesFilter = (p, id) =>
-  id === "all" ? true : id === "public" ? !isPrivateRepo(p.github) : p.category === id;
+const matchesFilter = (p, id) => (id === "all" ? true : id === "public" ? !isPrivateRepo(p.github) : p.category === id);
 
 const ProjectCard = ({ project, index, onOpen, featured = false }) => {
   const { t } = useTranslation();
@@ -62,7 +61,9 @@ const ProjectCard = ({ project, index, onOpen, featured = false }) => {
         <img
           src={project.image}
           srcSet={`${project.image.replace(/\.webp$/, "-640.webp")} 640w, ${project.image} 1200w`}
-          sizes={featured ? "(min-width: 1024px) 660px, 100vw" : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"}
+          sizes={
+            featured ? "(min-width: 1024px) 660px, 100vw" : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+          }
           alt=""
           loading="lazy"
           decoding="async"
@@ -79,7 +80,9 @@ const ProjectCard = ({ project, index, onOpen, featured = false }) => {
       <div className={`flex flex-1 flex-col px-4 pb-4 pt-5 ${featured ? "lg:justify-center lg:px-8" : ""}`}>
         {featured && <p className="eyebrow mb-4">{t("ui.projects.featured")}</p>}
         <div className="flex items-start justify-between gap-3">
-          <h3 className={`font-semibold leading-snug tracking-tight ${featured ? "text-2xl lg:text-3xl" : "text-lg"}`}>{project.title}</h3>
+          <h3 className={`font-semibold leading-snug tracking-tight ${featured ? "text-2xl lg:text-3xl" : "text-lg"}`}>
+            {project.title}
+          </h3>
           {isPrivate ? (
             <span className="mt-1 shrink-0 text-subtle" title={t("ui.projects.private")}>
               <Icon name="lock" className="size-4" />
@@ -97,7 +100,9 @@ const ProjectCard = ({ project, index, onOpen, featured = false }) => {
             </a>
           )}
         </div>
-        <p className={`mt-2 text-sm leading-relaxed text-muted ${featured ? "lg:mt-4 lg:text-base" : "line-clamp-2"}`}>{project.description}</p>
+        <p className={`mt-2 text-sm leading-relaxed text-muted ${featured ? "lg:mt-4 lg:text-base" : "line-clamp-2"}`}>
+          {project.description}
+        </p>
         <ul className={`flex flex-wrap gap-1.5 pt-5 ${featured ? "" : "mt-auto"}`}>
           {project.technologies.slice(0, 4).map((tech) => (
             <li key={tech} className="chip">
@@ -146,7 +151,9 @@ const ProjectDialog = ({ project, onClose }) => {
       </div>
 
       <div className="-mt-12 relative px-6 pb-8 sm:px-10 sm:pb-10">
-        <span className="chip bg-card-solid">{(t("projects.filters") || []).find((f) => f.id === project.category)?.name}</span>
+        <span className="chip bg-card-solid">
+          {(t("projects.filters") || []).find((f) => f.id === project.category)?.name}
+        </span>
         <h3 id="project-dialog-title" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
           {project.title}
         </h3>
@@ -154,8 +161,13 @@ const ProjectDialog = ({ project, onClose }) => {
 
         <div className="mt-6 flex flex-wrap gap-2">
           {!isPrivate && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary"
-              onClick={() => trackEvent("project_source", { project: project.title })}>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              onClick={() => trackEvent("project_source", { project: project.title })}
+            >
               <Icon name="github" />
               {t("projects.modal.view_github")}
             </a>
@@ -176,7 +188,9 @@ const ProjectDialog = ({ project, onClose }) => {
 
         <div className="mt-10 grid gap-10 sm:grid-cols-2">
           <div>
-            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("projects.modal.technologies")}</h4>
+            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
+              {t("projects.modal.technologies")}
+            </h4>
             <ul className="mt-4 flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <li key={tech} className="chip text-fg">
@@ -186,7 +200,9 @@ const ProjectDialog = ({ project, onClose }) => {
             </ul>
           </div>
           <div>
-            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("projects.modal.key_features")}</h4>
+            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
+              {t("projects.modal.key_features")}
+            </h4>
             <ul className="mt-4 space-y-2">
               {project.features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-muted">
@@ -200,7 +216,9 @@ const ProjectDialog = ({ project, onClose }) => {
 
         {project.developmentDetails?.length > 0 && (
           <div className="mt-10">
-            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("projects.modal.dev_details")}</h4>
+            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
+              {t("projects.modal.dev_details")}
+            </h4>
             <dl className="mt-4 divide-y divide-line rounded-2xl border border-line">
               {project.developmentDetails.map((d) => (
                 <div key={d.label} className="grid gap-1 p-4 sm:grid-cols-[10rem_1fr] sm:gap-6">
@@ -247,7 +265,11 @@ const Projects = () => {
           lead={t("projects.subheading")}
         />
 
-        <div role="group" aria-label={t("ui.a11y.filter")} className="-mx-5 mb-8 flex gap-1.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0">
+        <div
+          role="group"
+          aria-label={t("ui.a11y.filter")}
+          className="-mx-5 mb-8 flex gap-1.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0"
+        >
           {filters.map((f) => {
             const count = projects.filter((p) => matchesFilter(p, f.id)).length;
             const isActive = filter === f.id;
@@ -263,9 +285,7 @@ const Projects = () => {
                   });
                 }}
                 className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 ${
-                  isActive
-                    ? "border-fg bg-fg text-bg"
-                    : "border-line text-muted hover:border-line-strong hover:text-fg"
+                  isActive ? "border-fg bg-fg text-bg" : "border-line text-muted hover:border-line-strong hover:text-fg"
                 }`}
               >
                 {f.name}
@@ -277,7 +297,13 @@ const Projects = () => {
 
         <div ref={gridRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} onOpen={openProject} featured={filter === "all" && i === 0} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={i}
+              onOpen={openProject}
+              featured={filter === "all" && i === 0}
+            />
           ))}
         </div>
 

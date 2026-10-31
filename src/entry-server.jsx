@@ -10,5 +10,5 @@ export const render = () =>
       <TranslationProvider initialLang="en">
         <App />
       </TranslationProvider>
-    </StrictMode>
+    </StrictMode>,
   );

@@ -13,7 +13,7 @@ const getRevealObserver = () => {
         }
       });
     },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
   );
   return revealObserver;
 };
@@ -61,7 +61,7 @@ export const useActiveSection = (ids) => {
           if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-45% 0px -50% 0px" },
     );
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
@@ -100,7 +100,7 @@ export const useCountUp = (target, duration = 1400) => {
         };
         frame = requestAnimationFrame(tick);
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     observer.observe(node);
     return () => {
@@ -163,7 +163,7 @@ export const useCopy = (timeout = 1800) => {
         return false;
       }
     },
-    [timeout]
+    [timeout],
   );
 
   useEffect(() => () => window.clearTimeout(timer.current), []);

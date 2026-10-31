@@ -5,7 +5,11 @@ const LanguageSwitcher = ({ className = "" }) => {
   const { t, lang, setLang, available } = useTranslation();
 
   return (
-    <div role="group" aria-label={t("ui.a11y.language")} className={`relative flex rounded-full border border-line p-0.5 ${className}`}>
+    <div
+      role="group"
+      aria-label={t("ui.a11y.language")}
+      className={`relative flex rounded-full border border-line p-0.5 ${className}`}
+    >
       <span
         aria-hidden="true"
         className="absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-fg/10 transition-transform duration-300 ease-out-expo"

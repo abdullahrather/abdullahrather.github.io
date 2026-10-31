@@ -25,7 +25,11 @@ const deLeaves = new Map(leaves(de));
 for (const key of enLeaves.keys()) if (!deLeaves.has(key)) errors.push(`Missing in de.json: ${key}`);
 for (const key of deLeaves.keys()) if (!enLeaves.has(key)) errors.push(`Missing in en.json: ${key}`);
 
-const placeholders = (text) => [...String(text).matchAll(/\{\s*(\w+)\s*\}/g)].map((m) => m[1]).sort().join();
+const placeholders = (text) =>
+  [...String(text).matchAll(/\{\s*(\w+)\s*\}/g)]
+    .map((m) => m[1])
+    .sort()
+    .join();
 for (const [key, value] of enLeaves) {
   if (deLeaves.has(key) && placeholders(value) !== placeholders(deLeaves.get(key))) {
     errors.push(`Different placeholders at ${key}`);

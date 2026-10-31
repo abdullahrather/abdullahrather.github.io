@@ -23,7 +23,10 @@ if (container.hasChildNodes()) {
 } else {
   // Dev server: nothing pre-rendered, so load the locale first and render directly.
   loadLocale(preferred)
-    .then(() => preferred, () => "en")
+    .then(
+      () => preferred,
+      () => "en",
+    )
     .then((lang) => createRoot(container).render(app(lang)));
 }
 
@@ -47,5 +50,5 @@ document.addEventListener(
     const isInternal = new URL(anchor.href).origin === window.location.origin;
     trackLink(href, label, isInternal ? "internal" : "outbound");
   },
-  { capture: true }
+  { capture: true },
 );

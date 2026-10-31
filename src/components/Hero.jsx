@@ -25,11 +25,18 @@ const ResumeMenu = () => {
     };
   }, [open]);
 
-  const item = "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-muted transition-colors hover:bg-fg/5 hover:text-fg";
+  const item =
+    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-muted transition-colors hover:bg-fg/5 hover:text-fg";
 
   return (
     <div ref={ref} className="relative">
-      <button type="button" className="btn btn-ghost" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+      <button
+        type="button"
+        className="btn btn-ghost"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
         <Icon name="file" />
         {t("hero.buttons.resume")}
         <Icon name="chevronDown" className={`size-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
@@ -40,13 +47,30 @@ const ResumeMenu = () => {
           open ? "visible scale-100 opacity-100" : "invisible scale-95 opacity-0"
         }`}
       >
-        <a role="menuitem" href={resume.href} target="_blank" rel="noopener noreferrer" className={item}
-          onClick={() => { trackEvent("resume_view"); setOpen(false); }}>
+        <a
+          role="menuitem"
+          href={resume.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={item}
+          onClick={() => {
+            trackEvent("resume_view");
+            setOpen(false);
+          }}
+        >
           <Icon name="arrowUpRight" />
           {t("hero.buttons.view_resume")}
         </a>
-        <a role="menuitem" href={resume.href} download={resume.fileName} className={item}
-          onClick={() => { trackEvent("resume_download"); setOpen(false); }}>
+        <a
+          role="menuitem"
+          href={resume.href}
+          download={resume.fileName}
+          className={item}
+          onClick={() => {
+            trackEvent("resume_download");
+            setOpen(false);
+          }}
+        >
           <Icon name="download" />
           {t("hero.buttons.download_resume")}
         </a>
@@ -104,7 +128,8 @@ const Hero = () => {
             </a>
 
             <p className="enter mt-8 font-mono text-sm text-muted" style={delay(60)}>
-              {t("ui.hero.greeting")}<span className="hidden sm:inline"> — {t("hero.role")}</span>
+              {t("ui.hero.greeting")}
+              <span className="hidden sm:inline"> — {t("hero.role")}</span>
             </p>
 
             <h1
@@ -115,19 +140,36 @@ const Hero = () => {
               {t("ui.hero.headline_b")}
             </h1>
 
-            <p className="enter mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg lg:mx-0" style={delay(200)}>
+            <p
+              className="enter mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg lg:mx-0"
+              style={delay(200)}
+            >
               {t("hero.summary", { years })}
             </p>
 
-            <div className="enter mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start" style={delay(280)}>
+            <div
+              className="enter mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+              style={delay(280)}
+            >
               <a href="#projects" className="btn btn-primary group">
                 {t("ui.hero.cta_work")}
-                <Icon name="arrowRight" className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                <Icon
+                  name="arrowRight"
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                />
               </a>
               <ResumeMenu />
               <div className="ml-1 flex items-center gap-1">
                 {SOCIALS.map((s) => (
-                  <a key={s.id} href={s.url} target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label={s.name} title={s.name}>
+                  <a
+                    key={s.id}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="icon-btn"
+                    aria-label={s.name}
+                    title={s.name}
+                  >
                     <Icon name={s.id} className="size-4.5" />
                   </a>
                 ))}
@@ -148,7 +190,10 @@ const Hero = () => {
         <div className="mask-x group flex overflow-hidden" aria-hidden="true">
           <ul className="flex shrink-0 animate-marquee items-center gap-10 pr-10 group-hover:[animation-play-state:paused]">
             {[...STACK, ...STACK].map((name, i) => (
-              <li key={i} className="flex items-center gap-10 whitespace-nowrap text-lg font-medium tracking-tight text-subtle sm:text-xl">
+              <li
+                key={i}
+                className="flex items-center gap-10 whitespace-nowrap text-lg font-medium tracking-tight text-subtle sm:text-xl"
+              >
                 {name}
                 <Icon name="sparkle" className="size-3 text-accent/60" />
               </li>

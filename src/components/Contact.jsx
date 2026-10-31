@@ -12,9 +12,7 @@ const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
 const NOTIFY_TO_EMAIL = import.meta.env.VITE_EMAILJS_NOTIFY_TO || "";
 const TEMPLATE_NOTIFY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY || "";
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
-const IS_FORM_ENABLED = Boolean(
-  USER_ID && SERVICE_ID && NOTIFY_TO_EMAIL && TEMPLATE_NOTIFY_ID && RECAPTCHA_SITE_KEY
-);
+const IS_FORM_ENABLED = Boolean(USER_ID && SERVICE_ID && NOTIFY_TO_EMAIL && TEMPLATE_NOTIFY_ID && RECAPTCHA_SITE_KEY);
 
 // reCAPTCHA (and its Google script) only loads once the visitor starts filling in the form.
 const ReCAPTCHA = lazy(() => import("react-google-recaptcha"));
@@ -34,8 +32,14 @@ class RecaptchaBoundary extends Component {
 
 const formatTime = (date, timeZone, locale = "en-US") =>
   date.toLocaleString(locale, {
-    weekday: "long", year: "numeric", month: "long", day: "numeric",
-    hour: "2-digit", minute: "2-digit", timeZoneName: "short", ...(timeZone && { timeZone }),
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short",
+    ...(timeZone && { timeZone }),
   });
 
 // Locale-aware strings that drive the {{variables}} in the AutoReply template.
@@ -52,16 +56,24 @@ const buildEmailStrings = (isDE, name) => ({
   email_label_message: isDE ? "Ihre Nachricht" : "Your Message",
   email_label_submitted: isDE ? "Eingereicht am" : "Submitted",
   email_next_title: isDE ? "Wie es weitergeht" : "What happens next",
-  email_step1: isDE ? "Ich werde Ihre Nachricht innerhalb von 24 Stunden prüfen" : "I'll review your message within 24 hours",
-  email_step2: isDE ? "Sie erhalten eine ausführliche Antwort auf Ihre Anfrage" : "You'll receive a detailed response to your inquiry",
-  email_step3: isDE ? "Bei dringenden Angelegenheiten können Sie mich gerne direkt kontaktieren" : "For urgent matters, feel free to reach out directly",
+  email_step1: isDE
+    ? "Ich werde Ihre Nachricht innerhalb von 24 Stunden prüfen"
+    : "I'll review your message within 24 hours",
+  email_step2: isDE
+    ? "Sie erhalten eine ausführliche Antwort auf Ihre Anfrage"
+    : "You'll receive a detailed response to your inquiry",
+  email_step3: isDE
+    ? "Bei dringenden Angelegenheiten können Sie mich gerne direkt kontaktieren"
+    : "For urgent matters, feel free to reach out directly",
   email_immediate_title: isDE ? "Sofortige Unterstützung benötigt?" : "Need immediate assistance?",
   email_label_email: isDE ? "E-Mail" : "Email",
   email_label_location: isDE ? "Standort" : "Location",
   email_label_spec: isDE ? "Spezialisierung" : "Specialization",
   email_social_title: isDE ? "Verbinden Sie sich mit mir in sozialen Netzwerken:" : "Connect with me on social media:",
   email_signoff: isDE ? "Mit freundlichen Grüßen," : "Best regards,",
-  email_tagline: isDE ? "Skalierbare Lösungen mit modernen Technologien" : "Building scalable solutions with modern technologies",
+  email_tagline: isDE
+    ? "Skalierbare Lösungen mit modernen Technologien"
+    : "Building scalable solutions with modern technologies",
 });
 
 const EMPTY_FORM = { name: "", email: "", subject: "", message: "" };
@@ -188,7 +200,9 @@ const Contact = () => {
           {/* Direct channels */}
           <div ref={reveal} className="flex flex-col gap-4 lg:col-span-2">
             <div onPointerMove={spotlight} className="card spotlight p-6 sm:p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("hero.modal.profiles.email.name")}</p>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
+                {t("hero.modal.profiles.email.name")}
+              </p>
               <a
                 href={`mailto:${EMAIL}`}
                 className="mt-3 block break-all text-xl font-semibold tracking-tight transition-colors hover:text-accent sm:text-2xl"
@@ -223,7 +237,10 @@ const Contact = () => {
                       <span className="block text-sm font-medium">{s.name}</span>
                       <span className="block font-mono text-xs text-subtle">{s.handle}</span>
                     </span>
-                    <Icon name="arrowUpRight" className="size-4 text-subtle transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+                    <Icon
+                      name="arrowUpRight"
+                      className="size-4 text-subtle transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg"
+                    />
                   </a>
                 </li>
               ))}
@@ -257,18 +274,54 @@ const Contact = () => {
           >
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("contact.form_heading")}</p>
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label={t("contact.form.name")} name="name" value={formData.name} onChange={handleChange} required autoComplete="name" maxLength={100} />
-              <Field label={t("contact.form.email")} name="email" type="email" value={formData.email} onChange={handleChange} required autoComplete="email" maxLength={150} />
+              <Field
+                label={t("contact.form.name")}
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                autoComplete="name"
+                maxLength={100}
+              />
+              <Field
+                label={t("contact.form.email")}
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                autoComplete="email"
+                maxLength={150}
+              />
             </div>
-            <Field label={t("contact.form.subject")} name="subject" value={formData.subject} onChange={handleChange} required maxLength={150} />
-            <Field label={t("contact.form.message")} name="message" as="textarea" rows={6} value={formData.message} onChange={handleChange} required maxLength={5000} className="field resize-y" />
+            <Field
+              label={t("contact.form.subject")}
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+              maxLength={150}
+            />
+            <Field
+              label={t("contact.form.message")}
+              name="message"
+              as="textarea"
+              rows={6}
+              value={formData.message}
+              onChange={handleChange}
+              required
+              maxLength={5000}
+              className="field resize-y"
+            />
 
             {IS_FORM_ENABLED && (
               <div className="min-h-19.5">
                 {recaptchaFailed ? (
                   <p className="pt-2 text-xs text-subtle">{t("contact.recaptcha_unavailable")}</p>
                 ) : engaged ? (
-                  <RecaptchaBoundary fallback={<p className="pt-2 text-xs text-subtle">{t("contact.recaptcha_unavailable")}</p>}>
+                  <RecaptchaBoundary
+                    fallback={<p className="pt-2 text-xs text-subtle">{t("contact.recaptcha_unavailable")}</p>}
+                  >
                     <Suspense fallback={null}>
                       <ReCAPTCHA
                         key={`${isDark ? "dark" : "light"}-${lang}`}
@@ -293,24 +346,38 @@ const Contact = () => {
               {status === "success" && (
                 <p className="flex items-start gap-2 rounded-xl border border-ok/30 bg-ok/10 px-4 py-3 text-sm">
                   <Icon name="check" className="mt-0.5 size-4 shrink-0 text-ok" />
-                  <span><strong>{t("contact.status.success_title")}</strong> {t("contact.status.success_body")}</span>
+                  <span>
+                    <strong>{t("contact.status.success_title")}</strong> {t("contact.status.success_body")}
+                  </span>
                 </p>
               )}
               {status === "error" && (
-                <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm">{t("contact.status.error")}</p>
+                <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm">
+                  {t("contact.status.error")}
+                </p>
               )}
               {status === "recaptcha" && (
-                <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">{t("contact.alert_recaptcha")}</p>
+                <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">
+                  {t("contact.alert_recaptcha")}
+                </p>
               )}
               {status === "incomplete" && (
-                <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">{t("ui.contact.incomplete")}</p>
+                <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">
+                  {t("ui.contact.incomplete")}
+                </p>
               )}
               {!IS_FORM_ENABLED && (
-                <p className="rounded-xl border border-line bg-fg/3 px-4 py-3 text-sm text-muted">{t("contact.status.not_configured")}</p>
+                <p className="rounded-xl border border-line bg-fg/3 px-4 py-3 text-sm text-muted">
+                  {t("contact.status.not_configured")}
+                </p>
               )}
             </div>
 
-            <button type="submit" disabled={isSubmitting || !IS_FORM_ENABLED} className="btn btn-primary mt-auto w-full py-3.5 sm:w-auto sm:self-start">
+            <button
+              type="submit"
+              disabled={isSubmitting || !IS_FORM_ENABLED}
+              className="btn btn-primary mt-auto w-full py-3.5 sm:w-auto sm:self-start"
+            >
               {isSubmitting ? (
                 <>
                   <span className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />

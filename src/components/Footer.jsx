@@ -15,7 +15,10 @@ const Footer = () => {
           <div className="max-w-sm">
             <p className="text-lg font-semibold tracking-tight">Abdullah Rather</p>
             <p className="mt-2 text-sm text-muted">{t("hero.role")}</p>
-            <a href={`mailto:${EMAIL}`} className="mt-6 inline-block text-sm text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="mt-6 inline-block text-sm text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
+            >
               {EMAIL}
             </a>
           </div>
@@ -24,14 +27,21 @@ const Footer = () => {
             <ul className="space-y-3">
               {SECTIONS.map((s) => (
                 <li key={s.id}>
-                  <a href={`#${s.id}`} className="text-muted transition-colors hover:text-fg">{t(s.key)}</a>
+                  <a href={`#${s.id}`} className="text-muted transition-colors hover:text-fg">
+                    {t(s.key)}
+                  </a>
                 </li>
               ))}
             </ul>
             <ul className="space-y-3">
               {SOCIALS.map((s) => (
                 <li key={s.id}>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg">
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-muted transition-colors hover:text-fg"
+                  >
                     {s.name}
                     <Icon name="arrowUpRight" className="size-3" />
                   </a>
@@ -55,7 +65,9 @@ const Footer = () => {
         </p>
 
         <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 text-xs text-subtle sm:flex-row">
-          <p>© {year} Abdullah Rather. {t("ui.footer.rights")}</p>
+          <p>
+            © {year} Abdullah Rather. {t("ui.footer.rights")}
+          </p>
           <p className="hidden md:block">{t("ui.footer.built")}</p>
           <a href="#top" className="inline-flex items-center gap-1.5 transition-colors hover:text-fg">
             {t("ui.footer.top")}

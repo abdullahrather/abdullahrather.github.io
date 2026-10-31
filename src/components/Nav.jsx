@@ -36,7 +36,7 @@ const Nav = ({ onOpenCommand }) => {
     const measure = () => {
       const link = list.querySelector('[aria-current="true"]');
       setPill((prev) =>
-        link ? { left: link.offsetLeft, width: link.offsetWidth, visible: true } : { ...prev, visible: false }
+        link ? { left: link.offsetLeft, width: link.offsetWidth, visible: true } : { ...prev, visible: false },
       );
     };
     measure();
@@ -81,7 +81,10 @@ const Nav = ({ onOpenCommand }) => {
   return (
     <>
       {/* Reading progress */}
-      <div aria-hidden="true" className="scroll-progress fixed inset-x-0 top-0 z-60 h-0.5 bg-linear-to-r from-accent to-accent-2" />
+      <div
+        aria-hidden="true"
+        className="scroll-progress fixed inset-x-0 top-0 z-60 h-0.5 bg-linear-to-r from-accent to-accent-2"
+      />
 
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
         <nav
@@ -92,7 +95,11 @@ const Nav = ({ onOpenCommand }) => {
               : "border-transparent bg-transparent"
           }`}
         >
-          <a href="#top" className="group flex items-center gap-2.5 rounded-full pr-2" onClick={() => setMenuOpen(false)}>
+          <a
+            href="#top"
+            className="group flex items-center gap-2.5 rounded-full pr-2"
+            onClick={() => setMenuOpen(false)}
+          >
             <span className="grid size-9 place-items-center rounded-full bg-fg font-mono text-xs font-semibold tracking-tight text-bg transition-transform duration-500 ease-out-expo group-hover:rotate-[-8deg]">
               AR
             </span>
@@ -179,7 +186,14 @@ const Nav = ({ onOpenCommand }) => {
           </ul>
           <div className="flex items-center justify-between">
             <LanguageSwitcher />
-            <button type="button" onClick={() => { setMenuOpen(false); onOpenCommand(); }} className="btn btn-ghost">
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false);
+                onOpenCommand();
+              }}
+              className="btn btn-ghost"
+            >
               <Icon name="command" className="size-4" />
               {t("ui.cmd.open")}
             </button>

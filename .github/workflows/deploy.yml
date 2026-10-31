@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: "22"
           cache: npm
 
       - name: Install dependencies
@@ -36,16 +36,16 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_EMAILJS_USER_ID:        ${{ secrets.VITE_EMAILJS_USER_ID }}
-          VITE_EMAILJS_SERVICE_ID:     ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_NOTIFY_TO:      ${{ secrets.VITE_EMAILJS_NOTIFY_TO }}
+          VITE_EMAILJS_USER_ID: ${{ secrets.VITE_EMAILJS_USER_ID }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_NOTIFY_TO: ${{ secrets.VITE_EMAILJS_NOTIFY_TO }}
           VITE_EMAILJS_TEMPLATE_NOTIFY: ${{ secrets.VITE_EMAILJS_TEMPLATE_NOTIFY }}
-          VITE_RECAPTCHA_SITE_KEY:     ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
+          VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3
         with:
-          github_token:    ${{ secrets.GITHUB_TOKEN }}
-          publish_dir:     ./dist
-          branch:          gh-pages
-          force_orphan:    true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          branch: gh-pages
+          force_orphan: true

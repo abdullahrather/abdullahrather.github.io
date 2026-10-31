@@ -3,15 +3,7 @@
     {
       "id": 1,
       "image": "/images/projects/enterprise-management.webp",
-      "technologies": [
-        "Yii Framework",
-        "PHP",
-        "MySQL",
-        "JavaScript",
-        "DATEV API",
-        "Bootstrap",
-        "LLM APIs"
-      ],
+      "technologies": ["Yii Framework", "PHP", "MySQL", "JavaScript", "DATEV API", "Bootstrap", "LLM APIs"],
       "category": "fullstack",
       "github": "#",
       "demo": "#"
@@ -19,13 +11,7 @@
     {
       "id": 2,
       "image": "/images/projects/education-management.webp",
-      "technologies": [
-        "PHP",
-        "PHPMaker",
-        "JavaScript",
-        "jQuery",
-        "MySQL"
-      ],
+      "technologies": ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
       "category": "fullstack",
       "github": "#",
       "demo": "#"
@@ -33,12 +19,7 @@
     {
       "id": 3,
       "image": "/images/projects/donor-management.webp",
-      "technologies": [
-        "Laravel",
-        "React",
-        "MySQL",
-        "JavaScript"
-      ],
+      "technologies": ["Laravel", "React", "MySQL", "JavaScript"],
       "category": "fullstack",
       "github": "#",
       "demo": "#"
@@ -46,14 +27,7 @@
     {
       "id": 4,
       "image": "/images/projects/campaign-analytics.webp",
-      "technologies": [
-        "Node.js",
-        "TypeScript",
-        "Express",
-        "Prisma",
-        "PostgreSQL",
-        "Docker"
-      ],
+      "technologies": ["Node.js", "TypeScript", "Express", "Prisma", "PostgreSQL", "Docker"],
       "category": "web",
       "github": "https://github.com/abdullahrather/campaign-analytics-microservice",
       "demo": "#"
@@ -61,13 +35,7 @@
     {
       "id": 5,
       "image": "/images/projects/task-manager.webp",
-      "technologies": [
-        "Symfony",
-        "PHP",
-        "MySQL",
-        "Twig",
-        "JavaScript"
-      ],
+      "technologies": ["Symfony", "PHP", "MySQL", "Twig", "JavaScript"],
       "category": "fullstack",
       "github": "https://github.com/abdullahrather/TaskManager-Symfony",
       "demo": "#"
@@ -75,12 +43,7 @@
     {
       "id": 6,
       "image": "/images/projects/portfolio-website.webp",
-      "technologies": [
-        "React",
-        "Vite",
-        "Tailwind CSS",
-        "JavaScript"
-      ],
+      "technologies": ["React", "Vite", "Tailwind CSS", "JavaScript"],
       "category": "web",
       "github": "https://github.com/abdullahrather/abdullahrather.github.io",
       "demo": "https://abdullahrather.com/"
@@ -88,12 +51,7 @@
     {
       "id": 7,
       "image": "/images/projects/currency-converter.webp",
-      "technologies": [
-        "Laravel",
-        "GuzzleHttp",
-        "ExchangeRate API",
-        "PHP 8.2+"
-      ],
+      "technologies": ["Laravel", "GuzzleHttp", "ExchangeRate API", "PHP 8.2+"],
       "category": "web",
       "github": "https://github.com/abdullahrather/Currency-Converter-Laravel",
       "demo": "#"
@@ -101,13 +59,7 @@
     {
       "id": 8,
       "image": "/images/projects/ticket-management.webp",
-      "technologies": [
-        "PHP",
-        "Laravel",
-        "MySQL",
-        "JavaScript",
-        "AJAX"
-      ],
+      "technologies": ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
       "category": "fullstack",
       "github": "#",
       "demo": "#"
@@ -115,13 +67,7 @@
     {
       "id": 9,
       "image": "/images/projects/employee-performance.webp",
-      "technologies": [
-        "PHP",
-        "Laravel",
-        "ApexCharts.js",
-        "MySQL",
-        "CSS"
-      ],
+      "technologies": ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
       "category": "fullstack",
       "github": "#",
       "demo": "#"
@@ -129,14 +75,7 @@
     {
       "id": 10,
       "image": "/images/projects/laravel-auth-role.webp",
-      "technologies": [
-        "Laravel",
-        "PHP",
-        "MariaDB",
-        "Blade",
-        "Bootstrap 5",
-        "Eloquent ORM"
-      ],
+      "technologies": ["Laravel", "PHP", "MariaDB", "Blade", "Bootstrap 5", "Eloquent ORM"],
       "category": "fullstack",
       "github": "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
       "demo": "#"
@@ -144,14 +83,7 @@
     {
       "id": 11,
       "image": "/images/projects/academic-institution.webp",
-      "technologies": [
-        "PHP",
-        "MySQL",
-        "JavaScript",
-        "CSS",
-        "HTML",
-        "CAPTCHA"
-      ],
+      "technologies": ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
       "category": "web",
       "github": "https://github.com/abdullahrather/CustomAcademy-PHP",
       "demo": "#"
@@ -159,14 +91,7 @@
     {
       "id": 12,
       "image": "/images/projects/laravel-auth-crud.webp",
-      "technologies": [
-        "Laravel 10",
-        "PHP",
-        "MySQL",
-        "Blade",
-        "JavaScript",
-        "CSS"
-      ],
+      "technologies": ["Laravel 10", "PHP", "MySQL", "Blade", "JavaScript", "CSS"],
       "category": "web",
       "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
       "demo": "#"
@@ -174,13 +99,7 @@
     {
       "id": 13,
       "image": "/images/projects/corporate-insurance.webp",
-      "technologies": [
-        "PHP",
-        "JavaScript",
-        "CSS",
-        "MySQL",
-        "Hack"
-      ],
+      "technologies": ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
       "category": "web",
       "github": "https://github.com/abdullahrather/CustomWebsite-PHP",
       "demo": "#"
@@ -188,14 +107,7 @@
     {
       "id": 14,
       "image": "/images/projects/laravel-auth-showcase.webp",
-      "technologies": [
-        "Laravel",
-        "PHP",
-        "Blade",
-        "MySQL",
-        "CSS",
-        "JavaScript"
-      ],
+      "technologies": ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
       "category": "web",
       "github": "https://github.com/abdullahrather/Auth-Laravel",
       "demo": "#"

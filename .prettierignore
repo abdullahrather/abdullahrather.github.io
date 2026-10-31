@@ -1,0 +1,7 @@
+dist
+public
+package-lock.json
+index.html
+*.md
+src/*.tmpl
+.vite

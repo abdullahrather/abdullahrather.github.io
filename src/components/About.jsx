@@ -60,7 +60,11 @@ const About = () => {
   ];
 
   const levelLabel = (level) =>
-    level >= 90 ? t("skills.levels.expert") : level >= 80 ? t("skills.levels.advanced") : t("skills.levels.intermediate");
+    level >= 90
+      ? t("skills.levels.expert")
+      : level >= 80
+        ? t("skills.levels.advanced")
+        : t("skills.levels.intermediate");
 
   return (
     <section id="about" className="section" aria-labelledby="about-title">
@@ -75,7 +79,9 @@ const About = () => {
         <div className="grid gap-4 lg:grid-cols-6">
           {/* Intro */}
           <Tile className="lg:col-span-4">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("skills.headings.experience_snapshot")}</p>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">
+              {t("skills.headings.experience_snapshot")}
+            </p>
             <p className="mt-5 text-xl leading-relaxed tracking-tight sm:text-2xl">
               {t("skills.intro.paragraph1", { years })}
             </p>
@@ -154,7 +160,9 @@ const About = () => {
           <Tile delay={60} className="bg-linear-to-br from-accent/10 via-transparent to-accent-2/10 lg:col-span-6">
             <div className="grid gap-6 lg:grid-cols-[12rem_1fr] lg:gap-10">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("ui.about.mission")}</p>
-              <p className="font-serif text-2xl italic leading-snug sm:text-3xl lg:text-[2.1rem]">“{t("skills.mission")}”</p>
+              <p className="font-serif text-2xl italic leading-snug sm:text-3xl lg:text-[2.1rem]">
+                “{t("skills.mission")}”
+              </p>
             </div>
           </Tile>
         </div>

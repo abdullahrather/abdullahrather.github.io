@@ -34,7 +34,11 @@ const Role = ({ experience, index, now, formatter, labels, present, impactLabel 
   }`;
 
   return (
-    <li ref={reveal} style={{ "--delay": `${index * 40}ms` }} className="group relative grid gap-4 py-10 md:grid-cols-[13rem_1fr] md:gap-12">
+    <li
+      ref={reveal}
+      style={{ "--delay": `${index * 40}ms` }}
+      className="group relative grid gap-4 py-10 md:grid-cols-[13rem_1fr] md:gap-12"
+    >
       {/* Timeline rail dot */}
       <span
         aria-hidden="true"
@@ -45,7 +49,9 @@ const Role = ({ experience, index, now, formatter, labels, present, impactLabel 
 
       <div className="md:pl-8">
         <p className="font-mono text-xs tabular-nums text-muted">{period}</p>
-        <p className="mt-1 font-mono text-xs text-subtle">{formatDuration(experience.startDate, experience.endDate, now, labels)}</p>
+        <p className="mt-1 font-mono text-xs text-subtle">
+          {formatDuration(experience.startDate, experience.endDate, now, labels)}
+        </p>
         <span className="chip mt-3">{experience.tag}</span>
       </div>
 
@@ -60,19 +66,27 @@ const Role = ({ experience, index, now, formatter, labels, present, impactLabel 
               className="group/link inline-flex items-center gap-1 font-medium text-fg underline-offset-4 hover:underline"
             >
               {experience.company}
-              <Icon name="arrowUpRight" className="size-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+              <Icon
+                name="arrowUpRight"
+                className="size-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+              />
             </a>
           ) : (
             <span className="font-medium text-fg">{experience.company}</span>
           )}
-          <span aria-hidden="true" className="text-subtle">·</span>
+          <span aria-hidden="true" className="text-subtle">
+            ·
+          </span>
           <span>{experience.location}</span>
         </p>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">{experience.summary}</p>
 
         <details className="impact-details group/details mt-5 max-w-2xl" open={index === 0}>
           <summary className="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-fg/80 transition-colors hover:text-fg [&::-webkit-details-marker]:hidden">
-            <Icon name="chevronDown" className="size-4 -rotate-90 transition-transform duration-300 group-open/details:rotate-0" />
+            <Icon
+              name="chevronDown"
+              className="size-4 -rotate-90 transition-transform duration-300 group-open/details:rotate-0"
+            />
             {impactLabel}
             <span className="font-mono text-xs text-subtle">({experience.highlights.length})</span>
           </summary>
@@ -94,8 +108,9 @@ const WorkExperience = () => {
   const now = useNow();
 
   const formatter = useMemo(
-    () => new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-US", { month: "short", year: "numeric", timeZone: "UTC" }),
-    [lang]
+    () =>
+      new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-US", { month: "short", year: "numeric", timeZone: "UTC" }),
+    [lang],
   );
 
   const labels = useMemo(
@@ -106,7 +121,7 @@ const WorkExperience = () => {
       months: t("workExperience.months"),
       less_than_month: t("workExperience.less_than_month"),
     }),
-    [t]
+    [t],
   );
 
   const experiences = t("workExperience.entries") || [];
@@ -122,7 +137,10 @@ const WorkExperience = () => {
         />
 
         <div className="relative">
-          <span aria-hidden="true" className="timeline-fill absolute left-0 top-0 hidden h-full w-px origin-top bg-linear-to-b from-accent to-accent-2 md:block" />
+          <span
+            aria-hidden="true"
+            className="timeline-fill absolute left-0 top-0 hidden h-full w-px origin-top bg-linear-to-b from-accent to-accent-2 md:block"
+          />
           <ol className="relative divide-y divide-line border-y border-line md:border-l md:border-y-0 md:divide-y-0">
             {experiences.map((experience, index) => (
               <Role

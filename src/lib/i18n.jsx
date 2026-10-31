@@ -46,23 +46,20 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
 
   // Only switch once the locale has loaded, so the UI never claims a language it can't show.
   const latestRequest = useRef(null);
-  const activate = useCallback(
-    (next) => {
-      latestRequest.current = next;
-      return loadLocale(next)
-        .then(() => {
-          // A slower, earlier request must not override the visitor's latest choice.
-          if (latestRequest.current !== next) return false;
-          setLangState(next);
-          return true;
-        })
-        .catch((error) => {
-          console.warn(`Could not load "${next}" translations`, error);
-          return false;
-        });
-    },
-    []
-  );
+  const activate = useCallback((next) => {
+    latestRequest.current = next;
+    return loadLocale(next)
+      .then(() => {
+        // A slower, earlier request must not override the visitor's latest choice.
+        if (latestRequest.current !== next) return false;
+        setLangState(next);
+        return true;
+      })
+      .catch((error) => {
+        console.warn(`Could not load "${next}" translations`, error);
+        return false;
+      });
+  }, []);
 
   const setLang = useCallback(
     (next) =>
@@ -74,7 +71,7 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
           // ignore
         }
       }),
-    [activate]
+    [activate],
   );
 
   useEffect(() => {
@@ -92,8 +89,7 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
   // Resolve a dotted key from the active locale (falling back to English) and substitute {vars}.
   const t = useCallback(
     (key, vars) => {
-      const resolve = (bucket) =>
-        key.split(".").reduce((acc, part) => (acc != null ? acc[part] : undefined), bucket);
+      const resolve = (bucket) => key.split(".").reduce((acc, part) => (acc != null ? acc[part] : undefined), bucket);
 
       let value = resolve(TRANSLATIONS[lang]);
       if (value === undefined) value = resolve(TRANSLATIONS.en);
@@ -106,7 +102,7 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
       }
       return value;
     },
-    [lang]
+    [lang],
   );
 
   // The tab title and description follow the language; index.html holds the English defaults.
@@ -121,4 +117,3 @@ export const TranslationProvider = ({ children, initialLang = DEFAULT_LANG, pref
 };
 
 export const useTranslation = () => useContext(I18nContext);
-

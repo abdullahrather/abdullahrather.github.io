@@ -136,12 +136,7 @@
       {
         "title": "KI-Funktionen & LLM-Integration",
         "description": "KI in alltäglichen Geschäftsabläufen: praxisnah, zugriffsgeschützt und produktionsreif.",
-        "features": [
-          "LLM-API-Integration",
-          "KI-Ticketzuweisung",
-          "KI-gestützte Suche",
-          "Prompt Design"
-        ]
+        "features": ["LLM-API-Integration", "KI-Ticketzuweisung", "KI-gestützte Suche", "Prompt Design"]
       },
       {
         "title": "Enterprise-Plattformen & Workflow-Systeme",
@@ -178,22 +173,12 @@
       {
         "title": "Legacy-Modernisierung & Leistung",
         "description": "Aktualisierung und Refactoring von Legacy-PHP-Systemen für Stabilität, Sicherheit und Geschwindigkeit.",
-        "features": [
-          "PHP 7.4 auf 8.2 Upgrades",
-          "Legacy-Refactorings",
-          "OOP-Designmuster",
-          "Leistungsoptimierung"
-        ]
+        "features": ["PHP 7.4 auf 8.2 Upgrades", "Legacy-Refactorings", "OOP-Designmuster", "Leistungsoptimierung"]
       },
       {
         "title": "Technische Leitung",
         "description": "Leitung von Teams und Lieferung berechenbarer Releases mit klaren Standards.",
-        "features": [
-          "Team-Mentoring",
-          "Code-Reviews",
-          "Release-Planung",
-          "Agile Lieferung"
-        ]
+        "features": ["Team-Mentoring", "Code-Reviews", "Release-Planung", "Agile Lieferung"]
       }
     ]
   },
@@ -336,12 +321,7 @@
         "id": 3,
         "title": "Spendenmanagementsystem",
         "description": "Plattform für Spender- und Kampagnenmanagement mit Laravel und React für Beitragsverfolgung, Berichterstattung und Outreach-Workflows.",
-        "features": [
-          "Spenderprofile",
-          "Kampagnen-Tracking",
-          "Beitragsberichte",
-          "Zahlungsintegrationen"
-        ],
+        "features": ["Spenderprofile", "Kampagnen-Tracking", "Beitragsberichte", "Zahlungsintegrationen"],
         "developmentDetails": [
           {
             "label": "Architektur",
@@ -387,12 +367,7 @@
         "id": 5,
         "title": "Task Manager",
         "description": "Aufgabenverwaltungssystem mit Symfony für strukturierte Workflows, Teamzusammenarbeit und rollenbasierte Zugriffssteuerung.",
-        "features": [
-          "Aufgabenverfolgung",
-          "Rollenbasierter Zugriff",
-          "Status-Workflows",
-          "Team-Zusammenarbeit"
-        ],
+        "features": ["Aufgabenverfolgung", "Rollenbasierter Zugriff", "Status-Workflows", "Team-Zusammenarbeit"],
         "developmentDetails": [
           {
             "label": "Architektur",
@@ -438,12 +413,7 @@
         "id": 7,
         "title": "Währungsrechner App",
         "description": "Echtzeit-Währungsumrechnungsanwendung, erstellt mit Laravel, Live-Wechselkursen und reaktionsschneller Währungsumschaltung.",
-        "features": [
-          "Echtzeit-Wechselkurse",
-          "Währungswechselfunktion",
-          "Fehlerbehandlung",
-          "Responsives Design"
-        ],
+        "features": ["Echtzeit-Wechselkurse", "Währungswechselfunktion", "Fehlerbehandlung", "Responsives Design"],
         "developmentDetails": [
           {
             "label": "Architektur",
@@ -488,12 +458,7 @@
         "id": 9,
         "title": "Mitarbeiter-Leistungs-Tracker",
         "description": "HR-Leistungsverfolgungssystem mit Kennzahlen, Dashboards, Analysen und Exportfunktionen.",
-        "features": [
-          "Leistungsanalyse",
-          "Datenvisualisierung",
-          "CSV/PDF-Export",
-          "Mitarbeiter-Dashboard"
-        ],
+        "features": ["Leistungsanalyse", "Datenvisualisierung", "CSV/PDF-Export", "Mitarbeiter-Dashboard"],
         "developmentDetails": [
           {
             "label": "Architektur",

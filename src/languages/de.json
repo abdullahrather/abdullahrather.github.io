@@ -707,8 +707,8 @@
       "description": "KI-Entwickler und PHP Backend / Full-Stack Entwickler in Heilbronn: Enterprise-Webplattformen, REST-APIs, Integrationen und KI-Funktionen mit Yii, Laravel, Symfony, MySQL, Docker und CI/CD."
     },
     "consent": {
-      "title": "Analyse-Cookies",
-      "text": "Mit Ihrer Einwilligung zeigt mir Google Analytics, welche Bereiche dieser Website genutzt werden und woher Besucher ungefähr kommen. Wenn Sie ablehnen, bleibt es deaktiviert.",
+      "title": "Cookies und Datenschutz",
+      "text": "Ich möchte Cookies von Google Analytics nutzen, um zu sehen, welche Bereiche dieser Website verwendet werden und woher Besucher ungefähr kommen. Google kann diese Daten in den USA verarbeiten. Ohne Ihre Zustimmung wird nichts gesetzt, und Sie können Ihre Auswahl jederzeit unter Cookie-Einstellungen ändern.",
       "accept": "Akzeptieren",
       "decline": "Ablehnen",
       "privacy": "Datenschutzerklärung",

@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CONSENT_OPEN_EVENT, getConsent, setConsent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 
-/** Asks before analytics load. Shown once, and again from "Cookie settings" in the footer. */
+/**
+ * Asks before analytics load. Shown once, and again from "Cookie settings" in the footer
+ * or the /#cookie-settings link on the privacy page.
+ */
 const ConsentBanner = () => {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!getConsent()) setOpen(true);
+    if (!getConsent() || window.location.hash === "#cookie-settings") setOpen(true);
     const onOpen = () => setOpen(true);
     window.addEventListener(CONSENT_OPEN_EVENT, onOpen);
     return () => window.removeEventListener(CONSENT_OPEN_EVENT, onOpen);

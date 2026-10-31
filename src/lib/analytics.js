@@ -92,7 +92,7 @@ export const useSectionTracking = (ids) => {
           trackEvent("section_view", { section: target.id });
         });
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-45% 0px -50% 0px" },
     );
     key.split(",").forEach((id) => {
       const section = document.getElementById(id);

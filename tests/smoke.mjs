@@ -14,18 +14,26 @@ const server = await preview({ preview: { port: PORT, strictPort: true }, logLev
 const browser = await chromium.launch({ channel: process.env.PW_CHANNEL || undefined });
 const problems = [];
 
-const openPage = async (options = {}) => {
+const GOOGLE_ANALYTICS = /googletagmanager|google-analytics/;
+
+// `consent` is the stored choice; null means a first visit, with the banner showing.
+const openPage = async ({ consent = "denied", path = "", ...options } = {}) => {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, ...options });
   // External services are not part of these checks.
-  await context.route(/googletagmanager|google-analytics/, (route) => route.abort());
+  await context.route(GOOGLE_ANALYTICS, (route) => route.abort());
+  if (consent) await context.addInitScript((value) => localStorage.setItem("analytics-consent", value), consent);
   const page = await context.newPage();
+  page.analyticsRequests = [];
+  page.on("request", (request) => {
+    if (GOOGLE_ANALYTICS.test(request.url())) page.analyticsRequests.push(request.url());
+  });
   page.on("pageerror", (error) => problems.push(error.message));
   page.on("console", (message) => {
     if (message.type() === "error" && !/Failed to load resource|ERR_FAILED/.test(message.text())) {
       problems.push(message.text());
     }
   });
-  await page.goto(URL, { waitUntil: "networkidle" });
+  await page.goto(URL + path, { waitUntil: "networkidle" });
   return page;
 };
 
@@ -82,9 +90,36 @@ try {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   });
 
+  await check("Google Analytics waits for consent", async () => {
+    const page = await openPage({ consent: null });
+    const banner = page.getByRole("region", { name: "Cookies and your privacy" });
+    assert.equal(await banner.count(), 1, "banner shows on a first visit");
+    assert.deepEqual(page.analyticsRequests, [], "nothing loads before a choice");
+
+    await page.getByRole("button", { name: "Decline" }).click();
+    await page.waitForTimeout(300);
+    assert.equal(await banner.count(), 0, "banner closes");
+    assert.deepEqual(page.analyticsRequests, [], "nothing loads after declining");
+
+    await page.getByRole("button", { name: "Cookie settings" }).click();
+    await page.getByRole("button", { name: "Accept" }).click();
+    await page.waitForTimeout(300);
+    assert.ok(page.analyticsRequests.length > 0, "analytics load after accepting");
+
+    await page.reload({ waitUntil: "networkidle" });
+    assert.equal(await banner.count(), 0, "the choice is remembered");
+  });
+
+  await check("privacy page opens and links to cookie settings", async () => {
+    const page = await openPage({ consent: "granted", path: "privacy/" });
+    assert.equal(await page.locator("h1").first().innerText(), "Privacy Policy");
+    await page.getByRole("link", { name: "open cookie settings" }).click();
+    await page.getByRole("button", { name: "Decline" }).waitFor();
+  });
+
   for (const colorScheme of ["dark", "light"]) {
     await check(`no accessibility violations in ${colorScheme} theme`, async () => {
-      const page = await openPage({ colorScheme, reducedMotion: "reduce" });
+      const page = await openPage({ consent: null, colorScheme, reducedMotion: "reduce" });
       await page.evaluate(() => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in")));
       await page.addScriptTag({ content: axeSource });
       const violations = await page.evaluate(async () =>

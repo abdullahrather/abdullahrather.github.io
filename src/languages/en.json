@@ -690,8 +690,8 @@
       "description": "AI Software Engineer and PHP backend / full-stack developer in Heilbronn, Germany, building enterprise web platforms, REST APIs, integrations and AI features with Yii, Laravel, Symfony, MySQL, Docker and CI/CD."
     },
     "consent": {
-      "title": "Analytics cookies",
-      "text": "With your consent, Google Analytics shows me which parts of this site are used and roughly where visitors come from. It stays off if you decline.",
+      "title": "Cookies and your privacy",
+      "text": "I'd like to use Google Analytics cookies to see which parts of this site are used and roughly where visitors come from. Google may process this data in the US. Nothing is set unless you accept, and you can change your choice anytime under Cookie settings.",
       "accept": "Accept",
       "decline": "Decline",
       "privacy": "Privacy Policy",

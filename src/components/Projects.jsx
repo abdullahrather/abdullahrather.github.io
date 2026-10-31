@@ -12,6 +12,11 @@ const FEATURED_COUNT = 7;
 const FILTERED_COUNT = 6;
 
 const hasDemo = (p) => p.demo && p.demo !== "#";
+const projectSlug = (p) =>
+  p.image
+    .split("/")
+    .pop()
+    .replace(/\.webp$/, "");
 
 // Stable across languages, so one project isn't split into two rows in reports.
 
@@ -168,7 +173,7 @@ const ProjectDialog = ({ project, onClose }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
-              onClick={() => trackEvent("project_source", { project: project.id })}
+              onClick={() => trackEvent("project_source", { project: projectSlug(project) })}
             >
               <Icon name="github" />
               {t("projects.modal.view_github")}
@@ -254,7 +259,7 @@ const Projects = () => {
 
   const openProject = (project) => {
     setSelectedId(project.id);
-    trackEvent("project_open", { project: project.id });
+    trackEvent("project_open", { project: projectSlug(project) });
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import SectionHeader from "./SectionHeader";
 import { Icon } from "./Icons";
 import { useExperienceYears } from "../lib/experience";

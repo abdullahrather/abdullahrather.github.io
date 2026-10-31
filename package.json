@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build.mjs",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=0",
+    "check:content": "node scripts/check-content.mjs",
+    "test:smoke": "node tests/smoke.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,10 +26,13 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^6.0.2",
+    "axe-core": "^4.14.0",
     "eslint": "^9.25.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "playwright": "^1.64.1",
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.4"
   }

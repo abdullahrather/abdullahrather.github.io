@@ -1,9 +1,10 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import en from "../languages/en.json";
+import { withFacts } from "./facts";
 
 const DEFAULT_LANG = "en";
 // English ships in the main bundle; other locales are fetched on demand.
-const TRANSLATIONS = { en };
+const TRANSLATIONS = { en: withFacts(en) };
 const LOADERS = { de: () => import("../languages/de.json") };
 const AVAILABLE = [
   { code: "en", label: "EN", name: "English" },
@@ -12,7 +13,7 @@ const AVAILABLE = [
 
 /** Fetches a lazily loaded locale; resolves immediately when already available. */
 export const loadLocale = async (lang) => {
-  if (!TRANSLATIONS[lang] && LOADERS[lang]) TRANSLATIONS[lang] = (await LOADERS[lang]()).default;
+  if (!TRANSLATIONS[lang] && LOADERS[lang]) TRANSLATIONS[lang] = withFacts((await LOADERS[lang]()).default);
 };
 
 const I18nContext = createContext({

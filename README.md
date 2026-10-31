@@ -41,7 +41,9 @@ public/
   images/          Optimized AVIF/WebP images (projects have -640 thumbnails), favicons, OG image
 ```
 
-Editing content: change `src/languages/en.json` **and** `src/languages/de.json`.
+Editing content: translated text lives in `src/languages/en.json` **and** `src/languages/de.json`.
+Dates, links, images, icons and tech lists live once in `src/data/facts.json`; its lists match the
+language files by position, and projects match by `id`.
 Section headings and UI strings live under the `ui` key in each file.
 New project images: add `name.webp` (1200px wide) and `name-640.webp` (640px wide).
 
@@ -59,6 +61,19 @@ npm run build && npm run preview
 
 Pushing to `main` builds and deploys to the `gh-pages` branch. The EmailJS / reCAPTCHA values are
 read from repository secrets at build time.
+
+## Continuous integration
+
+Every pull request runs `.github/workflows/ci.yml`:
+
+| Check | What it does | Run locally |
+| ----- | ------------ | ----------- |
+| Lint | ESLint with no warnings allowed | `npm run lint` |
+| Content | Matching EN/DE keys, placeholders, images and facts | `npm run check:content` |
+| Build | Production build and pre-render | `npm run build` |
+| Dependency audit | Fails on high or critical vulnerabilities | `npm audit --audit-level=high` |
+| Smoke & accessibility | Browser checks and axe in both themes | `npm run build && npm run test:smoke` |
+| Workflow lint | Checks the GitHub Actions files | Runs in CI only |
 
 ## Versioning & releases
 

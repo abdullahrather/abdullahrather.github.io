@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "../lib/i18n";
 
 /** Segmented EN / DE toggle. */

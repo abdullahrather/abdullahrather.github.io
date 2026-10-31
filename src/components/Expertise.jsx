@@ -1,4 +1,3 @@
-import React from "react";
 import SectionHeader from "./SectionHeader";
 import { ContentIcon } from "./Icons";
 import { useTranslation } from "../lib/i18n";

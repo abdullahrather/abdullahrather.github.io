@@ -1,0 +1,286 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "image": "/images/projects/enterprise-management.webp",
+      "technologies": [
+        "Yii Framework",
+        "PHP",
+        "MySQL",
+        "JavaScript",
+        "DATEV API",
+        "Bootstrap",
+        "LLM APIs"
+      ],
+      "category": "fullstack",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": 2,
+      "image": "/images/projects/education-management.webp",
+      "technologies": [
+        "PHP",
+        "PHPMaker",
+        "JavaScript",
+        "jQuery",
+        "MySQL"
+      ],
+      "category": "fullstack",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": 3,
+      "image": "/images/projects/donor-management.webp",
+      "technologies": [
+        "Laravel",
+        "React",
+        "MySQL",
+        "JavaScript"
+      ],
+      "category": "fullstack",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": 4,
+      "image": "/images/projects/campaign-analytics.webp",
+      "technologies": [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "Prisma",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/campaign-analytics-microservice",
+      "demo": "#"
+    },
+    {
+      "id": 5,
+      "image": "/images/projects/task-manager.webp",
+      "technologies": [
+        "Symfony",
+        "PHP",
+        "MySQL",
+        "Twig",
+        "JavaScript"
+      ],
+      "category": "fullstack",
+      "github": "https://github.com/abdullahrather/TaskManager-Symfony",
+      "demo": "#"
+    },
+    {
+      "id": 6,
+      "image": "/images/projects/portfolio-website.webp",
+      "technologies": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "JavaScript"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/abdullahrather.github.io",
+      "demo": "https://abdullahrather.com/"
+    },
+    {
+      "id": 7,
+      "image": "/images/projects/currency-converter.webp",
+      "technologies": [
+        "Laravel",
+        "GuzzleHttp",
+        "ExchangeRate API",
+        "PHP 8.2+"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/Currency-Converter-Laravel",
+      "demo": "#"
+    },
+    {
+      "id": 8,
+      "image": "/images/projects/ticket-management.webp",
+      "technologies": [
+        "PHP",
+        "Laravel",
+        "MySQL",
+        "JavaScript",
+        "AJAX"
+      ],
+      "category": "fullstack",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": 9,
+      "image": "/images/projects/employee-performance.webp",
+      "technologies": [
+        "PHP",
+        "Laravel",
+        "ApexCharts.js",
+        "MySQL",
+        "CSS"
+      ],
+      "category": "fullstack",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": 10,
+      "image": "/images/projects/laravel-auth-role.webp",
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "MariaDB",
+        "Blade",
+        "Bootstrap 5",
+        "Eloquent ORM"
+      ],
+      "category": "fullstack",
+      "github": "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
+      "demo": "#"
+    },
+    {
+      "id": 11,
+      "image": "/images/projects/academic-institution.webp",
+      "technologies": [
+        "PHP",
+        "MySQL",
+        "JavaScript",
+        "CSS",
+        "HTML",
+        "CAPTCHA"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/CustomAcademy-PHP",
+      "demo": "#"
+    },
+    {
+      "id": 12,
+      "image": "/images/projects/laravel-auth-crud.webp",
+      "technologies": [
+        "Laravel 10",
+        "PHP",
+        "MySQL",
+        "Blade",
+        "JavaScript",
+        "CSS"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
+      "demo": "#"
+    },
+    {
+      "id": 13,
+      "image": "/images/projects/corporate-insurance.webp",
+      "technologies": [
+        "PHP",
+        "JavaScript",
+        "CSS",
+        "MySQL",
+        "Hack"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/CustomWebsite-PHP",
+      "demo": "#"
+    },
+    {
+      "id": 14,
+      "image": "/images/projects/laravel-auth-showcase.webp",
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "Blade",
+        "MySQL",
+        "CSS",
+        "JavaScript"
+      ],
+      "category": "web",
+      "github": "https://github.com/abdullahrather/Auth-Laravel",
+      "demo": "#"
+    }
+  ],
+  "experience": [
+    {
+      "company": "APS AG",
+      "website": "https://www.aps.ag",
+      "startDate": "2026-10-01",
+      "endDate": null
+    },
+    {
+      "company": "APS Services GmbH",
+      "website": "https://www.apsservices.de/",
+      "startDate": "2024-07-01",
+      "endDate": "2026-09-01"
+    },
+    {
+      "company": "Qualven Pvt Ltd",
+      "website": "https://qualven.com/qv-web/",
+      "startDate": "2023-01-01",
+      "endDate": "2024-04-01"
+    },
+    {
+      "company": "Qualven Pvt Ltd",
+      "website": "https://qualven.com/qv-web/",
+      "startDate": "2021-11-01",
+      "endDate": "2023-01-01"
+    },
+    {
+      "company": "The Science School",
+      "website": "https://thescienceschool.edu.pk/tss-web/index.php",
+      "startDate": "2022-04-01",
+      "endDate": "2024-04-01"
+    },
+    {
+      "company": "Qualven Pvt Ltd",
+      "website": "https://qualven.com/qv-web/",
+      "startDate": "2021-01-01",
+      "endDate": "2021-07-01"
+    }
+  ],
+  "expertise": [
+    {
+      "iconPath": "M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
+    },
+    {
+      "iconPath": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+    },
+    {
+      "iconPaths": [
+        "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+        "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+      ]
+    },
+    {
+      "iconPath": "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+    },
+    {
+      "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+    },
+    {
+      "iconPath": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    }
+  ],
+  "contactInfo": [
+    {
+      "link": "mailto:abdullahrather19@gmail.com",
+      "iconPath": "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    },
+    {
+      "link": "#",
+      "iconPaths": [
+        "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
+        "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+      ]
+    },
+    {
+      "link": "#",
+      "iconPath": "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    },
+    {
+      "link": "#",
+      "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+    }
+  ]
+}

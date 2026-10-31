@@ -27,6 +27,7 @@ const Nav = ({ onOpenCommand }) => {
   const [isMac, setIsMac] = useState(false);
   const linksRef = useRef(null);
   const [pill, setPill] = useState({ left: 0, width: 0, visible: false });
+  const [pillReady, setPillReady] = useState(false);
 
   // Slide one shared highlight to the active link; re-measure on language or size changes.
   useEffect(() => {
@@ -41,8 +42,17 @@ const Nav = ({ onOpenCommand }) => {
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(list);
+    // A web font swap can change link widths without resizing the list.
+    document.fonts?.ready.then(measure);
     return () => observer.disconnect();
   }, [active, t]);
+
+  // Enable sliding after the first placement, so the pill appears instead of growing in.
+  useEffect(() => {
+    if (!pill.visible || pillReady) return undefined;
+    const frame = requestAnimationFrame(() => setPillReady(true));
+    return () => cancelAnimationFrame(frame);
+  }, [pill.visible, pillReady]);
 
   useEffect(() => {
     setIsMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
@@ -93,7 +103,7 @@ const Nav = ({ onOpenCommand }) => {
             <li
               role="presentation"
               aria-hidden="true"
-              className={`absolute inset-y-0 left-0 rounded-full bg-fg/7 ring-1 ring-line transition-[transform,width,opacity] duration-500 ease-out-expo ${pill.visible ? "opacity-100" : "opacity-0"}`}
+              className={`absolute inset-y-0 left-0 rounded-full bg-fg/7 ring-1 ring-line ${pillReady ? "transition-[transform,width,opacity] duration-500 ease-out-expo" : ""} ${pill.visible ? "opacity-100" : "opacity-0"}`}
               style={{ width: pill.width, transform: `translateX(${pill.left}px)` }}
             />
             {SECTIONS.map(({ id, key }) => (

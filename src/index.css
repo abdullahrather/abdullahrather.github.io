@@ -362,12 +362,12 @@ dialog[open]::backdrop {
   html {
     interpolate-size: allow-keywords;
   }
-  details::details-content {
+  .impact-details::details-content {
     block-size: 0;
     overflow: clip;
     transition: block-size 0.45s var(--ease-out-expo), content-visibility 0.45s allow-discrete;
   }
-  details[open]::details-content {
+  .impact-details[open]::details-content {
     block-size: auto;
   }
 }
@@ -376,5 +376,8 @@ dialog[open]::backdrop {
   .timeline-fill {
     animation: none;
     opacity: 0;
+  }
+  .impact-details::details-content {
+    transition: none;
   }
 }

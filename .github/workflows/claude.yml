@@ -20,7 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 1
+          fetch-depth: 0
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment"
+            --append-system-prompt "When asked to review a pull request, post each finding as an inline comment on the exact changed line using mcp__github_inline_comment__create_inline_comment. Use a GitHub suggestion block when the fix is a small replacement. Keep the main comment to a short verdict and the number of findings; do not repeat the findings there."

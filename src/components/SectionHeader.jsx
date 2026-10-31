@@ -2,7 +2,7 @@ import React from "react";
 import { useReveal } from "../lib/hooks";
 
 /** Eyebrow + display heading (with an optional serif-italic accent) + lead paragraph. */
-const SectionHeader = ({ eyebrow, before, em, after, lead, aside, id }) => {
+const SectionHeader = ({ eyebrow, before, em, after, lead, id }) => {
   const reveal = useReveal();
   return (
     <div ref={reveal} className="mb-14 flex flex-col gap-6 sm:mb-20 lg:flex-row lg:items-end lg:justify-between">
@@ -13,7 +13,6 @@ const SectionHeader = ({ eyebrow, before, em, after, lead, aside, id }) => {
         </h2>
         {lead && <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">{lead}</p>}
       </div>
-      {aside}
     </div>
   );
 };

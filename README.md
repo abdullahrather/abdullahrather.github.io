@@ -1,6 +1,6 @@
 # Abdullah Rather — Portfolio
 
-Personal portfolio of Abdullah Rather, Backend / Full-Stack Engineer based in Germany.
+Personal portfolio of Abdullah Rather, AI Software Engineer based in Germany.
 Live at **[abdullahrather.com](https://abdullahrather.com)**.
 
 ## Stack

@@ -48,12 +48,12 @@ const CommandPalette = ({ open, onOpenChange }) => {
 
   const groups = useMemo(() => {
     const resume = getResume(lang);
-    const go = (id) => () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const go = (id) => () => document.getElementById(id)?.scrollIntoView();
     const visit = (url) => () => window.open(url, "_blank", "noopener,noreferrer");
     return [
       {
         label: t("ui.cmd.nav"),
-        items: SECTIONS.map((s) => ({ id: s.id, label: t(s.key), keywords: s.id, icon: SECTION_ICONS[s.id], run: go(s.id) })),
+        items: SECTIONS.map((s) => ({ id: s.id, label: t(s.key), keywords: s.id, scrolls: true, icon: SECTION_ICONS[s.id], run: go(s.id) })),
       },
       {
         label: t("ui.cmd.actions"),
@@ -97,8 +97,10 @@ const CommandPalette = ({ open, onOpenChange }) => {
 
   const runItem = (item) => {
     onOpenChange(false);
-    // Let the dialog close (and release the scroll lock) before acting.
-    requestAnimationFrame(() => item.run());
+    // Scrolling waits for the dialog to release its scroll lock. Other actions stay in the
+    // click itself, because browsers can block window.open and clipboard writes otherwise.
+    if (item.scrolls) requestAnimationFrame(() => item.run());
+    else item.run();
   };
 
   const onKeyDown = (e) => {
@@ -136,7 +138,7 @@ const CommandPalette = ({ open, onOpenChange }) => {
           }}
           onKeyDown={onKeyDown}
           placeholder={t("ui.cmd.placeholder")}
-          className="h-14 flex-1 bg-transparent text-sm outline-none placeholder:text-subtle"
+          className="h-14 flex-1 bg-transparent text-base outline-none sm:text-sm placeholder:text-subtle"
           role="combobox"
           aria-expanded="true"
           aria-controls="cmd-list"

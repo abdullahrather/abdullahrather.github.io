@@ -47,7 +47,7 @@ const Expertise = () => {
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => (
-            <FocusCard key={item.title} item={item} index={i} />
+            <FocusCard key={i} item={item} index={i} />
           ))}
         </div>
       </div>

@@ -44,8 +44,8 @@ document.addEventListener(
     if (!href) return;
 
     const label = (anchor.getAttribute("aria-label") || anchor.textContent || "").trim();
-    const isExternal = href.startsWith("http") && !href.includes(window.location.hostname);
-    trackLink(href, label, isExternal ? "outbound" : "internal");
+    const isInternal = new URL(anchor.href).origin === window.location.origin;
+    trackLink(href, label, isInternal ? "internal" : "outbound");
   },
   { capture: true }
 );

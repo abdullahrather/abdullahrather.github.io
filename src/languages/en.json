@@ -1,15 +1,7 @@
 {
   "hero": {
-    "title": "About Me",
     "role": "AI Software Engineer · PHP Backend",
     "summary": "I build enterprise web platforms, internal tools and the integrations behind them, and bring AI features into everyday business workflows. {years}+ years of experience with PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST APIs, Docker and CI/CD, from legacy modernization to new modules in production.",
-    "badges": {
-      "delivery": "Delivered 15+ production deployments with automated CI/CD.",
-      "integration": "Built integrations used in enterprise workflows (20+).",
-      "experience": "{years}+ Years Experience",
-      "backend_apis": "Backend APIs",
-      "tooling": "Docker & CI/CD"
-    },
     "buttons": {
       "projects": "Projects",
       "experience": "Experience",
@@ -18,23 +10,7 @@
       "download_resume": "Download Resume"
     },
     "modal": {
-      "title": "Professional Profiles",
-      "connect_title": "Let's Connect!",
-      "connect_text": "I'm always open to discussing new opportunities, collaborations, or just connecting with fellow Engineers. Feel free to reach out through any of these platforms.",
-      "connect_subtitle": "Connect with me on various platforms",
       "profiles": {
-        "linkedin": {
-          "name": "LinkedIn",
-          "description": "Professional network & career highlights"
-        },
-        "github": {
-          "name": "GitHub",
-          "description": "Open source projects & code repositories"
-        },
-        "xing": {
-          "name": "Xing",
-          "description": "German professional network"
-        },
         "email": {
           "name": "Email",
           "description": "Direct professional contact"
@@ -104,7 +80,6 @@
         ],
         "startDate": "2026-10-01",
         "endDate": null,
-        "accent": "from-violet-500 to-fuchsia-500",
         "tag": "Full-Time"
       },
       {
@@ -121,7 +96,6 @@
         ],
         "startDate": "2024-07-01",
         "endDate": "2026-09-01",
-        "accent": "from-indigo-500 to-cyan-500",
         "tag": "Part-Time · Remote"
       },
       {
@@ -136,7 +110,6 @@
         ],
         "startDate": "2023-01-01",
         "endDate": "2024-04-01",
-        "accent": "from-emerald-500 to-teal-500",
         "tag": "Full-Time · On-site"
       },
       {
@@ -150,7 +123,6 @@
         ],
         "startDate": "2021-11-01",
         "endDate": "2023-01-01",
-        "accent": "from-emerald-500 to-teal-500",
         "tag": "Full-Time · On-site"
       },
       {
@@ -166,7 +138,6 @@
         ],
         "startDate": "2022-04-01",
         "endDate": "2024-04-01",
-        "accent": "from-purple-500 to-fuchsia-500",
         "tag": "Full-Time · Remote"
       },
       {
@@ -180,16 +151,11 @@
         ],
         "startDate": "2021-01-01",
         "endDate": "2021-07-01",
-        "accent": "from-amber-500 to-orange-500",
         "tag": "Internship"
       }
     ]
   },
   "expertise": {
-    "heading": "Core Focus",
-    "show_less": "Show Less",
-    "view_all": "View All Focus Areas",
-    "showing": "Showing {visible} of {total}",
     "items": [
       {
         "title": "AI Features & LLM Integration",
@@ -267,8 +233,6 @@
   "contact": {
     "heading": "Get In Touch",
     "subheading": "Questions, ideas, or want to talk about backend engineering or practical AI in business software? I'm happy to hear from you.",
-    "info_heading": "Contact Information",
-    "connect_heading": "Connect with me:",
     "form_heading": "Send Message",
     "recaptcha_unavailable": "reCAPTCHA is unavailable in this environment.",
     "alert_recaptcha": "Please complete the reCAPTCHA before submitting.",
@@ -315,40 +279,7 @@
         "link": "#",
         "iconPath": "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
       }
-    ],
-    "social_links": [
-      {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/in/abdullahrather"
-      },
-      {
-        "name": "Xing",
-        "url": "https://www.xing.com/profile/Abdullah_Rather"
-      },
-      {
-        "name": "GitHub",
-        "url": "https://github.com/abdullahrather"
-      },
-      {
-        "name": "Email",
-        "url": "mailto:abdullahrather19@gmail.com"
-      }
     ]
-  },
-  "layout": {
-    "nav": {
-      "skills": "Skills",
-      "experience": "Experience",
-      "expertise": "Expertise",
-      "projects": "Projects",
-      "cta": "Get In Touch"
-    },
-    "mobile_menu": {
-      "cta": "Get Started"
-    },
-    "footer": {
-      "built_with": "Built with ❤️ and passion for innovation"
-    }
   },
   "projects": {
     "heading": "Featured Projects",
@@ -372,19 +303,7 @@
       }
     ],
     "card": {
-      "key_features": "Key Features:",
-      "more": "more",
-      "flip_title": "Flip card for quick info",
-      "github_title": "View on GitHub",
-      "details_title": "View Details",
-      "category_label": "Category:",
-      "technologies_label": "Technologies:",
-      "features_label": "Features:",
-      "repository_label": "Repository:",
-      "private": "Private",
-      "public": "Public",
-      "view_full_details": "View Full Details",
-      "view_source": "View Source Code"
+      "github_title": "View on GitHub"
     },
     "toggle": {
       "show_less": "Show Less",
@@ -989,7 +908,8 @@
       "copied": "Copied to clipboard",
       "or": "or send a message",
       "response": "I usually reply within 24 hours.",
-      "recaptcha_hint": "Verification loads when you start typing."
+      "recaptcha_hint": "Verification loads when you start typing.",
+      "incomplete": "Please fill in your name, subject and message."
     },
     "footer": {
       "rights": "All rights reserved.",
@@ -1012,6 +932,12 @@
       "hint_select": "select",
       "hint_nav": "navigate",
       "hint_close": "close"
+    },
+    "a11y": {
+      "nav": "Primary",
+      "language": "Language",
+      "filter": "Filter projects",
+      "portrait": "Portrait of Abdullah Rather"
     }
   }
 }

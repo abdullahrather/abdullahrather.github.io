@@ -18,17 +18,25 @@ const hasDemo = (p) => p.demo && p.demo !== "#";
  * Card names are only applied (via .vt-cards) for the duration of the transition so they
  * do not interfere with the root-level theme transition.
  */
+let activeGridTransitions = 0;
 const withGridTransition = (grid, update) => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!document.startViewTransition || reduce || !grid) {
     update();
     return;
   }
+  activeGridTransitions += 1;
   grid.classList.add("vt-cards");
   const transition = document.startViewTransition(() => flushSync(update));
   transition.ready.catch(() => {}); // skipped by a newer transition — the update still applies
-  transition.finished.finally(() => grid.classList.remove("vt-cards"));
+  transition.finished.finally(() => {
+    activeGridTransitions -= 1;
+    if (!activeGridTransitions) grid.classList.remove("vt-cards");
+  });
 };
+
+const matchesFilter = (p, id) =>
+  id === "all" ? true : id === "public" ? !isPrivateRepo(p.github) : p.category === id;
 
 const ProjectCard = ({ project, index, onOpen, featured = false }) => {
   const { t } = useTranslation();
@@ -82,7 +90,7 @@ const ProjectCard = ({ project, index, onOpen, featured = false }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="icon-btn -mr-2 -mt-1 size-8 shrink-0"
-              aria-label={`${project.title} on GitHub`}
+              aria-label={`${project.title}: ${t("projects.card.github_title")}`}
               title={t("projects.card.github_title")}
             >
               <Icon name="github" className="size-4" />
@@ -213,20 +221,19 @@ const Projects = () => {
   const [filter, setFilter] = useState("all");
   const [showAll, setShowAll] = useState(false);
   const gridRef = useRef(null);
-  const [selected, setSelected] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
 
   const projects = useMemo(() => t("projects.items") || [], [t]);
   const filters = t("projects.filters") || [];
+  // Looked up by id so an open dialog follows a language change.
+  const selected = projects.find((p) => p.id === selectedId) ?? null;
 
-  const matches = (p, id) =>
-    id === "all" ? true : id === "public" ? !isPrivateRepo(p.github) : p.category === id;
-
-  const filtered = useMemo(() => projects.filter((p) => matches(p, filter)), [projects, filter]);
+  const filtered = useMemo(() => projects.filter((p) => matchesFilter(p, filter)), [projects, filter]);
   const initialCount = filter === "all" ? FEATURED_COUNT : FILTERED_COUNT;
   const visible = showAll ? filtered : filtered.slice(0, initialCount);
 
   const openProject = (project) => {
-    setSelected(project);
+    setSelectedId(project.id);
     trackEvent("project_open", { project: project.title });
   };
 
@@ -240,9 +247,9 @@ const Projects = () => {
           lead={t("projects.subheading")}
         />
 
-        <div role="group" aria-label="Filter projects" className="-mx-5 mb-8 flex gap-1.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0">
+        <div role="group" aria-label={t("ui.a11y.filter")} className="-mx-5 mb-8 flex gap-1.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:px-0">
           {filters.map((f) => {
-            const count = projects.filter((p) => matches(p, f.id)).length;
+            const count = projects.filter((p) => matchesFilter(p, f.id)).length;
             const isActive = filter === f.id;
             return (
               <button
@@ -294,7 +301,7 @@ const Projects = () => {
         )}
       </div>
 
-      <ProjectDialog key={selected?.id} project={selected} onClose={() => setSelected(null)} />
+      <ProjectDialog key={selected?.id} project={selected} onClose={() => setSelectedId(null)} />
     </section>
   );
 };

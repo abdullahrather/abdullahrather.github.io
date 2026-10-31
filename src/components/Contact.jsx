@@ -1,11 +1,11 @@
-import React, { Suspense, lazy, useRef, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import SectionHeader from "./SectionHeader";
 import { ContentIcon, Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { spotlight, useCopy, useReveal } from "../lib/hooks";
 import { useTheme } from "../lib/theme";
-import { EMAIL, SOCIALS } from "../lib/site";
+import { EMAIL, SOCIALS, TIMEZONE } from "../lib/site";
 
 const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID || "";
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
@@ -20,20 +20,21 @@ const IS_FORM_ENABLED = Boolean(
 // reCAPTCHA (and its Google script) only loads once the visitor starts filling in the form.
 const ReCAPTCHA = lazy(() => import("react-google-recaptcha"));
 
-const TIMEZONE_COUNTRY = {
-  "Europe/Berlin": "Germany", "Europe/London": "United Kingdom", "Europe/Paris": "France",
-  "Europe/Madrid": "Spain", "Europe/Rome": "Italy", "Europe/Amsterdam": "Netherlands",
-  "Europe/Vienna": "Austria", "Europe/Zurich": "Switzerland", "America/New_York": "United States",
-  "America/Los_Angeles": "United States", "America/Chicago": "United States", "America/Denver": "United States",
-  "America/Toronto": "Canada", "America/Vancouver": "Canada", "America/Mexico_City": "Mexico",
-  "Asia/Tokyo": "Japan", "Asia/Shanghai": "China", "Asia/Dubai": "UAE", "Asia/Singapore": "Singapore",
-  "Asia/Kolkata": "India", "Asia/Seoul": "South Korea", "Asia/Karachi": "Pakistan",
-  "Australia/Sydney": "Australia", "Australia/Melbourne": "Australia", "Australia/Perth": "Australia",
-  UTC: "UTC",
-};
+// A failed chunk download must not take the whole page down with it.
+class RecaptchaBoundary extends React.Component {
+  state = { failed: false };
 
-const formatTime = (date, timeZone) =>
-  date.toLocaleString("en-US", {
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}
+
+const formatTime = (date, timeZone, locale = "en-US") =>
+  date.toLocaleString(locale, {
     weekday: "long", year: "numeric", month: "long", day: "numeric",
     hour: "2-digit", minute: "2-digit", timeZoneName: "short", ...(timeZone && { timeZone }),
   });
@@ -88,12 +89,21 @@ const Contact = () => {
   const [status, setStatus] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState(null);
   const [engaged, setEngaged] = useState(false);
+  const [recaptchaFailed, setRecaptchaFailed] = useState(false);
   const recaptchaRef = useRef(null);
 
   const contactInfo = (t("contact.contact_info") || []).filter((i) => i.link === "#");
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (status) setStatus("");
+  };
+
+  // Changing theme or language remounts the widget, so an earlier solve no longer applies.
+  useEffect(() => setRecaptchaToken(null), [isDark, lang]);
+
+  const onRecaptcha = (token) => {
+    setRecaptchaToken(token);
     if (status === "recaptcha") setStatus("");
   };
 
@@ -104,8 +114,11 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!IS_FORM_ENABLED) {
-      setStatus("config-missing");
+    const name = formData.name.trim();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+    if (!name || !subject || !message) {
+      setStatus("incomplete");
       return;
     }
     if (!recaptchaToken) {
@@ -115,41 +128,44 @@ const Contact = () => {
 
     setIsSubmitting(true);
     setStatus("");
-    trackEvent("contact_submit_attempt", { configured: IS_FORM_ENABLED });
+    trackEvent("contact_submit_attempt");
 
     const now = new Date();
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const name = formData.name.trim();
-    const city = timezone.split("/")[1]?.replace("_", " ") || "Unknown";
-    const country = TIMEZONE_COUNTRY[timezone] || timezone.split("/")[0] || "Unknown";
+    const isDE = lang === "de";
 
     const templateParams = {
       from_name: name,
       from_email: formData.email.trim(),
       to_email: NOTIFY_TO_EMAIL,
-      subject: formData.subject.trim(),
-      message: formData.message.trim(),
-      time: formatTime(now),
-      time_recipient: formatTime(now, timezone),
+      subject,
+      subject_encoded: encodeURIComponent(subject),
+      message,
+      time: formatTime(now, undefined, isDE ? "de-DE" : "en-US"),
+      time_recipient: formatTime(now, TIMEZONE),
       time_utc: formatTime(now, "UTC"),
       user_timezone: timezone,
-      recipient_timezone: timezone,
-      recipient_location: `${city}, ${country}`,
+      recipient_timezone: TIMEZONE,
+      recipient_location: "Heilbronn, Germany",
       "g-recaptcha-response": recaptchaToken,
-      ...buildEmailStrings(lang === "de", name),
+      ...buildEmailStrings(isDE, name),
     };
 
     try {
       const { default: emailjs } = await import("@emailjs/browser");
       const options = { publicKey: USER_ID };
       await emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY_ID, templateParams, options);
-      await emailjs.send(SERVICE_ID, TEMPLATE_REPLY_ID, templateParams, options);
+      // The message has arrived by now, so a failed auto-reply isn't a failed submission.
+      await emailjs.send(SERVICE_ID, TEMPLATE_REPLY_ID, templateParams, options).catch((error) => {
+        console.warn("Auto-reply failed:", error);
+        trackEvent("contact_reply_error", { error: error?.text || String(error?.status) });
+      });
       setStatus("success");
       setFormData(EMPTY_FORM);
       trackEvent("contact_submit_success", { method: "emailjs" });
     } catch (error) {
       console.error("EmailJS Error:", error);
-      trackEvent("contact_submit_error", { error: error?.message || String(error) });
+      trackEvent("contact_submit_error", { error: error?.text || String(error?.status) });
       setStatus("error");
     } finally {
       resetRecaptcha();
@@ -236,6 +252,9 @@ const Contact = () => {
           {/* Form */}
           <form
             ref={revealForm}
+            action={`mailto:${EMAIL}`}
+            method="post"
+            encType="text/plain"
             onSubmit={handleSubmit}
             onFocus={() => setEngaged(true)}
             style={{ "--delay": "80ms" }}
@@ -251,18 +270,24 @@ const Contact = () => {
 
             {IS_FORM_ENABLED && (
               <div className="min-h-19.5">
-                {engaged ? (
-                  <Suspense fallback={null}>
-                    <ReCAPTCHA
-                      key={isDark ? "dark" : "light"}
-                      ref={recaptchaRef}
-                      sitekey={RECAPTCHA_SITE_KEY}
-                      onChange={setRecaptchaToken}
-                      onExpired={() => setRecaptchaToken(null)}
-                      theme={isDark ? "dark" : "light"}
-                      hl={lang}
-                    />
-                  </Suspense>
+                {recaptchaFailed ? (
+                  <p className="pt-2 text-xs text-subtle">{t("contact.recaptcha_unavailable")}</p>
+                ) : engaged ? (
+                  <RecaptchaBoundary fallback={<p className="pt-2 text-xs text-subtle">{t("contact.recaptcha_unavailable")}</p>}>
+                    <Suspense fallback={null}>
+                      <ReCAPTCHA
+                        key={`${isDark ? "dark" : "light"}-${lang}`}
+                        ref={recaptchaRef}
+                        sitekey={RECAPTCHA_SITE_KEY}
+                        onChange={onRecaptcha}
+                        onExpired={() => setRecaptchaToken(null)}
+                        onErrored={() => setRecaptchaFailed(true)}
+                        asyncScriptOnLoad={({ errored }) => errored && setRecaptchaFailed(true)}
+                        theme={isDark ? "dark" : "light"}
+                        hl={lang}
+                      />
+                    </Suspense>
+                  </RecaptchaBoundary>
                 ) : (
                   <p className="pt-2 text-xs text-subtle">{t("ui.contact.recaptcha_hint")}</p>
                 )}
@@ -282,7 +307,10 @@ const Contact = () => {
               {status === "recaptcha" && (
                 <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">{t("contact.alert_recaptcha")}</p>
               )}
-              {(status === "config-missing" || !IS_FORM_ENABLED) && (
+              {status === "incomplete" && (
+                <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">{t("ui.contact.incomplete")}</p>
+              )}
+              {!IS_FORM_ENABLED && (
                 <p className="rounded-xl border border-line bg-fg/3 px-4 py-3 text-sm text-muted">{t("contact.status.not_configured")}</p>
               )}
             </div>

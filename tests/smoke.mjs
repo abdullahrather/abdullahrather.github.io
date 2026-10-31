@@ -73,9 +73,14 @@ try {
     await page.keyboard.press("Control+k");
     await page.keyboard.type("contact");
     await page.keyboard.press("Enter");
-    await page.waitForTimeout(1300);
-    const top = await page.evaluate(() => document.getElementById("contact").getBoundingClientRect().top);
-    assert.ok(Math.abs(top) < 200, `contact top was ${top}`);
+    // Smooth scrolling takes longer on slower machines.
+    await page.waitForFunction(
+      () => Math.abs(document.getElementById("contact").getBoundingClientRect().top) < 200,
+      null,
+      {
+        timeout: 5000,
+      },
+    );
   });
 
   await check("German language and title load", async () => {

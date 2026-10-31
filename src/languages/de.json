@@ -1012,6 +1012,14 @@
       "hint_select": "auswählen",
       "hint_nav": "navigieren",
       "hint_close": "schließen"
+    },
+    "consent": {
+      "title": "Analyse-Cookies",
+      "text": "Mit Ihrer Einwilligung zeigt mir Google Analytics, welche Bereiche dieser Website genutzt werden und woher Besucher ungefähr kommen. Wenn Sie ablehnen, bleibt es deaktiviert.",
+      "accept": "Akzeptieren",
+      "decline": "Ablehnen",
+      "privacy": "Datenschutzerklärung",
+      "settings": "Cookie-Einstellungen"
     }
   }
 }

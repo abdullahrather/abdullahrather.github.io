@@ -9,7 +9,12 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CommandPalette from "./components/CommandPalette";
 import Toaster from "./components/Toaster";
+import ConsentBanner from "./components/ConsentBanner";
+import { useSectionTracking } from "./lib/analytics";
 import { useTranslation } from "./lib/i18n";
+import { SECTIONS } from "./lib/site";
+
+const TRACKED_SECTIONS = ["top", ...SECTIONS.map((s) => s.id)];
 
 /** Fixed decorative backdrop: fading grid, accent glow and film grain. */
 const Backdrop = () => (
@@ -25,6 +30,7 @@ function App() {
   const { t } = useTranslation();
   const [commandOpen, setCommandOpen] = useState(false);
   const openCommand = useCallback(() => setCommandOpen(true), []);
+  useSectionTracking(TRACKED_SECTIONS);
 
   return (
     <>
@@ -47,6 +53,7 @@ function App() {
       <Footer />
       <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} />
       <Toaster />
+      <ConsentBanner />
     </>
   );
 }

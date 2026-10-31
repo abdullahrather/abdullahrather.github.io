@@ -1012,6 +1012,14 @@
       "hint_select": "select",
       "hint_nav": "navigate",
       "hint_close": "close"
+    },
+    "consent": {
+      "title": "Analytics cookies",
+      "text": "With your consent, Google Analytics shows me which parts of this site are used and roughly where visitors come from. It stays off if you decline.",
+      "accept": "Accept",
+      "decline": "Decline",
+      "privacy": "Privacy Policy",
+      "settings": "Cookie settings"
     }
   }
 }

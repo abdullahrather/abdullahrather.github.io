@@ -61,13 +61,13 @@ const CommandPalette = ({ open, onOpenChange }) => {
           { id: "theme", label: t("ui.cmd.theme"), icon: "sun", run: () => toggleTheme() },
           { id: "lang", label: t("ui.cmd.lang"), icon: "globe", run: () => setLang(lang === "de" ? "en" : "de") },
           { id: "copy", label: t("ui.cmd.copy"), icon: "copy", hint: EMAIL, run: async () => { if (await copy(EMAIL)) toast(t("ui.contact.copied")); } },
-          { id: "view-resume", label: t("ui.cmd.view_resume"), icon: "file", run: () => { trackEvent("resume_view"); visit(resume.href)(); } },
+          { id: "view-resume", label: t("ui.cmd.view_resume"), icon: "file", run: () => { trackEvent("resume_view", { language: lang }); visit(resume.href)(); } },
           {
             id: "resume",
             label: t("ui.cmd.resume"),
             icon: "download",
             run: () => {
-              trackEvent("resume_download");
+              trackEvent("resume_download", { language: lang });
               const a = Object.assign(document.createElement("a"), { href: resume.href, download: resume.fileName });
               a.click();
             },
@@ -97,6 +97,7 @@ const CommandPalette = ({ open, onOpenChange }) => {
 
   const runItem = (item) => {
     onOpenChange(false);
+    trackEvent("command_palette_action", { action: item.id });
     // Let the dialog close (and release the scroll lock) before acting.
     requestAnimationFrame(() => item.run());
   };

@@ -2,8 +2,10 @@ import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { trackLink } from "./lib/analytics";
+import { getConsent, startAnalytics, trackLink } from "./lib/analytics";
 import { TranslationProvider, getInitialLang, loadLocale } from "./lib/i18n";
+
+if (getConsent() === "granted") startAnalytics();
 
 const container = document.getElementById("root");
 const preferred = getInitialLang();

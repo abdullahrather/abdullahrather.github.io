@@ -41,12 +41,12 @@ const ResumeMenu = () => {
         }`}
       >
         <a role="menuitem" href={resume.href} target="_blank" rel="noopener noreferrer" className={item}
-          onClick={() => { trackEvent("resume_view"); setOpen(false); }}>
+          onClick={() => { trackEvent("resume_view", { language: lang }); setOpen(false); }}>
           <Icon name="arrowUpRight" />
           {t("hero.buttons.view_resume")}
         </a>
         <a role="menuitem" href={resume.href} download={resume.fileName} className={item}
-          onClick={() => { trackEvent("resume_download"); setOpen(false); }}>
+          onClick={() => { trackEvent("resume_download", { language: lang }); setOpen(false); }}>
           <Icon name="download" />
           {t("hero.buttons.download_resume")}
         </a>

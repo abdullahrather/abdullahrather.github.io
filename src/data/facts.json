@@ -85,7 +85,7 @@
       "image": "/images/projects/academic-institution.webp",
       "technologies": ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
       "category": "web",
-      "github": "https://github.com/abdullahrather/CustomAcademy-PHP",
+      "github": "#",
       "demo": "#"
     },
     {
@@ -101,7 +101,7 @@
       "image": "/images/projects/corporate-insurance.webp",
       "technologies": ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
       "category": "web",
-      "github": "https://github.com/abdullahrather/CustomWebsite-PHP",
+      "github": "#",
       "demo": "#"
     },
     {

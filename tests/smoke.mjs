@@ -97,7 +97,7 @@ try {
 
   await check("Google Analytics waits for consent", async () => {
     const page = await openPage({ consent: null });
-    const banner = page.getByRole("region", { name: "Cookies and your privacy" });
+    const banner = page.getByRole("region", { name: "This site uses cookies" });
     assert.equal(await banner.count(), 1, "banner shows on a first visit");
     assert.deepEqual(page.analyticsRequests, [], "nothing loads before a choice");
 

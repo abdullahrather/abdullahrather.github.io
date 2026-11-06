@@ -26,10 +26,20 @@
     },
     {
       "id": 4,
-      "image": "/images/projects/campaign-analytics.webp",
-      "technologies": ["Node.js", "TypeScript", "Express", "Prisma", "PostgreSQL", "Docker"],
+      "image": "/images/projects/streaming-ad-platform.webp",
+      "technologies": [
+        "Node.js",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+        "Redis",
+        "Prisma",
+        "Docker",
+        "Grafana",
+        "Playwright"
+      ],
       "category": "web",
-      "github": "https://github.com/abdullahrather/campaign-analytics-microservice",
+      "github": "https://github.com/abdullahrather/streaming-ad-platform",
       "demo": "#"
     },
     {
@@ -37,7 +47,7 @@
       "image": "/images/projects/task-manager.webp",
       "technologies": ["Symfony", "PHP", "MySQL", "Twig", "JavaScript"],
       "category": "fullstack",
-      "github": "https://github.com/abdullahrather/TaskManager-Symfony",
+      "github": "https://github.com/abdullahrather/symfony-task-manager",
       "demo": "#"
     },
     {
@@ -53,7 +63,7 @@
       "image": "/images/projects/currency-converter.webp",
       "technologies": ["Laravel", "GuzzleHttp", "ExchangeRate API", "PHP 8.2+"],
       "category": "web",
-      "github": "https://github.com/abdullahrather/Currency-Converter-Laravel",
+      "github": "https://github.com/abdullahrather/laravel-currency-converter",
       "demo": "#"
     },
     {
@@ -77,7 +87,7 @@
       "image": "/images/projects/laravel-auth-role.webp",
       "technologies": ["Laravel", "PHP", "MariaDB", "Blade", "Bootstrap 5", "Eloquent ORM"],
       "category": "fullstack",
-      "github": "https://github.com/abdullahrather/AuthnAndAuthz-Laravel",
+      "github": "https://github.com/abdullahrather/institution-accreditation-portal",
       "demo": "#"
     },
     {
@@ -93,7 +103,7 @@
       "image": "/images/projects/laravel-auth-crud.webp",
       "technologies": ["Laravel 10", "PHP", "MySQL", "Blade", "JavaScript", "CSS"],
       "category": "web",
-      "github": "https://github.com/abdullahrather/AuthProductsCrud-Laravel10",
+      "github": "https://github.com/abdullahrather/laravel-product-catalog",
       "demo": "#"
     },
     {
@@ -109,7 +119,7 @@
       "image": "/images/projects/laravel-auth-showcase.webp",
       "technologies": ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
       "category": "web",
-      "github": "https://github.com/abdullahrather/Auth-Laravel",
+      "github": "https://github.com/abdullahrather/laravel-admin-auth-starter",
       "demo": "#"
     }
   ],

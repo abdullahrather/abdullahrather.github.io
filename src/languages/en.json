@@ -327,27 +327,27 @@
       },
       {
         "id": 4,
-        "title": "Campaign Analytics Microservice",
-        "description": "Production-ready REST API microservice built with Node.js and TypeScript for managing and analyzing advertising campaigns.",
+        "title": "Streaming Ad Platform",
+        "description": "Ad platform for a streaming service, built with Node.js, TypeScript and React: ad decisions for video players, real-time campaign analytics, prepaid billing with EU VAT, and a dashboard in English and German.",
         "features": [
-          "REST API Architecture",
-          "JWT Authentication",
-          "Data Analytics Logic",
-          "Prisma Data Modeling",
-          "Automated Testing (Jest)"
+          "Ad Decisions & VAST for Video Players",
+          "Real-Time Analytics & Forecasts",
+          "Prepaid Billing, EU VAT & Stripe",
+          "AI Campaign Assistant",
+          "GDPR Tools & Monitoring"
         ],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Designed as a decoupled microservice using Express and TypeScript (strict mode) to ensure high reliability and type safety."
+            "text": "Built as a Node.js and TypeScript API with a React dashboard, using PostgreSQL for campaigns and billing, and Redis for atomic ad decisions and a queue that counts every event exactly once."
           },
           {
-            "label": "Data Layer",
-            "text": "Leveraged Prisma ORM with PostgreSQL for robust relational querying, strict schema definitions, and safe database migrations."
+            "label": "Production Readiness",
+            "text": "Shipped with structured logs, Prometheus metrics, OpenTelemetry traces and Grafana alerts, backups proven by an automated restore drill, and browser tests and CodeQL scanning in CI."
           },
           {
             "label": "Business Value",
-            "text": "Provides a scalable, containerized analytics engine ready to plug into larger e-commerce or media architectures."
+            "text": "Lets advertisers plan, run and measure video ad campaigns end to end, from upload and approval to delivery, reports and invoices, with a revenue view for the publisher."
           }
         ]
       },
@@ -690,8 +690,8 @@
       "description": "AI Software Engineer and PHP backend / full-stack developer in Heilbronn, Germany, building enterprise web platforms, REST APIs, integrations and AI features with Yii, Laravel, Symfony, MySQL, Docker and CI/CD."
     },
     "consent": {
-      "title": "Cookies and your privacy",
-      "text": "I'd like to use Google Analytics cookies to see which parts of this site are used and roughly where visitors come from. Google may process this data in the US. Nothing is set unless you accept, and you can change your choice anytime under Cookie settings.",
+      "title": "This site uses cookies",
+      "text": "I use cookies to understand how visitors find and use this site, so I can keep improving it. You can change your choice anytime under Cookie settings.",
       "accept": "Accept",
       "decline": "Decline",
       "privacy": "Privacy Policy",

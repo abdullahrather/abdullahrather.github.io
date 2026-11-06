@@ -691,7 +691,7 @@
     },
     "consent": {
       "title": "This site uses cookies",
-      "text": "I use cookies to understand how visitors find and use this site, so I can keep improving it. You can change your choice anytime under Cookie settings.",
+      "text": "I use Google Analytics to understand how visitors find and use this site, so I can keep improving it. You can change your choice anytime under Cookie settings.",
       "accept": "Accept",
       "decline": "Decline",
       "privacy": "Privacy Policy",

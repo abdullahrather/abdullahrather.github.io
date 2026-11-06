@@ -99,6 +99,7 @@ try {
     const page = await openPage({ consent: null });
     const banner = page.getByRole("region", { name: "This site uses cookies" });
     assert.equal(await banner.count(), 1, "banner shows on a first visit");
+    assert.match(await banner.textContent(), /Google Analytics/, "banner names the analytics provider");
     assert.deepEqual(page.analyticsRequests, [], "nothing loads before a choice");
 
     await page.getByRole("button", { name: "Decline" }).click();

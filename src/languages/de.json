@@ -708,7 +708,7 @@
     },
     "consent": {
       "title": "Diese Website verwendet Cookies",
-      "text": "Ich verwende Cookies, um zu verstehen, wie Besucher diese Website finden und nutzen, damit ich sie weiter verbessern kann. Ihre Auswahl können Sie jederzeit unter Cookie-Einstellungen ändern.",
+      "text": "Ich verwende Google Analytics, um zu verstehen, wie Besucher diese Website finden und nutzen, damit ich sie weiter verbessern kann. Ihre Auswahl können Sie jederzeit unter Cookie-Einstellungen ändern.",
       "accept": "Akzeptieren",
       "decline": "Ablehnen",
       "privacy": "Datenschutzerklärung",

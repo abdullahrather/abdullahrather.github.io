@@ -546,17 +546,24 @@
       "group": "Fallstudien"
     },
     "activity": {
-      "eyebrow": "Open Source",
+      "eyebrow": "Auf GitHub",
       "heading_a": "Was ich",
       "heading_em": "zuletzt veröffentlicht habe",
-      "lead": "Releases und Commits aus meinen öffentlichen GitHub-Repositories, täglich aktualisiert.",
-      "summary": "Commits in {repos} öffentlichen Repositories in den letzten sechs Monaten",
+      "lead": "Meine Beiträge auf GitHub sowie die neuesten Releases und Commits aus meinen öffentlichen Repositories, täglich aktualisiert.",
       "less": "Weniger",
       "more": "Mehr",
       "releases": "Neueste Releases",
       "commits": "Letzte Commits",
       "updated": "Aktualisiert am {date}",
-      "profile": "GitHub-Profil"
+      "profile": "GitHub-Profil",
+      "total_recent": "Beiträge in den letzten 12 Monaten",
+      "total_year": "Beiträge im Jahr {year}",
+      "recent": "Letzte 12 Monate",
+      "years": "Beiträge anzeigen für",
+      "day": "{count} Beiträge am {date}",
+      "day_one": "1 Beitrag am {date}",
+      "day_none": "Keine Beiträge am {date}",
+      "hint": "Zeigen Sie auf einen Tag, um seine Beiträge zu sehen."
     }
   }
 }

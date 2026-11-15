@@ -155,6 +155,17 @@ try {
     });
   }
 
+  await check("the German headline fits a phone screen", async () => {
+    const page = await openPage({
+      locale: "de-DE",
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    await page.waitForFunction(() => /entwickle/.test(document.querySelector("h1").innerText));
+    assert.equal(await page.locator("h1").evaluate((h1) => h1.scrollWidth <= h1.clientWidth), true);
+  });
+
   await check("the cookie banner leaves the headline readable on a phone", async () => {
     const page = await openPage({
       consent: null,

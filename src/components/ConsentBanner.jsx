@@ -27,16 +27,16 @@ const ConsentBanner = () => {
   return (
     <section
       aria-label={t("ui.consent.title")}
-      className="enter fixed inset-x-3 bottom-3 z-70 rounded-2xl border border-line-strong bg-card-solid p-5 shadow-2xl sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-md"
+      className="enter fixed inset-x-3 bottom-3 z-70 rounded-2xl border border-line-strong bg-card-solid p-4 shadow-2xl sm:bottom-5 sm:p-5 sm:left-auto sm:right-5 sm:max-w-md"
     >
       <h2 className="text-sm font-semibold">{t("ui.consent.title")}</h2>
-      <p className="mt-1.5 text-sm leading-relaxed text-muted">
+      <p className="mt-1.5 text-[13px] leading-snug text-muted sm:text-sm sm:leading-relaxed">
         {t("ui.consent.text")}{" "}
         <a href="/privacy/" className="text-fg underline underline-offset-4">
           {t("ui.consent.privacy")}
         </a>
       </p>
-      <div className="mt-4 flex flex-wrap justify-end gap-2">
+      <div className="mt-3 flex flex-wrap justify-end gap-2 sm:mt-4">
         <button type="button" onClick={() => choose("denied")} className="btn btn-ghost">
           {t("ui.consent.decline")}
         </button>

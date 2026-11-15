@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  # Once a day, so the GitHub activity section stays current without a merge.
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -32,6 +36,12 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      # Public data only. If GitHub can't be reached, the copy saved in the repository is used.
+      - name: Refresh GitHub activity
+        run: npm run activity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         run: npm run build

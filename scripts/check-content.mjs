@@ -58,11 +58,35 @@ compare("expertise", facts.expertise, en.expertise.items);
 compare("contact info", facts.contactInfo, en.contact.contact_info);
 compare("projects", facts.projects, en.projects.items);
 
-const ids = new Set(en.projects.items.map((project) => project.id));
+// A project is shown as a screenshot (`shot`) or as a drawn schematic (`cover`).
+const covers = new Set(
+  [...fs.readFileSync("src/components/Cover.jsx", "utf8").matchAll(/^ {2}(\w+): \($/gm)].map((match) => match[1]),
+);
+const sitemap = fs.readFileSync("public/sitemap.xml", "utf8");
+const slugs = new Set();
 for (const project of facts.projects) {
-  if (!ids.has(project.id)) errors.push(`Project ${project.id} has no translated text`);
-  for (const image of [project.image, project.image.replace(/\.webp$/, "-640.webp")]) {
-    if (!fs.existsSync(path.join("public", image))) errors.push(`Missing image: public${image}`);
+  const text = en.projects.items.find((item) => item.id === project.id);
+  if (!text) errors.push(`Project ${project.id} has no translated text`);
+  if (!project.slug || slugs.has(project.slug)) errors.push(`Project ${project.id} needs its own slug`);
+  slugs.add(project.slug);
+
+  if (!project.shot && !covers.has(project.cover)) errors.push(`Project ${project.slug} has no picture`);
+  for (const image of [project.shot, ...(project.screens ?? [])].filter(Boolean)) {
+    for (const file of [image, image.replace(/\.webp$/, "-640.webp")]) {
+      if (!fs.existsSync(path.join("public", file))) errors.push(`Missing image: public${file}`);
+    }
+  }
+
+  // A case study is its own page: it needs its text, a caption per screenshot and a sitemap entry.
+  if (Boolean(project.caseStudy) !== Boolean(text?.study)) {
+    errors.push(`Project ${project.slug}: caseStudy and its study text must go together`);
+  } else if (project.caseStudy) {
+    if (project.screens.length !== text.study.screens.length) {
+      errors.push(
+        `Project ${project.slug}: ${project.screens.length} screenshots but ${text.study.screens.length} captions`,
+      );
+    }
+    if (!sitemap.includes(`/work/${project.slug}/</loc>`)) errors.push(`Sitemap is missing /work/${project.slug}/`);
   }
 }
 

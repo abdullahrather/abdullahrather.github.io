@@ -4,6 +4,7 @@ import { Icon } from "./Icons";
 import { useTranslation } from "../lib/i18n";
 import { useTheme } from "../lib/theme";
 import { useActiveSection } from "../lib/hooks";
+import { useSectionHref } from "../lib/route";
 import { SECTIONS } from "../lib/site";
 
 // "top" (the hero) is tracked too so the highlight clears when scrolling back up.
@@ -22,6 +23,7 @@ const ThemeToggle = () => {
 const Nav = ({ onOpenCommand }) => {
   const { t } = useTranslation();
   const active = useActiveSection(TRACKED_IDS);
+  const sectionHref = useSectionHref();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMac, setIsMac] = useState(false);
@@ -96,7 +98,7 @@ const Nav = ({ onOpenCommand }) => {
           }`}
         >
           <a
-            href="#top"
+            href={sectionHref("top")}
             className="group flex items-center gap-2.5 rounded-full pr-2"
             onClick={() => setMenuOpen(false)}
           >
@@ -116,7 +118,7 @@ const Nav = ({ onOpenCommand }) => {
             {SECTIONS.map(({ id, key }) => (
               <li key={id}>
                 <a
-                  href={`#${id}`}
+                  href={sectionHref(id)}
                   aria-current={active === id ? "true" : undefined}
                   className={`relative block rounded-full px-3.5 py-1.5 text-sm transition-colors ${
                     active === id ? "text-fg" : "text-muted hover:text-fg"
@@ -174,7 +176,7 @@ const Nav = ({ onOpenCommand }) => {
                 style={{ transitionDelay: menuOpen ? `${80 + i * 50}ms` : "0ms" }}
               >
                 <a
-                  href={`#${id}`}
+                  href={sectionHref(id)}
                   onClick={() => setMenuOpen(false)}
                   className="flex items-baseline gap-4 border-b border-line py-4 text-4xl font-semibold tracking-tight"
                 >

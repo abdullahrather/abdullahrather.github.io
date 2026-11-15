@@ -2,12 +2,14 @@ import { Icon } from "./Icons";
 import { openConsentSettings } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useClock, useNow } from "../lib/hooks";
+import { useSectionHref } from "../lib/route";
 import { EMAIL, SECTIONS, SOCIALS, TIMEZONE } from "../lib/site";
 
 const Footer = () => {
   const { t, lang } = useTranslation();
   const time = useClock(TIMEZONE, lang === "de" ? "de-DE" : "en-GB");
   const year = useNow().getUTCFullYear();
+  const sectionHref = useSectionHref();
 
   return (
     <footer className="relative overflow-hidden border-t border-line">
@@ -28,7 +30,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {SECTIONS.map((s) => (
                 <li key={s.id}>
-                  <a href={`#${s.id}`} className="text-muted transition-colors hover:text-fg">
+                  <a href={sectionHref(s.id)} className="text-muted transition-colors hover:text-fg">
                     {t(s.key)}
                   </a>
                 </li>

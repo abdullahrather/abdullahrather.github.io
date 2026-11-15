@@ -4,6 +4,7 @@ import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useTheme } from "../lib/theme";
 import { useCopy } from "../lib/hooks";
+import { studyPath } from "../lib/route";
 import { toast } from "../lib/toast";
 import { EMAIL, SECTIONS, SOCIALS, getResume } from "../lib/site";
 
@@ -54,7 +55,12 @@ const CommandPalette = ({ open, onOpenChange }) => {
 
   const groups = useMemo(() => {
     const resume = getResume(lang);
-    const go = (id) => () => document.getElementById(id)?.scrollIntoView();
+    // Sections are on the home page: scroll there, or load it from a case study.
+    const go = (id) => () => {
+      const section = document.getElementById(id);
+      if (section) section.scrollIntoView();
+      else window.location.assign(`/#${id}`);
+    };
     const visit = (url) => () => window.open(url, "_blank", "noopener,noreferrer");
     return [
       {
@@ -67,6 +73,18 @@ const CommandPalette = ({ open, onOpenChange }) => {
           icon: SECTION_ICONS[s.id],
           run: go(s.id),
         })),
+      },
+      {
+        label: t("ui.study.group"),
+        items: (t("projects.items") || [])
+          .filter((p) => p.caseStudy)
+          .map((p) => ({
+            id: `study-${p.slug}`,
+            label: p.title,
+            keywords: p.slug,
+            icon: "file",
+            run: () => window.location.assign(studyPath(p.slug)),
+          })),
       },
       {
         label: t("ui.cmd.actions"),

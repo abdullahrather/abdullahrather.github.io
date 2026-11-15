@@ -26,31 +26,40 @@
       "core_technologies": "Kerntechnologien"
     },
     "headings": {
-      "experience_snapshot": "Erfahrungsüberblick",
-      "major_technical_skills": "Wichtigste technische Fähigkeiten"
+      "experience_snapshot": "Erfahrungsüberblick"
     },
     "intro": {
       "paragraph1": "Ich bin KI-Entwickler und PHP Backend / Full-Stack Entwickler mit {years}+ Jahren Erfahrung in der Entwicklung von Enterprise-Webanwendungen, internen Plattformen und datenbankgestützten Geschäftssystemen. Mein Kern-Stack: PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST-APIs, Docker und CI/CD.",
-      "paragraph2": "Heute arbeite ich an einer zentralen Geschäftsplattform, die in einer Unternehmensgruppe für Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung genutzt wird. Ich bringe KI in alltägliche Abläufe, etwa mit KI-basierter Ticketzuweisung und einer KI-gestützten Suche in der Kundenhistorie, und entwickle neue Module wie ein eigenes HR- und Zeiterfassungssystem. Zuvor habe ich ein Team von fünf Entwicklern geleitet und ein Education Management Information System entwickelt. Dabei sind mir sauberer, testbarer Code, sicherer Umgang mit Daten und zuverlässige Releases wichtig."
+      "paragraph2": "Heute arbeite ich an einer zentralen Geschäftsplattform, die in einer Unternehmensgruppe genutzt wird, bringe KI in alltägliche Abläufe und entwickle neue Module wie ein eigenes HR- und Zeiterfassungssystem. Zuvor habe ich ein Team von fünf Entwicklern geleitet und ein Education Management Information System entwickelt."
     },
-    "items": {
-      "backend_stack": "PHP, Laravel, Symfony, Yii",
-      "devops": "Docker & CI/CD",
-      "frontend": "JavaScript & React",
-      "python": "Python & Flask",
-      "databases": "MySQL & PostgreSQL",
-      "api_integrations": "REST APIs & Integrationen",
-      "git_ci": "Git & GitHub Actions",
-      "architecture": "Systemarchitektur",
-      "leadership": "Technische Leitung",
-      "ai": "KI- & LLM-Integration"
-    },
-    "levels": {
-      "expert": "Experte",
-      "advanced": "Fortgeschritten",
-      "intermediate": "Mittel"
-    },
-    "mission": "Ich entwickle Geschäftssoftware, die echte Probleme löst: solides Engineering, zuverlässige Integrationen und praxisnahe KI – umgesetzt als wartbarer, produktionsreifer Code."
+    "mission": "Ich entwickle Geschäftssoftware, die echte Probleme löst: solides Engineering, zuverlässige Integrationen und praxisnahe KI – umgesetzt als wartbarer, produktionsreifer Code.",
+    "groups": [
+      {
+        "title": "Backend & APIs",
+        "text": "Geschäftsplattformen, neue Module und die APIs dahinter.",
+        "items": ["PHP", "Laravel", "Symfony", "Yii", "REST-APIs", "PHPUnit", "PHPStan"]
+      },
+      {
+        "title": "Daten & Integrationen",
+        "text": "Schemata, die mit wachsenden Datenmengen mithalten, und Integrationen mit Buchhaltungs- und Drittsystemen.",
+        "items": ["MySQL", "MariaDB", "PostgreSQL", "DATEV", "ZUGFeRD", "Webhooks"]
+      },
+      {
+        "title": "KI",
+        "text": "KI-Funktionen in echten Abläufen, mit Zugriffskontrolle und Tests.",
+        "items": ["LLM-APIs", "Prompt-Design", "Python", "FastAPI", "Flask"]
+      },
+      {
+        "title": "Frontend",
+        "text": "Die Dashboards und Oberflächen darüber.",
+        "items": ["JavaScript", "TypeScript", "React", "Bootstrap"]
+      },
+      {
+        "title": "Auslieferung",
+        "text": "Planbare Releases, vom Code-Review bis zum Deployment.",
+        "items": ["Docker", "GitHub Actions", "CI/CD", "Linux", "Code-Reviews", "Teamleitung"]
+      }
+    ]
   },
   "workExperience": {
     "badge": "Karriere-Zeitachse",
@@ -263,7 +272,7 @@
     "items": [
       {
         "id": 1,
-        "title": "Unternehmensmanagementsystem",
+        "title": "Unternehmens­management­system",
         "description": "Zentrale Geschäftsplattform für Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung, betrieben für mehrere Gruppenunternehmen – mit DATEV-Integration, ZUGFeRD-E-Rechnungen, KI-Funktionen und eigenem HR-Modul.",
         "features": [
           "Ticket- & Auftragsverwaltung",
@@ -273,24 +282,342 @@
           "HR & Zeiterfassung",
           "Mehrsprachigkeit"
         ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Strukturiert als Multi-Modul-Yii-Anwendung, um Admin-Workflows, Dokumentenhandhabung und Integrationen isoliert und wartbar zu halten."
+        "study": {
+          "tagline": "Die zentrale Geschäftsplattform einer Unternehmensgruppe: Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung – mit KI im Arbeitsalltag.",
+          "meta": [
+            {
+              "label": "Rolle",
+              "value": "Softwareentwickler, jetzt KI-Entwickler"
+            },
+            {
+              "label": "Jahre",
+              "value": "2024 bis heute"
+            },
+            {
+              "label": "Quellcode",
+              "value": "Privat, beruflich entwickelt"
+            }
+          ],
+          "numbers": [],
+          "problem": {
+            "title": "Eine Plattform für das ganze Geschäft",
+            "paragraphs": [
+              "Die Plattform trägt das Tagesgeschäft mehrerer Gruppenunternehmen, jedes mit eigener Instanz: Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte, Zeiterfassung und Reporting. Sie ist eine langlebige Yii-Anwendung. Die Arbeit besteht deshalb ebenso aus der Modernisierung des Bestehenden wie aus der Entwicklung von Neuem.",
+              "Ich entwickle und betreue sie seit 2024, zunächst in Teilzeit und jetzt in Vollzeit mit erweitertem Verantwortungsbereich: KI in die Plattform bringen und neue Module entwickeln. Der Code ist privat, daher beschreibt diese Seite die Arbeit ohne Screenshots."
+            ]
           },
-          {
-            "label": "Daten & Compliance",
-            "text": "DATEV- und ZUGFeRD-Abläufe implementiert, um den finanzorientierten Dokumentenaustausch mit konsistenter Datenhandhabung zu unterstützen."
+          "built": [
+            {
+              "title": "DATEV und E-Rechnungen",
+              "text": "REST-Integrationen einschließlich DATEV-bezogener Abläufe und die Erzeugung von ZUGFeRD-XML für den Austausch von Finanzdokumenten."
+            },
+            {
+              "title": "KI-Ticketzuweisung",
+              "text": "Vorschläge, wer ein Ticket übernehmen sollte, mit serverseitiger Zugriffskontrolle."
+            },
+            {
+              "title": "KI-gestützte Suche",
+              "text": "Eine Suche in der Kundenhistorie über Tickets und Auftragspositionen."
+            },
+            {
+              "title": "HR und Zeiterfassung",
+              "text": "Ein eigenes Modul als Ersatz für ein externes Zeiterfassungstool: Kommen/Gehen-Buchungen mit Pausen, Zeitkonten mit Sollstunden, Feiertage und gesetzliche Pausenregelungen, Live-Anwesenheitsübersicht, protokollierte Korrekturen sowie Urlaubs- und Abwesenheitsverwaltung."
+            },
+            {
+              "title": "Reporting und Performance",
+              "text": "Reporting-, Export- und Dashboard-Funktionen sowie schnellere Seiten durch Query-Optimierung und das Entfernen von N+1-Abfragen."
+            },
+            {
+              "title": "Modernisierung",
+              "text": "Legacy-Bereiche in objektorientierten Code überführt, mit automatisierten Tests und Continuous Integration, dazu die Integration einer Telefonanlage und die Umstellung auf ein Bootstrap-5-Admin-Template."
+            }
+          ],
+          "flow": {
+            "title": "Wie die Plattform aufgebaut ist",
+            "lanes": [
+              {
+                "title": "Menschen",
+                "items": ["Mitarbeitende mehrerer Gruppenunternehmen", "Rollenbasierte Zugriffskontrolle"]
+              },
+              {
+                "title": "Module",
+                "items": ["Tickets, Angebote, Aufträge, Rechnungen", "Projekte, Zeiterfassung, HR"]
+              },
+              {
+                "title": "KI-Funktionen",
+                "items": ["Vorschläge zur Ticketzuweisung", "Suche in der Kundenhistorie"]
+              },
+              {
+                "title": "Integrationen",
+                "items": ["DATEV und ZUGFeRD", "Telefonanlage und REST-APIs"]
+              }
+            ],
+            "note": "Jedes Gruppenunternehmen betreibt eine eigene Instanz derselben Anwendung."
           },
-          {
-            "label": "KI & neue Module",
-            "text": "KI-basierte Vorschläge zur Ticketzuweisung und eine KI-gestützte Suche in der Kundenhistorie ergänzt, dazu ein eigenes HR-Modul für Zeiterfassung, Abwesenheiten und Anwesenheit."
+          "hard": [
+            {
+              "title": "KI, die Berechtigungen beachtet",
+              "text": "Die KI-Funktionen sind serverseitig zugriffskontrolliert. Ein Vorschlag oder ein Suchergebnis zeigt nie mehr, als die Person sehen darf."
+            },
+            {
+              "title": "Zeiterfassung nach den Regeln",
+              "text": "Zeitkonten berücksichtigen Sollstunden, Feiertage und gesetzliche Pausenregelungen, und jede Korrektur wird protokolliert."
+            },
+            {
+              "title": "Ein System ändern, auf das sich Menschen täglich verlassen",
+              "text": "Neues entsteht neben Legacy-Code. Änderungen sind deshalb durch Code-Reviews, automatisierte Tests und nebenläufigkeitssichere Datenbanktransaktionen abgesichert."
+            }
+          ],
+          "screens": []
+        }
+      },
+      {
+        "id": 4,
+        "title": "Streaming-Werbeplattform",
+        "description": "Werbeplattform für einen Streaming-Dienst, entwickelt mit Node.js, TypeScript und React: Anzeigenentscheidungen für Videoplayer, Kampagnenanalysen in Echtzeit, Prepaid-Abrechnung mit EU-Umsatzsteuer und ein Dashboard auf Deutsch und Englisch.",
+        "features": [
+          "Anzeigenentscheidungen & VAST für Videoplayer",
+          "Echtzeit-Analysen & Prognosen",
+          "Prepaid-Abrechnung, EU-USt. & Stripe",
+          "KI-Kampagnenassistent",
+          "DSGVO-Werkzeuge & Monitoring"
+        ],
+        "study": {
+          "tagline": "Eine Werbeplattform für einen Streaming-Dienst: Sie wählt die Anzeige für jede Werbepause, zählt jede Wiedergabe genau einmal und rechnet ab, was ausgeliefert wurde.",
+          "meta": [
+            {
+              "label": "Rolle",
+              "value": "Alleiniger Entwickler"
+            },
+            {
+              "label": "Jahr",
+              "value": "2026"
+            },
+            {
+              "label": "Quellcode",
+              "value": "Öffentlich, MIT-Lizenz"
+            }
+          ],
+          "numbers": [
+            {
+              "value": "10.000",
+              "label": "Ereignisse pro Sekunde im Lasttest, keines verloren oder doppelt gezählt"
+            },
+            {
+              "value": "0,5 s",
+              "label": "für einen 90-Tage-Bericht über 9,9 Millionen Zeilen"
+            },
+            {
+              "value": "12 KB",
+              "label": "um die einzelnen Zuschauer einer Kampagne für einen Tag zu zählen"
+            },
+            {
+              "value": "97 s",
+              "label": "vom Redis-Ausfall bis zur Warn-E-Mail"
+            }
+          ],
+          "problem": {
+            "title": "Drei Beteiligte, eine Werbepause",
+            "paragraphs": [
+              "Streaming-Dienste mit Werbetarif zeigen kurze Anzeigen vor, während und nach Episoden. Der Werbetreibende möchte, dass die richtigen Menschen die Anzeige für ein festes Budget sehen. Die Plattform muss für jede Pause eine Anzeige wählen und jede Kampagne im Zeitplan halten. Der Zuschauer schaut zu, und der Player meldet, was passiert ist.",
+              "Ich habe den Teil dazwischen durchgängig entwickelt: Kampagnen und Teams, die Anzeigenentscheidung, einen echten Videoplayer, die Ereigniszählung, Analysen, Abrechnung und den Betrieb drumherum. Alle Marken, Serien und Zugriffe in der Demo sind erfunden."
+            ]
           },
-          {
-            "label": "Geschäftswert",
-            "text": "Bietet operativen Teams einen zentralisierten Arbeitsbereich für Projektverfolgung, Dokumentenverarbeitung und mehrsprachige Zusammenarbeit."
-          }
-        ]
+          "built": [
+            {
+              "title": "Anzeigenentscheidungen",
+              "text": "Für jede Werbepause behält die Plattform die Kampagnen, die zu Laufzeit, Zeitplan, Limits, Land, Gerät, Platzierung, Genre und Zielgruppe passen. Garantierte Kampagnen im Rückstand kommen zuerst, der Rest wird in einer Zweitpreisauktion vergeben. Jeder VAST-4.2-Player kann eine Anzeige anfragen."
+            },
+            {
+              "title": "Vom Upload bis zur Wiedergabe",
+              "text": "Ein Manager lädt ein Video hoch, FFmpeg konvertiert es im Hintergrund, ein Admin gibt es frei, und die Demo-Streaming-Seite spielt es vor, während und nach einer Episode."
+            },
+            {
+              "title": "Analysen und Berichte",
+              "text": "Live-Diagramme, Reichweite und Frequenz, Abbruchstellen, A/B-Tests, die erst bei 95 % Konfidenz einen Gewinner nennen, und gespeicherte Berichte per E-Mail als CSV und PDF."
+            },
+            {
+              "title": "Prepaid-Abrechnung",
+              "text": "Ein Kontobuch, das nie nachträglich geändert wird, Reservierungen für laufende Budgets, lückenlos nummerierte Rechnungen, EU-Umsatzsteuer mit VIES-Prüfung, Währungen zum Tageskurs der Europäischen Zentralbank und optional Stripe Checkout."
+            },
+            {
+              "title": "KI-Assistent",
+              "text": "Optional und standardmäßig aus. Er beantwortet Fragen, etwa warum eine Kampagne im Rückstand ist, mit rein lesenden Werkzeugen und schlägt Änderungen vor, die erst nach Freigabe durch eine Person gelten. Er läuft mit einem kostenlosen lokalen Modell oder einer kostenpflichtigen API."
+            },
+            {
+              "title": "Betrieb",
+              "text": "Strukturierte Logs, Metriken, Traces und Warnungen in Grafana sowie tägliche Backups, die zur Probe in eine Testdatenbank zurückgespielt werden."
+            }
+          ],
+          "flow": {
+            "title": "Wie ein Ereignis gezählt wird",
+            "lanes": [
+              {
+                "title": "Player",
+                "items": ["Spielt die Anzeige ab", "Meldet jedes Ereignis mit eindeutiger ID"]
+              },
+              {
+                "title": "API",
+                "items": [
+                  "Ein Redis-Skript verwirft bereits gesehene IDs",
+                  "Reiht den Rest im selben atomaren Schritt ein"
+                ]
+              },
+              {
+                "title": "Worker",
+                "items": ["Summiert Ereignisse zu Stundenwerten", "Speichert Summen und die ID des Eintrags zusammen"]
+              },
+              {
+                "title": "Dashboard",
+                "items": ["Eine SQL-Abfrage pro Ansicht", "Live-Diagramme und Berichte"]
+              }
+            ],
+            "note": "Eine Wiederholung zählt nicht doppelt, und ein Absturz verliert oder wiederholt kein Ereignis."
+          },
+          "hard": [
+            {
+              "title": "Limits, die auch bei gleichzeitigen Anfragen halten",
+              "text": "Budgets, Ziele und Frequenzlimits werden im selben atomaren Redis-Schritt reserviert, der die Anzeige auswählt, und nicht erst danach geprüft. Eine Kampagne kann ihr Ziel nicht überschreiten, egal wie viele Anfragen gleichzeitig eintreffen."
+            },
+            {
+              "title": "Genau einmal zählen",
+              "text": "Ein Eintrag bleibt in der Warteschlange, bis seine Summen gespeichert sind, und seine ID wird in derselben Transaktion gespeichert. Der Lasttest enthielt einen Worker-Absturz, und kein Ereignis ging verloren oder wurde doppelt gezählt."
+            },
+            {
+              "title": "Schnelle Berichte ohne Data Warehouse",
+              "text": "Ereignisse werden in eine Zeile pro Kampagne, Stunde, Serie, Platzierung, Land und Gerät summiert. Die Tabelle wächst also mit der Vielfalt, nicht mit dem Datenverkehr. Einzelne Zuschauer werden in HyperLogLog-Strukturen gezählt."
+            }
+          ],
+          "screens": [
+            "Die Demo-Streaming-Seite spielt eine Anzeige ab, daneben die Ereignisse, die der Player meldet",
+            "Die Auslieferungsprüfung erklärt ohne KI, warum eine Kampagne im Rückstand ist",
+            "Zustand der Plattform in Grafana, während eines Redis-Ausfalls und der Erholung",
+            "Das Kampagnenformular mit seiner Live-Prognose"
+          ]
+        }
+      },
+      {
+        "id": 15,
+        "title": "CareerCraft",
+        "description": "KI-gestützte Plattform für die Jobsuche auf dem deutschen Arbeitsmarkt, entwickelt mit Laravel 13 und Livewire 4: Aus einem strukturierten Karriereprofil entstehen mehrere Lebensläufe – mit Lebenslauf-Import durch ein lokales KI-Modell, gespeicherten PDF- und Word-Versionen und einer Prüfung, wie Bewerbermanagementsysteme jede Version lesen.",
+        "features": [
+          "Karriereprofil & Lebenslauf-Import",
+          "Lebenslauf-Editor mit vier Vorlagen",
+          "PDF- & Word-Versionen",
+          "Parser-Prüfung",
+          "Wählbare KI-Anbieter",
+          "Deutsch & Englisch"
+        ],
+        "study": {
+          "tagline": "Eine Plattform für die Jobsuche auf dem deutschen Arbeitsmarkt: Aus einem Karriereprofil entsteht jeder Lebenslauf, und jede Version wird so geprüft, wie ein Bewerbermanagementsystem sie liest.",
+          "meta": [
+            {
+              "label": "Rolle",
+              "value": "Alleiniger Entwickler"
+            },
+            {
+              "label": "Jahr",
+              "value": "2026, in Entwicklung"
+            },
+            {
+              "label": "Quellcode",
+              "value": "Öffentlich, MIT-Lizenz"
+            }
+          ],
+          "numbers": [
+            {
+              "value": "4",
+              "label": "Lebenslauf-Vorlagen, darunter der tabellarische Lebenslauf"
+            },
+            {
+              "value": "3",
+              "label": "KI-Anbieter zur Auswahl, einer davon kostenlos und lokal"
+            },
+            {
+              "value": "2",
+              "label": "Sprachen auf jeder Seite und in jeder E-Mail"
+            },
+            {
+              "value": "0",
+              "label": "Lebenslauf-Dateien, die nach einem Import gespeichert bleiben"
+            }
+          ],
+          "problem": {
+            "title": "Eine Laufbahn, viele Bewerbungen",
+            "paragraphs": [
+              "Wer sich bewirbt, schreibt dieselbe Laufbahn jedes Mal in einen leicht anderen Lebenslauf um und weiß nie genau, was die Software des Arbeitgebers aus dem PDF macht. In Deutschland kommt ein zweites Format hinzu: der tabellarische Lebenslauf mit Foto, Ort, Datum und Unterschrift.",
+              "CareerCraft hält ein strukturiertes Karriereprofil und erstellt daraus jeden Lebenslauf. Die Plattform ist in Entwicklung: Grundlage, Konten, Profil, Lebenslauf-Import, Lebenslauf-Editor und die KI-Schicht sind fertig. Als Nächstes folgen Anschreiben, Job-Matching und die Verwaltung von Bewerbungen."
+            ]
+          },
+          "built": [
+            {
+              "title": "Karriereprofil",
+              "text": "Berufserfahrung mit Erfolgen, Ausbildung, Fähigkeiten mit Stufen, Projekte, Zertifikate und Sprachen nach GER-Niveau, dazu ein Stärkewert, der zeigt, was als Nächstes ergänzt werden sollte."
+            },
+            {
+              "title": "Import",
+              "text": "Einen Lebenslauf als PDF oder Word-Datei hochladen, und ein lokales KI-Modell schlägt vor, was wohin gehört. Oder den Datenexport von LinkedIn hochladen, der ohne KI gelesen wird. Die Person prüft jedes Feld, bevor etwas gespeichert wird."
+            },
+            {
+              "title": "Lebenslauf-Editor",
+              "text": "Mehrere Lebensläufe aus einem Profil, vier Vorlagen, eine Live-Vorschau im A4-Format, die Seitenumbrüche zeigt, sowie Überschriften und Datumsangaben in der Sprache des Lebenslaufs."
+            },
+            {
+              "title": "Gespeicherte Versionen",
+              "text": "Jede Version behält ihr PDF und ihre Word-Datei unverändert, sodass immer klar ist, was verschickt wurde. Zwei Versionen lassen sich Zeile für Zeile vergleichen."
+            },
+            {
+              "title": "Parser-Prüfung",
+              "text": "Jedes PDF wird als reiner Text zurückgelesen, so wie ein Bewerbermanagementsystem es liest. Alles, was nicht als ganze Wörter ankommt, wird aufgelistet."
+            },
+            {
+              "title": "KI-Schicht",
+              "text": "Ein Admin wählt Ollama, Claude oder eine OpenAI-kompatible API und legt ein Tageskontingent pro Person und Token-Preise fest. Jede Anfrage wird mit Tokens und Kosten erfasst."
+            }
+          ],
+          "flow": {
+            "title": "Vom Profil zum verschickten Lebenslauf",
+            "lanes": [
+              {
+                "title": "Profil",
+                "items": ["Ein strukturierter Datensatz", "Import aus Lebenslauf oder LinkedIn"]
+              },
+              {
+                "title": "Lebenslauf-Editor",
+                "items": ["Vorlage, Sprache und Abschnitte", "Live-Vorschau im A4-Format"]
+              },
+              {
+                "title": "Gotenberg",
+                "items": ["Rendert dieselbe Seite wie die Vorschau", "PDF und Word-Datei als Version gespeichert"]
+              },
+              {
+                "title": "Parser-Prüfung",
+                "items": ["Liest das PDF als Text zurück", "Listet auf, was ein Parser übersieht"]
+              }
+            ],
+            "note": "Das PDF entsteht aus derselben Seite wie die Vorschau: Verschickt wird genau das, was zu sehen ist."
+          },
+          "hard": [
+            {
+              "title": "Eine KI, die nur Fakten übernimmt",
+              "text": "Der Lebenslauf-Leser soll übernehmen, was im Lebenslauf steht, nie einen Arbeitgeber, ein Datum oder eine Fähigkeit hinzufügen und Anweisungen im Lebenslauf ignorieren. Das Ergebnis ist ein Vorschlag: Die Person wählt aus, was übernommen wird."
+            },
+            {
+              "title": "Eine Schicht für jede KI-Funktion",
+              "text": "Alle Anfragen laufen über eine Stelle, die bei überlasteten Anbietern erneut versucht, Antworten streamt, am Tageskontingent stoppt und die Nutzung erfasst. Schlüssel für kostenpflichtige Anbieter bleiben in der Umgebung und werden nie in der Datenbank gespeichert."
+            },
+            {
+              "title": "PDFs, die ein Parser lesen kann",
+              "text": "Die Vorlagen sind einspaltig, mit reinem Text in Lesereihenfolge. Die Parser-Prüfung weist das für jede Version nach, statt es anzunehmen."
+            }
+          ],
+          "screens": [
+            "Der Lebenslauf-Editor mit Live-Vorschau im A4-Format",
+            "Das Karriereprofil mit einem Stärkewert, der zeigt, was fehlt",
+            "Eine gespeicherte Version mit ihrer Parser-Prüfung",
+            "KI-Einstellungen: Anbieter, Modell, Tageskontingent und Nutzung"
+          ]
+        }
       },
       {
         "id": 2,
@@ -334,32 +661,6 @@
           {
             "label": "Geschäftswert",
             "text": "Hilft Fundraising-Teams, Beiträge zu verfolgen, Kampagnen zu messen und die Berichterstattung an den tatsächlichen Aktivitäten auszurichten."
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "title": "Streaming-Werbeplattform",
-        "description": "Werbeplattform für einen Streaming-Dienst, entwickelt mit Node.js, TypeScript und React: Anzeigenentscheidungen für Videoplayer, Kampagnenanalysen in Echtzeit, Prepaid-Abrechnung mit EU-Umsatzsteuer und ein Dashboard auf Deutsch und Englisch.",
-        "features": [
-          "Anzeigenentscheidungen & VAST für Videoplayer",
-          "Echtzeit-Analysen & Prognosen",
-          "Prepaid-Abrechnung, EU-USt. & Stripe",
-          "KI-Kampagnenassistent",
-          "DSGVO-Werkzeuge & Monitoring"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Als Node.js- und TypeScript-API mit React-Dashboard entwickelt, mit PostgreSQL für Kampagnen und Abrechnung sowie Redis für atomare Anzeigenentscheidungen und eine Warteschlange, die jedes Ereignis genau einmal zählt."
-          },
-          {
-            "label": "Produktionsreife",
-            "text": "Mit strukturierten Logs, Prometheus-Metriken, OpenTelemetry-Traces und Grafana-Warnungen ausgeliefert, dazu Backups mit automatisch geprüfter Wiederherstellung sowie Browsertests und CodeQL-Scans in der CI."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Ermöglicht Werbetreibenden, Videokampagnen durchgängig zu planen, zu schalten und zu messen, vom Upload und der Freigabe über die Auslieferung bis zu Berichten und Rechnungen, mit einer Umsatzansicht für den Publisher."
           }
         ]
       },
@@ -713,6 +1014,32 @@
       "decline": "Ablehnen",
       "privacy": "Datenschutzerklärung",
       "settings": "Cookie-Einstellungen"
+    },
+    "study": {
+      "eyebrow": "Fallstudie",
+      "back": "Alle Projekte",
+      "read": "Fallstudie lesen",
+      "built": "Was ich entwickelt habe",
+      "hard": "Die schwierigen Teile",
+      "screens": "Ansichten",
+      "stack": "Stack",
+      "next": "Nächste Fallstudie",
+      "cta_title": "Möchten Sie über ein ähnliches Projekt sprechen?",
+      "cta": "Kontakt aufnehmen",
+      "group": "Fallstudien"
+    },
+    "activity": {
+      "eyebrow": "Open Source",
+      "heading_a": "Was ich",
+      "heading_em": "zuletzt veröffentlicht habe",
+      "lead": "Releases und Commits aus meinen öffentlichen GitHub-Repositories, täglich aktualisiert.",
+      "summary": "Commits in {repos} öffentlichen Repositories in den letzten sechs Monaten",
+      "less": "Weniger",
+      "more": "Mehr",
+      "releases": "Neueste Releases",
+      "commits": "Letzte Commits",
+      "updated": "Aktualisiert am {date}",
+      "profile": "GitHub-Profil"
     }
   }
 }

@@ -406,3 +406,70 @@ dialog[open]::backdrop {
     filter: none;
   }
 }
+
+/* Project pictures: one backdrop for every project, with the window lifting on hover */
+.cover {
+  background:
+    radial-gradient(120% 90% at 0% 0%, color-mix(in oklch, var(--accent) 22%, transparent), transparent 60%),
+    radial-gradient(90% 80% at 100% 100%, color-mix(in oklch, var(--accent-2) 16%, transparent), transparent 65%),
+    color-mix(in oklch, var(--fg) 4%, transparent);
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+.cover-window {
+  transition: translate 0.7s var(--ease-out-expo);
+}
+.group:hover .cover-window {
+  translate: 0 -6px;
+}
+
+/* Case study flow: arrows point down between stacked steps and right between columns */
+.flow-arrow {
+  left: 50%;
+  top: 100%;
+  margin: 8px 0 0 -8px;
+  rotate: 90deg;
+}
+@media (min-width: 640px) {
+  .flow-arrow:not(.flow-arrow-wrap) {
+    left: 100%;
+    top: 50%;
+    margin: -8px 0 0 8px;
+    rotate: none;
+  }
+}
+@media (min-width: 1280px) {
+  .flow-arrow,
+  .flow-arrow:not(.flow-arrow-wrap) {
+    left: 100%;
+    top: 50%;
+    margin: -8px 0 0 4px;
+    rotate: none;
+  }
+}
+
+/* Moving between the home page and a case study: a short fade, with the project's
+   picture gliding into place (cross-document View Transitions, where supported) */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+    types: page;
+  }
+}
+html:active-view-transition-type(page)::view-transition-old(root) {
+  animation: fade-out 0.2s ease-out both;
+}
+html:active-view-transition-type(page)::view-transition-new(root) {
+  animation: fade-in 0.35s ease-out both;
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}

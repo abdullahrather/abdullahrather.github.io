@@ -1,20 +1,23 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import WorkExperience from "./components/WorkExperience";
 import Expertise from "./components/Expertise";
 import Projects from "./components/Projects";
+import Activity from "./components/Activity";
 import Contact from "./components/Contact";
+import CaseStudy from "./components/CaseStudy";
 import Footer from "./components/Footer";
 import CommandPalette from "./components/CommandPalette";
 import Toaster from "./components/Toaster";
 import ConsentBanner from "./components/ConsentBanner";
 import { useSectionTracking } from "./lib/analytics";
 import { useTranslation } from "./lib/i18n";
+import { RouteContext } from "./lib/route";
 import { SECTIONS } from "./lib/site";
 
-const TRACKED_SECTIONS = ["top", ...SECTIONS.map((s) => s.id)];
+const TRACKED_SECTIONS = ["top", ...SECTIONS.map((s) => s.id), "activity"];
 
 /** Fixed decorative backdrop: fading grid, accent glow and film grain. */
 const Backdrop = () => (
@@ -26,14 +29,28 @@ const Backdrop = () => (
   </div>
 );
 
-function App() {
+const HOME = { page: "home" };
+const SOFT_HYPHEN = String.fromCharCode(0xad);
+
+function App({ route = HOME }) {
   const { t } = useTranslation();
   const [commandOpen, setCommandOpen] = useState(false);
   const openCommand = useCallback(() => setCommandOpen(true), []);
   useSectionTracking(TRACKED_SECTIONS);
 
+  const study = route.page === "study" ? (t("projects.items") || []).find((p) => p.slug === route.slug) : null;
+
+  // The tab title and description follow the page and language; the built HTML holds the English ones.
+  // Long German titles carry soft hyphens for the page; the tab title is plain text.
+  const title = study ? `${study.title.replaceAll(SOFT_HYPHEN, "")} — Abdullah Rather` : t("ui.meta.title");
+  const description = study ? study.study.tagline : t("ui.meta.description");
+  useEffect(() => {
+    document.title = title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+  }, [title, description]);
+
   return (
-    <>
+    <RouteContext value={route}>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-sm focus:text-bg"
@@ -43,18 +60,25 @@ function App() {
       <Backdrop />
       <Nav onOpenCommand={openCommand} />
       <main id="main">
-        <Hero />
-        <About />
-        <WorkExperience />
-        <Expertise />
-        <Projects />
-        <Contact />
+        {study ? (
+          <CaseStudy project={study} />
+        ) : (
+          <>
+            <Hero />
+            <About />
+            <WorkExperience />
+            <Expertise />
+            <Projects />
+            <Activity />
+            <Contact />
+          </>
+        )}
       </main>
       <Footer />
       <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} />
       <Toaster />
       <ConsentBanner />
-    </>
+    </RouteContext>
   );
 }
 

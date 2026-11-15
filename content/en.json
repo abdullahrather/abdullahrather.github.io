@@ -546,17 +546,24 @@
       "group": "Case studies"
     },
     "activity": {
-      "eyebrow": "Open source",
+      "eyebrow": "On GitHub",
       "heading_a": "What I've shipped",
       "heading_em": "lately",
-      "lead": "Releases and commits from my public GitHub repositories, refreshed every day.",
-      "summary": "commits to {repos} public repositories in the last six months",
+      "lead": "My contributions on GitHub, and the latest releases and commits from my public repositories, refreshed every day.",
       "less": "Less",
       "more": "More",
       "releases": "Latest releases",
       "commits": "Recent commits",
       "updated": "Updated {date}",
-      "profile": "GitHub profile"
+      "profile": "GitHub profile",
+      "total_recent": "contributions in the last 12 months",
+      "total_year": "contributions in {year}",
+      "recent": "Last 12 months",
+      "years": "Show contributions for",
+      "day": "{count} contributions on {date}",
+      "day_one": "1 contribution on {date}",
+      "day_none": "No contributions on {date}",
+      "hint": "Point at a day to see its contributions."
     }
   }
 }

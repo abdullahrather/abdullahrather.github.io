@@ -28,7 +28,8 @@ const studies = en.projects.items
   .filter((p) => p.caseStudy);
 const studyPath = (study) => `work/${study.slug}/`;
 const analyticsOn = Boolean(site.analyticsId);
-const activityOn = Boolean(site.github);
+const calendars = readContent("activity.json").calendars ?? [];
+const activityOn = Boolean(site.github) && calendars.length > 0;
 
 const server = await preview({ preview: { port: PORT, strictPort: true }, logLevel: "error" });
 const browser = await chromium.launch({ channel: process.env.PW_CHANNEL || undefined });
@@ -92,7 +93,24 @@ try {
       const requests = [];
       page.on("request", (request) => requests.push(request.url()));
       await page.evaluate(() => document.getElementById("activity").scrollIntoView({ behavior: "instant" }));
-      assert.ok((await page.locator('#activity [role="img"] > span').count()) > 170, "half a year of days");
+      const [recent, ...years] = calendars;
+      const days = page.locator('#activity [role="img"] > span');
+      assert.equal(await days.count(), recent.counts.length, "a square per day of the last 12 months");
+      assert.ok((await page.locator("#activity").innerText()).includes(String(recent.total)));
+
+      // A year shows its own calendar and total, and the readout names the day under the pointer.
+      const choices = page.locator('#activity [role="group"] button');
+      assert.equal(await choices.count(), calendars.length, "the last 12 months and every year");
+      if (years.length) {
+        const year = years[0];
+        await choices.nth(1).click();
+        assert.equal(await choices.nth(1).getAttribute("aria-pressed"), "true");
+        assert.equal(await days.count(), year.counts.length, `a square per day of ${year.id}`);
+        assert.ok((await page.locator("#activity").innerText()).includes(String(year.total)));
+      }
+      await days.first().hover();
+      assert.match(await page.locator('#activity [aria-live="polite"]').innerText(), /\d{4}/, "the day is named");
+
       assert.ok((await page.locator('#activity a[href*="/releases/tag/"]').count()) > 0, "a release is listed");
       assert.ok((await page.locator('#activity a[href*="/commit/"]').count()) > 0, "a commit is listed");
       await page.waitForTimeout(300);

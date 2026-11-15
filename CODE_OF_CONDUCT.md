@@ -18,8 +18,8 @@ each other.
 
 ## If something goes wrong
 
-Write to me at [abdullahrather19@gmail.com](mailto:abdullahrather19@gmail.com). I read every report
-and keep the reporter's name private. I may edit or remove comments, close issues, or block
-accounts that break these rules.
+Write to the maintainer privately, at the email address on their GitHub profile. Every report is
+read, and the reporter's name is kept private. Comments may be edited or removed, issues closed,
+and accounts that break these rules blocked.
 
 This applies to everything in this repository: issues, pull requests, reviews and discussions.

@@ -1,16 +1,16 @@
 # Contributing
 
-Thanks for your interest. This is my personal portfolio, so what it says about me is mine to
-write, but fixes are welcome.
+Thanks for your interest. This repository is a portfolio template, and the code behind my own site.
+Fixes and improvements to the template are welcome.
 
 ## What helps
 
 - **Bug reports:** something broken, a layout problem on your device, or an accessibility barrier.
-- **Corrections:** typos and translation mistakes in English or German.
+- **Corrections:** typos and translation mistakes in the interface text or the demo content.
 - **Small fixes** as pull requests, for any of the above.
 
-New sections, redesigns and changes to my own content are unlikely to be merged. Open an issue first
-if you're unsure.
+Large changes such as new sections or a redesign are unlikely to be merged. Open an issue first if
+you're unsure.
 
 ## Getting started
 

@@ -1,0 +1,24 @@
+name: Accessibility barrier
+description: Something is hard or impossible to use with your setup.
+labels: [accessibility]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What were you trying to do, and what got in the way?
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The address of the page.
+    validations:
+      required: true
+  - type: input
+    id: setup
+    attributes:
+      label: Browser and assistive technology
+      placeholder: NVDA with Firefox, keyboard only, or 200% zoom
+    validations:
+      required: true

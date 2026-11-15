@@ -1,0 +1,25 @@
+name: Typo or translation fix
+description: A mistake in the English or German text.
+labels: [content]
+body:
+  - type: textarea
+    id: text
+    attributes:
+      label: What does it say now?
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: What should it say?
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - English
+        - German
+    validations:
+      required: true

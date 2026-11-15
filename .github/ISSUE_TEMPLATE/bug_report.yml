@@ -1,0 +1,39 @@
+name: Bug report
+description: Something on the site is broken or looks wrong.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The address of the page, such as https://abdullahrather.com/work/career-craft/
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: Firefox on Windows 11, or Safari on an iPhone
+    validations:
+      required: true
+  - type: dropdown
+    id: settings
+    attributes:
+      label: Theme and language
+      multiple: true
+      options:
+        - Dark theme
+        - Light theme
+        - English
+        - German
+  - type: textarea
+    id: more
+    attributes:
+      label: Screenshot or anything else

@@ -2,7 +2,7 @@
 // The pre-rendered HTML gives an instant first paint, indexable content and a
 // no-JS fallback; src/main.jsx then hydrates it. The home page is dist/index.html
 // and each case study is dist/work/<slug>/index.html. Content comes from the content
-// folder (see scripts/content.mjs), which also gives the sitemap, robots.txt and domain.
+// folder (see scripts/content.mjs), which also gives the sitemap and robots.txt.
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -90,9 +90,6 @@ fs.writeFileSync(
     "</urlset>\n",
 );
 fs.writeFileSync(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
-// GitHub Pages keeps a custom domain only when the published site has a CNAME file.
-const host = new URL(site.url).hostname;
-if (!host.endsWith(".github.io")) fs.writeFileSync(path.join(dist, "CNAME"), `${host}\n`);
 
 for (const page of pages) {
   console.log(`prerender: dist/${page} is ${(fs.statSync(path.join(dist, page)).size / 1024).toFixed(1)} kB`);

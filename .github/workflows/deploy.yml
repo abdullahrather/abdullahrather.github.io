@@ -1,6 +1,7 @@
 name: Build & Deploy Vite site to GitHub Pages
 
-# Builds the site and publishes it to the gh-pages branch.
+# Builds the site and hands it straight to GitHub Pages: nothing built is kept in a branch.
+# The repository's Settings → Pages source must be "GitHub Actions".
 #
 # Content: the repository's own content/ folder, which is the demo, unless the repository
 # variable CONTENT_REPO names a repository that holds your own content folder. Then that
@@ -17,15 +18,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
-# The newest run wins, so an older build can't overwrite a newer one.
+# One deploy at a time. A deploy that has started finishes; a waiting older one is dropped.
 concurrency:
   group: deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     env:
       CONTENT_REPO: ${{ vars.CONTENT_REPO }}
@@ -83,10 +84,21 @@ jobs:
       - name: Smoke and accessibility checks
         run: npm run test:smoke
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3
+      - name: Package the site for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          branch: gh-pages
-          force_orphan: true
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

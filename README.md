@@ -1,44 +1,134 @@
-# Abdullah Rather — Portfolio
+# Portfolio template
 
 [![Deploy](https://github.com/abdullahrather/abdullahrather.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdullahrather/abdullahrather.github.io/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Release](https://img.shields.io/github/v/release/abdullahrather/abdullahrather.github.io)](https://github.com/abdullahrather/abdullahrather.github.io/releases)
 
-My personal site, live at **[abdullahrather.com](https://abdullahrather.com)**. It shows who I am, where I've worked, and what I've built, with a case study for each of my larger projects. Everything is in English and German, with a light and a dark theme.
+A personal portfolio site for developers: who you are, where you've worked, what you've built, and a case-study page for each larger project. English and German, light and dark, fast, and free to host on GitHub Pages.
 
-It's a static site: React pages turned into plain HTML when the site is built, hosted on GitHub Pages, with no server and no database.
+It ships with a fictional demo person, Robin Hartmann, so a fresh copy builds a complete site straight away. You replace one folder, `content/`, with your own details. The code doesn't need changing.
 
-The repository itself ships with a fictional demo person, Robin Hartmann, so a fresh copy builds a complete working site straight away. My own content lives in a private repository that the deploy pulls in. See [Use it for your own site](#use-it-for-your-own-site).
+My own site, [abdullahrather.com](https://abdullahrather.com), runs on this repository with my content kept in a private repository.
 
-![The home page: headline, portrait and three case studies as a fan of windows](./docs/images/home.webp)
+![The demo home page: headline, portrait and two case studies as a fan of windows](./docs/images/home.webp)
 
-| Projects | A case study |
+| About | Projects |
 |---|---|
-| ![The project grid, with screenshots and drawn schematics in one style](./docs/images/projects.webp) | ![The case-study page for the streaming ad platform](./docs/images/case-study.webp) |
+| ![The About section: summary, current role, figures and grouped skills](./docs/images/about.webp) | ![The project grid, with drawn schematics for each project](./docs/images/projects.webp) |
 
-| GitHub activity |
+| A case study |
 |---|
-| ![A six-month commit grid, with the latest release and commit of each public repository](./docs/images/activity.webp) |
+| ![A case-study page in the light theme](./docs/images/case-study.webp) |
 
-## What's on the site
+## What you get
 
 | Section | What it shows |
 |---|---|
-| **Hero** | Who I am in one sentence, my resume in both languages, and the three case studies as a fan of windows |
-| **About** | A short summary, my current role, and skills grouped by what I use them for |
-| **Experience** | My work history, with durations worked out from the dates so they stay current |
-| **Focus** | The six kinds of work I do most |
-| **Work** | Fifteen projects in a grid that filters by type, with details in a dialog |
-| **Case studies** | A page per larger project at `/work/<name>/`: the problem, what I built, how it works, the hard parts and screenshots |
-| **Activity** | A six-month commit grid, and the latest release and commit from each of my public repositories |
-| **Contact** | A contact form, and my email and profiles |
+| **Hero** | Your headline, photo, resume download and links, and your case studies as a fan of windows |
+| **About** | A summary, your current role, four figures, and skills grouped by what you use them for |
+| **Experience** | Your work history, with durations worked out from the dates so they stay current |
+| **Focus** | The kinds of work you do most |
+| **Work** | Your projects in a grid that filters by type, with details in a dialog |
+| **Case studies** | A page per larger project at `/work/<name>/`: the problem, what you built, how it works, the hard parts and screenshots |
+| **Activity** | Optional: a six-month commit grid and the latest release and commit from your public GitHub repositories |
+| **Contact** | A contact form, your email and profiles |
 
 Around these:
 
-- **Command menu:** `Ctrl+K` or `⌘K` jumps to a section or a case study, switches the theme or language, copies my email, or opens my resume.
-- **Two languages:** English and German. The site follows the browser's language until someone picks one.
-- **Two themes:** dark and light, following the system until someone picks one, with no flash on load.
-- **Privacy:** Google Analytics loads only after a visitor agrees, and the [privacy page](https://abdullahrather.com/privacy/) says what is collected.
+- **Command menu:** `Ctrl+K` or `⌘K` jumps to a section or a case study, switches theme or language, copies your email or opens your resume.
+- **Two languages and two themes,** following the visitor's browser and system until they pick.
+- **Plain HTML first:** every page is rendered to HTML when the site is built, so it shows before JavaScript loads, search engines can read it, and it works with JavaScript off.
+- **Accessible:** keyboard support, reduced motion, and automated accessibility checks on every change.
+- **Privacy-friendly:** no analytics unless you add an ID, and then only after the visitor agrees.
+
+## Make it yours
+
+### 1. Copy the repository
+
+Use **Use this template** on GitHub, or fork it. Name the copy **`<your-username>.github.io`**, or plan to use your own domain. The site is built to be served from the root of a domain, so a project address such as `<your-username>.github.io/portfolio/` won't load its styles.
+
+### 2. Replace the content
+
+Everything about the person behind the site is in `content/`:
+
+| File | What it holds |
+|---|---|
+| `site.json` | Your name, address, email, location, time zone, links, resume files, figures and tech list |
+| `en.json`, `de.json` | All text, in English and German. Change both |
+| `facts.json` | Dates and links for your jobs, and the pictures, links and tech lists for your projects |
+| `public/` | Your photo, resumes, screenshots, favicons, social image and privacy page |
+| `email/` | Copies of the contact form's email templates, to paste into EmailJS |
+| `activity.json` | The saved GitHub activity. Written by the deploy; no need to edit |
+
+Then check it:
+
+```bash
+npm install
+npm run check:content
+npm run dev
+```
+
+`npm run check:content` lists anything missing or mismatched, such as text in one language only, a missing picture, or a bad date.
+
+### 3. Turn on GitHub Pages
+
+Push to `main`. The deploy workflow builds the site and publishes it to the `gh-pages` branch. Then, in your repository's **Settings → Pages**, set the source to **Deploy from a branch**, branch `gh-pages`. Merging into `main` updates the site from then on, and it also rebuilds once a day.
+
+For your own domain, set `url` in `site.json` to it. The build writes the `CNAME` file GitHub Pages needs; you add the DNS records with your domain provider.
+
+## The settings in `site.json`
+
+| Setting | What it does |
+|---|---|
+| `name`, `initials` | Shown in the navigation, footer, page titles and metadata |
+| `url` | The site's address, without a trailing slash. Used for links, the sitemap, `robots.txt` and `CNAME` |
+| `email`, `location` | Shown in the contact section, and used by the contact form |
+| `timezone`, `timezoneLabel` | Your local time in the About section and footer, such as `Europe/Berlin` and `CET / CEST` |
+| `careerStart` | The date your career started, as `YYYY-MM-DD`. Years of experience are worked out from it |
+| `portrait`, `portraitAvif` | Your photo, and an optional smaller AVIF copy for browsers that support it |
+| `socialImage` | The 1200 × 630 picture shown when the site is shared |
+| `shortDescription`, `person` | The description and details for search engines |
+| `socials` | Your profiles. `id` can be `github`, `linkedin` or `xing`, which have icons |
+| `resume` | Your resume file per language. Without a German one, the English one is used |
+| `stats` | The three figures in the About section after years of experience. Their labels are in the language files |
+| `stack` | The technologies in the moving band under the hero |
+| `github` | Your GitHub user, for the activity section |
+| `analyticsId` | A Google Analytics ID |
+
+Some parts switch themselves off when left empty:
+
+| Left empty | Result |
+|---|---|
+| `analyticsId` | No analytics, no cookie banner, and no "Cookie settings" link |
+| `github` | No GitHub activity section |
+| `portraitAvif` | Only `portrait` is used |
+| The EmailJS secrets | The contact form shows a notice, and visitors use your email instead |
+
+### Projects
+
+Each project needs an entry in `facts.json` and text in both language files, matched by `id`.
+
+- **The picture** is either `shot`, a screenshot saved as `name.webp` (1200px wide) and `name-640.webp` (640px wide), both 16:10, or `cover`, one of the drawn schematics: `platform`, `records`, `form`, `kanban`, `chart`, `auth`, `site` or `convert`.
+- **A case study** needs `caseStudy: true` and a `screens` list in `facts.json`, and a `study` block in both language files with a caption per screenshot. The first three case studies also appear in the hero.
+- **A GitHub link** marks a project as public; `#` marks it as private.
+
+### Contact form
+
+The form sends messages through [EmailJS](https://www.emailjs.com) and is protected by Google reCAPTCHA. Both have free plans. Create an EmailJS service and template (the copies in `content/email/` are a starting point), then add these repository secrets in **Settings → Secrets and variables → Actions**:
+
+`VITE_EMAILJS_USER_ID`, `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_NOTIFY`, `VITE_EMAILJS_NOTIFY_TO`, `VITE_RECAPTCHA_SITE_KEY`
+
+For local development, put the same values in `.env`, as `.env.example` shows.
+
+### Keep your content private
+
+If you'd rather not have your content in a public repository, as I do:
+
+1. Put your `content/` folder in a private repository of its own.
+2. In the public repository, add the variable `CONTENT_REPO` (such as `you/portfolio-content`) and the secret `CONTENT_TOKEN`: a fine-grained token with read access to that repository's contents.
+3. The deploy then checks out your content in place of the demo, checks it, and runs the browser checks on it before publishing. If it can't read it, the deploy stops and the live site stays as it is.
+4. To rebuild when the content changes, add a workflow to the private repository that starts the public deploy. Mine runs `gh workflow run deploy.yml --repo <public repo>` with a token that has Actions access.
+5. To work on it locally, clone it next to the code and set `CONTENT_DIR=../portfolio-content` in `.env`.
 
 ## How it works
 
@@ -48,15 +138,14 @@ Around these:
    en.json, de.json├─▶ React components ─▶ npm run build ─▶ dist/index.html
    facts.json      │                                        dist/work/<name>/index.html
    public/        ─┘
-                                                                        │
-                                              GitHub Actions ─▶ GitHub Pages ─▶ abdullahrather.com
+                                                     GitHub Actions ─▶ GitHub Pages
 ```
 
-- **Every page is plain HTML first.** The build renders the home page and each case study to its own HTML file, with the styles inside it. The content shows before any JavaScript loads, search engines can read it, and it works with JavaScript turned off. React then takes over the page for the interactive parts.
-- **Content is separate from code.** Everything about the person behind the site is in one `content/` folder: the name, links and keys in `site.json`, all text in two language files, dates and pictures in a facts file, and the photo, resumes and screenshots in `public/`. The code holds no personal details. A check fails the build when something in the folder is missing or the two languages don't match.
-- **Project pictures share one style.** Each project is shown as a window: a real screenshot where the project can be shown, or a schematic drawn in the theme's colours where the code is private.
-- **GitHub activity is saved, not fetched live.** A script reads GitHub's public API when the site is built and saves the result. The site rebuilds once a day to keep it fresh. A visitor's browser never contacts GitHub.
-- **Moving between pages is animated by the browser.** Opening a case study fades the page and glides the project's picture into place, in browsers that support View Transitions. Others load the page normally.
+- **Every page is plain HTML first.** The build renders the home page and each case study to its own HTML file, with the styles inside it. React then takes over for the interactive parts.
+- **Content is separate from code.** The code names no one. The page header, sitemap, `robots.txt` and `CNAME` are all written from the content folder.
+- **Project pictures share one style.** Each project is a window on the same backdrop: a real screenshot, or a schematic drawn in the theme's colours.
+- **GitHub activity is saved, not fetched live.** The deploy reads GitHub's public API and saves the result, so a visitor's browser never contacts GitHub.
+- **Moving between pages is animated by the browser,** in browsers that support View Transitions. Others load the page normally.
 - **No animation library.** All motion is CSS, and it's turned off for visitors who ask their system to reduce motion.
 
 ## Stack
@@ -64,124 +153,64 @@ Around these:
 | Part | Choice |
 |---|---|
 | Pages | React 19, built with Vite 8 and rendered to static HTML |
-| Styles | Tailwind CSS 4, with the design's colours and fonts as tokens in `src/index.css` |
+| Styles | Tailwind CSS 4, with the colours and fonts as tokens in `src/index.css` |
 | Fonts | Geist, Geist Mono and Instrument Serif, served from the site itself |
-| Contact form | EmailJS and Google reCAPTCHA, both loaded only when someone starts typing |
-| Statistics | Google Analytics, only after consent |
+| Contact form | EmailJS and Google reCAPTCHA, loaded only when someone starts typing |
+| Statistics | Google Analytics, optional and only after consent |
 | Hosting | GitHub Pages, deployed by GitHub Actions |
 | Quality | ESLint, Prettier, Playwright and axe |
 
-## Run it
+## Run it locally
 
 You need Node.js 22 or newer.
 
 ```bash
 npm install
-npm run dev
+npm run dev        # the site, while you work on it
+npm run build      # the site as it's deployed, in dist/
+npm run preview    # serves dist/
 ```
-
-Open the address it prints. To see the site as it's deployed:
-
-```bash
-npm run build
-npm run preview
-```
-
-The contact form needs EmailJS and reCAPTCHA keys. Copy `.env.example` to `.env` and fill them in. Without them the form shows a notice, and everything else works.
-
-`npm run activity` refreshes the saved GitHub activity. It needs no key.
 
 ## Project structure
 
 ```
-content/           Everything about the person behind the site
-  site.json          Name, address, email, links, time zone, analytics ID, resume files, tech list
-  en.json, de.json   All text
-  facts.json         Dates, links, pictures and tech lists for jobs and projects
-  activity.json      The saved GitHub activity
-  email/             Copies of the EmailJS email templates
-  public/            Photo, resumes, screenshots, favicons and the privacy page
+content/           Everything about the person behind the site (see above)
 src/
   components/      One file per section, plus CaseStudy (the /work/<name>/ page) and Cover (project pictures)
   lib/             Languages, routes, theme, analytics and small hooks
   entry-server.jsx Renders a page to HTML during the build
   index.css        Colours, fonts and shared styles
 scripts/
-  build.mjs           Builds the site, writes every page as HTML, and writes the sitemap, robots.txt and CNAME
+  build.mjs           Builds the site, writes every page as HTML, and the sitemap, robots.txt and CNAME
   check-content.mjs   Checks the content folder
-  content.mjs         Finds the content folder
+  content.mjs         Finds the content folder: content/, or the one CONTENT_DIR names
   fetch-activity.mjs  Saves the GitHub activity
 tests/
-  smoke.mjs        Browser and accessibility checks against the built site
+  smoke.mjs        Browser and accessibility checks, with expectations read from the content folder
 ```
-
-## Editing content
-
-- **Name, address and links** are in `content/site.json`. The sitemap, `robots.txt` and the custom-domain file are written from its `url` when the site is built.
-- **Text** is in `content/en.json` and `content/de.json`. Change both.
-- **Dates, links, pictures and tech lists** are in `content/facts.json`. Its lists match the language files by position, and projects match by `id`.
-- **Files** such as the photo and resumes go in `content/public/`, and are served from the site's root.
-- **A project's picture** is either `shot`, a screenshot saved as `name.webp` (1200px wide) and `name-640.webp` (640px wide), or `cover`, one of the schematics in `src/components/Cover.jsx`.
-- **A case study** needs `caseStudy: true` and a `screens` list in the facts file, and a `study` block in both language files.
-
-`npm run check:content` reports anything missing or mismatched.
-
-Three parts switch themselves off when their setting in `site.json` is empty:
-
-| Setting | Empty means |
-|---|---|
-| `analyticsId` | No Google Analytics, no cookie banner, and no "Cookie settings" link |
-| `github` | No GitHub activity section |
-| `portraitAvif` | Only the `portrait` file is used |
-
-The contact form works once its EmailJS and reCAPTCHA keys are set; without them it shows a notice.
-
-## Use it for your own site
-
-1. Copy the repository with **Use this template** on GitHub, or fork it.
-2. Replace the demo content in `content/` with your own, and run `npm run check:content`.
-3. In your repository's **Settings → Pages**, set the source to the `gh-pages` branch once the first deploy has run.
-
-If you'd rather keep your content out of the public repository, as I do:
-
-1. Put your `content/` folder in a private repository of its own.
-2. In the public repository, add the variable `CONTENT_REPO` (such as `you/portfolio-content`) and a secret `CONTENT_TOKEN`: a fine-grained token that can read that repository's contents.
-3. The deploy then checks out your content in place of the demo. If it can't read it, the deploy stops and the live site stays as it is.
-4. To work on it locally, clone it next to the code and set `CONTENT_DIR=../portfolio-content` in `.env`.
 
 ## Checks
 
-Every pull request runs these against the demo content, and all must pass before it can be merged. The deploy runs the content check and the browser checks again against the content that is about to go live.
+Every pull request runs these against the demo content. The deploy runs the content check and the browser checks again against the content that is about to go live.
 
 | Check | What it does | Run it |
 |---|---|---|
 | Lint | ESLint, with no warnings allowed | `npm run lint` |
 | Format | Prettier | `npm run format:check` |
-| Content | Both languages have the same text keys, and every fact, picture and case study lines up | `npm run check:content` |
+| Content | Both languages have the same text, and every fact, picture and case study lines up | `npm run check:content` |
 | Build | Builds the site and renders every page | `npm run build` |
 | Dependency audit | Fails on a high or critical vulnerability | `npm audit --audit-level=high` |
-| Smoke and accessibility | Opens the built site in a browser: pages without JavaScript, filters, the command menu, both languages, phone width, cookie consent when analytics are on, and axe in both themes. What to expect is read from the content folder | `npm run build && npm run test:smoke` |
+| Smoke and accessibility | Opens the built site in a browser: pages without JavaScript, filters, the command menu, both languages, phone width, cookie consent when analytics are on, and axe in both themes | `npm run build && npm run test:smoke` |
 | Workflow lint | Checks the GitHub Actions files | CI only |
 
-## Deploys and releases
+## Releases
 
-Merging into `main` builds the site and publishes it to GitHub Pages. The same deploy runs once a day to refresh the GitHub activity.
-
-Every merged pull request also gets a version and a GitHub release:
-
-| Label on the pull request | Result |
-|---|---|
-| none | A patch release, such as `v3.1.0` to `v3.1.1` |
-| `release:minor` | A minor release, for a new section or feature |
-| `release:major` | A major release, for a redesign |
-| `skip-release` | No release |
-
-`v1.0.0` was the original site, `v2.0.0` the 2026 redesign, and `v3.0.0` added the case studies.
+Every merged pull request gets a version and a GitHub release: a patch by default, a minor release with the `release:minor` label, a major release with `release:major`, and none with `skip-release`.
 
 ## Contributing
 
-Bug reports and corrections are welcome. See [CONTRIBUTING](./CONTRIBUTING.md), the [code of conduct](./CODE_OF_CONDUCT.md) and the [accessibility statement](./ACCESSIBILITY.md). Please report security problems privately, as the [security policy](./SECURITY.md) describes.
+Bug reports and fixes are welcome. See [CONTRIBUTING](./CONTRIBUTING.md), the [code of conduct](./CODE_OF_CONDUCT.md) and the [accessibility statement](./ACCESSIBILITY.md). Please report security problems privately, as the [security policy](./SECURITY.md) describes.
 
 ## License
 
-The code and the demo content are under the [MIT licence](./LICENSE). The screenshots of my site, and my personal content in the repository's history, are not: see [NOTICE](./NOTICE.md).
+The code and the demo content are under the [MIT licence](./LICENSE). See [NOTICE](./NOTICE.md) for my personal content in the repository's history, which is not.

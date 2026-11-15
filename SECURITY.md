@@ -3,15 +3,14 @@
 ## Reporting a problem
 
 Please don't open a public issue. Use GitHub's private vulnerability reporting: on the repository's
-**Security** tab, choose **Report a vulnerability**. If you can't use it, write to
-[abdullahrather19@gmail.com](mailto:abdullahrather19@gmail.com).
+**Security** tab, choose **Report a vulnerability**.
 
-Include what you found, how to reproduce it, and what it could be used for. I aim to answer within
-a week.
+Include what you found, how to reproduce it, and what it could be used for. Reports are answered
+within a week.
 
 ## What's covered
 
-The code in this repository and the site it builds, [abdullahrather.com](https://abdullahrather.com).
+The code in this repository and the site it builds.
 The site is static: there is no server, no database and no accounts. Only the latest release is
 supported.
 

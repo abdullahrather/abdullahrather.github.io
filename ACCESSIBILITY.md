@@ -30,6 +30,5 @@ current desktop browsers. It hasn't been tested with a screen reader by someone 
 
 ## Reporting a barrier
 
-Open an [issue](https://github.com/abdullahrather/abdullahrather.github.io/issues/new/choose) or
-write to [abdullahrather19@gmail.com](mailto:abdullahrather19@gmail.com). Tell me the page, what you
-were trying to do, and the browser and assistive technology you use.
+Open an issue with the **Accessibility barrier** form. Say which page it was, what you were trying
+to do, and the browser and assistive technology you use.

@@ -2,31 +2,19 @@
   "projects": [
     {
       "id": 1,
-      "image": "/images/projects/enterprise-management.webp",
+      "slug": "enterprise-management",
+      "cover": "platform",
       "technologies": ["Yii Framework", "PHP", "MySQL", "JavaScript", "DATEV API", "Bootstrap", "LLM APIs"],
       "category": "fullstack",
       "github": "#",
-      "demo": "#"
-    },
-    {
-      "id": 2,
-      "image": "/images/projects/education-management.webp",
-      "technologies": ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
-      "category": "fullstack",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "id": 3,
-      "image": "/images/projects/donor-management.webp",
-      "technologies": ["Laravel", "React", "MySQL", "JavaScript"],
-      "category": "fullstack",
-      "github": "#",
-      "demo": "#"
+      "demo": "#",
+      "caseStudy": true,
+      "screens": []
     },
     {
       "id": 4,
-      "image": "/images/projects/streaming-ad-platform.webp",
+      "slug": "streaming-ad-platform",
+      "shot": "/images/projects/streaming-ad-platform.webp",
       "technologies": [
         "Node.js",
         "TypeScript",
@@ -40,11 +28,63 @@
       ],
       "category": "web",
       "github": "https://github.com/abdullahrather/streaming-ad-platform",
+      "demo": "#",
+      "caseStudy": true,
+      "screens": [
+        "/images/work/streaming-ad-platform-1.webp",
+        "/images/work/streaming-ad-platform-2.webp",
+        "/images/work/streaming-ad-platform-3.webp",
+        "/images/work/streaming-ad-platform-4.webp"
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "career-craft",
+      "shot": "/images/projects/career-craft.webp",
+      "technologies": [
+        "Laravel 13",
+        "PHP 8.5",
+        "Livewire 4",
+        "PostgreSQL",
+        "Redis",
+        "Tailwind CSS",
+        "Docker",
+        "Pest",
+        "Ollama"
+      ],
+      "category": "fullstack",
+      "github": "https://github.com/abdullahrather/career-craft",
+      "demo": "#",
+      "caseStudy": true,
+      "screens": [
+        "/images/work/career-craft-1.webp",
+        "/images/work/career-craft-2.webp",
+        "/images/work/career-craft-3.webp",
+        "/images/work/career-craft-4.webp"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "education-management",
+      "cover": "form",
+      "technologies": ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
+      "category": "fullstack",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "id": 3,
+      "slug": "donor-management",
+      "cover": "records",
+      "technologies": ["Laravel", "React", "MySQL", "JavaScript"],
+      "category": "fullstack",
+      "github": "#",
       "demo": "#"
     },
     {
       "id": 5,
-      "image": "/images/projects/task-manager.webp",
+      "slug": "task-manager",
+      "shot": "/images/projects/task-manager.webp",
       "technologies": ["Symfony", "PHP", "MySQL", "Twig", "JavaScript"],
       "category": "fullstack",
       "github": "https://github.com/abdullahrather/symfony-task-manager",
@@ -52,7 +92,8 @@
     },
     {
       "id": 6,
-      "image": "/images/projects/portfolio-website.webp",
+      "slug": "portfolio-website",
+      "shot": "/images/projects/portfolio-website.webp",
       "technologies": ["React", "Vite", "Tailwind CSS", "JavaScript"],
       "category": "web",
       "github": "https://github.com/abdullahrather/abdullahrather.github.io",
@@ -60,7 +101,8 @@
     },
     {
       "id": 7,
-      "image": "/images/projects/currency-converter.webp",
+      "slug": "currency-converter",
+      "cover": "convert",
       "technologies": ["Laravel", "GuzzleHttp", "ExchangeRate API", "PHP 8.2+"],
       "category": "web",
       "github": "https://github.com/abdullahrather/laravel-currency-converter",
@@ -68,7 +110,8 @@
     },
     {
       "id": 8,
-      "image": "/images/projects/ticket-management.webp",
+      "slug": "ticket-management",
+      "cover": "kanban",
       "technologies": ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
       "category": "fullstack",
       "github": "#",
@@ -76,7 +119,8 @@
     },
     {
       "id": 9,
-      "image": "/images/projects/employee-performance.webp",
+      "slug": "employee-performance",
+      "cover": "chart",
       "technologies": ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
       "category": "fullstack",
       "github": "#",
@@ -84,7 +128,8 @@
     },
     {
       "id": 10,
-      "image": "/images/projects/laravel-auth-role.webp",
+      "slug": "laravel-auth-role",
+      "cover": "auth",
       "technologies": ["Laravel", "PHP", "MariaDB", "Blade", "Bootstrap 5", "Eloquent ORM"],
       "category": "fullstack",
       "github": "https://github.com/abdullahrather/institution-accreditation-portal",
@@ -92,7 +137,8 @@
     },
     {
       "id": 11,
-      "image": "/images/projects/academic-institution.webp",
+      "slug": "academic-institution",
+      "cover": "site",
       "technologies": ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
       "category": "web",
       "github": "#",
@@ -100,7 +146,8 @@
     },
     {
       "id": 12,
-      "image": "/images/projects/laravel-auth-crud.webp",
+      "slug": "laravel-auth-crud",
+      "cover": "records",
       "technologies": ["Laravel 10", "PHP", "MySQL", "Blade", "JavaScript", "CSS"],
       "category": "web",
       "github": "https://github.com/abdullahrather/laravel-product-catalog",
@@ -108,7 +155,8 @@
     },
     {
       "id": 13,
-      "image": "/images/projects/corporate-insurance.webp",
+      "slug": "corporate-insurance",
+      "cover": "site",
       "technologies": ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
       "category": "web",
       "github": "#",
@@ -116,7 +164,8 @@
     },
     {
       "id": 14,
-      "image": "/images/projects/laravel-auth-showcase.webp",
+      "slug": "laravel-auth-showcase",
+      "cover": "auth",
       "technologies": ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
       "category": "web",
       "github": "https://github.com/abdullahrather/laravel-admin-auth-starter",

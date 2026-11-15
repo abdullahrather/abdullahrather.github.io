@@ -19,8 +19,13 @@ Live at **[abdullahrather.com](https://abdullahrather.com)**.
 - Pre-rendered HTML with inlined CSS: content paints before JavaScript loads, is indexable, and works with JS disabled
 - Dark-first design with light mode; theme switches with a View Transitions circle reveal and no flash on load
 - `⌘K` / `Ctrl+K` command palette: jump to sections, toggle theme or language, copy email, get the resume
-- Bento-style About section, count-up stats, live Germany local time
-- Filterable project grid (cards glide between filters via View Transitions) with native `<dialog>` case-study modal
+- Bento-style About section with skills grouped by what they are used for, count-up stats, live Germany local time
+- Filterable project grid (cards glide between filters via View Transitions) with a native `<dialog>` for details
+- Case-study pages at `/work/<slug>/`, each pre-rendered as its own HTML file, with the project's picture gliding
+  between the grid and the page where the browser supports cross-document View Transitions
+- Project pictures in one style: real screenshots in a window, or a schematic drawn in the theme colours for private work
+- GitHub activity section (six-month commit grid, latest release and commit per public repository), saved at build
+  time and refreshed by a daily deploy, so the visitor's browser never contacts GitHub
 - Scroll reveals via a single shared `IntersectionObserver`; CSS scroll-driven progress bar
 - Respects `prefers-reduced-motion`, skip link, focus-visible styles, semantic landmarks
 - No animation libraries — all motion is CSS
@@ -29,23 +34,32 @@ Live at **[abdullahrather.com](https://abdullahrather.com)**.
 
 ```
 src/
-  components/      Nav, Hero, About, WorkExperience, Expertise, Projects, Contact, Footer, CommandPalette
-  languages/       en.json, de.json — all copy and content (projects, experience, …)
-  lib/             i18n, theme, hooks (reveal, spotlight, count-up, clock), toast, site constants, analytics
+  components/      Nav, Hero, About, WorkExperience, Expertise, Projects, Activity, Contact, Footer,
+                   CommandPalette, CaseStudy (the /work/<slug>/ page), Cover (project pictures)
+  data/            facts.json (dates, links, pictures), activity.json (saved GitHub activity)
+  languages/       en.json, de.json — all copy and content (projects, case studies, experience, …)
+  lib/             i18n, route, theme, hooks (reveal, spotlight, count-up, clock), toast, site constants, analytics
   entry-server.jsx Server render used by the build-time pre-render
   index.css        Design tokens + Tailwind theme
 scripts/
-  build.mjs        Client build + pre-render + CSS inlining (`npm run build`)
+  build.mjs           Client build + pre-render of every page + CSS inlining (`npm run build`)
+  fetch-activity.mjs  Refreshes src/data/activity.json from GitHub's public API (`npm run activity`)
 public/
   assets/          Resume PDFs (EN / DE)
-  images/          Optimized AVIF/WebP images (projects have -640 thumbnails), favicons, OG image
+  images/          Optimized AVIF/WebP images (projects/ and work/ have -640 copies), favicons, OG image
 ```
 
 Editing content: translated text lives in `src/languages/en.json` **and** `src/languages/de.json`.
-Dates, links, images, icons and tech lists live once in `src/data/facts.json`; its lists match the
+Dates, links, pictures, icons and tech lists live once in `src/data/facts.json`; its lists match the
 language files by position, and projects match by `id`.
 Section headings and UI strings live under the `ui` key in each file.
-New project images: add `name.webp` (1200px wide) and `name-640.webp` (640px wide).
+
+A project's picture is either `shot` (a screenshot: `name.webp` at 1200px wide and `name-640.webp`
+at 640px, both 16:10) or `cover` (one of the schematics in `src/components/Cover.jsx`).
+
+A case study needs `caseStudy: true` and a `screens` list in `facts.json`, a `study` block in both
+language files, and its `/work/<slug>/` address in `public/sitemap.xml`. `npm run check:content`
+reports anything missing.
 
 Date-based text (years of experience, durations) is rendered from the build time and refreshed in
 the browser, so redeploying is not required for it to stay current.
@@ -60,7 +74,8 @@ npm run build && npm run preview
 ```
 
 Pushing to `main` builds and deploys to the `gh-pages` branch. The EmailJS / reCAPTCHA values are
-read from repository secrets at build time.
+read from repository secrets at build time. The same deploy also runs once a day to refresh the
+GitHub activity section; if GitHub can't be reached, the copy saved in the repository is used.
 
 ## Continuous integration
 

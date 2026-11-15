@@ -82,7 +82,7 @@ const ResumeMenu = () => {
 const Portrait = () => {
   const { t } = useTranslation();
   return (
-    <div className="enter relative order-first mx-auto w-full max-w-56 sm:max-w-88 lg:order-none" style={delay(200)}>
+    <div className="enter relative order-first mx-auto w-full max-w-32 sm:max-w-88 lg:order-none" style={delay(200)}>
       {/* Glow */}
       <div aria-hidden="true" className="absolute inset-6 -z-10 rounded-full bg-accent/30 blur-3xl" />
 

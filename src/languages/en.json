@@ -26,31 +26,40 @@
       "core_technologies": "Core Technologies"
     },
     "headings": {
-      "experience_snapshot": "Experience Snapshot",
-      "major_technical_skills": "Major Technical Skills"
+      "experience_snapshot": "Experience Snapshot"
     },
     "intro": {
       "paragraph1": "I'm an AI Software Engineer and PHP backend / full-stack developer with {years}+ years of experience building enterprise web applications, internal platforms and database-driven business systems. My core stack is PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST APIs, Docker and CI/CD.",
-      "paragraph2": "Today I work on a central business platform used across a group of companies for customers, tickets, offers, orders, invoicing, projects and time tracking. I bring AI into everyday workflows, such as AI-based ticket assignment and an AI-assisted search across customer history, and build new modules like an in-house HR and time-tracking system. Earlier, I led a team of five developers and developed an Education Management Information System. Throughout, I care about clean, testable code, safe data handling and reliable releases."
+      "paragraph2": "Today I work on a central business platform used across a group of companies, bringing AI into everyday workflows and building new modules such as an in-house HR and time-tracking system. Earlier, I led a team of five developers and developed an Education Management Information System."
     },
-    "items": {
-      "backend_stack": "PHP, Laravel, Symfony, Yii",
-      "devops": "Docker & CI/CD",
-      "frontend": "JavaScript & React",
-      "python": "Python & Flask",
-      "databases": "MySQL & PostgreSQL",
-      "api_integrations": "REST APIs & Integrations",
-      "git_ci": "Git & GitHub Actions",
-      "architecture": "System Architecture",
-      "leadership": "Team Leadership",
-      "ai": "AI & LLM Integration"
-    },
-    "levels": {
-      "expert": "Expert",
-      "advanced": "Advanced",
-      "intermediate": "Intermediate"
-    },
-    "mission": "I build business software that solves real problems: solid engineering, reliable integrations and practical AI, delivered as maintainable, production-ready code."
+    "mission": "I build business software that solves real problems: solid engineering, reliable integrations and practical AI, delivered as maintainable, production-ready code.",
+    "groups": [
+      {
+        "title": "Backend & APIs",
+        "text": "Business platforms, new modules and the APIs behind them.",
+        "items": ["PHP", "Laravel", "Symfony", "Yii", "REST APIs", "PHPUnit", "PHPStan"]
+      },
+      {
+        "title": "Data & integrations",
+        "text": "Schemas that hold up as data grows, and integrations with accounting and third-party systems.",
+        "items": ["MySQL", "MariaDB", "PostgreSQL", "DATEV", "ZUGFeRD", "Webhooks"]
+      },
+      {
+        "title": "AI",
+        "text": "AI features inside real workflows, access-controlled and tested.",
+        "items": ["LLM APIs", "Prompt design", "Python", "FastAPI", "Flask"]
+      },
+      {
+        "title": "Frontend",
+        "text": "The dashboards and interfaces on top.",
+        "items": ["JavaScript", "TypeScript", "React", "Bootstrap"]
+      },
+      {
+        "title": "Delivery",
+        "text": "Predictable releases, from code review to deployment.",
+        "items": ["Docker", "GitHub Actions", "CI/CD", "Linux", "Code reviews", "Team leadership"]
+      }
+    ]
   },
   "workExperience": {
     "badge": "Career Timeline",
@@ -266,24 +275,339 @@
           "HR & Time Tracking",
           "Multi-language Support"
         ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Structured as a multi-module Yii application to keep admin workflows, document handling, and integrations isolated and maintainable."
+        "study": {
+          "tagline": "The central business platform of a group of companies: customers, tickets, offers, orders, invoicing, projects and time tracking, with AI built into everyday work.",
+          "meta": [
+            {
+              "label": "Role",
+              "value": "Software Engineer, now AI Software Engineer"
+            },
+            {
+              "label": "Years",
+              "value": "2024 to today"
+            },
+            {
+              "label": "Source",
+              "value": "Private, built at work"
+            }
+          ],
+          "numbers": [],
+          "problem": {
+            "title": "One platform for the whole business",
+            "paragraphs": [
+              "The platform runs the daily business of several group companies, each on its own instance: customers, tickets, offers, orders, invoicing, projects, time tracking and reporting. It is a long-lived Yii application, so the work is as much about modernising what exists as about building what is new.",
+              "I have developed and maintained it since 2024, first part-time and now full-time with a wider scope: bringing AI into the platform and building new modules. The code is private, so this page describes the work without screenshots."
+            ]
           },
-          {
-            "label": "Data & Compliance",
-            "text": "Implemented DATEV and ZUGFeRD flows to support finance-oriented document exchange with consistent data handling."
+          "built": [
+            {
+              "title": "DATEV and e-invoicing",
+              "text": "REST integrations including DATEV-related workflows, and ZUGFeRD XML generation for exchanging finance documents."
+            },
+            {
+              "title": "AI ticket assignment",
+              "text": "Suggestions for who should take a ticket, with access control enforced on the server."
+            },
+            {
+              "title": "AI-assisted search",
+              "text": "A search across customer history, covering tickets and order items."
+            },
+            {
+              "title": "HR and time tracking",
+              "text": "An in-house module that replaced an external time-tracking tool: clock-in and clock-out with breaks, time accounts with target hours, public holidays and statutory break rules, a live attendance overview, logged corrections, and vacation and absence management."
+            },
+            {
+              "title": "Reporting and performance",
+              "text": "Reporting, export and dashboard features, and faster pages through query optimisation and the removal of N+1 queries."
+            },
+            {
+              "title": "Modernisation",
+              "text": "Legacy areas refactored into object-oriented code with automated tests and continuous integration, a telephony integration, and a move to a Bootstrap 5 admin template."
+            }
+          ],
+          "flow": {
+            "title": "How the platform is organised",
+            "lanes": [
+              {
+                "title": "People",
+                "items": ["Staff of several group companies", "Role-based access control"]
+              },
+              {
+                "title": "Modules",
+                "items": ["Tickets, offers, orders, invoicing", "Projects, time tracking, HR"]
+              },
+              {
+                "title": "AI features",
+                "items": ["Ticket assignment suggestions", "Search across customer history"]
+              },
+              {
+                "title": "Integrations",
+                "items": ["DATEV and ZUGFeRD", "Telephony and REST APIs"]
+              }
+            ],
+            "note": "Each group company runs its own instance of the same application."
           },
-          {
-            "label": "AI & New Modules",
-            "text": "Added AI-based ticket assignment suggestions and an AI-assisted search across customer history, plus an in-house HR module for time tracking, absences and attendance."
+          "hard": [
+            {
+              "title": "AI that respects permissions",
+              "text": "The AI features are access-controlled on the server, so a suggestion or a search result never shows more than the person is allowed to see."
+            },
+            {
+              "title": "Time tracking that follows the rules",
+              "text": "Time accounts handle target hours, public holidays and statutory break rules, and every correction is logged."
+            },
+            {
+              "title": "Changing a system people rely on every day",
+              "text": "New work ships next to legacy code, so changes are protected by code reviews, automated tests and concurrency-safe database transactions."
+            }
+          ],
+          "screens": []
+        }
+      },
+      {
+        "id": 4,
+        "title": "Streaming Ad Platform",
+        "description": "Ad platform for a streaming service, built with Node.js, TypeScript and React: ad decisions for video players, real-time campaign analytics, prepaid billing with EU VAT, and a dashboard in English and German.",
+        "features": [
+          "Ad Decisions & VAST for Video Players",
+          "Real-Time Analytics & Forecasts",
+          "Prepaid Billing, EU VAT & Stripe",
+          "AI Campaign Assistant",
+          "GDPR Tools & Monitoring"
+        ],
+        "study": {
+          "tagline": "An ad platform for a streaming service: it picks the ad for every ad break, counts every view exactly once, and bills what was delivered.",
+          "meta": [
+            {
+              "label": "Role",
+              "value": "Sole developer"
+            },
+            {
+              "label": "Year",
+              "value": "2026"
+            },
+            {
+              "label": "Source",
+              "value": "Public, MIT licence"
+            }
+          ],
+          "numbers": [
+            {
+              "value": "10,000",
+              "label": "events per second in the load test, none lost or counted twice"
+            },
+            {
+              "value": "0.5 s",
+              "label": "for a 90-day report over 9.9 million rows"
+            },
+            {
+              "value": "12 KB",
+              "label": "to count a campaign's unique viewers for a day"
+            },
+            {
+              "value": "97 s",
+              "label": "from a Redis outage to the alert email"
+            }
+          ],
+          "problem": {
+            "title": "Three parties, one ad break",
+            "paragraphs": [
+              "Streaming services with an ad tier show short ads before, during and after episodes. The advertiser wants the ad seen by the right people for a set budget. The platform has to choose an ad for every break and keep each campaign on schedule. The viewer watches, and the player reports what happened.",
+              "I built the part in the middle, end to end: campaigns and teams, the ad decision, a real video player, event counting, analytics, billing and the operations around it. All brands, shows and traffic in the demo are fictional."
+            ]
           },
-          {
-            "label": "Business Value",
-            "text": "Gives operations teams a centralized workspace for project tracking, document processing, and multilingual collaboration."
-          }
-        ]
+          "built": [
+            {
+              "title": "Ad decisions",
+              "text": "For each ad break the platform keeps the campaigns that match the dates, schedule, limits, country, device, slot, genre and audience. Guaranteed campaigns that are behind go first, and the rest is sold in a second-price auction. Any VAST 4.2 player can ask for an ad."
+            },
+            {
+              "title": "From upload to playback",
+              "text": "A manager uploads a video, FFmpeg converts it in the background, an admin approves it, and the demo streaming site plays it before, during and after an episode."
+            },
+            {
+              "title": "Analytics and reports",
+              "text": "Live charts, reach and frequency, drop-off, A/B tests that only name a winner at 95% confidence, and saved reports emailed as CSV and PDF."
+            },
+            {
+              "title": "Prepaid billing",
+              "text": "A ledger that is never edited, holds for running budgets, invoices numbered with no gaps, EU VAT with VIES checks, currencies at the European Central Bank's daily rate and optional Stripe Checkout."
+            },
+            {
+              "title": "AI assistant",
+              "text": "Optional and off by default. It answers questions such as why a campaign is behind, using read-only tools, and suggests changes that only apply once a person approves them. It runs on a free local model or a paid API."
+            },
+            {
+              "title": "Operations",
+              "text": "Structured logs, metrics, traces and alerts in Grafana, and daily backups that are restored into a scratch database to prove they work."
+            }
+          ],
+          "flow": {
+            "title": "How an event is counted",
+            "lanes": [
+              {
+                "title": "Player",
+                "items": ["Plays the ad", "Reports each event with a unique ID"]
+              },
+              {
+                "title": "API",
+                "items": ["A Redis script drops IDs already seen", "Queues the rest in the same atomic step"]
+              },
+              {
+                "title": "Worker",
+                "items": ["Adds events into hourly totals", "Saves the totals and the queue entry's ID together"]
+              },
+              {
+                "title": "Dashboard",
+                "items": ["One SQL query per view", "Live charts and reports"]
+              }
+            ],
+            "note": "A retry can't count twice, and a crash can't lose or repeat an event."
+          },
+          "hard": [
+            {
+              "title": "Limits that hold when requests race",
+              "text": "Budgets, goals and frequency caps are reserved in the same atomic Redis step that picks the ad, not checked afterwards. A campaign can't pass its goal, however many requests arrive at once."
+            },
+            {
+              "title": "Counting exactly once",
+              "text": "An entry stays on the queue until its totals are saved, and its ID is saved in the same transaction. The load test included a worker crash, and no event was lost or counted twice."
+            },
+            {
+              "title": "Fast reports without a data warehouse",
+              "text": "Events are added into one row per campaign, hour, show, slot, country and device, so the table grows with variety, not with traffic. Unique viewers are counted in HyperLogLog sketches."
+            }
+          ],
+          "screens": [
+            "The demo streaming site playing an ad, with the events the player reports",
+            "The delivery check explains why a campaign is behind, with no AI",
+            "Platform health in Grafana, through a Redis outage and recovery",
+            "The campaign form with its live forecast"
+          ]
+        }
+      },
+      {
+        "id": 15,
+        "title": "CareerCraft",
+        "description": "AI-assisted job search platform for the German market, built with Laravel 13 and Livewire 4: one structured career profile becomes several CVs, with CV import by a local AI model, saved PDF and Word versions, and a check of how applicant tracking systems read each one.",
+        "features": [
+          "Career Profile & CV Import",
+          "CV Builder with Four Templates",
+          "PDF & Word Versions",
+          "Parser Check",
+          "Switchable AI Providers",
+          "English & German"
+        ],
+        "study": {
+          "tagline": "A job search platform for the German market: one career profile becomes every CV, and each version is checked the way an applicant tracking system reads it.",
+          "meta": [
+            {
+              "label": "Role",
+              "value": "Sole developer"
+            },
+            {
+              "label": "Year",
+              "value": "2026, in development"
+            },
+            {
+              "label": "Source",
+              "value": "Public, MIT licence"
+            }
+          ],
+          "numbers": [
+            {
+              "value": "4",
+              "label": "CV templates, one of them the German tabular Lebenslauf"
+            },
+            {
+              "value": "3",
+              "label": "AI providers to choose from, one free and local"
+            },
+            {
+              "value": "2",
+              "label": "languages on every screen and in every email"
+            },
+            {
+              "value": "0",
+              "label": "CV files kept after an import"
+            }
+          ],
+          "problem": {
+            "title": "One career, many applications",
+            "paragraphs": [
+              "Applying for jobs means rewriting the same career into a slightly different CV each time, and never being sure what an employer's software makes of the PDF. In Germany there is a second format to maintain as well: the tabular Lebenslauf with photo, place, date and signature.",
+              "CareerCraft keeps one structured career profile and builds every CV from it. It is in development: the foundation, accounts, the profile, CV import, the CV builder and the AI layer are built. Cover letters, job matching and application tracking come next."
+            ]
+          },
+          "built": [
+            {
+              "title": "Career profile",
+              "text": "Experience with achievements, education, skills with levels, projects, certificates and languages at CEFR levels, with a strength score that lists what to add next."
+            },
+            {
+              "title": "Import",
+              "text": "Upload a PDF or Word CV and a local AI model suggests what goes where, or upload LinkedIn's data export, which is read without AI. The person checks every field before anything is saved."
+            },
+            {
+              "title": "CV builder",
+              "text": "Several CVs from one profile, four templates, a live A4 preview that shows where pages end, and headings and dates that follow the CV's language."
+            },
+            {
+              "title": "Saved versions",
+              "text": "Each version keeps its PDF and Word file exactly as they were, so it is always clear what was sent. Any two versions can be compared line by line."
+            },
+            {
+              "title": "Parser check",
+              "text": "Every PDF is read back as plain text, the way an applicant tracking system reads it, and anything that doesn't come through as whole words is listed."
+            },
+            {
+              "title": "AI layer",
+              "text": "An admin picks Ollama, Claude or any OpenAI-compatible API, and sets a daily allowance per person and token prices. Every request is recorded with its tokens and cost."
+            }
+          ],
+          "flow": {
+            "title": "From profile to a sent CV",
+            "lanes": [
+              {
+                "title": "Profile",
+                "items": ["One structured record", "Imported from a CV or LinkedIn"]
+              },
+              {
+                "title": "CV builder",
+                "items": ["Template, language and sections", "Live A4 preview"]
+              },
+              {
+                "title": "Gotenberg",
+                "items": ["Renders the same page as the preview", "PDF and Word file saved as a version"]
+              },
+              {
+                "title": "Parser check",
+                "items": ["Reads the PDF back as text", "Lists what a parser would miss"]
+              }
+            ],
+            "note": "The PDF is made from the same page as the preview, so what you see is what is sent."
+          },
+          "hard": [
+            {
+              "title": "An AI that only copies facts",
+              "text": "The CV reader is told to copy what the CV says, never to add an employer, date or skill, and to ignore instructions written inside the CV. Its output is a suggestion: the person ticks what to keep."
+            },
+            {
+              "title": "One layer for every AI feature",
+              "text": "All requests go through one runner that retries an overloaded provider, streams answers, stops at the daily allowance and records usage. Keys for paid providers stay in the environment and are never stored in the database."
+            },
+            {
+              "title": "PDFs a parser can read",
+              "text": "The templates are single-column with plain text in reading order. The parser check proves that for each version instead of assuming it."
+            }
+          ],
+          "screens": [
+            "The CV builder with its live A4 preview",
+            "The career profile, with a strength score that lists what to add next",
+            "A saved version with its parser check",
+            "AI settings: provider, model, daily allowance and usage"
+          ]
+        }
       },
       {
         "id": 2,
@@ -322,32 +646,6 @@
           {
             "label": "Business Value",
             "text": "Helps fundraising teams track contributions, measure campaigns, and keep reporting aligned with real activity."
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "title": "Streaming Ad Platform",
-        "description": "Ad platform for a streaming service, built with Node.js, TypeScript and React: ad decisions for video players, real-time campaign analytics, prepaid billing with EU VAT, and a dashboard in English and German.",
-        "features": [
-          "Ad Decisions & VAST for Video Players",
-          "Real-Time Analytics & Forecasts",
-          "Prepaid Billing, EU VAT & Stripe",
-          "AI Campaign Assistant",
-          "GDPR Tools & Monitoring"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Built as a Node.js and TypeScript API with a React dashboard, using PostgreSQL for campaigns and billing, and Redis for atomic ad decisions and a queue that counts every event exactly once."
-          },
-          {
-            "label": "Production Readiness",
-            "text": "Shipped with structured logs, Prometheus metrics, OpenTelemetry traces and Grafana alerts, backups proven by an automated restore drill, and browser tests and CodeQL scanning in CI."
-          },
-          {
-            "label": "Business Value",
-            "text": "Lets advertisers plan, run and measure video ad campaigns end to end, from upload and approval to delivery, reports and invoices, with a revenue view for the publisher."
           }
         ]
       },
@@ -696,6 +994,32 @@
       "decline": "Decline",
       "privacy": "Privacy Policy",
       "settings": "Cookie settings"
+    },
+    "study": {
+      "eyebrow": "Case study",
+      "back": "All work",
+      "read": "Read the case study",
+      "built": "What I built",
+      "hard": "The hard parts",
+      "screens": "Screens",
+      "stack": "Stack",
+      "next": "Next case study",
+      "cta_title": "Want to talk about a project like this?",
+      "cta": "Get in touch",
+      "group": "Case studies"
+    },
+    "activity": {
+      "eyebrow": "Open source",
+      "heading_a": "What I've shipped",
+      "heading_em": "lately",
+      "lead": "Releases and commits from my public GitHub repositories, refreshed every day.",
+      "summary": "commits to {repos} public repositories in the last six months",
+      "less": "Less",
+      "more": "More",
+      "releases": "Latest releases",
+      "commits": "Recent commits",
+      "updated": "Updated {date}",
+      "profile": "GitHub profile"
     }
   }
 }

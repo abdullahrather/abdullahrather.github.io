@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import Cover from "./Cover";
 import SectionHeader from "./SectionHeader";
 import { Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { spotlight, useReveal } from "../lib/hooks";
+import { studyPath } from "../lib/route";
 import { isPrivateRepo } from "../lib/site";
 
 // One full-width featured card plus two rows of three.
@@ -12,13 +14,6 @@ const FEATURED_COUNT = 7;
 const FILTERED_COUNT = 6;
 
 const hasDemo = (p) => p.demo && p.demo !== "#";
-const projectSlug = (p) =>
-  p.image
-    .split("/")
-    .pop()
-    .replace(/\.webp$/, "");
-
-// Stable across languages, so one project isn't split into two rows in reports.
 
 /**
  * Runs a grid update inside a View Transition so cards glide to their new positions.
@@ -49,6 +44,12 @@ const ProjectCard = ({ project, index, onOpen, featured = false }) => {
   const reveal = useReveal();
   const isPrivate = isPrivateRepo(project.github);
   const extra = project.technologies.length - 4;
+  // A project with a case study links to its page; the others open the details dialog.
+  const study = project.caseStudy;
+  const Picture = study ? "a" : "button";
+  const pictureProps = study
+    ? { href: studyPath(project.slug), onClick: () => trackEvent("project_open", { project: project.slug }) }
+    : { type: "button", onClick: () => onOpen(project) };
 
   return (
     <article
@@ -59,30 +60,28 @@ const ProjectCard = ({ project, index, onOpen, featured = false }) => {
         featured ? "sm:col-span-2 lg:col-span-3 lg:flex-row" : ""
       }`}
     >
-      <button
-        type="button"
-        onClick={() => onOpen(project)}
-        className={`relative block aspect-16/10 overflow-hidden rounded-[1.1rem] bg-fg/5 ${featured ? "lg:w-3/5 lg:shrink-0" : ""}`}
-        aria-label={`${t("ui.projects.details")}: ${project.title}`}
+      <Picture
+        className={`relative block aspect-16/10 overflow-hidden rounded-[1.1rem] ${featured ? "lg:w-3/5 lg:shrink-0" : ""}`}
+        aria-label={`${t(study ? "ui.study.read" : "ui.projects.details")}: ${project.title}`}
+        {...pictureProps}
       >
-        <img
-          src={project.image}
-          srcSet={`${project.image.replace(/\.webp$/, "-640.webp")} 640w, ${project.image} 1200w`}
+        <Cover
+          project={project}
+          className="size-full"
+          style={study ? { viewTransitionName: `cover-${project.slug}` } : undefined}
           sizes={
-            featured ? "(min-width: 1024px) 660px, 100vw" : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+            featured ? "(min-width: 1024px) 570px, 86vw" : "(min-width: 1024px) 310px, (min-width: 640px) 43vw, 86vw"
           }
-          alt=""
-          loading="lazy"
-          decoding="async"
-          width="1200"
-          height="800"
-          className="size-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
         />
-        <span className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <span className="absolute bottom-3 right-3 flex size-10 translate-y-2 items-center justify-center rounded-full bg-white text-black opacity-0 shadow-lg transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100">
-          <Icon name="arrowUpRight" />
+        {study && (
+          <span className="chip absolute left-3 top-3 border-line-strong bg-card-solid text-fg">
+            {t("ui.study.eyebrow")}
+          </span>
+        )}
+        <span className="absolute bottom-3 right-3 flex size-10 translate-y-2 items-center justify-center rounded-full bg-fg text-bg opacity-0 shadow-lg transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100">
+          <Icon name={study ? "arrowRight" : "arrowUpRight"} />
         </span>
-      </button>
+      </Picture>
 
       <div className={`flex flex-1 flex-col px-4 pb-4 pt-5 ${featured ? "lg:justify-center lg:px-8" : ""}`}>
         {featured && <p className="eyebrow mb-4">{t("ui.projects.featured")}</p>}
@@ -144,8 +143,8 @@ const ProjectDialog = ({ project, onClose }) => {
       className="m-auto max-h-[min(92dvh,56rem)] w-[min(100%-1.5rem,52rem)] overflow-y-auto overscroll-contain rounded-3xl border border-line bg-card-solid p-0 text-fg shadow-2xl backdrop:bg-transparent"
     >
       <div className="relative">
-        <img src={project.image} alt="" className="aspect-16/8 w-full object-cover" />
-        <span className="absolute inset-0 bg-linear-to-t from-card-solid via-card-solid/10 to-transparent" />
+        <Cover project={project} className="aspect-16/8 w-full" sizes="(min-width: 832px) 716px, 86vw" eager />
+        <span className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-card-solid to-transparent" />
         <button
           type="button"
           onClick={() => ref.current.close()}
@@ -173,7 +172,7 @@ const ProjectDialog = ({ project, onClose }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
-              onClick={() => trackEvent("project_source", { project: projectSlug(project) })}
+              onClick={() => trackEvent("project_source", { project: project.slug })}
             >
               <Icon name="github" />
               {t("projects.modal.view_github")}
@@ -259,7 +258,7 @@ const Projects = () => {
 
   const openProject = (project) => {
     setSelectedId(project.id);
-    trackEvent("project_open", { project: projectSlug(project) });
+    trackEvent("project_open", { project: project.slug });
   };
 
   return (

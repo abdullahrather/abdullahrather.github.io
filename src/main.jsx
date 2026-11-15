@@ -4,16 +4,18 @@ import "./index.css";
 import App from "./App.jsx";
 import { getConsent, startAnalytics, trackLink } from "./lib/analytics";
 import { TranslationProvider, getInitialLang, loadLocale } from "./lib/i18n";
+import { getRoute } from "./lib/route";
 
 if (getConsent() === "granted") startAnalytics();
 
 const container = document.getElementById("root");
 const preferred = getInitialLang();
+const route = getRoute(window.location.pathname);
 
 const app = (initialLang, preferredLang) => (
   <StrictMode>
     <TranslationProvider initialLang={initialLang} preferredLang={preferredLang}>
-      <App />
+      <App route={route} />
     </TranslationProvider>
   </StrictMode>
 );

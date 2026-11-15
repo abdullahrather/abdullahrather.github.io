@@ -72,16 +72,16 @@ npm run dev
 
 ### 3. Turn on GitHub Pages
 
-Push to `main`. The deploy workflow builds the site and publishes it to the `gh-pages` branch. Then, in your repository's **Settings → Pages**, set the source to **Deploy from a branch**, branch `gh-pages`. Merging into `main` updates the site from then on, and it also rebuilds once a day.
+In your repository's **Settings → Pages**, set the source to **GitHub Actions**. Then push to `main`, or run the **Build & Deploy** workflow from the **Actions** tab. The workflow builds the site and hands it straight to GitHub Pages, so no built files are kept in the repository. Merging into `main` updates the site from then on, and it also rebuilds once a day.
 
-For your own domain, set `url` in `site.json` to it. The build writes the `CNAME` file GitHub Pages needs; you add the DNS records with your domain provider.
+For your own domain, set `url` in `site.json` to it, enter the domain under **Settings → Pages → Custom domain**, and add the DNS records with your domain provider.
 
 ## The settings in `site.json`
 
 | Setting | What it does |
 |---|---|
 | `name`, `initials` | Shown in the navigation, footer, page titles and metadata |
-| `url` | The site's address, without a trailing slash. Used for links, the sitemap, `robots.txt` and `CNAME` |
+| `url` | The site's address, without a trailing slash. Used for links, the sitemap and `robots.txt` |
 | `email`, `location` | Shown in the contact section, and used by the contact form |
 | `timezone`, `timezoneLabel` | Your local time in the About section and footer, such as `Europe/Berlin` and `CET / CEST` |
 | `careerStart` | The date your career started, as `YYYY-MM-DD`. Years of experience are worked out from it |
@@ -142,7 +142,7 @@ If you'd rather not have your content in a public repository, as I do:
 ```
 
 - **Every page is plain HTML first.** The build renders the home page and each case study to its own HTML file, with the styles inside it. React then takes over for the interactive parts.
-- **Content is separate from code.** The code names no one. The page header, sitemap, `robots.txt` and `CNAME` are all written from the content folder.
+- **Content is separate from code.** The code names no one. The page header, sitemap and `robots.txt` are all written from the content folder.
 - **Project pictures share one style.** Each project is a window on the same backdrop: a real screenshot, or a schematic drawn in the theme's colours.
 - **GitHub activity is saved, not fetched live.** The deploy reads GitHub's public API and saves the result, so a visitor's browser never contacts GitHub.
 - **Moving between pages is animated by the browser,** in browsers that support View Transitions. Others load the page normally.
@@ -181,7 +181,7 @@ src/
   entry-server.jsx Renders a page to HTML during the build
   index.css        Colours, fonts and shared styles
 scripts/
-  build.mjs           Builds the site, writes every page as HTML, and the sitemap, robots.txt and CNAME
+  build.mjs           Builds the site, writes every page as HTML, and the sitemap and robots.txt
   check-content.mjs   Checks the content folder
   content.mjs         Finds the content folder: content/, or the one CONTENT_DIR names
   fetch-activity.mjs  Saves the GitHub activity

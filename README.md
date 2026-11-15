@@ -1,8 +1,8 @@
 # Portfolio template
 
-[![Deploy](https://github.com/abdullahrather/abdullahrather.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdullahrather/abdullahrather.github.io/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/abdullahrather/portfolio-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdullahrather/portfolio-template/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Release](https://img.shields.io/github/v/release/abdullahrather/abdullahrather.github.io)](https://github.com/abdullahrather/abdullahrather.github.io/releases)
+[![Release](https://img.shields.io/github/v/release/abdullahrather/portfolio-template)](https://github.com/abdullahrather/portfolio-template/releases)
 
 A personal portfolio site for developers: who you are, where you've worked, what you've built, and a case-study page for each larger project. English and German, light and dark, fast, and free to host on GitHub Pages.
 

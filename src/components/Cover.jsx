@@ -282,30 +282,34 @@ export const Window = ({ className = "", children }) => (
   </div>
 );
 
+/** What a project's window shows: its screenshot, or its schematic. `sizes` is for screenshots. */
+export const Screen = ({ project, sizes, eager = false }) =>
+  project.shot ? (
+    <img
+      src={project.shot}
+      srcSet={`${project.shot.replace(/\.webp$/, "-640.webp")} 640w, ${project.shot} 1200w`}
+      sizes={sizes}
+      alt=""
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      width="1200"
+      height="750"
+      className="w-full"
+    />
+  ) : (
+    <svg viewBox="0 0 400 240" className="w-full" aria-hidden="true">
+      {MOTIFS[project.cover]}
+    </svg>
+  );
+
 /**
- * The picture for one project. `sizes` is the image `sizes` attribute for screenshots.
+ * The picture for one project: its window on the shared backdrop.
  * Decorative: the project's title is always next to it.
  */
 const Cover = ({ project, sizes, eager = false, className = "", style }) => (
   <div className={`cover relative overflow-hidden ${className}`} style={style} aria-hidden="true">
     <Window className="cover-window absolute inset-x-[7%] top-[11%] h-full rounded-b-none">
-      {project.shot ? (
-        <img
-          src={project.shot}
-          srcSet={`${project.shot.replace(/\.webp$/, "-640.webp")} 640w, ${project.shot} 1200w`}
-          sizes={sizes}
-          alt=""
-          loading={eager ? "eager" : "lazy"}
-          decoding="async"
-          width="1200"
-          height="750"
-          className="w-full"
-        />
-      ) : (
-        <svg viewBox="0 0 400 240" className="w-full">
-          {MOTIFS[project.cover]}
-        </svg>
-      )}
+      <Screen project={project} sizes={sizes} eager={eager} />
     </Window>
   </div>
 );

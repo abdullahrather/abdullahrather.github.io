@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { Screen, Window } from "./Cover";
 import { Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
 import { useExperienceYears } from "../lib/experience";
 import { useTranslation } from "../lib/i18n";
+import { studyPath } from "../lib/route";
 import { SOCIALS, STACK, getResume } from "../lib/site";
 
 const delay = (ms) => ({ "--delay": `${ms}ms` });
@@ -106,6 +108,45 @@ const Portrait = () => {
   );
 };
 
+const side =
+  "absolute top-[16%] w-[44%] opacity-70 transition-all duration-700 ease-out-expo hover:z-20 hover:-translate-y-2 hover:rotate-0 hover:opacity-100 focus-visible:z-20 focus-visible:opacity-100 sm:w-[38%]";
+
+/** The three case studies as a fan of windows under the buttons: one in front, two behind. */
+const Showcase = () => {
+  const { t } = useTranslation();
+  // In the order of the project list: the private platform (a schematic), then the two with screenshots.
+  const [right, left, front] = (t("projects.items") || []).filter((p) => p.caseStudy);
+  if (!front) return null;
+
+  const window = (project, className, sizes, eager) => (
+    <a
+      href={studyPath(project.slug)}
+      aria-label={`${t("ui.study.eyebrow")}: ${project.title}`}
+      className={`block ${className}`}
+    >
+      <Window className="aspect-16/10">
+        <Screen project={project} sizes={sizes} eager={eager} />
+      </Window>
+    </a>
+  );
+
+  return (
+    <div
+      className="enter relative mx-auto mt-14 max-w-4xl px-5 mask-[linear-gradient(to_bottom,#000_55%,transparent)] sm:mt-20"
+      style={delay(360)}
+    >
+      {window(left, `${side} left-5 -rotate-3`, "(min-width: 896px) 325px, 40vw")}
+      {window(right, `${side} right-5 rotate-3`, "(min-width: 896px) 325px, 40vw")}
+      {window(
+        front,
+        "relative z-10 mx-auto w-[68%] transition-transform duration-700 ease-out-expo hover:-translate-y-2 sm:w-[54%]",
+        "(min-width: 896px) 460px, 62vw",
+        true,
+      )}
+    </div>
+  );
+};
+
 const Hero = () => {
   const { t } = useTranslation();
   const years = useExperienceYears();
@@ -133,7 +174,7 @@ const Hero = () => {
             </p>
 
             <h1
-              className="enter mt-4 text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-6xl lg:text-[4.25rem] xl:text-[4.75rem]"
+              className="enter mt-4 text-[clamp(1.9rem,9.6vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-6xl lg:text-[4.25rem] xl:text-[4.75rem]"
               style={delay(120)}
             >
               {t("ui.hero.headline_a")} <span className="serif-em">{t("ui.hero.headline_em")}</span>{" "}
@@ -181,8 +222,10 @@ const Hero = () => {
         </div>
       </div>
 
+      <Showcase />
+
       {/* Stack marquee */}
-      <div className="enter mt-20 sm:mt-28" style={delay(400)}>
+      <div className="enter mt-12 sm:mt-16" style={delay(440)}>
         <p className="container-x mb-6 text-center font-mono text-xs uppercase tracking-[0.2em] text-subtle">
           {t("ui.hero.stack_label")}
         </p>

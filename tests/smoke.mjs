@@ -46,6 +46,10 @@ try {
   await check("pre-rendered content works without JavaScript", async () => {
     const page = await openPage({ javaScriptEnabled: false });
     assert.match(await page.locator("h1").innerText(), /backends/);
+    // The portrait stays out of the headline, so the heading reads as one plain sentence.
+    assert.equal(await page.locator("h1 img").count(), 0);
+    assert.equal(await page.locator('#top img[alt="Portrait of Abdullah Rather"]').count(), 1);
+    assert.equal(await page.locator('#top a[aria-label^="Case study: "]').count(), 3);
     assert.equal(await page.locator("#projects article").count(), 7);
   });
 
@@ -154,6 +158,17 @@ try {
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     });
   }
+
+  await check("the German headline fits a phone screen", async () => {
+    const page = await openPage({
+      locale: "de-DE",
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    await page.waitForFunction(() => /entwickle/.test(document.querySelector("h1").innerText));
+    assert.equal(await page.locator("h1").evaluate((h1) => h1.scrollWidth <= h1.clientWidth), true);
+  });
 
   await check("the cookie banner leaves the headline readable on a phone", async () => {
     const page = await openPage({

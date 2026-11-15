@@ -1,7 +1,7 @@
 {
   "hero": {
-    "role": "AI Software Engineer · PHP Backend",
-    "summary": "I build enterprise web platforms, internal tools and the integrations behind them, and bring AI features into everyday business workflows. {years}+ years of experience with PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST APIs, Docker and CI/CD, from legacy modernization to new modules in production.",
+    "role": "Backend Developer · PHP & Laravel",
+    "summary": "I build booking systems, internal dashboards and the APIs behind them, with PHP, Laravel, Symfony and PostgreSQL. {years}+ years of turning slow manual processes into software people rely on every day.",
     "buttons": {
       "projects": "Projects",
       "experience": "Experience",
@@ -29,42 +29,37 @@
       "experience_snapshot": "Experience Snapshot"
     },
     "intro": {
-      "paragraph1": "I'm an AI Software Engineer and PHP backend / full-stack developer with {years}+ years of experience building enterprise web applications, internal platforms and database-driven business systems. My core stack is PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST APIs, Docker and CI/CD.",
-      "paragraph2": "Today I work on a central business platform used across a group of companies, bringing AI into everyday workflows and building new modules such as an in-house HR and time-tracking system. Earlier, I led a team of five developers and developed an Education Management Information System."
+      "paragraph1": "I'm a backend developer with {years}+ years of experience building web applications, internal tools and APIs. My core stack is PHP (Laravel, Symfony), PostgreSQL and MySQL, Redis, Docker and CI/CD.",
+      "paragraph2": "Today I work on a booking platform used by a chain of climbing gyms. Before that I built dashboards and integrations for a logistics company. This is fictional demo content: replace it with your own in the content folder."
     },
-    "mission": "I build business software that solves real problems: solid engineering, reliable integrations and practical AI, delivered as maintainable, production-ready code.",
+    "mission": "I build software that removes busywork: reliable, well tested, and simple to change.",
     "groups": [
       {
         "title": "Backend & APIs",
-        "text": "Business platforms, new modules and the APIs behind them.",
-        "items": ["PHP", "Laravel", "Symfony", "Yii", "REST APIs", "PHPUnit", "PHPStan"]
+        "text": "Web applications and the APIs behind them.",
+        "items": ["PHP", "Laravel", "Symfony", "REST APIs", "PHPUnit"]
       },
       {
-        "title": "Data & integrations",
-        "text": "Schemas that hold up as data grows, and integrations with accounting and third-party systems.",
-        "items": ["MySQL", "MariaDB", "PostgreSQL", "DATEV", "ZUGFeRD", "Webhooks"]
-      },
-      {
-        "title": "AI",
-        "text": "AI features inside real workflows, access-controlled and tested.",
-        "items": ["LLM APIs", "Prompt design", "Python", "FastAPI", "Flask"]
+        "title": "Data",
+        "text": "Schemas, queries and reports that stay fast.",
+        "items": ["PostgreSQL", "MySQL", "Redis"]
       },
       {
         "title": "Frontend",
-        "text": "The dashboards and interfaces on top.",
-        "items": ["JavaScript", "TypeScript", "React", "Bootstrap"]
+        "text": "The dashboards on top.",
+        "items": ["TypeScript", "Vue.js", "React"]
       },
       {
         "title": "Delivery",
-        "text": "Predictable releases, from code review to deployment.",
-        "items": ["Docker", "GitHub Actions", "CI/CD", "Linux", "Code reviews", "Team leadership"]
+        "text": "From code review to deployment.",
+        "items": ["Docker", "GitHub Actions", "CI/CD", "Linux"]
       }
     ]
   },
   "workExperience": {
     "badge": "Career Timeline",
     "heading": "Work Experience",
-    "description": "A concise view of the roles behind the resume, focused on backend ownership, systems thinking, and delivery in production environments.",
+    "description": "The roles behind the resume, with what I built in each.",
     "duration_label": "Duration",
     "key_impact": "Key Impact",
     "present": "Present",
@@ -75,118 +70,57 @@
     "months": "months",
     "entries": [
       {
-        "location": "Neckarsulm, Germany",
-        "role": "AI Software Engineer",
-        "summary": "Bringing AI into the company's central business platform and building new modules: the same platform I developed at APS Services, now full-time and with a wider scope.",
+        "location": "Leipzig, Germany",
+        "role": "Backend Developer",
+        "summary": "Building the booking platform for a chain of climbing gyms: bookings, payments, dashboards and a public API.",
         "highlights": [
-          "Built an in-house HR module replacing an external time-tracking tool: clock-in/out with breaks, time accounts with target hours, public holidays and statutory break rules, a live attendance overview, logged time corrections, and vacation and absence management.",
-          "Developed AI features for the platform, including AI-based ticket assignment suggestions with server-side access control.",
-          "Designed and built an AI-assisted search across customer history (tickets and order items).",
-          "Integrated a telephony system and moved the UI to a modern Bootstrap 5 admin template.",
-          "Ensured production quality through code reviews, automated tests and concurrency-safe database transactions."
+          "Built booking and waiting lists that have had no double bookings since launch.",
+          "Moved fourteen gyms onto the platform, one at a time.",
+          "Added card payments, memberships and refunds."
         ],
         "tag": "Full-Time"
       },
       {
-        "location": "Neckarsulm, Germany",
-        "role": "Software Engineer",
-        "summary": "Developed and maintained the group's central business platform (customers, tickets, offers, orders, invoicing, projects, time tracking and reporting), running as separate instances for several group companies.",
+        "location": "Dresden, Germany",
+        "role": "Junior Developer",
+        "summary": "Built dashboards and integrations for a logistics company.",
         "highlights": [
-          "Built REST integrations, including DATEV-related workflows, and contributed to authentication, role-based access control and internal process automation.",
-          "Developed reporting, export and dashboard features; improved performance through query optimization and removal of N+1 queries.",
-          "Modernized legacy areas through OOP refactoring, automated tests and continuous integration.",
-          "Built responsive AJAX-based interfaces for day-to-day operations across multiple modules."
+          "Built a live warehouse dashboard that replaced a next-day report.",
+          "Wrote imports from three partner systems."
         ],
-        "tag": "Part-Time · Remote"
+        "tag": "Full-Time"
       },
       {
-        "location": "Islamabad, Pakistan",
-        "role": "Technical Team Lead",
-        "summary": "Led a team of five through the design, development, deployment and support of business web applications, while staying hands-on in development.",
-        "highlights": [
-          "Designed REST APIs and relational database schemas for growing data volumes; managed deployments on Docker and Linux/CentOS with CI/CD.",
-          "Ran code reviews, set coding standards and wrote technical documentation; turned client requirements into deliverable solutions."
-        ],
-        "tag": "Full-Time · On-site"
-      },
-      {
-        "location": "Islamabad, Pakistan",
-        "role": "Software Engineer",
-        "summary": "Developed frontend and backend features for client web applications in PHP and JavaScript.",
-        "highlights": [
-          "Acted as the team's point of contact when leads were absent, keeping coordination and delivery on track."
-        ],
-        "tag": "Full-Time · On-site"
-      },
-      {
-        "location": "Islamabad, Pakistan",
-        "role": "Software Engineer",
-        "summary": "Developed and maintained the school's Education Management Information System in PHP, covering student, staff, finance and user-administration modules.",
-        "highlights": [
-          "Managed the relational database with a focus on data integrity and performance.",
-          "Implemented authentication and role-based access control for administrators and staff.",
-          "Worked with school management on requirements, new features and fixes; carried out system upgrades and troubleshooting."
-        ],
-        "tag": "Full-Time · Remote"
-      },
-      {
-        "location": "Islamabad, Pakistan",
-        "role": "Technical Intern",
-        "summary": "Contributed to full-stack feature development: PHP backend logic and HTML/CSS, JavaScript and Bootstrap frontends.",
-        "highlights": ["Supported deployments, technical documentation, user training and client presentations."],
-        "tag": "Internship"
+        "location": "Leipzig, Germany",
+        "role": "Working Student",
+        "summary": "Built websites and small tools for a design studio's clients.",
+        "highlights": ["Built a booking form used by a dozen client sites."],
+        "tag": "Part-Time"
       }
     ]
   },
   "expertise": {
     "items": [
       {
-        "title": "AI Features & LLM Integration",
-        "description": "AI built into everyday business workflows: practical, access-controlled and production-ready.",
-        "features": ["LLM API Integration", "AI Ticket Assignment", "AI-Assisted Search", "Prompt Design"]
+        "title": "APIs & Integrations",
+        "description": "REST APIs and the integrations that connect systems.",
+        "features": ["REST API Design", "Webhooks", "Data Imports"]
       },
       {
-        "title": "Enterprise Platforms & Workflow Systems",
-        "description": "Internal platforms for operations, project tracking, document handling, and multi-role workflows.",
-        "features": [
-          "Workflow & Ticket Modules",
-          "Document Management",
-          "HR & Time Tracking",
-          "Role-based Access Control (RBAC)",
-          "Multi-language Support"
-        ]
+        "title": "Backend Development",
+        "description": "Web applications with clean structure and tests.",
+        "features": ["Laravel & Symfony", "PHPUnit", "Queues & Jobs"]
       },
       {
-        "title": "API Integrations & Automation",
-        "description": "Integrations and automation for third-party systems, including German accounting standards.",
-        "features": ["REST API Integrations", "DATEV & ZUGFeRD Compliance", "Data Sync & Automation", "Secure Webhooks"]
-      },
-      {
-        "title": "PHP Backend & Full-Stack",
-        "description": "Backend services and APIs with clean architecture and tests, plus the dashboards and interfaces on top.",
-        "features": [
-          "Laravel / Yii / Symfony",
-          "REST API Design",
-          "Authentication & RBAC",
-          "PHPUnit & PHPStan",
-          "React & Admin Dashboards"
-        ]
-      },
-      {
-        "title": "Legacy Modernization & Performance",
-        "description": "Upgrade and refactor legacy PHP systems for stability, security, and speed.",
-        "features": ["PHP 7.4 to 8.2 Upgrades", "Legacy Refactors", "OOP Design Patterns", "Performance Optimization"]
-      },
-      {
-        "title": "Technical Leadership",
-        "description": "Lead teams and deliver predictable releases with clear standards.",
-        "features": ["Team Mentoring", "Code Reviews", "Release Planning", "Agile Delivery"]
+        "title": "Delivery",
+        "description": "Predictable releases with reviews and automation.",
+        "features": ["Code Reviews", "CI/CD", "Docker"]
       }
     ]
   },
   "contact": {
     "heading": "Get In Touch",
-    "subheading": "Questions, ideas, or want to talk about backend engineering or practical AI in business software? I'm happy to hear from you.",
+    "subheading": "A question, an idea, or a project to talk about? I'm happy to hear from you.",
     "form_heading": "Send Message",
     "recaptcha_unavailable": "reCAPTCHA is unavailable in this environment.",
     "alert_recaptcha": "Please complete the reCAPTCHA before submitting.",
@@ -208,15 +142,15 @@
     "contact_info": [
       {
         "title": "Email",
-        "value": "abdullahrather19@gmail.com"
+        "value": "robin@example.com"
       },
       {
         "title": "Location",
-        "value": "Heilbronn, Germany"
+        "value": "Leipzig, Germany"
       },
       {
         "title": "Current Role",
-        "value": "AI Software Engineer at APS AG"
+        "value": "Backend Developer at Kranich Labs"
       },
       {
         "title": "Availability",
@@ -226,7 +160,7 @@
   },
   "projects": {
     "heading": "Featured Projects",
-    "subheading": "Selected work highlighting enterprise platforms, integrations, and end-to-end delivery.",
+    "subheading": "Selected work: booking systems, dashboards and small tools.",
     "filters": [
       {
         "id": "all",
@@ -265,118 +199,110 @@
     "items": [
       {
         "id": 1,
-        "title": "Enterprise Management System",
-        "description": "Central business platform for customers, tickets, offers, orders, invoicing, projects and time tracking, running for several group companies, with DATEV integration, ZUGFeRD e-invoicing, AI features and an in-house HR module.",
-        "features": [
-          "Ticketing & Order Management",
-          "DATEV Integration",
-          "ZUGFeRD XML Generation",
-          "AI Ticket Assignment",
-          "HR & Time Tracking",
-          "Multi-language Support"
-        ],
+        "title": "Booking Platform",
+        "description": "Booking system for a chain of climbing gyms, built with Laravel and Vue.js: classes, courses and day passes, waiting lists, card payments and a dashboard for each gym.",
+        "features": ["Online Booking & Waiting Lists", "Card Payments", "Dashboards per Gym", "Public REST API"],
         "study": {
-          "tagline": "The central business platform of a group of companies: customers, tickets, offers, orders, invoicing, projects and time tracking, with AI built into everyday work.",
+          "tagline": "A booking system for a chain of climbing gyms: classes, courses and day passes, with payments and a dashboard for each gym.",
           "meta": [
             {
               "label": "Role",
-              "value": "Software Engineer, now AI Software Engineer"
+              "value": "Backend developer"
             },
             {
               "label": "Years",
-              "value": "2024 to today"
+              "value": "2022 to today"
             },
             {
               "label": "Source",
               "value": "Private, built at work"
             }
           ],
-          "numbers": [],
+          "numbers": [
+            {
+              "value": "14",
+              "label": "gyms on one platform"
+            },
+            {
+              "value": "40,000",
+              "label": "bookings a month"
+            },
+            {
+              "value": "0.2 s",
+              "label": "for a booking at peak time"
+            },
+            {
+              "value": "0",
+              "label": "double bookings since launch"
+            }
+          ],
           "problem": {
-            "title": "One platform for the whole business",
+            "title": "Full classes, empty slots",
             "paragraphs": [
-              "The platform runs the daily business of several group companies, each on its own instance: customers, tickets, offers, orders, invoicing, projects, time tracking and reporting. It is a long-lived Yii application, so the work is as much about modernising what exists as about building what is new.",
-              "I have developed and maintained it since 2024, first part-time and now full-time with a wider scope: bringing AI into the platform and building new modules. The code is private, so this page describes the work without screenshots."
+              "Each gym took bookings by phone and spreadsheet. Popular classes were overbooked, cancellations left empty slots nobody heard about, and head office had no view across the gyms.",
+              "I built the booking platform that replaced it: one system for all gyms, with online booking, waiting lists and payments, and a dashboard for each gym and for head office. This project is fictional demo content."
             ]
           },
           "built": [
             {
-              "title": "DATEV and e-invoicing",
-              "text": "REST integrations including DATEV-related workflows, and ZUGFeRD XML generation for exchanging finance documents."
+              "title": "Booking and waiting lists",
+              "text": "Members book classes, courses and day passes online. A freed slot goes to the first person on the waiting list, who is told by email."
             },
             {
-              "title": "AI ticket assignment",
-              "text": "Suggestions for who should take a ticket, with access control enforced on the server."
+              "title": "Payments",
+              "text": "Card payments and memberships, with refunds when a class is cancelled."
             },
             {
-              "title": "AI-assisted search",
-              "text": "A search across customer history, covering tickets and order items."
+              "title": "Dashboards",
+              "text": "Each gym sees its own bookings and capacity. Head office sees every gym side by side."
             },
             {
-              "title": "HR and time tracking",
-              "text": "An in-house module that replaced an external time-tracking tool: clock-in and clock-out with breaks, time accounts with target hours, public holidays and statutory break rules, a live attendance overview, logged corrections, and vacation and absence management."
-            },
-            {
-              "title": "Reporting and performance",
-              "text": "Reporting, export and dashboard features, and faster pages through query optimisation and the removal of N+1 queries."
-            },
-            {
-              "title": "Modernisation",
-              "text": "Legacy areas refactored into object-oriented code with automated tests and continuous integration, a telephony integration, and a move to a Bootstrap 5 admin template."
+              "title": "Public API",
+              "text": "A REST API for the gyms' own websites and a member app, with documentation."
             }
           ],
           "flow": {
-            "title": "How the platform is organised",
+            "title": "How a booking is made",
             "lanes": [
               {
-                "title": "People",
-                "items": ["Staff of several group companies", "Role-based access control"]
+                "title": "Member",
+                "items": ["Picks a class", "Pays online"]
               },
               {
-                "title": "Modules",
-                "items": ["Tickets, offers, orders, invoicing", "Projects, time tracking, HR"]
+                "title": "API",
+                "items": ["Checks the slot is free", "Reserves it in one step"]
               },
               {
-                "title": "AI features",
-                "items": ["Ticket assignment suggestions", "Search across customer history"]
+                "title": "Queue",
+                "items": ["Sends the confirmation", "Updates the waiting list"]
               },
               {
-                "title": "Integrations",
-                "items": ["DATEV and ZUGFeRD", "Telephony and REST APIs"]
+                "title": "Dashboard",
+                "items": ["Shows the new booking", "Updates capacity"]
               }
             ],
-            "note": "Each group company runs its own instance of the same application."
+            "note": "A slot is reserved in a single database transaction, so two people can never book the last place."
           },
           "hard": [
             {
-              "title": "AI that respects permissions",
-              "text": "The AI features are access-controlled on the server, so a suggestion or a search result never shows more than the person is allowed to see."
+              "title": "The last place in a class",
+              "text": "At peak times dozens of people book the same class at once. Slots are reserved with a row lock in one transaction, so a class can't be overbooked."
             },
             {
-              "title": "Time tracking that follows the rules",
-              "text": "Time accounts handle target hours, public holidays and statutory break rules, and every correction is logged."
-            },
-            {
-              "title": "Changing a system people rely on every day",
-              "text": "New work ships next to legacy code, so changes are protected by code reviews, automated tests and concurrency-safe database transactions."
+              "title": "Moving fourteen gyms over",
+              "text": "Each gym moved over separately, with its members and memberships imported and checked, while the old process kept running."
             }
           ],
           "screens": []
         }
       },
       {
-        "id": 4,
-        "title": "Streaming Ad Platform",
-        "description": "Ad platform for a streaming service, built with Node.js, TypeScript and React: ad decisions for video players, real-time campaign analytics, prepaid billing with EU VAT, and a dashboard in English and German.",
-        "features": [
-          "Ad Decisions & VAST for Video Players",
-          "Real-Time Analytics & Forecasts",
-          "Prepaid Billing, EU VAT & Stripe",
-          "AI Campaign Assistant",
-          "GDPR Tools & Monitoring"
-        ],
+        "id": 2,
+        "title": "Warehouse Dashboard",
+        "description": "Live dashboard for a warehouse team, built with Symfony: open orders, late shipments and staff load, refreshed every minute, with alerts and weekly reports.",
+        "features": ["Live Overview", "Email Alerts", "CSV & PDF Reports", "Role-Based Access"],
         "study": {
-          "tagline": "An ad platform for a streaming service: it picks the ad for every ad break, counts every view exactly once, and bills what was delivered.",
+          "tagline": "A dashboard that shows a warehouse team what is late, what is waiting and where the day is going, refreshed every minute.",
           "meta": [
             {
               "label": "Role",
@@ -384,508 +310,119 @@
             },
             {
               "label": "Year",
-              "value": "2026"
+              "value": "2021"
             },
             {
               "label": "Source",
               "value": "Public, MIT licence"
             }
           ],
-          "numbers": [
-            {
-              "value": "10,000",
-              "label": "events per second in the load test, none lost or counted twice"
-            },
-            {
-              "value": "0.5 s",
-              "label": "for a 90-day report over 9.9 million rows"
-            },
-            {
-              "value": "12 KB",
-              "label": "to count a campaign's unique viewers for a day"
-            },
-            {
-              "value": "97 s",
-              "label": "from a Redis outage to the alert email"
-            }
-          ],
+          "numbers": [],
           "problem": {
-            "title": "Three parties, one ad break",
+            "title": "Reports that arrived too late",
             "paragraphs": [
-              "Streaming services with an ad tier show short ads before, during and after episodes. The advertiser wants the ad seen by the right people for a set budget. The platform has to choose an ad for every break and keep each campaign on schedule. The viewer watches, and the player reports what happened.",
-              "I built the part in the middle, end to end: campaigns and teams, the ad decision, a real video player, event counting, analytics, billing and the operations around it. All brands, shows and traffic in the demo are fictional."
+              "The warehouse team got a daily report the next morning, after the problems it described had already happened.",
+              "I built a dashboard that reads the warehouse database every minute and shows open orders, late shipments and staff load as they change. This project is fictional demo content."
             ]
           },
           "built": [
             {
-              "title": "Ad decisions",
-              "text": "For each ad break the platform keeps the campaigns that match the dates, schedule, limits, country, device, slot, genre and audience. Guaranteed campaigns that are behind go first, and the rest is sold in a second-price auction. Any VAST 4.2 player can ask for an ad."
+              "title": "Live overview",
+              "text": "Open orders, late shipments and the day's progress, refreshed every minute."
             },
             {
-              "title": "From upload to playback",
-              "text": "A manager uploads a video, FFmpeg converts it in the background, an admin approves it, and the demo streaming site plays it before, during and after an episode."
+              "title": "Alerts",
+              "text": "An email when an order is at risk of missing its pick-up time."
             },
             {
-              "title": "Analytics and reports",
-              "text": "Live charts, reach and frequency, drop-off, A/B tests that only name a winner at 95% confidence, and saved reports emailed as CSV and PDF."
+              "title": "Reports",
+              "text": "Weekly summaries as CSV and PDF, for the team and for management."
             },
             {
-              "title": "Prepaid billing",
-              "text": "A ledger that is never edited, holds for running budgets, invoices numbered with no gaps, EU VAT with VIES checks, currencies at the European Central Bank's daily rate and optional Stripe Checkout."
-            },
-            {
-              "title": "AI assistant",
-              "text": "Optional and off by default. It answers questions such as why a campaign is behind, using read-only tools, and suggests changes that only apply once a person approves them. It runs on a free local model or a paid API."
-            },
-            {
-              "title": "Operations",
-              "text": "Structured logs, metrics, traces and alerts in Grafana, and daily backups that are restored into a scratch database to prove they work."
+              "title": "Roles",
+              "text": "Team leads, staff and management each see what they need."
             }
           ],
           "flow": {
-            "title": "How an event is counted",
+            "title": "Where the numbers come from",
             "lanes": [
               {
-                "title": "Player",
-                "items": ["Plays the ad", "Reports each event with a unique ID"]
+                "title": "Warehouse system",
+                "items": ["Orders and shipments", "Read-only access"]
               },
               {
-                "title": "API",
-                "items": ["A Redis script drops IDs already seen", "Queues the rest in the same atomic step"]
+                "title": "Import",
+                "items": ["Runs every minute", "Adds up totals"]
               },
               {
-                "title": "Worker",
-                "items": ["Adds events into hourly totals", "Saves the totals and the queue entry's ID together"]
+                "title": "Database",
+                "items": ["One row per hour and area", "Fast to query"]
               },
               {
                 "title": "Dashboard",
-                "items": ["One SQL query per view", "Live charts and reports"]
+                "items": ["Charts and alerts", "Reports"]
               }
             ],
-            "note": "A retry can't count twice, and a crash can't lose or repeat an event."
+            "note": "The dashboard never writes to the warehouse system, so it can't slow down the work on the floor."
           },
           "hard": [
             {
-              "title": "Limits that hold when requests race",
-              "text": "Budgets, goals and frequency caps are reserved in the same atomic Redis step that picks the ad, not checked afterwards. A campaign can't pass its goal, however many requests arrive at once."
+              "title": "Fast without touching the source",
+              "text": "The import reads only what changed since its last run, and keeps hourly totals, so charts load quickly without loading the warehouse database."
             },
             {
-              "title": "Counting exactly once",
-              "text": "An entry stays on the queue until its totals are saved, and its ID is saved in the same transaction. The load test included a worker crash, and no event was lost or counted twice."
-            },
-            {
-              "title": "Fast reports without a data warehouse",
-              "text": "Events are added into one row per campaign, hour, show, slot, country and device, so the table grows with variety, not with traffic. Unique viewers are counted in HyperLogLog sketches."
+              "title": "Alerts people trust",
+              "text": "An alert is sent once, when an order becomes at risk, and not again until something changes."
             }
           ],
-          "screens": [
-            "The demo streaming site playing an ad, with the events the player reports",
-            "The delivery check explains why a campaign is behind, with no AI",
-            "Platform health in Grafana, through a Redis outage and recovery",
-            "The campaign form with its live forecast"
-          ]
+          "screens": []
         }
       },
       {
-        "id": 15,
-        "title": "CareerCraft",
-        "description": "AI-assisted job search platform for the German market, built with Laravel 13 and Livewire 4: one structured career profile becomes several CVs, with CV import by a local AI model, saved PDF and Word versions, and a check of how applicant tracking systems read each one.",
-        "features": [
-          "Career Profile & CV Import",
-          "CV Builder with Four Templates",
-          "PDF & Word Versions",
-          "Parser Check",
-          "Switchable AI Providers",
-          "English & German"
-        ],
-        "study": {
-          "tagline": "A job search platform for the German market: one career profile becomes every CV, and each version is checked the way an applicant tracking system reads it.",
-          "meta": [
-            {
-              "label": "Role",
-              "value": "Sole developer"
-            },
-            {
-              "label": "Year",
-              "value": "2026, in development"
-            },
-            {
-              "label": "Source",
-              "value": "Public, MIT licence"
-            }
-          ],
-          "numbers": [
-            {
-              "value": "4",
-              "label": "CV templates, one of them the German tabular Lebenslauf"
-            },
-            {
-              "value": "3",
-              "label": "AI providers to choose from, one free and local"
-            },
-            {
-              "value": "2",
-              "label": "languages on every screen and in every email"
-            },
-            {
-              "value": "0",
-              "label": "CV files kept after an import"
-            }
-          ],
-          "problem": {
-            "title": "One career, many applications",
-            "paragraphs": [
-              "Applying for jobs means rewriting the same career into a slightly different CV each time, and never being sure what an employer's software makes of the PDF. In Germany there is a second format to maintain as well: the tabular Lebenslauf with photo, place, date and signature.",
-              "CareerCraft keeps one structured career profile and builds every CV from it. It is in development: the foundation, accounts, the profile, CV import, the CV builder and the AI layer are built. Cover letters, job matching and application tracking come next."
-            ]
-          },
-          "built": [
-            {
-              "title": "Career profile",
-              "text": "Experience with achievements, education, skills with levels, projects, certificates and languages at CEFR levels, with a strength score that lists what to add next."
-            },
-            {
-              "title": "Import",
-              "text": "Upload a PDF or Word CV and a local AI model suggests what goes where, or upload LinkedIn's data export, which is read without AI. The person checks every field before anything is saved."
-            },
-            {
-              "title": "CV builder",
-              "text": "Several CVs from one profile, four templates, a live A4 preview that shows where pages end, and headings and dates that follow the CV's language."
-            },
-            {
-              "title": "Saved versions",
-              "text": "Each version keeps its PDF and Word file exactly as they were, so it is always clear what was sent. Any two versions can be compared line by line."
-            },
-            {
-              "title": "Parser check",
-              "text": "Every PDF is read back as plain text, the way an applicant tracking system reads it, and anything that doesn't come through as whole words is listed."
-            },
-            {
-              "title": "AI layer",
-              "text": "An admin picks Ollama, Claude or any OpenAI-compatible API, and sets a daily allowance per person and token prices. Every request is recorded with its tokens and cost."
-            }
-          ],
-          "flow": {
-            "title": "From profile to a sent CV",
-            "lanes": [
-              {
-                "title": "Profile",
-                "items": ["One structured record", "Imported from a CV or LinkedIn"]
-              },
-              {
-                "title": "CV builder",
-                "items": ["Template, language and sections", "Live A4 preview"]
-              },
-              {
-                "title": "Gotenberg",
-                "items": ["Renders the same page as the preview", "PDF and Word file saved as a version"]
-              },
-              {
-                "title": "Parser check",
-                "items": ["Reads the PDF back as text", "Lists what a parser would miss"]
-              }
-            ],
-            "note": "The PDF is made from the same page as the preview, so what you see is what is sent."
-          },
-          "hard": [
-            {
-              "title": "An AI that only copies facts",
-              "text": "The CV reader is told to copy what the CV says, never to add an employer, date or skill, and to ignore instructions written inside the CV. Its output is a suggestion: the person ticks what to keep."
-            },
-            {
-              "title": "One layer for every AI feature",
-              "text": "All requests go through one runner that retries an overloaded provider, streams answers, stops at the daily allowance and records usage. Keys for paid providers stay in the environment and are never stored in the database."
-            },
-            {
-              "title": "PDFs a parser can read",
-              "text": "The templates are single-column with plain text in reading order. The parser check proves that for each version instead of assuming it."
-            }
-          ],
-          "screens": [
-            "The CV builder with its live A4 preview",
-            "The career profile, with a strength score that lists what to add next",
-            "A saved version with its parser check",
-            "AI settings: provider, model, daily allowance and usage"
-          ]
-        }
-      },
-      {
-        "id": 2,
-        "title": "Education Management Information System",
-        "description": "Education management system for admissions, student and staff records, parent access, and finance workflows built with PHP.",
-        "features": ["Admissions & Enrollment", "Student & Staff Records", "Parent Portal", "Finance & Reporting"],
+        "id": 3,
+        "title": "Invoice Generator",
+        "description": "Small Laravel app that turns time entries into invoices, with numbered PDFs and payment reminders.",
+        "features": ["Numbered PDF Invoices", "Payment Reminders", "Customer Records"],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Organized around school administration workflows so admissions, records, and finance modules could evolve independently."
-          },
-          {
-            "label": "Data Management",
-            "text": "Designed around student, staff, and parent records with reporting-ready structures for administrative visibility."
+            "text": "A Laravel app with queued jobs for PDF generation and reminders."
           },
           {
             "label": "Business Value",
-            "text": "Reduced manual coordination by bringing academic, parent-facing, and finance processes into one system."
+            "text": "Saves an afternoon of manual invoicing every month."
           }
         ]
       },
       {
-        "id": 3,
-        "title": "Donor Management System",
-        "description": "Donor and campaign management platform with Laravel and React for contribution tracking, reporting, and outreach workflows.",
-        "features": ["Donor Profiles", "Campaign Tracking", "Contribution Reports", "Payment Integrations"],
+        "id": 4,
+        "title": "Team Task Board",
+        "description": "Kanban board for small teams, built with React and TypeScript, with drag and drop and a simple Node.js API.",
+        "features": ["Drag and Drop", "Labels & Due Dates", "Keyboard Shortcuts"],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Built as a Laravel-backed admin platform with React-driven screens for fast donor and campaign operations."
-          },
-          {
-            "label": "Workflow Design",
-            "text": "Focused on contribution lifecycle handling, from donor profiles to campaign reporting and payment touchpoints."
+            "text": "A React front end and a small Node.js API over SQLite."
           },
           {
             "label": "Business Value",
-            "text": "Helps fundraising teams track contributions, measure campaigns, and keep reporting aligned with real activity."
+            "text": "A lightweight board that a team can host itself."
           }
         ]
       },
       {
         "id": 5,
-        "title": "Task Manager",
-        "description": "Task management system built with Symfony for structured workflows, team collaboration, and role-based access.",
-        "features": ["Task Tracking", "Role-Based Access", "Status Workflows", "Team Collaboration"],
+        "title": "Personal Website",
+        "description": "This site: a portfolio built with React, Vite and Tailwind CSS, pre-rendered to static HTML and hosted on GitHub Pages.",
+        "features": ["Pre-rendered HTML", "English & German", "Light & Dark Theme"],
         "developmentDetails": [
           {
             "label": "Architecture",
-            "text": "Implemented as a Symfony application with clear separation between task workflow logic, roles, and UI actions."
-          },
-          {
-            "label": "Workflow Design",
-            "text": "Supports status-driven task movement so team members can manage work through predictable stages."
+            "text": "React pages rendered to plain HTML when the site is built."
           },
           {
             "label": "Business Value",
-            "text": "Improves delivery coordination by giving teams a shared space for tasks, ownership, and progress tracking."
-          }
-        ]
-      },
-      {
-        "id": 6,
-        "title": "Portfolio Website",
-        "description": "Personal portfolio built with React, Vite and Tailwind CSS: pre-rendered HTML, a command menu, English and German content, and EmailJS contact automation.",
-        "features": [
-          "Pre-rendered HTML",
-          "Command Menu",
-          "CSS-Only Animations",
-          "English & German Content",
-          "EmailJS Contact Automation"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "A React and Vite page pre-rendered to static HTML at build time, then hydrated, so content appears before JavaScript loads."
-          },
-          {
-            "label": "Automation Workflow",
-            "text": "EmailJS routes contact messages into a branded notification and auto-reply; GitHub Actions deploys each merge and creates versioned releases."
-          },
-          {
-            "label": "Business Value",
-            "text": "Fast, accessible and easy to keep current, with content managed in one place for both languages."
-          }
-        ]
-      },
-      {
-        "id": 7,
-        "title": "Currency Converter App",
-        "description": "Real-time currency conversion application built with Laravel, live exchange rates, and responsive currency switching.",
-        "features": ["Real-time Exchange Rates", "Currency Switch Function", "Error Handling", "Responsive Design"],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Kept API access and conversion logic in Laravel so rate retrieval and UI behavior stayed easy to maintain."
-          },
-          {
-            "label": "API Reliability",
-            "text": "Used Guzzle-based requests with fallback handling to keep the conversion flow predictable when rates change."
-          },
-          {
-            "label": "Business Value",
-            "text": "Provides a lightweight financial utility with current exchange data and a simple user experience."
-          }
-        ]
-      },
-      {
-        "id": 8,
-        "title": "Ticket Management System",
-        "description": "Workflow-driven ticket management system with routing, notifications, user roles, and reporting features.",
-        "features": ["Advanced Workflow", "Notification System", "Role Management", "Comprehensive Reporting"],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Designed around ticket states and role-specific actions so support processes stay organized and traceable."
-          },
-          {
-            "label": "Workflow Automation",
-            "text": "Built routing and notification logic to surface the right tickets to the right users at the right time."
-          },
-          {
-            "label": "Business Value",
-            "text": "Improves support throughput and visibility by reducing manual ticket handling."
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "title": "Employee Performance Tracker",
-        "description": "HR performance tracking system with metrics, dashboards, analytics, and export capabilities.",
-        "features": ["Performance Analytics", "Data Visualization", "CSV/PDF Export", "Employee Dashboard"],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Built as an analytics-oriented HR dashboard where performance data and exports remain easy to extend."
-          },
-          {
-            "label": "Reporting Layer",
-            "text": "Focused on visual scorecards and downloadable reports so managers can review performance quickly."
-          },
-          {
-            "label": "Business Value",
-            "text": "Turns employee tracking into a measurable process instead of a manual spreadsheet workflow."
-          }
-        ]
-      },
-      {
-        "id": 10,
-        "title": "Laravel Auth & Role Management App",
-        "description": "Laravel application focused on authentication, authorization, and role-based access control with Gates, policies, and Eloquent relationships.",
-        "features": [
-          "User Authentication & Registration",
-          "Role-Based Authorization",
-          "Gates & Policies Implementation",
-          "Role-Specific Views & Permissions",
-          "CRUD Operations with Access Control",
-          "Eloquent Relationships",
-          "Database Seeding for Roles"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Structured around authentication and access-control boundaries so each role sees only the right screens and actions."
-          },
-          {
-            "label": "Security Model",
-            "text": "Applied Gates, policies, and role-aware views to keep authorization rules consistent across the app."
-          },
-          {
-            "label": "Business Value",
-            "text": "Provides a reusable foundation for secure, role-driven admin systems and CRUD-heavy business tools."
-          }
-        ]
-      },
-      {
-        "id": 11,
-        "title": "Academic Institution Website",
-        "description": "Custom academic institution website with CAPTCHA-protected authentication, role-based dashboards, performance modules, and form management.",
-        "features": [
-          "Secure User Registration & Login",
-          "Password Reset with CAPTCHA Verification",
-          "Role-Based Dashboard",
-          "Student Grades & Top Performers",
-          "News & Announcements Pages",
-          "Event & Committee Management",
-          "Application Form Submission"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Designed as a role-aware school website with separate public pages and private dashboards for operations."
-          },
-          {
-            "label": "User Experience",
-            "text": "Included CAPTCHA-backed registration and recovery flows to reduce abuse while keeping access straightforward."
-          },
-          {
-            "label": "Business Value",
-            "text": "Supports academic communication, student data, and application handling in a single web platform."
-          }
-        ]
-      },
-      {
-        "id": 12,
-        "title": "Laravel Rapid-Development Boilerplate",
-        "description": "A reusable Laravel 10 MVC boilerplate built to rapidly bootstrap new admin panels and microservices with pre-configured validation and access control.",
-        "features": [
-          "Pre-configured Auth & Registration",
-          "Standardized CRUD Generators",
-          "Strict Form Request Validation",
-          "MVC Routing Architecture",
-          "Database Seeders & Migrations"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Built as a modular starting point to eliminate setup time when launching new Laravel MVC projects."
-          },
-          {
-            "label": "Data Layer",
-            "text": "Includes pre-written migrations and model binding to standardize how data changes and controller actions are handled."
-          },
-          {
-            "label": "Business Value",
-            "text": "Significantly reduces time-to-market for internal admin tools by providing a secure, predictable foundation."
-          }
-        ]
-      },
-      {
-        "id": 13,
-        "title": "Corporate Insurance Website",
-        "description": "Corporate insurance website with dynamic inquiry submission, application processing, SQL schema scripts, and styled components.",
-        "features": [
-          "Dynamic Form Submission",
-          "SQL Schema Setup",
-          "Custom PHP Pages",
-          "Client-Side Validation",
-          "Responsive Design"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Created as a custom PHP site with separate front-end pages and back-end form handling for inquiries."
-          },
-          {
-            "label": "Lead Capture",
-            "text": "Focused on converting site visits into actionable inquiries through a clear submission flow."
-          },
-          {
-            "label": "Business Value",
-            "text": "Helps insurance teams collect and process customer requests with less manual effort."
-          }
-        ]
-      },
-      {
-        "id": 14,
-        "title": "Laravel Security & Auth Implementation",
-        "description": "A complete security scaffolding reference covering verified registration, middleware protection, and secure session handling for scalable web apps.",
-        "features": [
-          "Verified User Registration",
-          "Secure Session Handling",
-          "Password Reset Protocols",
-          "Authentication Middleware",
-          "Email Verification Flows"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architecture",
-            "text": "Structured as an inspectable reference implementation for handling the full user lifecycle securely."
-          },
-          {
-            "label": "Security & Access",
-            "text": "Implements strict middleware and verification logic to reinforce account safety against unauthorized access."
-          },
-          {
-            "label": "Business Value",
-            "text": "Serves as a robust baseline authentication setup, ensuring security best practices are baked in from day one."
+            "text": "Fast, accessible and free to host."
           }
         ]
       }
@@ -893,7 +430,7 @@
   },
   "ui": {
     "skip": "Skip to content",
-    "available": "AI Software Engineer at APS AG",
+    "available": "Backend Developer at Kranich Labs",
     "menu": "Menu",
     "close": "Close",
     "theme": "Toggle theme",
@@ -905,10 +442,10 @@
       "contact": "Contact"
     },
     "hero": {
-      "greeting": "Hi, I'm Abdullah Rather",
+      "greeting": "Hi, I'm Robin Hartmann",
       "headline_a": "I build",
-      "headline_em": "reliable",
-      "headline_b": "backends for real businesses.",
+      "headline_em": "dependable",
+      "headline_b": "software for busy teams.",
       "cta_work": "View my work",
       "cta_contact": "Get in touch",
       "stack_label": "Working with",
@@ -917,14 +454,14 @@
     },
     "about": {
       "eyebrow": "About",
-      "heading_a": "Engineering the systems",
-      "heading_em": "behind the screens",
+      "heading_a": "Building the tools",
+      "heading_em": "people rely on",
       "location": "Based in",
-      "location_value": "Heilbronn",
+      "location_value": "Leipzig",
       "local_time": "Local time",
       "skills": "Technical skills",
       "mission": "Mission",
-      "region": "Baden-Württemberg, Germany"
+      "region": "Saxony, Germany"
     },
     "experience": {
       "eyebrow": "Experience"
@@ -981,11 +518,11 @@
       "nav": "Primary",
       "language": "Language",
       "filter": "Filter projects",
-      "portrait": "Portrait of Abdullah Rather"
+      "portrait": "Portrait of Robin Hartmann"
     },
     "meta": {
-      "title": "Abdullah Rather — AI Software Engineer · PHP Backend / Full-Stack",
-      "description": "AI Software Engineer and PHP backend / full-stack developer in Heilbronn, Germany, building enterprise web platforms, REST APIs, integrations and AI features with Yii, Laravel, Symfony, MySQL, Docker and CI/CD."
+      "title": "Robin Hartmann — Backend Developer · PHP & Laravel",
+      "description": "Backend developer in Leipzig, Germany, building booking systems, internal dashboards and APIs with PHP, Laravel, Symfony and PostgreSQL."
     },
     "consent": {
       "title": "This site uses cookies",

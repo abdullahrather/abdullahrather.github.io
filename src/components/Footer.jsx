@@ -1,5 +1,5 @@
 import { Icon } from "./Icons";
-import { openConsentSettings } from "../lib/analytics";
+import { ANALYTICS_ON, openConsentSettings } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useClock, useNow } from "../lib/hooks";
 import { useSectionHref } from "../lib/route";
@@ -75,9 +75,11 @@ const Footer = () => {
             <a href="/privacy/" className="transition-colors hover:text-fg">
               {t("ui.consent.privacy")}
             </a>
-            <button type="button" onClick={openConsentSettings} className="transition-colors hover:text-fg">
-              {t("ui.consent.settings")}
-            </button>
+            {ANALYTICS_ON && (
+              <button type="button" onClick={openConsentSettings} className="transition-colors hover:text-fg">
+                {t("ui.consent.settings")}
+              </button>
+            )}
           </div>
           <p className="hidden md:block">{t("ui.footer.built")}</p>
           <a href="#top" className="inline-flex items-center gap-1.5 transition-colors hover:text-fg">

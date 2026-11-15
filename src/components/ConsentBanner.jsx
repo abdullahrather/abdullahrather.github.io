@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CONSENT_OPEN_EVENT, getConsent, setConsent } from "../lib/analytics";
+import { ANALYTICS_ON, CONSENT_OPEN_EVENT, getConsent, setConsent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 
 /**
@@ -11,6 +11,8 @@ const ConsentBanner = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    // Without analytics there is nothing to agree to.
+    if (!ANALYTICS_ON) return undefined;
     if (!getConsent() || window.location.hash === "#cookie-settings") setOpen(true);
     const onOpen = () => setOpen(true);
     window.addEventListener(CONSENT_OPEN_EVENT, onOpen);

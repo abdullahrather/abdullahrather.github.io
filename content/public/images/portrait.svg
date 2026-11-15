@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <title>Placeholder portrait</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)" />
+  <circle cx="320" cy="250" r="110" fill="#ffffff" fill-opacity="0.85" />
+  <path d="M110 640c0-120 94-200 210-200s210 80 210 200z" fill="#ffffff" fill-opacity="0.85" />
+</svg>

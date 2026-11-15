@@ -2,9 +2,9 @@
   "projects": [
     {
       "id": 1,
-      "slug": "enterprise-management",
+      "slug": "booking-platform",
       "cover": "platform",
-      "technologies": ["Yii Framework", "PHP", "MySQL", "JavaScript", "DATEV API", "Bootstrap", "LLM APIs"],
+      "technologies": ["Laravel", "PHP", "PostgreSQL", "Redis", "Vue.js", "Docker"],
       "category": "fullstack",
       "github": "#",
       "demo": "#",
@@ -12,211 +12,65 @@
       "screens": []
     },
     {
-      "id": 4,
-      "slug": "streaming-ad-platform",
-      "shot": "/images/projects/streaming-ad-platform.webp",
-      "technologies": [
-        "Node.js",
-        "TypeScript",
-        "React",
-        "PostgreSQL",
-        "Redis",
-        "Prisma",
-        "Docker",
-        "Grafana",
-        "Playwright"
-      ],
-      "category": "web",
-      "github": "https://github.com/abdullahrather/streaming-ad-platform",
-      "demo": "#",
-      "caseStudy": true,
-      "screens": [
-        "/images/work/streaming-ad-platform-1.webp",
-        "/images/work/streaming-ad-platform-2.webp",
-        "/images/work/streaming-ad-platform-3.webp",
-        "/images/work/streaming-ad-platform-4.webp"
-      ]
-    },
-    {
-      "id": 15,
-      "slug": "career-craft",
-      "shot": "/images/projects/career-craft.webp",
-      "technologies": [
-        "Laravel 13",
-        "PHP 8.5",
-        "Livewire 4",
-        "PostgreSQL",
-        "Redis",
-        "Tailwind CSS",
-        "Docker",
-        "Pest",
-        "Ollama"
-      ],
-      "category": "fullstack",
-      "github": "https://github.com/abdullahrather/career-craft",
-      "demo": "#",
-      "caseStudy": true,
-      "screens": [
-        "/images/work/career-craft-1.webp",
-        "/images/work/career-craft-2.webp",
-        "/images/work/career-craft-3.webp",
-        "/images/work/career-craft-4.webp"
-      ]
-    },
-    {
       "id": 2,
-      "slug": "education-management",
+      "slug": "warehouse-dashboard",
+      "cover": "chart",
+      "technologies": ["Symfony", "PHP", "MySQL", "Chart.js", "Docker"],
+      "category": "web",
+      "github": "https://github.com/your-username/warehouse-dashboard",
+      "demo": "#",
+      "caseStudy": true,
+      "screens": []
+    },
+    {
+      "id": 3,
+      "slug": "invoice-generator",
       "cover": "form",
-      "technologies": ["PHP", "PHPMaker", "JavaScript", "jQuery", "MySQL"],
+      "technologies": ["Laravel", "PHP", "MySQL", "Blade"],
       "category": "fullstack",
       "github": "#",
       "demo": "#"
     },
     {
-      "id": 3,
-      "slug": "donor-management",
-      "cover": "records",
-      "technologies": ["Laravel", "React", "MySQL", "JavaScript"],
-      "category": "fullstack",
-      "github": "#",
+      "id": 4,
+      "slug": "task-board",
+      "cover": "kanban",
+      "technologies": ["React", "TypeScript", "Node.js", "SQLite"],
+      "category": "web",
+      "github": "https://github.com/your-username/task-board",
       "demo": "#"
     },
     {
       "id": 5,
-      "slug": "task-manager",
-      "shot": "/images/projects/task-manager.webp",
-      "technologies": ["Symfony", "PHP", "MySQL", "Twig", "JavaScript"],
-      "category": "fullstack",
-      "github": "https://github.com/abdullahrather/symfony-task-manager",
-      "demo": "#"
-    },
-    {
-      "id": 6,
-      "slug": "portfolio-website",
-      "shot": "/images/projects/portfolio-website.webp",
-      "technologies": ["React", "Vite", "Tailwind CSS", "JavaScript"],
-      "category": "web",
-      "github": "https://github.com/abdullahrather/abdullahrather.github.io",
-      "demo": "https://abdullahrather.com/"
-    },
-    {
-      "id": 7,
-      "slug": "currency-converter",
-      "cover": "convert",
-      "technologies": ["Laravel", "GuzzleHttp", "ExchangeRate API", "PHP 8.2+"],
-      "category": "web",
-      "github": "https://github.com/abdullahrather/laravel-currency-converter",
-      "demo": "#"
-    },
-    {
-      "id": 8,
-      "slug": "ticket-management",
-      "cover": "kanban",
-      "technologies": ["PHP", "Laravel", "MySQL", "JavaScript", "AJAX"],
-      "category": "fullstack",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "id": 9,
-      "slug": "employee-performance",
-      "cover": "chart",
-      "technologies": ["PHP", "Laravel", "ApexCharts.js", "MySQL", "CSS"],
-      "category": "fullstack",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "id": 10,
-      "slug": "laravel-auth-role",
-      "cover": "auth",
-      "technologies": ["Laravel", "PHP", "MariaDB", "Blade", "Bootstrap 5", "Eloquent ORM"],
-      "category": "fullstack",
-      "github": "https://github.com/abdullahrather/institution-accreditation-portal",
-      "demo": "#"
-    },
-    {
-      "id": 11,
-      "slug": "academic-institution",
+      "slug": "personal-website",
       "cover": "site",
-      "technologies": ["PHP", "MySQL", "JavaScript", "CSS", "HTML", "CAPTCHA"],
+      "technologies": ["React", "Vite", "Tailwind CSS"],
       "category": "web",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "id": 12,
-      "slug": "laravel-auth-crud",
-      "cover": "records",
-      "technologies": ["Laravel 10", "PHP", "MySQL", "Blade", "JavaScript", "CSS"],
-      "category": "web",
-      "github": "https://github.com/abdullahrather/laravel-product-catalog",
-      "demo": "#"
-    },
-    {
-      "id": 13,
-      "slug": "corporate-insurance",
-      "cover": "site",
-      "technologies": ["PHP", "JavaScript", "CSS", "MySQL", "Hack"],
-      "category": "web",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "id": 14,
-      "slug": "laravel-auth-showcase",
-      "cover": "auth",
-      "technologies": ["Laravel", "PHP", "Blade", "MySQL", "CSS", "JavaScript"],
-      "category": "web",
-      "github": "https://github.com/abdullahrather/laravel-admin-auth-starter",
+      "github": "https://github.com/your-username/portfolio",
       "demo": "#"
     }
   ],
   "experience": [
     {
-      "company": "APS AG",
-      "website": "https://www.aps.ag",
-      "startDate": "2026-10-01",
+      "company": "Kranich Labs GmbH",
+      "website": "https://example.com",
+      "startDate": "2022-04-01",
       "endDate": null
     },
     {
-      "company": "APS Services GmbH",
-      "website": "https://www.apsservices.de/",
-      "startDate": "2024-07-01",
-      "endDate": "2026-09-01"
+      "company": "Elbwerk Digital",
+      "website": "https://example.com",
+      "startDate": "2020-01-01",
+      "endDate": "2022-03-01"
     },
     {
-      "company": "Qualven Pvt Ltd",
-      "website": "https://qualven.com/qv-web/",
-      "startDate": "2023-01-01",
-      "endDate": "2024-04-01"
-    },
-    {
-      "company": "Qualven Pvt Ltd",
-      "website": "https://qualven.com/qv-web/",
-      "startDate": "2021-11-01",
-      "endDate": "2023-01-01"
-    },
-    {
-      "company": "The Science School",
-      "website": "https://thescienceschool.edu.pk/tss-web/index.php",
-      "startDate": "2022-04-01",
-      "endDate": "2024-04-01"
-    },
-    {
-      "company": "Qualven Pvt Ltd",
-      "website": "https://qualven.com/qv-web/",
-      "startDate": "2021-01-01",
-      "endDate": "2021-07-01"
+      "company": "Studio Mosaik",
+      "website": "https://example.com",
+      "startDate": "2019-03-01",
+      "endDate": "2019-12-01"
     }
   ],
   "expertise": [
-    {
-      "iconPath": "M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
-    },
-    {
-      "iconPath": "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-    },
     {
       "iconPaths": [
         "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
@@ -227,15 +81,12 @@
       "iconPath": "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
     },
     {
-      "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-    },
-    {
       "iconPath": "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
     }
   ],
   "contactInfo": [
     {
-      "link": "mailto:abdullahrather19@gmail.com",
+      "link": "mailto:robin@example.com",
       "iconPath": "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
     },
     {

@@ -1,5 +1,11 @@
 name: Build & Deploy Vite site to GitHub Pages
 
+# Builds the site and publishes it to the gh-pages branch.
+#
+# Content: the repository's own content/ folder, which is the demo, unless the repository
+# variable CONTENT_REPO names a repository that holds your own content folder. Then that
+# repository is checked out with the CONTENT_TOKEN secret and used instead. If it can't be
+# read, the deploy stops and the live site stays as it is.
 on:
   push:
     branches:
@@ -7,6 +13,7 @@ on:
   # Once a day, so the GitHub activity section stays current without a merge.
   schedule:
     - cron: "17 5 * * *"
+  # Also started by a change in the content repository.
   workflow_dispatch:
 
 permissions:
@@ -20,10 +27,24 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      CONTENT_REPO: ${{ vars.CONTENT_REPO }}
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+
+      - name: Check out the site's own content
+        if: env.CONTENT_REPO != ''
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.CONTENT_REPO }}
+          token: ${{ secrets.CONTENT_TOKEN }}
+          path: own-content
+
+      - name: Use the site's own content
+        if: env.CONTENT_REPO != ''
+        run: echo "CONTENT_DIR=own-content" >> "$GITHUB_ENV"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -37,11 +58,14 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      # Public data only. If GitHub can't be reached, the copy saved in the repository is used.
+      # Public data only. If GitHub can't be reached, the saved copy in the content folder is used.
       - name: Refresh GitHub activity
         run: npm run activity
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check the content
+        run: npm run check:content
 
       - name: Build
         run: npm run build
@@ -51,6 +75,13 @@ jobs:
           VITE_EMAILJS_NOTIFY_TO: ${{ secrets.VITE_EMAILJS_NOTIFY_TO }}
           VITE_EMAILJS_TEMPLATE_NOTIFY: ${{ secrets.VITE_EMAILJS_TEMPLATE_NOTIFY }}
           VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
+
+      # Pull requests test the demo content; this tests the content that is about to go live.
+      - name: Install the test browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Smoke and accessibility checks
+        run: npm run test:smoke
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3

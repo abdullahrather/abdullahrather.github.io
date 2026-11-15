@@ -1,7 +1,7 @@
 {
   "hero": {
-    "role": "KI-Entwickler · PHP Backend",
-    "summary": "Ich entwickle Enterprise-Webplattformen, interne Tools und die Integrationen dahinter und bringe KI-Funktionen in alltägliche Geschäftsabläufe. {years}+ Jahre Erfahrung mit PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST-APIs, Docker und CI/CD – von der Modernisierung bestehender Systeme bis zu neuen Modulen im Produktivbetrieb.",
+    "role": "Backend-Entwickler · PHP & Laravel",
+    "summary": "Ich entwickle Buchungssysteme, interne Dashboards und die APIs dahinter, mit PHP, Laravel, Symfony und PostgreSQL. {years}+ Jahre, in denen ich langsame manuelle Abläufe in Software verwandelt habe, auf die sich Menschen täglich verlassen.",
     "buttons": {
       "projects": "Projekte",
       "experience": "Erfahrung",
@@ -29,42 +29,37 @@
       "experience_snapshot": "Erfahrungsüberblick"
     },
     "intro": {
-      "paragraph1": "Ich bin KI-Entwickler und PHP Backend / Full-Stack Entwickler mit {years}+ Jahren Erfahrung in der Entwicklung von Enterprise-Webanwendungen, internen Plattformen und datenbankgestützten Geschäftssystemen. Mein Kern-Stack: PHP (Yii, Laravel, Symfony), MySQL/MariaDB, REST-APIs, Docker und CI/CD.",
-      "paragraph2": "Heute arbeite ich an einer zentralen Geschäftsplattform, die in einer Unternehmensgruppe genutzt wird, bringe KI in alltägliche Abläufe und entwickle neue Module wie ein eigenes HR- und Zeiterfassungssystem. Zuvor habe ich ein Team von fünf Entwicklern geleitet und ein Education Management Information System entwickelt."
+      "paragraph1": "Ich bin Backend-Entwickler mit {years}+ Jahren Erfahrung in der Entwicklung von Webanwendungen, internen Tools und APIs. Mein Kern-Stack: PHP (Laravel, Symfony), PostgreSQL und MySQL, Redis, Docker und CI/CD.",
+      "paragraph2": "Heute arbeite ich an einer Buchungsplattform für eine Kette von Kletterhallen. Davor habe ich Dashboards und Integrationen für ein Logistikunternehmen entwickelt. Dies ist erfundener Demo-Inhalt: Ersetzen Sie ihn im Content-Ordner durch Ihren eigenen."
     },
-    "mission": "Ich entwickle Geschäftssoftware, die echte Probleme löst: solides Engineering, zuverlässige Integrationen und praxisnahe KI – umgesetzt als wartbarer, produktionsreifer Code.",
+    "mission": "Ich entwickle Software, die lästige Routinearbeit abnimmt: zuverlässig, gut getestet und einfach zu ändern.",
     "groups": [
       {
         "title": "Backend & APIs",
-        "text": "Geschäftsplattformen, neue Module und die APIs dahinter.",
-        "items": ["PHP", "Laravel", "Symfony", "Yii", "REST-APIs", "PHPUnit", "PHPStan"]
+        "text": "Webanwendungen und die APIs dahinter.",
+        "items": ["PHP", "Laravel", "Symfony", "REST-APIs", "PHPUnit"]
       },
       {
-        "title": "Daten & Integrationen",
-        "text": "Schemata, die mit wachsenden Datenmengen mithalten, und Integrationen mit Buchhaltungs- und Drittsystemen.",
-        "items": ["MySQL", "MariaDB", "PostgreSQL", "DATEV", "ZUGFeRD", "Webhooks"]
-      },
-      {
-        "title": "KI",
-        "text": "KI-Funktionen in echten Abläufen, mit Zugriffskontrolle und Tests.",
-        "items": ["LLM-APIs", "Prompt-Design", "Python", "FastAPI", "Flask"]
+        "title": "Daten",
+        "text": "Schemata, Abfragen und Berichte, die schnell bleiben.",
+        "items": ["PostgreSQL", "MySQL", "Redis"]
       },
       {
         "title": "Frontend",
-        "text": "Die Dashboards und Oberflächen darüber.",
-        "items": ["JavaScript", "TypeScript", "React", "Bootstrap"]
+        "text": "Die Dashboards darüber.",
+        "items": ["TypeScript", "Vue.js", "React"]
       },
       {
         "title": "Auslieferung",
-        "text": "Planbare Releases, vom Code-Review bis zum Deployment.",
-        "items": ["Docker", "GitHub Actions", "CI/CD", "Linux", "Code-Reviews", "Teamleitung"]
+        "text": "Vom Code-Review bis zum Deployment.",
+        "items": ["Docker", "GitHub Actions", "CI/CD", "Linux"]
       }
     ]
   },
   "workExperience": {
     "badge": "Karriere-Zeitachse",
     "heading": "Berufserfahrung",
-    "description": "Ein kompakter Überblick über die Rollen hinter dem Lebenslauf, mit Fokus auf Backend-Verantwortung, Systemdenken und Lieferung in Produktionsumgebungen.",
+    "description": "Die Stationen hinter dem Lebenslauf und was ich jeweils entwickelt habe.",
     "duration_label": "Dauer",
     "key_impact": "Wichtigste Erfolge",
     "present": "Heute",
@@ -75,125 +70,57 @@
     "months": "Monate",
     "entries": [
       {
-        "location": "Neckarsulm, Deutschland",
-        "role": "KI-Entwickler",
-        "summary": "Integration von KI in die zentrale Geschäftsplattform des Unternehmens und Entwicklung neuer Module – dieselbe Plattform, die ich bei der APS Services entwickelt habe, jetzt in Vollzeit und mit erweitertem Verantwortungsbereich.",
+        "location": "Leipzig, Deutschland",
+        "role": "Backend-Entwickler",
+        "summary": "Entwicklung der Buchungsplattform für eine Kette von Kletterhallen: Buchungen, Bezahlung, Dashboards und eine öffentliche API.",
         "highlights": [
-          "Entwicklung eines eigenen HR-Moduls als Ersatz für ein externes Zeiterfassungstool: Kommen/Gehen-Buchungen mit Pausen, Zeitkonten mit Sollstunden, Feiertage und gesetzliche Pausenregelungen, Live-Anwesenheitsübersicht, protokollierte Zeitkorrekturen sowie Urlaubs- und Abwesenheitsverwaltung.",
-          "Entwicklung von KI-Funktionen für die Plattform, darunter KI-basierte Vorschläge zur Ticketzuweisung mit serverseitiger Zugriffskontrolle.",
-          "Konzeption und Umsetzung einer KI-gestützten Suche in der Kundenhistorie (Tickets und Auftragspositionen).",
-          "Integration einer Telefonanlage und Umstellung der Benutzeroberfläche auf ein modernes Bootstrap-5-Admin-Template.",
-          "Sicherstellung der Produktionsqualität durch Code-Reviews, automatisierte Tests und nebenläufigkeitssichere Datenbanktransaktionen."
+          "Buchung und Wartelisten entwickelt, ohne eine einzige Doppelbuchung seit dem Start.",
+          "Vierzehn Hallen nacheinander auf die Plattform umgestellt.",
+          "Kartenzahlung, Mitgliedschaften und Erstattungen ergänzt."
         ],
         "tag": "Vollzeit"
       },
       {
-        "location": "Neckarsulm, Deutschland",
-        "role": "Softwareentwickler",
-        "summary": "Entwicklung und Wartung der zentralen Geschäftsplattform der Unternehmensgruppe (Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte, Zeiterfassung und Reporting), die als separate Instanzen für mehrere Gruppenunternehmen betrieben wird.",
+        "location": "Dresden, Deutschland",
+        "role": "Junior-Entwickler",
+        "summary": "Dashboards und Integrationen für ein Logistikunternehmen entwickelt.",
         "highlights": [
-          "Entwicklung von REST-Integrationen, u. a. für DATEV-bezogene Workflows, sowie Mitwirkung an Authentifizierung, rollenbasierter Zugriffskontrolle und interner Prozessautomatisierung.",
-          "Entwicklung von Reporting-, Export- und Dashboard-Funktionen; Performance-Verbesserungen durch Abfrageoptimierung und Beseitigung von N+1-Abfragen.",
-          "Modernisierung von Legacy-Bereichen durch OOP-Refactoring, automatisierte Tests und Continuous Integration.",
-          "Entwicklung responsiver, AJAX-basierter Oberflächen für das Tagesgeschäft in mehreren Modulen."
+          "Ein Live-Lager-Dashboard entwickelt, das einen Bericht vom Folgetag ersetzt hat.",
+          "Importe aus drei Partnersystemen geschrieben."
         ],
-        "tag": "Teilzeit · Remote"
+        "tag": "Vollzeit"
       },
       {
-        "location": "Islamabad, Pakistan",
-        "role": "Technischer Teamleiter",
-        "summary": "Leitung eines fünfköpfigen Teams bei Konzeption, Entwicklung, Deployment und Support von Geschäftsanwendungen bei gleichzeitiger aktiver Mitarbeit in der Entwicklung.",
-        "highlights": [
-          "Entwurf von REST-APIs und relationalen Datenbankschemas für wachsende Datenmengen; Verantwortung für Deployments auf Docker und Linux/CentOS mit CI/CD.",
-          "Durchführung von Code-Reviews, Festlegung von Coding-Standards und Erstellung technischer Dokumentation; Umsetzung von Kundenanforderungen in einsatzfähige Lösungen."
-        ],
-        "tag": "Vollzeit · Vor Ort"
-      },
-      {
-        "location": "Islamabad, Pakistan",
-        "role": "Softwareentwickler",
-        "summary": "Entwicklung von Frontend- und Backend-Funktionen für Kunden-Webanwendungen mit PHP und JavaScript.",
-        "highlights": [
-          "Ansprechpartner des Teams bei Abwesenheit der Teamleitung zur Sicherstellung von Koordination und termingerechter Umsetzung."
-        ],
-        "tag": "Vollzeit · Vor Ort"
-      },
-      {
-        "location": "Islamabad, Pakistan",
-        "role": "Softwareentwickler",
-        "summary": "Entwicklung und Wartung des Education Management Information Systems der Schule in PHP mit Modulen für Schüler, Personal, Finanzen und Benutzerverwaltung.",
-        "highlights": [
-          "Verwaltung der relationalen Datenbank mit Fokus auf Datenintegrität und Performance.",
-          "Implementierung von Authentifizierung und rollenbasierter Zugriffskontrolle für Administratoren und Mitarbeitende.",
-          "Abstimmung mit der Schulleitung zu Anforderungen, neuen Funktionen und Fehlerbehebungen; Durchführung von System-Upgrades und Fehleranalysen."
-        ],
-        "tag": "Vollzeit · Remote"
-      },
-      {
-        "location": "Islamabad, Pakistan",
-        "role": "Technischer Praktikant",
-        "summary": "Mitarbeit an der Full-Stack-Entwicklung: PHP-Backend-Logik sowie Frontends mit HTML/CSS, JavaScript und Bootstrap.",
-        "highlights": [
-          "Unterstützung bei Deployments, technischer Dokumentation, Anwenderschulungen und Kundenpräsentationen."
-        ],
-        "tag": "Praktikum"
+        "location": "Leipzig, Deutschland",
+        "role": "Werkstudent",
+        "summary": "Websites und kleine Tools für die Kunden eines Designstudios entwickelt.",
+        "highlights": ["Ein Buchungsformular entwickelt, das auf einem Dutzend Kundenseiten läuft."],
+        "tag": "Teilzeit"
       }
     ]
   },
   "expertise": {
     "items": [
       {
-        "title": "KI-Funktionen & LLM-Integration",
-        "description": "KI in alltäglichen Geschäftsabläufen: praxisnah, zugriffsgeschützt und produktionsreif.",
-        "features": ["LLM-API-Integration", "KI-Ticketzuweisung", "KI-gestützte Suche", "Prompt Design"]
+        "title": "APIs & Integrationen",
+        "description": "REST-APIs und die Integrationen, die Systeme verbinden.",
+        "features": ["REST-API-Design", "Webhooks", "Datenimporte"]
       },
       {
-        "title": "Enterprise-Plattformen & Workflow-Systeme",
-        "description": "Interne Plattformen für den Betrieb, die Projektverfolgung, die Dokumentenverarbeitung und Rollen-Workflows.",
-        "features": [
-          "Workflow- & Ticketmodule",
-          "Dokumentenmanagement",
-          "HR & Zeiterfassung",
-          "Rollenbasierte Zugriffskontrolle (RBAC)",
-          "Mehrsprachige Unterstützung"
-        ]
+        "title": "Backend-Entwicklung",
+        "description": "Webanwendungen mit klarer Struktur und Tests.",
+        "features": ["Laravel & Symfony", "PHPUnit", "Warteschlangen & Jobs"]
       },
       {
-        "title": "API-Integrationen & Automatisierung",
-        "description": "Integrationen und Automatisierung für Drittanbieter-Systeme, einschließlich deutscher Buchhaltungsstandards.",
-        "features": [
-          "REST API-Integrationen",
-          "DATEV & ZUGFeRD Konformität",
-          "Datensynchronisation & Automatisierung",
-          "Sichere Webhooks"
-        ]
-      },
-      {
-        "title": "PHP Backend & Full-Stack",
-        "description": "Backend-Dienste und APIs mit sauberer Architektur und Tests – plus die Dashboards und Oberflächen darauf.",
-        "features": [
-          "Laravel / Yii / Symfony",
-          "REST API Design",
-          "Authentifizierung & RBAC",
-          "PHPUnit & PHPStan",
-          "React & Admin-Dashboards"
-        ]
-      },
-      {
-        "title": "Legacy-Modernisierung & Leistung",
-        "description": "Aktualisierung und Refactoring von Legacy-PHP-Systemen für Stabilität, Sicherheit und Geschwindigkeit.",
-        "features": ["PHP 7.4 auf 8.2 Upgrades", "Legacy-Refactorings", "OOP-Designmuster", "Leistungsoptimierung"]
-      },
-      {
-        "title": "Technische Leitung",
-        "description": "Leitung von Teams und Lieferung berechenbarer Releases mit klaren Standards.",
-        "features": ["Team-Mentoring", "Code-Reviews", "Release-Planung", "Agile Lieferung"]
+        "title": "Auslieferung",
+        "description": "Planbare Releases mit Reviews und Automatisierung.",
+        "features": ["Code-Reviews", "CI/CD", "Docker"]
       }
     ]
   },
   "contact": {
     "heading": "Kontakt aufnehmen",
-    "subheading": "Fragen, Ideen oder Lust auf einen Austausch über Backend-Entwicklung oder praxisnahe KI in Geschäftssoftware? Ich freue mich auf Ihre Nachricht.",
+    "subheading": "Eine Frage, eine Idee oder ein Projekt? Ich freue mich, von Ihnen zu hören.",
     "form_heading": "Nachricht senden",
     "recaptcha_unavailable": "reCAPTCHA ist in dieser Umgebung nicht verfügbar.",
     "alert_recaptcha": "Bitte füllen Sie das reCAPTCHA vor dem Absenden aus.",
@@ -215,15 +142,15 @@
     "contact_info": [
       {
         "title": "E-Mail",
-        "value": "abdullahrather19@gmail.com"
+        "value": "robin@example.com"
       },
       {
         "title": "Standort",
-        "value": "Heilbronn, Deutschland"
+        "value": "Leipzig, Deutschland"
       },
       {
         "title": "Aktuelle Rolle",
-        "value": "KI-Entwickler bei der APS AG"
+        "value": "Backend-Entwickler bei Kranich Labs"
       },
       {
         "title": "Verfügbarkeit",
@@ -233,7 +160,7 @@
   },
   "projects": {
     "heading": "Ausgewählte Projekte",
-    "subheading": "Ausgewählte Arbeiten, die Unternehmensplattformen, Integrationen und End-to-End-Bereitstellung hervorheben.",
+    "subheading": "Ausgewählte Arbeiten: Buchungssysteme, Dashboards und kleine Tools.",
     "filters": [
       {
         "id": "all",
@@ -272,118 +199,110 @@
     "items": [
       {
         "id": 1,
-        "title": "Unternehmens­management­system",
-        "description": "Zentrale Geschäftsplattform für Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung, betrieben für mehrere Gruppenunternehmen – mit DATEV-Integration, ZUGFeRD-E-Rechnungen, KI-Funktionen und eigenem HR-Modul.",
-        "features": [
-          "Ticket- & Auftragsverwaltung",
-          "DATEV-Integration",
-          "ZUGFeRD-XML-Generierung",
-          "KI-Ticketzuweisung",
-          "HR & Zeiterfassung",
-          "Mehrsprachigkeit"
-        ],
+        "title": "Buchungsplattform",
+        "description": "Buchungssystem für eine Kette von Kletterhallen, entwickelt mit Laravel und Vue.js: Kurse, Trainings und Tageskarten, Wartelisten, Kartenzahlung und ein Dashboard für jede Halle.",
+        "features": ["Online-Buchung & Wartelisten", "Kartenzahlung", "Dashboards pro Halle", "Öffentliche REST-API"],
         "study": {
-          "tagline": "Die zentrale Geschäftsplattform einer Unternehmensgruppe: Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte und Zeiterfassung – mit KI im Arbeitsalltag.",
+          "tagline": "Ein Buchungssystem für eine Kette von Kletterhallen: Kurse, Trainings und Tageskarten, mit Bezahlung und einem Dashboard für jede Halle.",
           "meta": [
             {
               "label": "Rolle",
-              "value": "Softwareentwickler, jetzt KI-Entwickler"
+              "value": "Backend-Entwickler"
             },
             {
               "label": "Jahre",
-              "value": "2024 bis heute"
+              "value": "2022 bis heute"
             },
             {
               "label": "Quellcode",
               "value": "Privat, beruflich entwickelt"
             }
           ],
-          "numbers": [],
+          "numbers": [
+            {
+              "value": "14",
+              "label": "Hallen auf einer Plattform"
+            },
+            {
+              "value": "40.000",
+              "label": "Buchungen pro Monat"
+            },
+            {
+              "value": "0,2 s",
+              "label": "für eine Buchung zur Spitzenzeit"
+            },
+            {
+              "value": "0",
+              "label": "Doppelbuchungen seit dem Start"
+            }
+          ],
           "problem": {
-            "title": "Eine Plattform für das ganze Geschäft",
+            "title": "Volle Kurse, leere Plätze",
             "paragraphs": [
-              "Die Plattform trägt das Tagesgeschäft mehrerer Gruppenunternehmen, jedes mit eigener Instanz: Kunden, Tickets, Angebote, Aufträge, Rechnungsstellung, Projekte, Zeiterfassung und Reporting. Sie ist eine langlebige Yii-Anwendung. Die Arbeit besteht deshalb ebenso aus der Modernisierung des Bestehenden wie aus der Entwicklung von Neuem.",
-              "Ich entwickle und betreue sie seit 2024, zunächst in Teilzeit und jetzt in Vollzeit mit erweitertem Verantwortungsbereich: KI in die Plattform bringen und neue Module entwickeln. Der Code ist privat, daher beschreibt diese Seite die Arbeit ohne Screenshots."
+              "Jede Halle nahm Buchungen per Telefon und Tabelle an. Beliebte Kurse waren überbucht, abgesagte Plätze blieben leer, und die Zentrale hatte keinen Überblick über alle Hallen.",
+              "Ich habe die Buchungsplattform entwickelt, die das ersetzt hat: ein System für alle Hallen, mit Online-Buchung, Wartelisten und Bezahlung sowie einem Dashboard für jede Halle und für die Zentrale. Dieses Projekt ist erfundener Demo-Inhalt."
             ]
           },
           "built": [
             {
-              "title": "DATEV und E-Rechnungen",
-              "text": "REST-Integrationen einschließlich DATEV-bezogener Abläufe und die Erzeugung von ZUGFeRD-XML für den Austausch von Finanzdokumenten."
+              "title": "Buchung und Wartelisten",
+              "text": "Mitglieder buchen Kurse, Trainings und Tageskarten online. Ein frei gewordener Platz geht an die erste Person auf der Warteliste, die per E-Mail informiert wird."
             },
             {
-              "title": "KI-Ticketzuweisung",
-              "text": "Vorschläge, wer ein Ticket übernehmen sollte, mit serverseitiger Zugriffskontrolle."
+              "title": "Bezahlung",
+              "text": "Kartenzahlung und Mitgliedschaften, mit Erstattung, wenn ein Kurs ausfällt."
             },
             {
-              "title": "KI-gestützte Suche",
-              "text": "Eine Suche in der Kundenhistorie über Tickets und Auftragspositionen."
+              "title": "Dashboards",
+              "text": "Jede Halle sieht ihre eigenen Buchungen und Auslastung. Die Zentrale sieht alle Hallen nebeneinander."
             },
             {
-              "title": "HR und Zeiterfassung",
-              "text": "Ein eigenes Modul als Ersatz für ein externes Zeiterfassungstool: Kommen/Gehen-Buchungen mit Pausen, Zeitkonten mit Sollstunden, Feiertage und gesetzliche Pausenregelungen, Live-Anwesenheitsübersicht, protokollierte Korrekturen sowie Urlaubs- und Abwesenheitsverwaltung."
-            },
-            {
-              "title": "Reporting und Performance",
-              "text": "Reporting-, Export- und Dashboard-Funktionen sowie schnellere Seiten durch Query-Optimierung und das Entfernen von N+1-Abfragen."
-            },
-            {
-              "title": "Modernisierung",
-              "text": "Legacy-Bereiche in objektorientierten Code überführt, mit automatisierten Tests und Continuous Integration, dazu die Integration einer Telefonanlage und die Umstellung auf ein Bootstrap-5-Admin-Template."
+              "title": "Öffentliche API",
+              "text": "Eine REST-API für die Websites der Hallen und eine Mitglieder-App, mit Dokumentation."
             }
           ],
           "flow": {
-            "title": "Wie die Plattform aufgebaut ist",
+            "title": "Wie eine Buchung entsteht",
             "lanes": [
               {
-                "title": "Menschen",
-                "items": ["Mitarbeitende mehrerer Gruppenunternehmen", "Rollenbasierte Zugriffskontrolle"]
+                "title": "Mitglied",
+                "items": ["Wählt einen Kurs", "Bezahlt online"]
               },
               {
-                "title": "Module",
-                "items": ["Tickets, Angebote, Aufträge, Rechnungen", "Projekte, Zeiterfassung, HR"]
+                "title": "API",
+                "items": ["Prüft, ob der Platz frei ist", "Reserviert ihn in einem Schritt"]
               },
               {
-                "title": "KI-Funktionen",
-                "items": ["Vorschläge zur Ticketzuweisung", "Suche in der Kundenhistorie"]
+                "title": "Warteschlange",
+                "items": ["Sendet die Bestätigung", "Aktualisiert die Warteliste"]
               },
               {
-                "title": "Integrationen",
-                "items": ["DATEV und ZUGFeRD", "Telefonanlage und REST-APIs"]
+                "title": "Dashboard",
+                "items": ["Zeigt die neue Buchung", "Aktualisiert die Auslastung"]
               }
             ],
-            "note": "Jedes Gruppenunternehmen betreibt eine eigene Instanz derselben Anwendung."
+            "note": "Ein Platz wird in einer einzigen Datenbanktransaktion reserviert, sodass nie zwei Personen den letzten Platz buchen."
           },
           "hard": [
             {
-              "title": "KI, die Berechtigungen beachtet",
-              "text": "Die KI-Funktionen sind serverseitig zugriffskontrolliert. Ein Vorschlag oder ein Suchergebnis zeigt nie mehr, als die Person sehen darf."
+              "title": "Der letzte Platz im Kurs",
+              "text": "Zur Spitzenzeit buchen Dutzende Personen gleichzeitig denselben Kurs. Plätze werden mit einer Zeilensperre in einer Transaktion reserviert, sodass kein Kurs überbucht wird."
             },
             {
-              "title": "Zeiterfassung nach den Regeln",
-              "text": "Zeitkonten berücksichtigen Sollstunden, Feiertage und gesetzliche Pausenregelungen, und jede Korrektur wird protokolliert."
-            },
-            {
-              "title": "Ein System ändern, auf das sich Menschen täglich verlassen",
-              "text": "Neues entsteht neben Legacy-Code. Änderungen sind deshalb durch Code-Reviews, automatisierte Tests und nebenläufigkeitssichere Datenbanktransaktionen abgesichert."
+              "title": "Vierzehn Hallen umstellen",
+              "text": "Jede Halle wurde einzeln umgestellt, mit importierten und geprüften Mitgliedern und Mitgliedschaften, während der alte Ablauf weiterlief."
             }
           ],
           "screens": []
         }
       },
       {
-        "id": 4,
-        "title": "Streaming-Werbeplattform",
-        "description": "Werbeplattform für einen Streaming-Dienst, entwickelt mit Node.js, TypeScript und React: Anzeigenentscheidungen für Videoplayer, Kampagnenanalysen in Echtzeit, Prepaid-Abrechnung mit EU-Umsatzsteuer und ein Dashboard auf Deutsch und Englisch.",
-        "features": [
-          "Anzeigenentscheidungen & VAST für Videoplayer",
-          "Echtzeit-Analysen & Prognosen",
-          "Prepaid-Abrechnung, EU-USt. & Stripe",
-          "KI-Kampagnenassistent",
-          "DSGVO-Werkzeuge & Monitoring"
-        ],
+        "id": 2,
+        "title": "Lager-Dashboard",
+        "description": "Live-Dashboard für ein Lagerteam, entwickelt mit Symfony: offene Aufträge, verspätete Sendungen und Auslastung, jede Minute aktualisiert, mit Warnungen und Wochenberichten.",
+        "features": ["Live-Überblick", "E-Mail-Warnungen", "CSV- & PDF-Berichte", "Rollenbasierter Zugriff"],
         "study": {
-          "tagline": "Eine Werbeplattform für einen Streaming-Dienst: Sie wählt die Anzeige für jede Werbepause, zählt jede Wiedergabe genau einmal und rechnet ab, was ausgeliefert wurde.",
+          "tagline": "Ein Dashboard, das einem Lagerteam zeigt, was verspätet ist, was wartet und wie der Tag läuft – jede Minute aktualisiert.",
           "meta": [
             {
               "label": "Rolle",
@@ -391,521 +310,119 @@
             },
             {
               "label": "Jahr",
-              "value": "2026"
+              "value": "2021"
             },
             {
               "label": "Quellcode",
               "value": "Öffentlich, MIT-Lizenz"
             }
           ],
-          "numbers": [
-            {
-              "value": "10.000",
-              "label": "Ereignisse pro Sekunde im Lasttest, keines verloren oder doppelt gezählt"
-            },
-            {
-              "value": "0,5 s",
-              "label": "für einen 90-Tage-Bericht über 9,9 Millionen Zeilen"
-            },
-            {
-              "value": "12 KB",
-              "label": "um die einzelnen Zuschauer einer Kampagne für einen Tag zu zählen"
-            },
-            {
-              "value": "97 s",
-              "label": "vom Redis-Ausfall bis zur Warn-E-Mail"
-            }
-          ],
+          "numbers": [],
           "problem": {
-            "title": "Drei Beteiligte, eine Werbepause",
+            "title": "Berichte, die zu spät kamen",
             "paragraphs": [
-              "Streaming-Dienste mit Werbetarif zeigen kurze Anzeigen vor, während und nach Episoden. Der Werbetreibende möchte, dass die richtigen Menschen die Anzeige für ein festes Budget sehen. Die Plattform muss für jede Pause eine Anzeige wählen und jede Kampagne im Zeitplan halten. Der Zuschauer schaut zu, und der Player meldet, was passiert ist.",
-              "Ich habe den Teil dazwischen durchgängig entwickelt: Kampagnen und Teams, die Anzeigenentscheidung, einen echten Videoplayer, die Ereigniszählung, Analysen, Abrechnung und den Betrieb drumherum. Alle Marken, Serien und Zugriffe in der Demo sind erfunden."
+              "Das Lagerteam bekam am nächsten Morgen einen Tagesbericht, wenn die beschriebenen Probleme längst passiert waren.",
+              "Ich habe ein Dashboard entwickelt, das die Lagerdatenbank jede Minute liest und offene Aufträge, verspätete Sendungen und die Auslastung des Teams laufend zeigt. Dieses Projekt ist erfundener Demo-Inhalt."
             ]
           },
           "built": [
             {
-              "title": "Anzeigenentscheidungen",
-              "text": "Für jede Werbepause behält die Plattform die Kampagnen, die zu Laufzeit, Zeitplan, Limits, Land, Gerät, Platzierung, Genre und Zielgruppe passen. Garantierte Kampagnen im Rückstand kommen zuerst, der Rest wird in einer Zweitpreisauktion vergeben. Jeder VAST-4.2-Player kann eine Anzeige anfragen."
+              "title": "Live-Überblick",
+              "text": "Offene Aufträge, verspätete Sendungen und der Fortschritt des Tages, jede Minute aktualisiert."
             },
             {
-              "title": "Vom Upload bis zur Wiedergabe",
-              "text": "Ein Manager lädt ein Video hoch, FFmpeg konvertiert es im Hintergrund, ein Admin gibt es frei, und die Demo-Streaming-Seite spielt es vor, während und nach einer Episode."
+              "title": "Warnungen",
+              "text": "Eine E-Mail, wenn ein Auftrag seine Abholzeit zu verpassen droht."
             },
             {
-              "title": "Analysen und Berichte",
-              "text": "Live-Diagramme, Reichweite und Frequenz, Abbruchstellen, A/B-Tests, die erst bei 95 % Konfidenz einen Gewinner nennen, und gespeicherte Berichte per E-Mail als CSV und PDF."
+              "title": "Berichte",
+              "text": "Wöchentliche Zusammenfassungen als CSV und PDF, für das Team und die Leitung."
             },
             {
-              "title": "Prepaid-Abrechnung",
-              "text": "Ein Kontobuch, das nie nachträglich geändert wird, Reservierungen für laufende Budgets, lückenlos nummerierte Rechnungen, EU-Umsatzsteuer mit VIES-Prüfung, Währungen zum Tageskurs der Europäischen Zentralbank und optional Stripe Checkout."
-            },
-            {
-              "title": "KI-Assistent",
-              "text": "Optional und standardmäßig aus. Er beantwortet Fragen, etwa warum eine Kampagne im Rückstand ist, mit rein lesenden Werkzeugen und schlägt Änderungen vor, die erst nach Freigabe durch eine Person gelten. Er läuft mit einem kostenlosen lokalen Modell oder einer kostenpflichtigen API."
-            },
-            {
-              "title": "Betrieb",
-              "text": "Strukturierte Logs, Metriken, Traces und Warnungen in Grafana sowie tägliche Backups, die zur Probe in eine Testdatenbank zurückgespielt werden."
+              "title": "Rollen",
+              "text": "Teamleitungen, Mitarbeitende und die Leitung sehen jeweils, was sie brauchen."
             }
           ],
           "flow": {
-            "title": "Wie ein Ereignis gezählt wird",
+            "title": "Woher die Zahlen kommen",
             "lanes": [
               {
-                "title": "Player",
-                "items": ["Spielt die Anzeige ab", "Meldet jedes Ereignis mit eindeutiger ID"]
+                "title": "Lagersystem",
+                "items": ["Aufträge und Sendungen", "Nur lesender Zugriff"]
               },
               {
-                "title": "API",
-                "items": [
-                  "Ein Redis-Skript verwirft bereits gesehene IDs",
-                  "Reiht den Rest im selben atomaren Schritt ein"
-                ]
+                "title": "Import",
+                "items": ["Läuft jede Minute", "Summiert die Werte"]
               },
               {
-                "title": "Worker",
-                "items": ["Summiert Ereignisse zu Stundenwerten", "Speichert Summen und die ID des Eintrags zusammen"]
+                "title": "Datenbank",
+                "items": ["Eine Zeile pro Stunde und Bereich", "Schnell abzufragen"]
               },
               {
                 "title": "Dashboard",
-                "items": ["Eine SQL-Abfrage pro Ansicht", "Live-Diagramme und Berichte"]
+                "items": ["Diagramme und Warnungen", "Berichte"]
               }
             ],
-            "note": "Eine Wiederholung zählt nicht doppelt, und ein Absturz verliert oder wiederholt kein Ereignis."
+            "note": "Das Dashboard schreibt nie in das Lagersystem und kann die Arbeit im Lager daher nicht verlangsamen."
           },
           "hard": [
             {
-              "title": "Limits, die auch bei gleichzeitigen Anfragen halten",
-              "text": "Budgets, Ziele und Frequenzlimits werden im selben atomaren Redis-Schritt reserviert, der die Anzeige auswählt, und nicht erst danach geprüft. Eine Kampagne kann ihr Ziel nicht überschreiten, egal wie viele Anfragen gleichzeitig eintreffen."
+              "title": "Schnell, ohne die Quelle zu belasten",
+              "text": "Der Import liest nur, was sich seit dem letzten Lauf geändert hat, und speichert Stundenwerte. So laden Diagramme schnell, ohne die Lagerdatenbank zu belasten."
             },
             {
-              "title": "Genau einmal zählen",
-              "text": "Ein Eintrag bleibt in der Warteschlange, bis seine Summen gespeichert sind, und seine ID wird in derselben Transaktion gespeichert. Der Lasttest enthielt einen Worker-Absturz, und kein Ereignis ging verloren oder wurde doppelt gezählt."
-            },
-            {
-              "title": "Schnelle Berichte ohne Data Warehouse",
-              "text": "Ereignisse werden in eine Zeile pro Kampagne, Stunde, Serie, Platzierung, Land und Gerät summiert. Die Tabelle wächst also mit der Vielfalt, nicht mit dem Datenverkehr. Einzelne Zuschauer werden in HyperLogLog-Strukturen gezählt."
+              "title": "Warnungen, denen man vertraut",
+              "text": "Eine Warnung geht einmal raus, wenn ein Auftrag gefährdet ist, und erst wieder, wenn sich etwas ändert."
             }
           ],
-          "screens": [
-            "Die Demo-Streaming-Seite spielt eine Anzeige ab, daneben die Ereignisse, die der Player meldet",
-            "Die Auslieferungsprüfung erklärt ohne KI, warum eine Kampagne im Rückstand ist",
-            "Zustand der Plattform in Grafana, während eines Redis-Ausfalls und der Erholung",
-            "Das Kampagnenformular mit seiner Live-Prognose"
-          ]
+          "screens": []
         }
       },
       {
-        "id": 15,
-        "title": "CareerCraft",
-        "description": "KI-gestützte Plattform für die Jobsuche auf dem deutschen Arbeitsmarkt, entwickelt mit Laravel 13 und Livewire 4: Aus einem strukturierten Karriereprofil entstehen mehrere Lebensläufe – mit Lebenslauf-Import durch ein lokales KI-Modell, gespeicherten PDF- und Word-Versionen und einer Prüfung, wie Bewerbermanagementsysteme jede Version lesen.",
-        "features": [
-          "Karriereprofil & Lebenslauf-Import",
-          "Lebenslauf-Editor mit vier Vorlagen",
-          "PDF- & Word-Versionen",
-          "Parser-Prüfung",
-          "Wählbare KI-Anbieter",
-          "Deutsch & Englisch"
-        ],
-        "study": {
-          "tagline": "Eine Plattform für die Jobsuche auf dem deutschen Arbeitsmarkt: Aus einem Karriereprofil entsteht jeder Lebenslauf, und jede Version wird so geprüft, wie ein Bewerbermanagementsystem sie liest.",
-          "meta": [
-            {
-              "label": "Rolle",
-              "value": "Alleiniger Entwickler"
-            },
-            {
-              "label": "Jahr",
-              "value": "2026, in Entwicklung"
-            },
-            {
-              "label": "Quellcode",
-              "value": "Öffentlich, MIT-Lizenz"
-            }
-          ],
-          "numbers": [
-            {
-              "value": "4",
-              "label": "Lebenslauf-Vorlagen, darunter der tabellarische Lebenslauf"
-            },
-            {
-              "value": "3",
-              "label": "KI-Anbieter zur Auswahl, einer davon kostenlos und lokal"
-            },
-            {
-              "value": "2",
-              "label": "Sprachen auf jeder Seite und in jeder E-Mail"
-            },
-            {
-              "value": "0",
-              "label": "Lebenslauf-Dateien, die nach einem Import gespeichert bleiben"
-            }
-          ],
-          "problem": {
-            "title": "Eine Laufbahn, viele Bewerbungen",
-            "paragraphs": [
-              "Wer sich bewirbt, schreibt dieselbe Laufbahn jedes Mal in einen leicht anderen Lebenslauf um und weiß nie genau, was die Software des Arbeitgebers aus dem PDF macht. In Deutschland kommt ein zweites Format hinzu: der tabellarische Lebenslauf mit Foto, Ort, Datum und Unterschrift.",
-              "CareerCraft hält ein strukturiertes Karriereprofil und erstellt daraus jeden Lebenslauf. Die Plattform ist in Entwicklung: Grundlage, Konten, Profil, Lebenslauf-Import, Lebenslauf-Editor und die KI-Schicht sind fertig. Als Nächstes folgen Anschreiben, Job-Matching und die Verwaltung von Bewerbungen."
-            ]
-          },
-          "built": [
-            {
-              "title": "Karriereprofil",
-              "text": "Berufserfahrung mit Erfolgen, Ausbildung, Fähigkeiten mit Stufen, Projekte, Zertifikate und Sprachen nach GER-Niveau, dazu ein Stärkewert, der zeigt, was als Nächstes ergänzt werden sollte."
-            },
-            {
-              "title": "Import",
-              "text": "Einen Lebenslauf als PDF oder Word-Datei hochladen, und ein lokales KI-Modell schlägt vor, was wohin gehört. Oder den Datenexport von LinkedIn hochladen, der ohne KI gelesen wird. Die Person prüft jedes Feld, bevor etwas gespeichert wird."
-            },
-            {
-              "title": "Lebenslauf-Editor",
-              "text": "Mehrere Lebensläufe aus einem Profil, vier Vorlagen, eine Live-Vorschau im A4-Format, die Seitenumbrüche zeigt, sowie Überschriften und Datumsangaben in der Sprache des Lebenslaufs."
-            },
-            {
-              "title": "Gespeicherte Versionen",
-              "text": "Jede Version behält ihr PDF und ihre Word-Datei unverändert, sodass immer klar ist, was verschickt wurde. Zwei Versionen lassen sich Zeile für Zeile vergleichen."
-            },
-            {
-              "title": "Parser-Prüfung",
-              "text": "Jedes PDF wird als reiner Text zurückgelesen, so wie ein Bewerbermanagementsystem es liest. Alles, was nicht als ganze Wörter ankommt, wird aufgelistet."
-            },
-            {
-              "title": "KI-Schicht",
-              "text": "Ein Admin wählt Ollama, Claude oder eine OpenAI-kompatible API und legt ein Tageskontingent pro Person und Token-Preise fest. Jede Anfrage wird mit Tokens und Kosten erfasst."
-            }
-          ],
-          "flow": {
-            "title": "Vom Profil zum verschickten Lebenslauf",
-            "lanes": [
-              {
-                "title": "Profil",
-                "items": ["Ein strukturierter Datensatz", "Import aus Lebenslauf oder LinkedIn"]
-              },
-              {
-                "title": "Lebenslauf-Editor",
-                "items": ["Vorlage, Sprache und Abschnitte", "Live-Vorschau im A4-Format"]
-              },
-              {
-                "title": "Gotenberg",
-                "items": ["Rendert dieselbe Seite wie die Vorschau", "PDF und Word-Datei als Version gespeichert"]
-              },
-              {
-                "title": "Parser-Prüfung",
-                "items": ["Liest das PDF als Text zurück", "Listet auf, was ein Parser übersieht"]
-              }
-            ],
-            "note": "Das PDF entsteht aus derselben Seite wie die Vorschau: Verschickt wird genau das, was zu sehen ist."
-          },
-          "hard": [
-            {
-              "title": "Eine KI, die nur Fakten übernimmt",
-              "text": "Der Lebenslauf-Leser soll übernehmen, was im Lebenslauf steht, nie einen Arbeitgeber, ein Datum oder eine Fähigkeit hinzufügen und Anweisungen im Lebenslauf ignorieren. Das Ergebnis ist ein Vorschlag: Die Person wählt aus, was übernommen wird."
-            },
-            {
-              "title": "Eine Schicht für jede KI-Funktion",
-              "text": "Alle Anfragen laufen über eine Stelle, die bei überlasteten Anbietern erneut versucht, Antworten streamt, am Tageskontingent stoppt und die Nutzung erfasst. Schlüssel für kostenpflichtige Anbieter bleiben in der Umgebung und werden nie in der Datenbank gespeichert."
-            },
-            {
-              "title": "PDFs, die ein Parser lesen kann",
-              "text": "Die Vorlagen sind einspaltig, mit reinem Text in Lesereihenfolge. Die Parser-Prüfung weist das für jede Version nach, statt es anzunehmen."
-            }
-          ],
-          "screens": [
-            "Der Lebenslauf-Editor mit Live-Vorschau im A4-Format",
-            "Das Karriereprofil mit einem Stärkewert, der zeigt, was fehlt",
-            "Eine gespeicherte Version mit ihrer Parser-Prüfung",
-            "KI-Einstellungen: Anbieter, Modell, Tageskontingent und Nutzung"
-          ]
-        }
-      },
-      {
-        "id": 2,
-        "title": "Education Management Information System",
-        "description": "Bildungsmanagementsystem für Zulassungen, Schüler- und Mitarbeiterdaten, Elternzugang und Finanz-Workflows, entwickelt mit PHP.",
-        "features": [
-          "Zulassungen & Einschreibung",
-          "Schüler- & Mitarbeiterdaten",
-          "Elternportal",
-          "Finanzen & Berichte"
-        ],
+        "id": 3,
+        "title": "Rechnungsgenerator",
+        "description": "Kleine Laravel-App, die aus Zeiteinträgen Rechnungen macht, mit nummerierten PDFs und Zahlungserinnerungen.",
+        "features": ["Nummerierte PDF-Rechnungen", "Zahlungserinnerungen", "Kundendaten"],
         "developmentDetails": [
           {
             "label": "Architektur",
-            "text": "Rund um Schulverwaltungs-Workflows organisiert, sodass sich Zulassungs-, Aufzeichnungs- und Finanzmodule unabhängig voneinander weiterentwickeln können."
-          },
-          {
-            "label": "Datenmanagement",
-            "text": "Entworfen um Schüler-, Mitarbeiter- und Elterndatensätze mit berichtfertigen Strukturen für administrative Übersicht."
+            "text": "Eine Laravel-App mit Warteschlangen-Jobs für PDFs und Erinnerungen."
           },
           {
             "label": "Geschäftswert",
-            "text": "Reduzierte manuelle Koordination durch Zusammenführung akademischer, elternbezogener und finanzieller Prozesse in ein einziges System."
+            "text": "Spart jeden Monat einen Nachmittag manueller Rechnungsstellung."
           }
         ]
       },
       {
-        "id": 3,
-        "title": "Spendenmanagementsystem",
-        "description": "Plattform für Spender- und Kampagnenmanagement mit Laravel und React für Beitragsverfolgung, Berichterstattung und Outreach-Workflows.",
-        "features": ["Spenderprofile", "Kampagnen-Tracking", "Beitragsberichte", "Zahlungsintegrationen"],
+        "id": 4,
+        "title": "Team-Aufgabenboard",
+        "description": "Kanban-Board für kleine Teams, entwickelt mit React und TypeScript, mit Drag and Drop und einer einfachen Node.js-API.",
+        "features": ["Drag and Drop", "Labels & Fälligkeiten", "Tastenkürzel"],
         "developmentDetails": [
           {
             "label": "Architektur",
-            "text": "Gebaut als Laravel-gestützte Admin-Plattform mit React-gesteuerten Bildschirmen für schnelle Spender- und Kampagnenoperationen."
-          },
-          {
-            "label": "Workflow-Design",
-            "text": "Fokus auf die Verwaltung des Beitragslebenszyklus, von Spenderprofilen über Kampagnenberichte bis hin zu Zahlungspunkten."
+            "text": "Ein React-Frontend und eine kleine Node.js-API mit SQLite."
           },
           {
             "label": "Geschäftswert",
-            "text": "Hilft Fundraising-Teams, Beiträge zu verfolgen, Kampagnen zu messen und die Berichterstattung an den tatsächlichen Aktivitäten auszurichten."
+            "text": "Ein schlankes Board, das ein Team selbst betreiben kann."
           }
         ]
       },
       {
         "id": 5,
-        "title": "Task Manager",
-        "description": "Aufgabenverwaltungssystem mit Symfony für strukturierte Workflows, Teamzusammenarbeit und rollenbasierte Zugriffssteuerung.",
-        "features": ["Aufgabenverfolgung", "Rollenbasierter Zugriff", "Status-Workflows", "Team-Zusammenarbeit"],
+        "title": "Persönliche Website",
+        "description": "Diese Website: ein Portfolio mit React, Vite und Tailwind CSS, beim Build in statisches HTML gerendert und auf GitHub Pages gehostet.",
+        "features": ["Vorgerendertes HTML", "Deutsch & Englisch", "Helles & dunkles Design"],
         "developmentDetails": [
           {
             "label": "Architektur",
-            "text": "Implementiert als Symfony-Anwendung mit klarer Trennung zwischen Aufgaben-Workflow-Logik, Rollen und UI-Aktionen."
-          },
-          {
-            "label": "Workflow-Design",
-            "text": "Unterstützt statusgesteuerte Aufgabenbewegungen, damit Teammitglieder Arbeit durch vorhersehbare Phasen verwalten können."
+            "text": "React-Seiten, die beim Build in reines HTML gerendert werden."
           },
           {
             "label": "Geschäftswert",
-            "text": "Verbessert die Lieferkoordination, indem es Teams einen gemeinsamen Raum für Aufgaben, Verantwortlichkeiten und Fortschrittsverfolgung bietet."
-          }
-        ]
-      },
-      {
-        "id": 6,
-        "title": "Portfolio Website",
-        "description": "Persönliches Portfolio mit React, Vite und Tailwind CSS: vorgerendertes HTML, Befehlsmenü, Inhalte auf Englisch und Deutsch sowie EmailJS-Kontaktautomatisierung.",
-        "features": [
-          "Vorgerendertes HTML",
-          "Befehlsmenü",
-          "Reine CSS-Animationen",
-          "Inhalte auf Englisch & Deutsch",
-          "EmailJS-Kontaktautomatisierung"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Eine React- und Vite-Seite, die beim Build zu statischem HTML vorgerendert und anschließend hydriert wird, sodass Inhalte vor dem JavaScript erscheinen."
-          },
-          {
-            "label": "Automatisierung",
-            "text": "EmailJS leitet Kontaktnachrichten in eine gestaltete Benachrichtigung und automatische Antwort; GitHub Actions deployt jeden Merge und erstellt versionierte Releases."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Schnell, barrierearm und leicht aktuell zu halten, mit zentral gepflegten Inhalten für beide Sprachen."
-          }
-        ]
-      },
-      {
-        "id": 7,
-        "title": "Währungsrechner App",
-        "description": "Echtzeit-Währungsumrechnungsanwendung, erstellt mit Laravel, Live-Wechselkursen und reaktionsschneller Währungsumschaltung.",
-        "features": ["Echtzeit-Wechselkurse", "Währungswechselfunktion", "Fehlerbehandlung", "Responsives Design"],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "API-Zugriff und Konvertierungslogik in Laravel beibehalten, damit Ratenabruf und UI-Verhalten leicht zu pflegen sind."
-          },
-          {
-            "label": "API-Zuverlässigkeit",
-            "text": "Guzzle-basierte Anfragen mit Fallback-Handling verwendet, um den Konvertierungsablauf vorhersehbar zu halten, wenn sich Raten ändern."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Bietet ein schlankes Finanzhilfsmittel mit aktuellen Austauschdaten und einem einfachen Benutzererlebnis."
-          }
-        ]
-      },
-      {
-        "id": 8,
-        "title": "Ticketmanagementsystem",
-        "description": "Workflow-gesteuertes Ticketverwaltungssystem mit Routing, Benachrichtigungen, Benutzerrollen und Berichtsfunktionen.",
-        "features": [
-          "Erweiterter Workflow",
-          "Benachrichtigungssystem",
-          "Rollenmanagement",
-          "Umfassende Berichterstattung"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Entworfen um Ticket-Zustände und rollenspezifische Aktionen, sodass Support-Prozesse organisiert und nachvollziehbar bleiben."
-          },
-          {
-            "label": "Workflow-Automatisierung",
-            "text": "Routing- und Benachrichtigungslogik integriert, um die richtigen Tickets zur richtigen Zeit den richtigen Benutzern zu präsentieren."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Verbessert den Support-Durchsatz und die Sichtbarkeit durch Reduzierung manueller Ticketbearbeitung."
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "title": "Mitarbeiter-Leistungs-Tracker",
-        "description": "HR-Leistungsverfolgungssystem mit Kennzahlen, Dashboards, Analysen und Exportfunktionen.",
-        "features": ["Leistungsanalyse", "Datenvisualisierung", "CSV/PDF-Export", "Mitarbeiter-Dashboard"],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Als analytikorientiertes HR-Dashboard aufgebaut, in dem Leistungsdaten und Exporte leicht erweiterbar bleiben."
-          },
-          {
-            "label": "Berichtsebene",
-            "text": "Fokus auf visuelle Scorecards und herunterladbare Berichte, damit Manager die Leistung schnell überprüfen können."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Verwandelt die Mitarbeiterverfolgung in einen messbaren Prozess anstelle eines manuellen Tabellenkalkulations-Workflows."
-          }
-        ]
-      },
-      {
-        "id": 10,
-        "title": "Laravel Auth & Rollenmanagement App",
-        "description": "Laravel-Anwendung mit Schwerpunkt auf Authentifizierung, Autorisierung und rollenbasierter Zugriffskontrolle mit Gates, Richtlinien und Eloquent-Beziehungen.",
-        "features": [
-          "Benutzerauthentifizierung & Registrierung",
-          "Rollenbasierte Autorisierung",
-          "Implementierung von Gates & Richtlinien",
-          "Rollenspezifische Ansichten & Berechtigungen",
-          "CRUD-Operationen mit Zugriffskontrolle",
-          "Eloquent-Beziehungen",
-          "Datenbank-Seeding für Rollen"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Strukturiert um Authentifizierungs- und Zugriffskontrollgrenzen, sodass jede Rolle nur die richtigen Bildschirme und Aktionen sieht."
-          },
-          {
-            "label": "Sicherheitsmodell",
-            "text": "Gates, Richtlinien und rollenbewusste Ansichten angewendet, um Autorisierungsregeln in der gesamten App konsistent zu halten."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Bietet eine wiederverwendbare Grundlage für sichere, rollengesteuerte Admin-Systeme und CRUD-lastige Business-Tools."
-          }
-        ]
-      },
-      {
-        "id": 11,
-        "title": "Website für akademische Einrichtungen",
-        "description": "Maßgeschneiderte Website für akademische Institutionen mit CAPTCHA-geschützter Authentifizierung, rollenbasierten Dashboards, Leistungsmodulen und Formularmanagement.",
-        "features": [
-          "Sichere Benutzerregistrierung & Anmeldung",
-          "Passwort-Reset mit CAPTCHA-Verifizierung",
-          "Rollenbasiertes Dashboard",
-          "Noten & Top-Performer",
-          "Neuigkeiten & Ankündigungen",
-          "Event- & Komiteemanagement",
-          "Einreichung von Antragsformularen"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Entworfen als rollenbewusste Schulwebsite mit separaten öffentlichen Seiten und privaten Dashboards für Abläufe."
-          },
-          {
-            "label": "Benutzererlebnis",
-            "text": "Enthielt CAPTCHA-gestützte Registrierungs- und Wiederherstellungsabläufe, um Missbrauch zu reduzieren und den Zugriff unkompliziert zu halten."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Unterstützt akademische Kommunikation, Schülerdaten und Antragsbearbeitung auf einer einzigen Webplattform."
-          }
-        ]
-      },
-      {
-        "id": 12,
-        "title": "Laravel Rapid-Development Boilerplate",
-        "description": "Ein wiederverwendbares Laravel 10 MVC-Boilerplate, das entwickelt wurde, um neue Admin-Panels und Microservices mit vorkonfigurierter Validierung und Zugriffskontrolle schnell hochzuziehen.",
-        "features": [
-          "Vorkonfigurierte Auth & Registrierung",
-          "Standardisierte CRUD-Generatoren",
-          "Strikte Formularanforderungsvalidierung",
-          "MVC-Routing-Architektur",
-          "Datenbank-Seeders & Migrationen"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Als modularer Startpunkt konzipiert, um die Einrichtungszeit beim Start neuer Laravel-MVC-Projekte zu eliminieren."
-          },
-          {
-            "label": "Datenschicht",
-            "text": "Enthält vorgefertigte Migrationen und Modellbindung, um die Handhabung von Datenänderungen und Controller-Aktionen zu standardisieren."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Reduziert die Time-to-Market für interne Admin-Tools erheblich, indem es ein sicheres, vorhersehbares Fundament bietet."
-          }
-        ]
-      },
-      {
-        "id": 13,
-        "title": "Website für Unternehmensversicherungen",
-        "description": "Unternehmensversicherungs-Website mit dynamischer Anfrageübermittlung, Antragsbearbeitung, SQL-Schema-Skripten und gestalteten Komponenten.",
-        "features": [
-          "Dynamische Formularübermittlung",
-          "SQL-Schema-Einrichtung",
-          "Benutzerdefinierte PHP-Seiten",
-          "Clientseitige Validierung",
-          "Responsives Design"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Erstellt als benutzerdefinierte PHP-Seite mit separaten Frontend-Seiten und Backend-Formularbehandlung für Anfragen."
-          },
-          {
-            "label": "Lead-Erfassung",
-            "text": "Fokus auf die Konvertierung von Website-Besuchen in umsetzbare Anfragen durch einen klaren Übermittlungsablauf."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Hilft Versicherungsteams, Kundenanfragen mit weniger manuellem Aufwand zu erfassen und zu bearbeiten."
-          }
-        ]
-      },
-      {
-        "id": 14,
-        "title": "Laravel Security & Auth Implementierung",
-        "description": "Eine vollständige Sicherheits-Scaffolding-Referenz, die verifizierte Registrierung, Middleware-Schutz und sicheres Sitzungsmanagement für skalierbare Web-Apps abdeckt.",
-        "features": [
-          "Verifizierte Benutzerregistrierung",
-          "Sichere Sitzungshandhabung",
-          "Passwort-Reset-Protokolle",
-          "Authentifizierungs-Middleware",
-          "E-Mail-Verifizierungsabläufe"
-        ],
-        "developmentDetails": [
-          {
-            "label": "Architektur",
-            "text": "Strukturiert als überprüfbare Referenzimplementierung für die sichere Handhabung des gesamten Benutzerlebenszyklus."
-          },
-          {
-            "label": "Sicherheit & Zugriff",
-            "text": "Implementiert strikte Middleware- und Verifizierungslogik, um die Kontosicherheit gegen unbefugten Zugriff zu stärken."
-          },
-          {
-            "label": "Geschäftswert",
-            "text": "Dient als robuste Grundlage für die Authentifizierung und stellt sicher, dass Sicherheits-Best-Practices vom ersten Tag an integriert sind."
+            "text": "Schnell, barrierearm und kostenlos zu hosten."
           }
         ]
       }
@@ -913,7 +430,7 @@
   },
   "ui": {
     "skip": "Zum Inhalt springen",
-    "available": "KI-Entwickler bei der APS AG",
+    "available": "Backend-Entwickler bei Kranich Labs",
     "menu": "Menü",
     "close": "Schließen",
     "theme": "Design umschalten",
@@ -925,10 +442,10 @@
       "contact": "Kontakt"
     },
     "hero": {
-      "greeting": "Hallo, ich bin Abdullah Rather",
+      "greeting": "Hallo, ich bin Robin Hartmann",
       "headline_a": "Ich entwickle",
-      "headline_em": "zuverlässige",
-      "headline_b": "Backends für echte Geschäftsprozesse.",
+      "headline_em": "verlässliche",
+      "headline_b": "Software für volle Arbeitstage.",
       "cta_work": "Projekte ansehen",
       "cta_contact": "Kontakt aufnehmen",
       "stack_label": "Ich arbeite mit",
@@ -937,14 +454,14 @@
     },
     "about": {
       "eyebrow": "Über mich",
-      "heading_a": "Ich entwickle die Systeme",
-      "heading_em": "hinter den Kulissen",
+      "heading_a": "Ich entwickle die Werkzeuge,",
+      "heading_em": "auf die sich Menschen verlassen",
       "location": "Standort",
-      "location_value": "Heilbronn",
+      "location_value": "Leipzig",
       "local_time": "Ortszeit",
       "skills": "Technische Fähigkeiten",
       "mission": "Mission",
-      "region": "Baden-Württemberg, Deutschland"
+      "region": "Sachsen, Deutschland"
     },
     "experience": {
       "eyebrow": "Erfahrung"
@@ -1001,11 +518,11 @@
       "nav": "Hauptnavigation",
       "language": "Sprache",
       "filter": "Projekte filtern",
-      "portrait": "Porträt von Abdullah Rather"
+      "portrait": "Porträt von Robin Hartmann"
     },
     "meta": {
-      "title": "Abdullah Rather — KI-Entwickler · PHP Backend / Full-Stack",
-      "description": "KI-Entwickler und PHP Backend / Full-Stack Entwickler in Heilbronn: Enterprise-Webplattformen, REST-APIs, Integrationen und KI-Funktionen mit Yii, Laravel, Symfony, MySQL, Docker und CI/CD."
+      "title": "Robin Hartmann — Backend-Entwickler · PHP & Laravel",
+      "description": "Backend-Entwickler in Leipzig, der Buchungssysteme, interne Dashboards und APIs mit PHP, Laravel, Symfony und PostgreSQL entwickelt."
     },
     "consent": {
       "title": "Diese Website verwendet Cookies",

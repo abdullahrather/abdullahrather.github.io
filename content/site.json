@@ -1,75 +1,58 @@
 {
-  "name": "Abdullah Rather",
-  "initials": "AR",
-  "url": "https://abdullahrather.com",
-  "email": "abdullahrather19@gmail.com",
-  "location": "Heilbronn, Germany",
+  "name": "Robin Hartmann",
+  "initials": "RH",
+  "url": "https://your-username.github.io",
+  "email": "robin@example.com",
+  "location": "Leipzig, Germany",
   "timezone": "Europe/Berlin",
   "timezoneLabel": "CET / CEST",
-  "careerStart": "2021-01-01",
-  "github": "abdullahrather",
-  "analyticsId": "G-RSXZVL7MRQ",
-  "portrait": "/images/profile-avatar.avif",
-  "socialImage": "/images/og-image.jpg",
-  "shortDescription": "AI Software Engineer and PHP backend / full-stack developer building enterprise web platforms, REST APIs, integrations and AI features.",
+  "careerStart": "2019-03-01",
+  "github": "",
+  "analyticsId": "",
+  "portrait": "/images/portrait.svg",
+  "socialImage": "/images/social.png",
+  "shortDescription": "Backend developer building booking systems, internal dashboards and the APIs behind them with PHP, Laravel and PostgreSQL.",
   "person": {
-    "jobTitle": "AI Software Engineer",
-    "employer": "APS AG",
-    "locality": "Heilbronn",
+    "jobTitle": "Backend Developer",
+    "employer": "Kranich Labs GmbH",
+    "locality": "Leipzig",
     "country": "DE",
-    "knowsAbout": [
-      "Artificial Intelligence",
-      "LLM integration",
-      "PHP",
-      "Yii",
-      "Laravel",
-      "Symfony",
-      "MySQL",
-      "PostgreSQL",
-      "Docker",
-      "CI/CD",
-      "REST APIs",
-      "DATEV Integration",
-      "JavaScript",
-      "React",
-      "TypeScript",
-      "Python"
-    ]
+    "knowsAbout": ["PHP", "Laravel", "Symfony", "PostgreSQL", "MySQL", "REST APIs", "Docker", "CI/CD", "TypeScript"]
   },
   "socials": [
-    { "id": "github", "name": "GitHub", "url": "https://github.com/abdullahrather", "handle": "@abdullahrather" },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "url": "https://github.com/your-username",
+      "handle": "@your-username"
+    },
     {
       "id": "linkedin",
       "name": "LinkedIn",
-      "url": "https://linkedin.com/in/abdullahrather",
-      "handle": "in/abdullahrather"
-    },
-    { "id": "xing", "name": "Xing", "url": "https://www.xing.com/profile/Abdullah_Rather", "handle": "Abdullah_Rather" }
+      "url": "https://www.linkedin.com/in/your-name",
+      "handle": "in/your-name"
+    }
   ],
   "resume": {
-    "en": { "href": "/assets/Resume.pdf", "fileName": "Abdullah_Rather_Resume.pdf" },
-    "de": { "href": "/assets/Resume_de.pdf", "fileName": "Abdullah_Rather_Lebenslauf.pdf" }
+    "en": {
+      "href": "/assets/resume.pdf",
+      "fileName": "Robin_Hartmann_Resume.pdf"
+    }
   },
-  "stats": [20, 15, 10],
+  "stats": [12, 30, 8],
   "stack": [
     "PHP",
-    "Yii",
     "Laravel",
     "Symfony",
-    "MySQL",
-    "MariaDB",
     "PostgreSQL",
-    "LLM APIs",
+    "MySQL",
+    "Redis",
     "REST APIs",
-    "DATEV",
     "Docker",
     "GitHub Actions",
     "PHPUnit",
-    "PHPStan",
-    "JavaScript",
     "TypeScript",
-    "React",
-    "Python",
-    "FastAPI"
+    "Vue.js",
+    "React"
   ]
 }

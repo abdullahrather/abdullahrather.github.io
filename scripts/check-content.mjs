@@ -110,8 +110,13 @@ try {
 } catch {
   errors.push(`site.json: unknown timezone: ${site.timezone}`);
 }
-for (const file of [site.portrait, site.socialImage, ...Object.values(site.resume).map((resume) => resume.href)]) {
-  if (!published(file)) errors.push(`Missing file: public${file}`);
+for (const file of [
+  site.portrait,
+  site.portraitAvif,
+  site.socialImage,
+  ...Object.values(site.resume).map((resume) => resume.href),
+]) {
+  if (file && !published(file)) errors.push(`Missing file: public${file}`);
 }
 for (const file of ["site.webmanifest", "privacy/index.html"]) {
   if (!published(`/${file}`)) errors.push(`Missing file: public/${file}`);

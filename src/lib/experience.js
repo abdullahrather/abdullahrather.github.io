@@ -1,6 +1,7 @@
 import { useNow } from "./hooks";
+import { SITE } from "./site";
 
-const CAREER_START_DATE = "2021-01-01";
+const CAREER_START_DATE = SITE.careerStart;
 
 export const getExperienceYears = (startDate = CAREER_START_DATE, asOf = new Date()) => {
   const start = new Date(startDate);

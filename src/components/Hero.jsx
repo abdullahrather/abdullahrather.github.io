@@ -5,7 +5,7 @@ import { trackEvent } from "../lib/analytics";
 import { useExperienceYears } from "../lib/experience";
 import { useTranslation } from "../lib/i18n";
 import { studyPath } from "../lib/route";
-import { SOCIALS, STACK, getResume } from "../lib/site";
+import { SITE, SOCIALS, STACK, getResume } from "../lib/site";
 
 const delay = (ms) => ({ "--delay": `${ms}ms` });
 
@@ -90,18 +90,15 @@ const Portrait = () => {
 
       <div className="ring-conic relative aspect-square rounded-full p-0.5">
         <div className="size-full rounded-full bg-bg p-2">
-          <picture>
-            <source srcSet="/images/profile-avatar.avif" type="image/avif" />
-            <img
-              src="/images/profile-avatar.webp"
-              alt={t("ui.a11y.portrait")}
-              width="640"
-              height="640"
-              fetchPriority="high"
-              decoding="async"
-              className="size-full rounded-full object-cover"
-            />
-          </picture>
+          <img
+            src={SITE.portrait}
+            alt={t("ui.a11y.portrait")}
+            width="640"
+            height="640"
+            fetchPriority="high"
+            decoding="async"
+            className="size-full rounded-full object-cover"
+          />
         </div>
       </div>
     </div>

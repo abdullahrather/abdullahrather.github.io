@@ -1,12 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { trackEvent } from "./analytics";
-import en from "../languages/en.json";
+import en from "@content/en.json";
 import { withFacts } from "./facts";
 
 const DEFAULT_LANG = "en";
 // English ships in the main bundle; other locales are fetched on demand.
 const TRANSLATIONS = { en: withFacts(en) };
-const LOADERS = { de: () => import("../languages/de.json") };
+const LOADERS = { de: () => import("@content/de.json") };
 const AVAILABLE = [
   { code: "en", label: "EN", name: "English" },
   { code: "de", label: "DE", name: "Deutsch" },

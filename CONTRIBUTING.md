@@ -41,7 +41,7 @@ once, or set `PW_CHANNEL=msedge` to use an installed Edge.
 ## Guidelines
 
 - Keep each pull request to one change, and explain why it's needed.
-- Text lives in `src/languages/en.json` and `src/languages/de.json`. Change both; `npm run check:content`
+- Text lives in `content/en.json` and `content/de.json`. Change both; `npm run check:content`
   finds anything missed.
 - Add or update a smoke check when behaviour changes.
 - Keep the site free of animation libraries and trackers.

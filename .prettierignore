@@ -1,7 +1,7 @@
 dist
-public
 package-lock.json
 index.html
 *.md
-src/*.tmpl
+content/email/*.tmpl
+content/public
 .vite

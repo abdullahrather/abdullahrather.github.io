@@ -1,20 +1,19 @@
 // Production build: client bundle + build-time pre-render of the English pages.
 // The pre-rendered HTML gives an instant first paint, indexable content and a
 // no-JS fallback; src/main.jsx then hydrates it. The home page is dist/index.html
-// and each case study is dist/work/<slug>/index.html.
+// and each case study is dist/work/<slug>/index.html. Content comes from the content
+// folder (see scripts/content.mjs), which also gives the sitemap, robots.txt and domain.
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { pathToFileURL } from "node:url";
 import { build } from "vite";
+import { readContent, root } from "./content.mjs";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const indexPath = path.join(dist, "index.html");
 const ssrDir = path.join(root, "node_modules", ".prerender");
 const marker = '<div id="root"></div>';
-const SITE = "https://abdullahrather.com";
-
-const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
+const site = readContent("site.json");
 
 // One timestamp for both builds so date-based text hydrates identically.
 process.env.VITE_BUILD_TIME ||= new Date().toISOString();
@@ -65,11 +64,12 @@ const withHead = (html, { title, description, url }) => {
 fs.writeFileSync(indexPath, withPage(template, "/"));
 const pages = ["index.html"];
 
-const en = readJson("src/languages/en.json");
-for (const project of readJson("src/data/facts.json").projects.filter((p) => p.caseStudy)) {
+const en = readContent("en.json");
+const studies = readContent("facts.json").projects.filter((p) => p.caseStudy);
+for (const project of studies) {
   const text = en.projects.items.find((item) => item.id === project.id);
   const pathname = `/work/${project.slug}/`;
-  const head = { title: `${text.title} — Abdullah Rather`, description: text.study.tagline, url: SITE + pathname };
+  const head = { title: `${text.title} — ${site.name}`, description: text.study.tagline, url: site.url + pathname };
   const file = path.join(dist, "work", project.slug, "index.html");
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, withPage(withHead(template, head), pathname));
@@ -77,6 +77,22 @@ for (const project of readJson("src/data/facts.json").projects.filter((p) => p.c
 }
 
 fs.rmSync(ssrDir, { recursive: true, force: true });
+
+// Files that name the site's address, written from site.json.
+const entry = (pathname, changefreq, priority) =>
+  `  <url>\n    <loc>${site.url}${pathname}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>\n`;
+fs.writeFileSync(
+  path.join(dist, "sitemap.xml"),
+  '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    entry("/", "monthly", "1.0") +
+    studies.map((p) => entry(`/work/${p.slug}/`, "monthly", "0.8")).join("") +
+    entry("/privacy/", "yearly", "0.2") +
+    "</urlset>\n",
+);
+fs.writeFileSync(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+// GitHub Pages keeps a custom domain only when the published site has a CNAME file.
+const host = new URL(site.url).hostname;
+if (!host.endsWith(".github.io")) fs.writeFileSync(path.join(dist, "CNAME"), `${host}\n`);
 
 for (const page of pages) {
   console.log(`prerender: dist/${page} is ${(fs.statSync(path.join(dist, page)).size / 1024).toFixed(1)} kB`);

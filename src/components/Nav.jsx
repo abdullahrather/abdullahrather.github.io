@@ -5,7 +5,7 @@ import { useTranslation } from "../lib/i18n";
 import { useTheme } from "../lib/theme";
 import { useActiveSection } from "../lib/hooks";
 import { useSectionHref } from "../lib/route";
-import { SECTIONS } from "../lib/site";
+import { NAME, SECTIONS, SITE } from "../lib/site";
 
 // "top" (the hero) is tracked too so the highlight clears when scrolling back up.
 const TRACKED_IDS = ["top", ...SECTIONS.map((s) => s.id)];
@@ -103,9 +103,9 @@ const Nav = ({ onOpenCommand }) => {
             onClick={() => setMenuOpen(false)}
           >
             <span className="grid size-9 place-items-center rounded-full bg-fg font-mono text-xs font-semibold tracking-tight text-bg transition-transform duration-500 ease-out-expo group-hover:rotate-[-8deg]">
-              AR
+              {SITE.initials}
             </span>
-            <span className="hidden text-sm font-medium tracking-tight sm:block">Abdullah Rather</span>
+            <span className="hidden text-sm font-medium tracking-tight sm:block">{NAME}</span>
           </a>
 
           <ul ref={linksRef} className="relative hidden items-center gap-0.5 md:flex">

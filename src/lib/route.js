@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import facts from "../data/facts.json";
+import facts from "@content/facts.json";
 
 // Each case study is its own pre-rendered page at /work/<slug>/ (see scripts/build.mjs).
 export const STUDY_SLUGS = facts.projects.filter((p) => p.caseStudy).map((p) => p.slug);

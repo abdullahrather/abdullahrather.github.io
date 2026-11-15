@@ -1,16 +1,17 @@
-// Refreshes src/data/activity.json from GitHub's public API: commits per day, and each
-// recently active public repository's latest release and latest commit. The deploy workflow runs
-// this before each build. Nothing is fetched in the visitor's browser.
+// Refreshes activity.json in the content folder from GitHub's public API: commits per day, and
+// each recently active public repository's latest release and latest commit, for the GitHub user
+// named in site.json. The deploy workflow runs this before each build. Nothing is fetched in the
+// visitor's browser.
 //
 // If GitHub can't be reached, the file is left as it is and the build carries on.
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { contentDir, readContent } from "./content.mjs";
 
-const USER = "abdullahrather";
+const USER = readContent("site.json").github;
 const WEEKS = 26;
 const LIST_LENGTH = 5;
-const file = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../src/data/activity.json");
+const file = path.join(contentDir, "activity.json");
 
 const DAY = 24 * 60 * 60 * 1000;
 const day = (date) => new Date(date).toISOString().slice(0, 10);

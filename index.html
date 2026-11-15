@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Abdullah Rather — AI Software Engineer · PHP Backend / Full-Stack</title>
+  <!-- The {{placeholders}} are filled from content/site.json and content/en.json (see vite.config.js). -->
+  <title>{{title}}</title>
 
   <!-- Apply the saved / system theme before first paint to avoid a flash -->
   <script>
@@ -36,11 +37,10 @@
     })();
   </script>
 
-  <meta name="description"
-    content="AI Software Engineer and PHP backend / full-stack developer in Heilbronn, Germany, building enterprise web platforms, REST APIs, integrations and AI features with Yii, Laravel, Symfony, MySQL, Docker and CI/CD." />
-  <meta name="author" content="Abdullah Rather" />
+  <meta name="description" content="{{description}}" />
+  <meta name="author" content="{{name}}" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://abdullahrather.com/" />
+  <link rel="canonical" href="{{url}}" />
 
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
@@ -53,7 +53,7 @@
   <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Hero portrait is the LCP element -->
-  <link rel="preload" as="image" href="/images/profile-avatar.avif" type="image/avif" fetchpriority="high" />
+  <link rel="preload" as="image" href="{{portrait}}" type="{{portraitType}}" fetchpriority="high" />
 
   <!-- Resource hints -->
   <link rel="dns-prefetch" href="https://api.emailjs.com" />
@@ -61,47 +61,25 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://abdullahrather.com/" />
-  <meta property="og:title" content="Abdullah Rather — AI Software Engineer · PHP Backend / Full-Stack" />
-  <meta property="og:description"
-    content="AI Software Engineer and PHP backend / full-stack developer building enterprise web platforms, REST APIs, integrations and AI features." />
-  <meta property="og:image" content="https://abdullahrather.com/images/og-image.jpg" />
+  <meta property="og:url" content="{{url}}" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{shortDescription}}" />
+  <meta property="og:image" content="{{socialImage}}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="Abdullah Rather" />
+  <meta property="og:site_name" content="{{name}}" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="de_DE" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Abdullah Rather — AI Software Engineer · PHP Backend / Full-Stack" />
-  <meta name="twitter:description"
-    content="AI Software Engineer and PHP backend / full-stack developer building enterprise web platforms, REST APIs, integrations and AI features." />
-  <meta name="twitter:image" content="https://abdullahrather.com/images/og-image.jpg" />
+  <meta name="twitter:title" content="{{title}}" />
+  <meta name="twitter:description" content="{{shortDescription}}" />
+  <meta name="twitter:image" content="{{socialImage}}" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Abdullah Rather",
-    "jobTitle": "AI Software Engineer",
-    "worksFor": { "@type": "Organization", "name": "APS AG" },
-    "description": "AI Software Engineer and PHP backend / full-stack developer building enterprise web platforms, REST APIs, integrations and AI features.",
-    "url": "https://abdullahrather.com/",
-    "image": "https://abdullahrather.com/images/og-image.jpg",
-    "email": "mailto:abdullahrather19@gmail.com",
-    "sameAs": [
-      "https://linkedin.com/in/abdullahrather",
-      "https://github.com/abdullahrather",
-      "https://www.xing.com/profile/Abdullah_Rather"
-    ],
-    "knowsAbout": [
-      "Artificial Intelligence", "LLM integration", "PHP", "Yii", "Laravel", "Symfony", "MySQL", "PostgreSQL", "Docker", "CI/CD",
-      "REST APIs", "DATEV Integration", "JavaScript", "React", "TypeScript", "Python"
-    ],
-    "address": { "@type": "PostalAddress", "addressLocality": "Heilbronn", "addressCountry": "DE" }
-  }
+{{personJson}}
   </script>
 
 </head>
@@ -109,8 +87,8 @@
 <body>
   <div id="root"></div>
   <noscript>
-    <p style="padding:2rem;font-family:system-ui">Abdullah Rather — AI Software Engineer · PHP Backend / Full-Stack.
-      Email: <a href="mailto:abdullahrather19@gmail.com">abdullahrather19@gmail.com</a></p>
+    <p style="padding:2rem;font-family:system-ui">{{title}}.
+      Email: <a href="mailto:{{email}}">{{email}}</a></p>
   </noscript>
   <script type="module" src="/src/main.jsx"></script>
 </body>

@@ -15,7 +15,7 @@ import ConsentBanner from "./components/ConsentBanner";
 import { useSectionTracking } from "./lib/analytics";
 import { useTranslation } from "./lib/i18n";
 import { RouteContext } from "./lib/route";
-import { SECTIONS } from "./lib/site";
+import { NAME, SECTIONS } from "./lib/site";
 
 const TRACKED_SECTIONS = ["top", ...SECTIONS.map((s) => s.id), "activity"];
 
@@ -42,7 +42,7 @@ function App({ route = HOME }) {
 
   // The tab title and description follow the page and language; the built HTML holds the English ones.
   // Long German titles carry soft hyphens for the page; the tab title is plain text.
-  const title = study ? `${study.title.replaceAll(SOFT_HYPHEN, "")} — Abdullah Rather` : t("ui.meta.title");
+  const title = study ? `${study.title.replaceAll(SOFT_HYPHEN, "")} — ${NAME}` : t("ui.meta.title");
   const description = study ? study.study.tagline : t("ui.meta.description");
   useEffect(() => {
     document.title = title;

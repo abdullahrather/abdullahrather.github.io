@@ -1,0 +1,75 @@
+{
+  "name": "Abdullah Rather",
+  "initials": "AR",
+  "url": "https://abdullahrather.com",
+  "email": "abdullahrather19@gmail.com",
+  "location": "Heilbronn, Germany",
+  "timezone": "Europe/Berlin",
+  "timezoneLabel": "CET / CEST",
+  "careerStart": "2021-01-01",
+  "github": "abdullahrather",
+  "analyticsId": "G-RSXZVL7MRQ",
+  "portrait": "/images/profile-avatar.avif",
+  "socialImage": "/images/og-image.jpg",
+  "shortDescription": "AI Software Engineer and PHP backend / full-stack developer building enterprise web platforms, REST APIs, integrations and AI features.",
+  "person": {
+    "jobTitle": "AI Software Engineer",
+    "employer": "APS AG",
+    "locality": "Heilbronn",
+    "country": "DE",
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "LLM integration",
+      "PHP",
+      "Yii",
+      "Laravel",
+      "Symfony",
+      "MySQL",
+      "PostgreSQL",
+      "Docker",
+      "CI/CD",
+      "REST APIs",
+      "DATEV Integration",
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Python"
+    ]
+  },
+  "socials": [
+    { "id": "github", "name": "GitHub", "url": "https://github.com/abdullahrather", "handle": "@abdullahrather" },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/abdullahrather",
+      "handle": "in/abdullahrather"
+    },
+    { "id": "xing", "name": "Xing", "url": "https://www.xing.com/profile/Abdullah_Rather", "handle": "Abdullah_Rather" }
+  ],
+  "resume": {
+    "en": { "href": "/assets/Resume.pdf", "fileName": "Abdullah_Rather_Resume.pdf" },
+    "de": { "href": "/assets/Resume_de.pdf", "fileName": "Abdullah_Rather_Lebenslauf.pdf" }
+  },
+  "stats": [20, 15, 10],
+  "stack": [
+    "PHP",
+    "Yii",
+    "Laravel",
+    "Symfony",
+    "MySQL",
+    "MariaDB",
+    "PostgreSQL",
+    "LLM APIs",
+    "REST APIs",
+    "DATEV",
+    "Docker",
+    "GitHub Actions",
+    "PHPUnit",
+    "PHPStan",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Python",
+    "FastAPI"
+  ]
+}

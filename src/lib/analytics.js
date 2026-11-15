@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 
-const GA_ID = "G-RSXZVL7MRQ";
+import { SITE } from "./site";
+
+// The Google Analytics ID, from site.json.
+export const GA_ID = SITE.analyticsId;
 const CONSENT_KEY = "analytics-consent";
 export const CONSENT_OPEN_EVENT = "app:open-consent";
 

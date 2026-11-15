@@ -5,7 +5,7 @@ import { trackEvent } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { spotlight, useCopy, useReveal } from "../lib/hooks";
 import { useTheme } from "../lib/theme";
-import { EMAIL, SOCIALS, TIMEZONE } from "../lib/site";
+import { EMAIL, SITE, SOCIALS, TIMEZONE } from "../lib/site";
 
 const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID || "";
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
@@ -157,7 +157,7 @@ const Contact = () => {
       time_utc: formatTime(now, "UTC"),
       user_timezone: timezone,
       recipient_timezone: TIMEZONE,
-      recipient_location: "Heilbronn, Germany",
+      recipient_location: SITE.location,
       "g-recaptcha-response": recaptchaToken,
       ...buildEmailStrings(isDE, name),
     };

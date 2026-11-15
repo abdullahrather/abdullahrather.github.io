@@ -1,12 +1,17 @@
-// Catches content mistakes that lint and the build can't see.
+// Catches content mistakes that lint and the build can't see, in the content folder
+// (content/, or the folder CONTENT_DIR names).
 import fs from "node:fs";
 import path from "node:path";
+import { contentDir, publicDir, readContent, root } from "./content.mjs";
 
-const read = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
-const en = read("src/languages/en.json");
-const de = read("src/languages/de.json");
-const facts = read("src/data/facts.json");
+const en = readContent("en.json");
+const de = readContent("de.json");
+const facts = readContent("facts.json");
+const site = readContent("site.json");
 const errors = [];
+
+/** Whether a site address such as /images/a.webp exists in the content folder's public files. */
+const published = (address) => fs.existsSync(path.join(publicDir, address));
 
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -37,7 +42,7 @@ for (const [key, value] of enLeaves) {
 }
 
 // Every translation key used in the code must exist.
-const source = walk("src").filter((file) => /\.jsx?$/.test(file));
+const source = walk(path.join(root, "src")).filter((file) => /\.jsx?$/.test(file));
 for (const file of source) {
   const code = fs.readFileSync(file, "utf8");
   const used = [...code.matchAll(/\bt\("([\w.]+)"/g), ...code.matchAll(/\bkey: "(ui\.[\w.]+)"/g)];
@@ -60,9 +65,10 @@ compare("projects", facts.projects, en.projects.items);
 
 // A project is shown as a screenshot (`shot`) or as a drawn schematic (`cover`).
 const covers = new Set(
-  [...fs.readFileSync("src/components/Cover.jsx", "utf8").matchAll(/^ {2}(\w+): \($/gm)].map((match) => match[1]),
+  [...fs.readFileSync(path.join(root, "src/components/Cover.jsx"), "utf8").matchAll(/^ {2}(\w+): \($/gm)].map(
+    (match) => match[1],
+  ),
 );
-const sitemap = fs.readFileSync("public/sitemap.xml", "utf8");
 const slugs = new Set();
 for (const project of facts.projects) {
   const text = en.projects.items.find((item) => item.id === project.id);
@@ -73,11 +79,11 @@ for (const project of facts.projects) {
   if (!project.shot && !covers.has(project.cover)) errors.push(`Project ${project.slug} has no picture`);
   for (const image of [project.shot, ...(project.screens ?? [])].filter(Boolean)) {
     for (const file of [image, image.replace(/\.webp$/, "-640.webp")]) {
-      if (!fs.existsSync(path.join("public", file))) errors.push(`Missing image: public${file}`);
+      if (!published(file)) errors.push(`Missing image: public${file}`);
     }
   }
 
-  // A case study is its own page: it needs its text, a caption per screenshot and a sitemap entry.
+  // A case study is its own page: it needs its text and a caption per screenshot.
   if (Boolean(project.caseStudy) !== Boolean(text?.study)) {
     errors.push(`Project ${project.slug}: caseStudy and its study text must go together`);
   } else if (project.caseStudy) {
@@ -86,7 +92,6 @@ for (const project of facts.projects) {
         `Project ${project.slug}: ${project.screens.length} screenshots but ${text.study.screens.length} captions`,
       );
     }
-    if (!sitemap.includes(`/work/${project.slug}/</loc>`)) errors.push(`Sitemap is missing /work/${project.slug}/`);
   }
 }
 
@@ -96,8 +101,20 @@ for (const entry of facts.experience) {
   }
 }
 
-for (const file of ["public/assets/Resume.pdf", "public/assets/Resume_de.pdf"]) {
-  if (!fs.existsSync(file)) errors.push(`Missing file: ${file}`);
+// Site settings: the address, the files they point to, and the parts the code relies on.
+if (!/^https:\/\/[^/]+$/.test(site.url)) errors.push(`site.json: url must look like https://example.com: ${site.url}`);
+if (!/^\d{4}-\d{2}-\d{2}$/.test(site.careerStart)) errors.push(`site.json: bad careerStart: ${site.careerStart}`);
+if (site.stats?.length !== 3) errors.push("site.json: stats needs three numbers");
+try {
+  new Intl.DateTimeFormat("en", { timeZone: site.timezone });
+} catch {
+  errors.push(`site.json: unknown timezone: ${site.timezone}`);
+}
+for (const file of [site.portrait, site.socialImage, ...Object.values(site.resume).map((resume) => resume.href)]) {
+  if (!published(file)) errors.push(`Missing file: public${file}`);
+}
+for (const file of ["site.webmanifest", "privacy/index.html"]) {
+  if (!published(`/${file}`)) errors.push(`Missing file: public/${file}`);
 }
 
 if (errors.length) {
@@ -105,4 +122,6 @@ if (errors.length) {
   console.error(`\n${errors.length} content problem(s) found.`);
   process.exit(1);
 }
-console.log(`Content OK: ${enLeaves.size} translated values, ${facts.projects.length} projects.`);
+console.log(
+  `Content OK in ${path.relative(root, contentDir) || "."}: ${enLeaves.size} translated values, ${facts.projects.length} projects.`,
+);

@@ -3,7 +3,7 @@ import { openConsentSettings } from "../lib/analytics";
 import { useTranslation } from "../lib/i18n";
 import { useClock, useNow } from "../lib/hooks";
 import { useSectionHref } from "../lib/route";
-import { EMAIL, SECTIONS, SOCIALS, TIMEZONE } from "../lib/site";
+import { EMAIL, NAME, SECTIONS, SITE, SOCIALS, TIMEZONE } from "../lib/site";
 
 const Footer = () => {
   const { t, lang } = useTranslation();
@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="container-x py-16">
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div className="max-w-sm">
-            <p className="text-lg font-semibold tracking-tight">Abdullah Rather</p>
+            <p className="text-lg font-semibold tracking-tight">{NAME}</p>
             <p className="mt-2 text-sm text-muted">{t("hero.role")}</p>
             <a
               href={`mailto:${EMAIL}`}
@@ -54,7 +54,7 @@ const Footer = () => {
             <div className="col-span-2 space-y-1 sm:col-span-1">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-subtle">{t("ui.footer.local")}</p>
               <p className="font-mono text-2xl tabular-nums">{time}</p>
-              <p className="text-xs text-subtle">CET / CEST</p>
+              <p className="text-xs text-subtle">{SITE.timezoneLabel}</p>
             </div>
           </div>
         </div>
@@ -64,13 +64,13 @@ const Footer = () => {
           aria-hidden="true"
           className="pointer-events-none mt-16 select-none bg-linear-to-b from-fg/15 to-transparent bg-clip-text text-center text-[17vw] font-semibold leading-[0.8] tracking-[-0.06em] text-transparent lg:text-[12.5rem]"
         >
-          Abdullah
+          {NAME.split(" ")[0]}
         </p>
 
         <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 text-xs text-subtle sm:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <p>
-              © {year} Abdullah Rather. {t("ui.footer.rights")}
+              © {year} {NAME}. {t("ui.footer.rights")}
             </p>
             <a href="/privacy/" className="transition-colors hover:text-fg">
               {t("ui.consent.privacy")}

@@ -41,15 +41,17 @@ Around these:
 ## How it works
 
 ```
- src/languages/*.json ─┐
- src/data/facts.json  ─┼─▶ React components ─▶ npm run build ─▶ dist/index.html
- src/data/activity.json┘                                         dist/work/<name>/index.html
+ content/         ─┐
+   site.json       │
+   en.json, de.json├─▶ React components ─▶ npm run build ─▶ dist/index.html
+   facts.json      │                                        dist/work/<name>/index.html
+   public/        ─┘
                                                                         │
                                               GitHub Actions ─▶ GitHub Pages ─▶ abdullahrather.com
 ```
 
 - **Every page is plain HTML first.** The build renders the home page and each case study to its own HTML file, with the styles inside it. The content shows before any JavaScript loads, search engines can read it, and it works with JavaScript turned off. React then takes over the page for the interactive parts.
-- **Content is separate from code.** All text is in two language files. Dates, links and pictures are in one facts file, so they're entered once for both languages. A check fails the build when the two languages don't match.
+- **Content is separate from code.** Everything about the person behind the site is in one `content/` folder: the name, links and keys in `site.json`, all text in two language files, dates and pictures in a facts file, and the photo, resumes and screenshots in `public/`. The code holds no personal details. A check fails the build when something in the folder is missing or the two languages don't match.
 - **Project pictures share one style.** Each project is shown as a window: a real screenshot where the project can be shown, or a schematic drawn in the theme's colours where the code is private.
 - **GitHub activity is saved, not fetched live.** A script reads GitHub's public API when the site is built and saves the result. The site rebuilds once a day to keep it fresh. A visitor's browser never contacts GitHub.
 - **Moving between pages is animated by the browser.** Opening a case study fades the page and glides the project's picture into place, in browsers that support View Transitions. Others load the page normally.
@@ -90,30 +92,39 @@ The contact form needs EmailJS and reCAPTCHA keys. Copy `.env.example` to `.env`
 ## Project structure
 
 ```
+content/           Everything about the person behind the site
+  site.json          Name, address, email, links, time zone, analytics ID, resume files, tech list
+  en.json, de.json   All text
+  facts.json         Dates, links, pictures and tech lists for jobs and projects
+  activity.json      The saved GitHub activity
+  email/             Copies of the EmailJS email templates
+  public/            Photo, resumes, screenshots, favicons and the privacy page
 src/
   components/      One file per section, plus CaseStudy (the /work/<name>/ page) and Cover (project pictures)
-  data/            facts.json (dates, links, pictures) and activity.json (saved GitHub activity)
-  languages/       en.json and de.json: all text
   lib/             Languages, routes, theme, analytics and small hooks
   entry-server.jsx Renders a page to HTML during the build
   index.css        Colours, fonts and shared styles
 scripts/
-  build.mjs           Builds the site and writes every page as HTML
-  check-content.mjs   Checks the text, facts, pictures and sitemap against each other
+  build.mjs           Builds the site, writes every page as HTML, and writes the sitemap, robots.txt and CNAME
+  check-content.mjs   Checks the content folder
+  content.mjs         Finds the content folder
   fetch-activity.mjs  Saves the GitHub activity
 tests/
   smoke.mjs        Browser and accessibility checks against the built site
-public/            Resumes, images, the privacy page and the sitemap
 ```
 
 ## Editing content
 
-- **Text** is in `src/languages/en.json` and `src/languages/de.json`. Change both.
-- **Dates, links, pictures and tech lists** are in `src/data/facts.json`. Its lists match the language files by position, and projects match by `id`.
+- **Name, address and links** are in `content/site.json`. The sitemap, `robots.txt` and the custom-domain file are written from its `url` when the site is built.
+- **Text** is in `content/en.json` and `content/de.json`. Change both.
+- **Dates, links, pictures and tech lists** are in `content/facts.json`. Its lists match the language files by position, and projects match by `id`.
+- **Files** such as the photo and resumes go in `content/public/`, and are served from the site's root.
 - **A project's picture** is either `shot`, a screenshot saved as `name.webp` (1200px wide) and `name-640.webp` (640px wide), or `cover`, one of the schematics in `src/components/Cover.jsx`.
-- **A case study** needs `caseStudy: true` and a `screens` list in the facts file, a `study` block in both language files, and its address in `public/sitemap.xml`.
+- **A case study** needs `caseStudy: true` and a `screens` list in the facts file, and a `study` block in both language files.
 
 `npm run check:content` reports anything missing or mismatched.
+
+To keep your content outside this repository, put the folder anywhere and set `CONTENT_DIR` to its path in `.env`.
 
 ## Checks
 

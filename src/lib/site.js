@@ -1,35 +1,13 @@
-// Facts shared across sections. Translatable copy lives in src/languages/*.json.
+// Facts shared across sections, from the content folder's site.json.
+// Translatable copy lives in the content folder's en.json and de.json.
+import site from "@content/site.json";
 
-export const EMAIL = "abdullahrather19@gmail.com";
-export const TIMEZONE = "Europe/Berlin";
-
-export const SOCIALS = [
-  { id: "github", name: "GitHub", url: "https://github.com/abdullahrather", handle: "@abdullahrather" },
-  { id: "linkedin", name: "LinkedIn", url: "https://linkedin.com/in/abdullahrather", handle: "in/abdullahrather" },
-  { id: "xing", name: "Xing", url: "https://www.xing.com/profile/Abdullah_Rather", handle: "Abdullah_Rather" },
-];
-
-export const STACK = [
-  "PHP",
-  "Yii",
-  "Laravel",
-  "Symfony",
-  "MySQL",
-  "MariaDB",
-  "PostgreSQL",
-  "LLM APIs",
-  "REST APIs",
-  "DATEV",
-  "Docker",
-  "GitHub Actions",
-  "PHPUnit",
-  "PHPStan",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Python",
-  "FastAPI",
-];
+export const SITE = site;
+export const NAME = site.name;
+export const EMAIL = site.email;
+export const TIMEZONE = site.timezone;
+export const SOCIALS = site.socials;
+export const STACK = site.stack;
 
 export const SECTIONS = [
   { id: "about", key: "ui.nav.about" },
@@ -39,10 +17,8 @@ export const SECTIONS = [
   { id: "contact", key: "ui.nav.contact" },
 ];
 
-export const getResume = (lang) =>
-  lang === "de"
-    ? { href: "/assets/Resume_de.pdf", fileName: "Abdullah_Rather_Lebenslauf.pdf" }
-    : { href: "/assets/Resume.pdf", fileName: "Abdullah_Rather_Resume.pdf" };
+/** The resume in the visitor's language, or the English one when there is no other. */
+export const getResume = (lang) => site.resume[lang] ?? site.resume.en;
 
-/** A project repo is private when it has no public GitHub link. */
-export const isPrivateRepo = (url) => !url || url === "#" || url === "https://github.com/abdullahrather";
+/** A project repo is private when it has no public GitHub link of its own. */
+export const isPrivateRepo = (url) => !url || url === "#" || url === `https://github.com/${site.github}`;

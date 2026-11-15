@@ -4,7 +4,7 @@ import { Icon } from "./Icons";
 import { useExperienceYears } from "../lib/experience";
 import { useTranslation } from "../lib/i18n";
 import { spotlight, useClock, useCountUp, useReveal } from "../lib/hooks";
-import { TIMEZONE } from "../lib/site";
+import { SITE, TIMEZONE } from "../lib/site";
 
 const label = "font-mono text-xs uppercase tracking-[0.2em] text-subtle";
 
@@ -43,9 +43,9 @@ const About = () => {
 
   const stats = [
     { value: years, label: t("skills.stats.years_experience") },
-    { value: 20, label: t("skills.stats.enterprise_integrations") },
-    { value: 15, label: t("skills.stats.production_deployments") },
-    { value: 10, label: t("skills.stats.core_technologies") },
+    { value: SITE.stats[0], label: t("skills.stats.enterprise_integrations") },
+    { value: SITE.stats[1], label: t("skills.stats.production_deployments") },
+    { value: SITE.stats[2], label: t("skills.stats.core_technologies") },
   ];
 
   return (

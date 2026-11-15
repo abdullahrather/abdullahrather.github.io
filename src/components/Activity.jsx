@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import SectionHeader from "./SectionHeader";
 import { Icon } from "./Icons";
-import activity from "../data/activity.json";
+import activity from "@content/activity.json";
 import { useTranslation } from "../lib/i18n";
 import { spotlight, useReveal } from "../lib/hooks";
 import { SOCIALS } from "../lib/site";

@@ -84,12 +84,12 @@ const ResumeMenu = () => {
 const Portrait = () => {
   const { t } = useTranslation();
   return (
-    <div className="enter relative mx-auto size-24 sm:size-28">
+    <div className="enter relative order-first mx-auto w-full max-w-32 sm:max-w-88 lg:order-none" style={delay(200)}>
       {/* Glow */}
-      <div aria-hidden="true" className="absolute -inset-4 -z-10 rounded-full bg-accent/30 blur-2xl" />
+      <div aria-hidden="true" className="absolute inset-6 -z-10 rounded-full bg-accent/30 blur-3xl" />
 
-      <div className="ring-conic relative size-full rounded-full p-0.5">
-        <div className="size-full rounded-full bg-bg p-1">
+      <div className="ring-conic relative aspect-square rounded-full p-0.5">
+        <div className="size-full rounded-full bg-bg p-2">
           <picture>
             <source srcSet="/images/profile-avatar.avif" type="image/avif" />
             <img
@@ -152,61 +152,73 @@ const Hero = () => {
   const years = useExperienceYears();
 
   return (
-    <section id="top" className="relative overflow-hidden pb-16 pt-28 sm:pt-36 lg:pb-24">
-      <div className="container-x text-center">
-        <Portrait />
+    <section id="top" className="relative overflow-hidden pb-16 pt-32 sm:pt-40 lg:pb-24">
+      <div className="container-x">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-10">
+          <div className="text-center lg:text-left">
+            <a
+              href="#experience"
+              className="enter group inline-flex items-center gap-2.5 rounded-full border border-line bg-card py-1.5 pl-2 pr-3.5 text-xs text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-fg"
+            >
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping-slow rounded-full bg-ok opacity-60" />
+                <span className="relative inline-flex size-2 rounded-full bg-ok" />
+              </span>
+              {t("ui.available")}
+              <Icon name="arrowRight" className="size-3 transition-transform group-hover:translate-x-0.5" />
+            </a>
 
-        <a
-          href="#experience"
-          className="enter group mt-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-card py-1.5 pl-2 pr-3.5 text-xs text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-fg"
-          style={delay(60)}
-        >
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping-slow rounded-full bg-ok opacity-60" />
-            <span className="relative inline-flex size-2 rounded-full bg-ok" />
-          </span>
-          {t("ui.available")}
-          <Icon name="arrowRight" className="size-3 transition-transform group-hover:translate-x-0.5" />
-        </a>
+            <p className="enter mt-8 font-mono text-sm text-muted" style={delay(60)}>
+              {t("ui.hero.greeting")}
+              <span className="hidden sm:inline"> — {t("hero.role")}</span>
+            </p>
 
-        <p className="enter mt-6 font-mono text-sm text-muted" style={delay(100)}>
-          {t("ui.hero.greeting")}
-          <span className="hidden sm:inline"> — {t("hero.role")}</span>
-        </p>
+            <h1
+              className="enter mt-4 text-[clamp(1.9rem,9.6vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-6xl lg:text-[4.25rem] xl:text-[4.75rem]"
+              style={delay(120)}
+            >
+              {t("ui.hero.headline_a")} <span className="serif-em">{t("ui.hero.headline_em")}</span>{" "}
+              {t("ui.hero.headline_b")}
+            </h1>
 
-        <h1
-          className="enter mx-auto mt-4 max-w-4xl text-[clamp(1.9rem,9.6vw,2.6rem)] font-semibold leading-[1.04] tracking-[-0.045em] sm:text-6xl lg:text-[4.75rem]"
-          style={delay(140)}
-        >
-          {t("ui.hero.headline_a")} <span className="serif-em">{t("ui.hero.headline_em")}</span>{" "}
-          {t("ui.hero.headline_b")}
-        </h1>
+            <p
+              className="enter mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg lg:mx-0"
+              style={delay(200)}
+            >
+              {t("hero.summary", { years })}
+            </p>
 
-        <p className="enter mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted sm:text-lg" style={delay(200)}>
-          {t("hero.summary", { years })}
-        </p>
-
-        <div className="enter mt-9 flex flex-wrap items-center justify-center gap-3" style={delay(280)}>
-          <a href="#projects" className="btn btn-primary group">
-            {t("ui.hero.cta_work")}
-            <Icon name="arrowRight" className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </a>
-          <ResumeMenu />
-          <div className="ml-1 flex items-center gap-1">
-            {SOCIALS.map((s) => (
-              <a
-                key={s.id}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="icon-btn"
-                aria-label={s.name}
-                title={s.name}
-              >
-                <Icon name={s.id} className="size-4.5" />
+            <div
+              className="enter mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+              style={delay(280)}
+            >
+              <a href="#projects" className="btn btn-primary group">
+                {t("ui.hero.cta_work")}
+                <Icon
+                  name="arrowRight"
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                />
               </a>
-            ))}
+              <ResumeMenu />
+              <div className="ml-1 flex items-center gap-1">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.id}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="icon-btn"
+                    aria-label={s.name}
+                    title={s.name}
+                  >
+                    <Icon name={s.id} className="size-4.5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
+
+          <Portrait />
         </div>
       </div>
 

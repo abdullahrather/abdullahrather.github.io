@@ -2,7 +2,8 @@
 // The pre-rendered HTML gives an instant first paint, indexable content and a
 // no-JS fallback; src/main.jsx then hydrates it. The home page is dist/index.html
 // and each case study is dist/work/<slug>/index.html. Content comes from the content
-// folder (see scripts/content.mjs), which also gives the sitemap and robots.txt.
+// folder (see scripts/content.mjs), which also gives the sitemap and robots.txt. It also
+// writes a page-not-found page.
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -90,6 +91,39 @@ fs.writeFileSync(
     "</urlset>\n",
 );
 fs.writeFileSync(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+
+// GitHub Pages answers a missing address with 404.html when the site has one.
+const name = escapeAttr(site.name);
+fs.writeFileSync(
+  path.join(dist, "404.html"),
+  `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Page not found — ${name}</title>
+  <link rel="icon" href="/images/favicons/favicon.ico" sizes="any" />
+  <style>
+    :root { color-scheme: light dark; --bg: #fafafa; --fg: #18181b; --muted: #52525b; --accent: #4f46e5; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #09090b; --fg: #fafafa; --muted: #a1a1aa; --accent: #a5b4fc; } }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--fg);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; text-align: center; padding: 2rem; box-sizing: border-box; }
+    h1 { font-size: 2rem; letter-spacing: -0.03em; margin: 0 0 0.5rem; }
+    p { color: var(--muted); margin: 0.25rem 0; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Page not found</h1>
+    <p>This page doesn't exist. <a href="/">Go to the home page</a></p>
+    <p lang="de">Diese Seite gibt es nicht. <a href="/">Zur Startseite</a></p>
+  </main>
+</body>
+</html>
+`,
+);
 
 for (const page of pages) {
   console.log(`prerender: dist/${page} is ${(fs.statSync(path.join(dist, page)).size / 1024).toFixed(1)} kB`);

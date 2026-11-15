@@ -254,6 +254,14 @@ try {
     });
   }
 
+  // GitHub Pages shows this for a missing address. The preview server doesn't, so it's opened directly.
+  await check("the page-not-found page links home", async () => {
+    const page = await openPage({ path: "404.html" });
+    assert.equal(await page.locator("h1").innerText(), "Page not found");
+    assert.ok((await page.locator('a[href="/"]').count()) > 0);
+    assert.match(await page.title(), new RegExp(`— ${site.name}$`));
+  });
+
   for (const [colorScheme, path] of [
     ["dark", ""],
     ["light", ""],

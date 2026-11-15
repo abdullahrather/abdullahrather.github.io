@@ -1,107 +1,153 @@
 # Abdullah Rather — Portfolio
 
-Personal portfolio of Abdullah Rather, AI Software Engineer based in Germany.
-Live at **[abdullahrather.com](https://abdullahrather.com)**.
+[![Deploy](https://github.com/abdullahrather/abdullahrather.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdullahrather/abdullahrather.github.io/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Release](https://img.shields.io/github/v/release/abdullahrather/abdullahrather.github.io)](https://github.com/abdullahrather/abdullahrather.github.io/releases)
+
+My personal site, live at **[abdullahrather.com](https://abdullahrather.com)**. It shows who I am, where I've worked, and what I've built, with a case study for each of my larger projects. Everything is in English and German, with a light and a dark theme.
+
+It's a static site: React pages turned into plain HTML when the site is built, hosted on GitHub Pages, with no server and no database.
+
+![The home page: headline, portrait and three case studies as a fan of windows](./docs/images/home.webp)
+
+| Projects | A case study |
+|---|---|
+| ![The project grid, with screenshots and drawn schematics in one style](./docs/images/projects.webp) | ![The case-study page for the streaming ad platform](./docs/images/case-study.webp) |
+
+| GitHub activity |
+|---|
+| ![A six-month commit grid, with the latest release and commit of each public repository](./docs/images/activity.webp) |
+
+## What's on the site
+
+| Section | What it shows |
+|---|---|
+| **Hero** | Who I am in one sentence, my resume in both languages, and the three case studies as a fan of windows |
+| **About** | A short summary, my current role, and skills grouped by what I use them for |
+| **Experience** | My work history, with durations worked out from the dates so they stay current |
+| **Focus** | The six kinds of work I do most |
+| **Work** | Fifteen projects in a grid that filters by type, with details in a dialog |
+| **Case studies** | A page per larger project at `/work/<name>/`: the problem, what I built, how it works, the hard parts and screenshots |
+| **Activity** | A six-month commit grid, and the latest release and commit from each of my public repositories |
+| **Contact** | A contact form, and my email and profiles |
+
+Around these:
+
+- **Command menu:** `Ctrl+K` or `⌘K` jumps to a section or a case study, switches the theme or language, copies my email, or opens my resume.
+- **Two languages:** English and German. The site follows the browser's language until someone picks one.
+- **Two themes:** dark and light, following the system until someone picks one, with no flash on load.
+- **Privacy:** Google Analytics loads only after a visitor agrees, and the [privacy page](https://abdullahrather.com/privacy/) says what is collected.
+
+## How it works
+
+```
+ src/languages/*.json ─┐
+ src/data/facts.json  ─┼─▶ React components ─▶ npm run build ─▶ dist/index.html
+ src/data/activity.json┘                                         dist/work/<name>/index.html
+                                                                        │
+                                              GitHub Actions ─▶ GitHub Pages ─▶ abdullahrather.com
+```
+
+- **Every page is plain HTML first.** The build renders the home page and each case study to its own HTML file, with the styles inside it. The content shows before any JavaScript loads, search engines can read it, and it works with JavaScript turned off. React then takes over the page for the interactive parts.
+- **Content is separate from code.** All text is in two language files. Dates, links and pictures are in one facts file, so they're entered once for both languages. A check fails the build when the two languages don't match.
+- **Project pictures share one style.** Each project is shown as a window: a real screenshot where the project can be shown, or a schematic drawn in the theme's colours where the code is private.
+- **GitHub activity is saved, not fetched live.** A script reads GitHub's public API when the site is built and saves the result. The site rebuilds once a day to keep it fresh. A visitor's browser never contacts GitHub.
+- **Moving between pages is animated by the browser.** Opening a case study fades the page and glides the project's picture into place, in browsers that support View Transitions. Others load the page normally.
+- **No animation library.** All motion is CSS, and it's turned off for visitors who ask their system to reduce motion.
 
 ## Stack
 
-| Area      | Choice                                                                 |
-| --------- | ---------------------------------------------------------------------- |
-| Framework | React 19 + Vite 8, pre-rendered to static HTML at build time and hydrated |
-| Styling   | Tailwind CSS 4 (CSS-first `@theme` tokens in `src/index.css`)          |
-| Fonts     | Geist, Geist Mono, Instrument Serif — self-hosted via Fontsource       |
-| Contact   | EmailJS + reCAPTCHA v2 (both lazy-loaded on first form interaction)    |
-| i18n      | English / German JSON locales, German fetched on demand                |
-| Hosting   | GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)       |
+| Part | Choice |
+|---|---|
+| Pages | React 19, built with Vite 8 and rendered to static HTML |
+| Styles | Tailwind CSS 4, with the design's colours and fonts as tokens in `src/index.css` |
+| Fonts | Geist, Geist Mono and Instrument Serif, served from the site itself |
+| Contact form | EmailJS and Google reCAPTCHA, both loaded only when someone starts typing |
+| Statistics | Google Analytics, only after consent |
+| Hosting | GitHub Pages, deployed by GitHub Actions |
+| Quality | ESLint, Prettier, Playwright and axe |
 
-## Features
+## Run it
 
-- Pre-rendered HTML with inlined CSS: content paints before JavaScript loads, is indexable, and works with JS disabled
-- Dark-first design with light mode; theme switches with a View Transitions circle reveal and no flash on load
-- `⌘K` / `Ctrl+K` command palette: jump to sections, toggle theme or language, copy email, get the resume
-- Bento-style About section with skills grouped by what they are used for, count-up stats, live Germany local time
-- Filterable project grid (cards glide between filters via View Transitions) with a native `<dialog>` for details
-- Case-study pages at `/work/<slug>/`, each pre-rendered as its own HTML file, with the project's picture gliding
-  between the grid and the page where the browser supports cross-document View Transitions
-- Project pictures in one style: real screenshots in a window, or a schematic drawn in the theme colours for private work
-- GitHub activity section (six-month commit grid, latest release and commit per public repository), saved at build
-  time and refreshed by a daily deploy, so the visitor's browser never contacts GitHub
-- Scroll reveals via a single shared `IntersectionObserver`; CSS scroll-driven progress bar
-- Respects `prefers-reduced-motion`, skip link, focus-visible styles, semantic landmarks
-- No animation libraries — all motion is CSS
+You need Node.js 22 or newer.
+
+```bash
+npm install
+npm run dev
+```
+
+Open the address it prints. To see the site as it's deployed:
+
+```bash
+npm run build
+npm run preview
+```
+
+The contact form needs EmailJS and reCAPTCHA keys. Copy `.env.example` to `.env` and fill them in. Without them the form shows a notice, and everything else works.
+
+`npm run activity` refreshes the saved GitHub activity. It needs no key.
 
 ## Project structure
 
 ```
 src/
-  components/      Nav, Hero, About, WorkExperience, Expertise, Projects, Activity, Contact, Footer,
-                   CommandPalette, CaseStudy (the /work/<slug>/ page), Cover (project pictures)
-  data/            facts.json (dates, links, pictures), activity.json (saved GitHub activity)
-  languages/       en.json, de.json — all copy and content (projects, case studies, experience, …)
-  lib/             i18n, route, theme, hooks (reveal, spotlight, count-up, clock), toast, site constants, analytics
-  entry-server.jsx Server render used by the build-time pre-render
-  index.css        Design tokens + Tailwind theme
+  components/      One file per section, plus CaseStudy (the /work/<name>/ page) and Cover (project pictures)
+  data/            facts.json (dates, links, pictures) and activity.json (saved GitHub activity)
+  languages/       en.json and de.json: all text
+  lib/             Languages, routes, theme, analytics and small hooks
+  entry-server.jsx Renders a page to HTML during the build
+  index.css        Colours, fonts and shared styles
 scripts/
-  build.mjs           Client build + pre-render of every page + CSS inlining (`npm run build`)
-  fetch-activity.mjs  Refreshes src/data/activity.json from GitHub's public API (`npm run activity`)
-public/
-  assets/          Resume PDFs (EN / DE)
-  images/          Optimized AVIF/WebP images (projects/ and work/ have -640 copies), favicons, OG image
+  build.mjs           Builds the site and writes every page as HTML
+  check-content.mjs   Checks the text, facts, pictures and sitemap against each other
+  fetch-activity.mjs  Saves the GitHub activity
+tests/
+  smoke.mjs        Browser and accessibility checks against the built site
+public/            Resumes, images, the privacy page and the sitemap
 ```
 
-Editing content: translated text lives in `src/languages/en.json` **and** `src/languages/de.json`.
-Dates, links, pictures, icons and tech lists live once in `src/data/facts.json`; its lists match the
-language files by position, and projects match by `id`.
-Section headings and UI strings live under the `ui` key in each file.
+## Editing content
 
-A project's picture is either `shot` (a screenshot: `name.webp` at 1200px wide and `name-640.webp`
-at 640px, both 16:10) or `cover` (one of the schematics in `src/components/Cover.jsx`).
+- **Text** is in `src/languages/en.json` and `src/languages/de.json`. Change both.
+- **Dates, links, pictures and tech lists** are in `src/data/facts.json`. Its lists match the language files by position, and projects match by `id`.
+- **A project's picture** is either `shot`, a screenshot saved as `name.webp` (1200px wide) and `name-640.webp` (640px wide), or `cover`, one of the schematics in `src/components/Cover.jsx`.
+- **A case study** needs `caseStudy: true` and a `screens` list in the facts file, a `study` block in both language files, and its address in `public/sitemap.xml`.
 
-A case study needs `caseStudy: true` and a `screens` list in `facts.json`, a `study` block in both
-language files, and its `/work/<slug>/` address in `public/sitemap.xml`. `npm run check:content`
-reports anything missing.
+`npm run check:content` reports anything missing or mismatched.
 
-Date-based text (years of experience, durations) is rendered from the build time and refreshed in
-the browser, so redeploying is not required for it to stay current.
+## Checks
 
-## Development
+Every pull request runs these, and all must pass before it can be merged:
 
-```bash
-npm install
-cp .env.example .env   # EmailJS + reCAPTCHA keys; the form shows a notice when they are missing
-npm run dev
-npm run build && npm run preview
-```
+| Check | What it does | Run it |
+|---|---|---|
+| Lint | ESLint, with no warnings allowed | `npm run lint` |
+| Format | Prettier | `npm run format:check` |
+| Content | Both languages have the same text keys, and every fact, picture and case study lines up | `npm run check:content` |
+| Build | Builds the site and renders every page | `npm run build` |
+| Dependency audit | Fails on a high or critical vulnerability | `npm audit --audit-level=high` |
+| Smoke and accessibility | Opens the built site in a browser: pages without JavaScript, filters, the command menu, both languages, phone width, cookie consent, and axe in both themes | `npm run build && npm run test:smoke` |
+| Workflow lint | Checks the GitHub Actions files | CI only |
 
-Pushing to `main` builds and deploys to the `gh-pages` branch. The EmailJS / reCAPTCHA values are
-read from repository secrets at build time. The same deploy also runs once a day to refresh the
-GitHub activity section; if GitHub can't be reached, the copy saved in the repository is used.
+## Deploys and releases
 
-## Continuous integration
+Merging into `main` builds the site and publishes it to GitHub Pages. The same deploy runs once a day to refresh the GitHub activity.
 
-Every pull request runs `.github/workflows/ci.yml`:
+Every merged pull request also gets a version and a GitHub release:
 
-| Check | What it does | Run locally |
-| ----- | ------------ | ----------- |
-| Lint | ESLint with no warnings allowed | `npm run lint` |
-| Format | Prettier code formatting (`npm run format` fixes it) | `npm run format:check` |
-| Content | Matching EN/DE keys, placeholders, images and facts | `npm run check:content` |
-| Build | Production build and pre-render | `npm run build` |
-| Dependency audit | Fails on high or critical vulnerabilities | `npm audit --audit-level=high` |
-| Smoke & accessibility | Browser checks and axe in both themes | `npm run build && npm run test:smoke` |
-| Workflow lint | Checks the GitHub Actions files | Runs in CI only |
+| Label on the pull request | Result |
+|---|---|
+| none | A patch release, such as `v3.1.0` to `v3.1.1` |
+| `release:minor` | A minor release, for a new section or feature |
+| `release:major` | A major release, for a redesign |
+| `skip-release` | No release |
 
-## Versioning & releases
+`v1.0.0` was the original site, `v2.0.0` the 2026 redesign, and `v3.0.0` added the case studies.
 
-Versions follow `vMAJOR.MINOR.PATCH` and are created automatically by
-`.github/workflows/release.yml` whenever a pull request is merged into `main`:
+## Contributing
 
-| PR label        | Result                                | Use for                            |
-| --------------- | ------------------------------------- | ---------------------------------- |
-| _(none)_        | patch — `v2.0.1` → `v2.0.2`           | fixes, text/content updates        |
-| `release:minor` | minor — `v2.0.1` → `v2.1.0`           | new section, feature or project    |
-| `release:major` | major — `v2.0.1` → `v3.0.0`           | redesign / rebuild                 |
-| `skip-release`  | no tag                                | changes not worth a version        |
+Bug reports and corrections are welcome. See [CONTRIBUTING](./CONTRIBUTING.md), the [code of conduct](./CODE_OF_CONDUCT.md) and the [accessibility statement](./ACCESSIBILITY.md). Please report security problems privately, as the [security policy](./SECURITY.md) describes.
 
-Each release gets a tag and a GitHub Release with auto-generated notes. Dependabot PRs are
-skipped. `v1.0.0` is the original (pre-2026) site; `v2.0.0` is the redesign.
+## License
+
+The code is under the [MIT licence](./LICENSE). My photo, resumes, written text and project screenshots are not: see [NOTICE](./NOTICE.md).

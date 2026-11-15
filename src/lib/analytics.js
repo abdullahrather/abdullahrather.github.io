@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-
 import { SITE } from "./site";
 
-// The Google Analytics ID, from site.json.
+// The Google Analytics ID, from site.json. Left empty, the site loads no analytics and asks
+// no consent: there is no banner and no "Cookie settings" link.
 export const GA_ID = SITE.analyticsId;
+export const ANALYTICS_ON = Boolean(GA_ID);
 const CONSENT_KEY = "analytics-consent";
 export const CONSENT_OPEN_EVENT = "app:open-consent";
 
@@ -21,6 +22,7 @@ const hasConsent = () => getConsent() === "granted";
 
 /** Loads Google Analytics. Nothing is requested from Google until this runs. */
 export const startAnalytics = () => {
+  if (!ANALYTICS_ON) return;
   window[`ga-disable-${GA_ID}`] = false;
   if (started) return;
   started = true;

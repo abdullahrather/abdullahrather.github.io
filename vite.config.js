@@ -40,7 +40,8 @@ const head = {
   email: site.email,
   url: `${site.url}/`,
   socialImage: site.url + site.socialImage,
-  portrait: site.portrait,
+  // The AVIF copy when there is one: browsers that cannot show it skip a preload of that type.
+  portrait: site.portraitAvif || site.portrait,
   portraitType: {
     avif: "image/avif",
     webp: "image/webp",
@@ -48,7 +49,7 @@ const head = {
     jpg: "image/jpeg",
     jpeg: "image/jpeg",
     svg: "image/svg+xml",
-  }[site.portrait.split(".").pop().toLowerCase()],
+  }[(site.portraitAvif || site.portrait).split(".").pop().toLowerCase()],
 };
 const escapeHtml = (value) => value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const siteDetailsInHtml = {

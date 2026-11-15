@@ -1,14 +1,34 @@
 // Browser checks against the production build. Run `npm run build` first.
 // Set PW_CHANNEL=msedge to use an installed browser instead of Playwright's Chromium.
+//
+// What to expect is read from the content folder the site was built from (content/, or the
+// folder CONTENT_DIR names), so the same checks cover the demo content and anyone's own.
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createRequire } from "node:module";
 import { chromium } from "playwright";
 import { preview } from "vite";
+import { readContent } from "../scripts/content.mjs";
 
 const PORT = 4180;
 const URL = `http://localhost:${PORT}/`;
 const axeSource = fs.readFileSync(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
+
+const site = readContent("site.json");
+const facts = readContent("facts.json");
+const en = readContent("en.json");
+const de = readContent("de.json");
+
+const SOFT_HYPHEN = String.fromCharCode(0xad);
+const plain = (text) => text.replaceAll(SOFT_HYPHEN, "");
+const isPublic = (url) => url && url !== "#" && url !== `https://github.com/${site.github}`;
+// In the order of the language file, which is the order on the site.
+const studies = en.projects.items
+  .map((p) => ({ ...p, ...facts.projects.find((f) => f.id === p.id) }))
+  .filter((p) => p.caseStudy);
+const studyPath = (study) => `work/${study.slug}/`;
+const analyticsOn = Boolean(site.analyticsId);
+const activityOn = Boolean(site.github);
 
 const server = await preview({ preview: { port: PORT, strictPort: true }, logLevel: "error" });
 const browser = await chromium.launch({ channel: process.env.PW_CHANNEL || undefined });
@@ -16,7 +36,7 @@ const problems = [];
 
 const GOOGLE_ANALYTICS = /googletagmanager|google-analytics/;
 
-// `consent` is the stored choice; null means a first visit, with the banner showing.
+// `consent` is the stored choice; null means a first visit, with the banner showing when analytics are on.
 const openPage = async ({ consent = "denied", path = "", ...options } = {}) => {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, ...options });
   // External services are not part of these checks.
@@ -37,6 +57,8 @@ const openPage = async ({ consent = "denied", path = "", ...options } = {}) => {
   return page;
 };
 
+const phone = { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true };
+
 const check = async (name, run) => {
   await run();
   console.log(`ok - ${name}`);
@@ -45,70 +67,80 @@ const check = async (name, run) => {
 try {
   await check("pre-rendered content works without JavaScript", async () => {
     const page = await openPage({ javaScriptEnabled: false });
-    assert.match(await page.locator("h1").innerText(), /backends/);
+    assert.ok((await page.locator("h1").innerText()).includes(en.ui.hero.headline_a));
     // The portrait stays out of the headline, so the heading reads as one plain sentence.
     assert.equal(await page.locator("h1 img").count(), 0);
-    assert.equal(await page.locator('#top img[alt="Portrait of Abdullah Rather"]').count(), 1);
-    assert.equal(await page.locator('#top a[aria-label^="Case study: "]').count(), 3);
-    assert.equal(await page.locator("#projects article").count(), 7);
+    assert.equal(await page.locator(`#top img[alt="${en.ui.a11y.portrait}"]`).count(), 1);
+    assert.equal(await page.locator('#top a[aria-label^="Case study: "]').count(), Math.min(3, studies.length));
+    assert.equal(await page.locator("#projects article").count(), Math.min(7, facts.projects.length));
   });
 
   await check("sections, experience and projects render", async () => {
     const page = await openPage();
-    for (const id of ["about", "experience", "expertise", "projects", "activity", "contact"]) {
+    for (const id of ["about", "experience", "expertise", "projects", "contact"]) {
       assert.equal(await page.locator(`#${id}`).count(), 1, id);
     }
-    assert.equal(await page.locator("#experience ol > li").count(), 6);
-    assert.equal((await page.locator("#about .chip").count()) > 20, true, "skills are listed");
+    assert.equal(await page.locator("#activity").count(), activityOn ? 1 : 0, "activity shows only with a GitHub user");
+    assert.equal(await page.locator("#experience ol > li").count(), facts.experience.length);
+    const skills = en.skills.groups.reduce((sum, group) => sum + group.items.length, 0);
+    assert.equal(await page.locator("#about li.chip").count(), skills, "skills are listed");
   });
 
-  await check("GitHub activity shows the saved data without asking GitHub", async () => {
-    const page = await openPage();
-    const requests = [];
-    page.on("request", (request) => requests.push(request.url()));
-    await page.evaluate(() => document.getElementById("activity").scrollIntoView({ behavior: "instant" }));
-    assert.ok((await page.locator('#activity [role="img"] > span').count()) > 170, "half a year of days");
-    assert.ok((await page.locator('#activity a[href*="/releases/tag/"]').count()) > 0, "a release is listed");
-    assert.ok((await page.locator('#activity a[href*="/commit/"]').count()) > 0, "a commit is listed");
-    await page.waitForTimeout(300);
-    assert.deepEqual(
-      requests.filter((url) => url.includes("github")),
-      [],
-    );
-  });
+  if (activityOn) {
+    await check("GitHub activity shows the saved data without asking GitHub", async () => {
+      const page = await openPage();
+      const requests = [];
+      page.on("request", (request) => requests.push(request.url()));
+      await page.evaluate(() => document.getElementById("activity").scrollIntoView({ behavior: "instant" }));
+      assert.ok((await page.locator('#activity [role="img"] > span').count()) > 170, "half a year of days");
+      assert.ok((await page.locator('#activity a[href*="/releases/tag/"]').count()) > 0, "a release is listed");
+      assert.ok((await page.locator('#activity a[href*="/commit/"]').count()) > 0, "a commit is listed");
+      await page.waitForTimeout(300);
+      assert.deepEqual(
+        requests.filter((url) => url.includes("github")),
+        [],
+      );
+    });
+  }
 
-  await check("case study pages are pre-rendered and linked", async () => {
-    const page = await openPage({ javaScriptEnabled: false, path: "work/streaming-ad-platform/" });
-    assert.equal(await page.locator("h1").innerText(), "Streaming Ad Platform");
-    assert.match(await page.title(), /^Streaming Ad Platform — Abdullah Rather$/);
-    assert.equal(
-      await page.locator('link[rel="canonical"]').getAttribute("href"),
-      "https://abdullahrather.com/work/streaming-ad-platform/",
-    );
-    assert.equal(await page.locator("main figure img").count(), 4);
-    // Section links lead back to the home page.
-    assert.equal(await page.getByRole("link", { name: "About", exact: true }).first().getAttribute("href"), "/#about");
+  if (studies.length) {
+    await check("case study pages are pre-rendered and linked", async () => {
+      const first = studies[0];
+      const page = await openPage({ javaScriptEnabled: false, path: studyPath(first) });
+      assert.equal(plain(await page.locator("h1").innerText()), plain(first.title));
+      assert.equal(await page.title(), `${plain(first.title)} — ${site.name}`);
+      assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"), `${site.url}/${studyPath(first)}`);
+      assert.equal(await page.locator("main figure img").count(), first.screens.length);
+      // Section links lead back to the home page.
+      const about = page.getByRole("link", { name: en.ui.nav.about, exact: true }).first();
+      assert.equal(await about.getAttribute("href"), "/#about");
 
-    const home = await openPage();
-    await home.evaluate(() => document.getElementById("projects").scrollIntoView({ behavior: "instant" }));
-    await home.getByRole("link", { name: "Read the case study: CareerCraft" }).click();
-    await home.waitForURL(/\/work\/career-craft\/$/);
-    assert.equal(await home.locator("h1").innerText(), "CareerCraft");
-    await home.getByRole("link", { name: /Next case study/ }).click();
-    await home.waitForURL(/\/work\/enterprise-management\/$/);
-    // Private work has no screenshots.
-    assert.equal(await home.locator("main figure").count(), 0);
-  });
+      const last = studies.at(-1);
+      const home = await openPage();
+      await home.evaluate(() => document.getElementById("projects").scrollIntoView({ behavior: "instant" }));
+      await home.getByRole("link", { name: `${en.ui.study.read}: ${last.title}` }).click();
+      await home.waitForURL(new RegExp(`/${studyPath(last)}$`));
+      assert.equal(plain(await home.locator("h1").innerText()), plain(last.title));
+      // The last case study leads on to the first.
+      await home.getByRole("link", { name: new RegExp(en.ui.study.next) }).click();
+      await home.waitForURL(new RegExp(`/${studyPath(first)}$`));
+      assert.equal(await home.locator("main figure").count(), first.screens.length);
+    });
+  }
 
   await check("project filters and details work", async () => {
     const page = await openPage();
     await page.evaluate(() => document.getElementById("projects").scrollIntoView({ behavior: "instant" }));
-    await page.locator("#projects article button").first().click();
-    assert.equal(await page.locator("dialog[open]").count(), 1);
-    await page.keyboard.press("Escape");
-    await page.locator("button[aria-pressed]", { hasText: "Public" }).click();
+    if (facts.projects.some((p) => !p.caseStudy)) {
+      await page.locator("#projects article button").first().click();
+      assert.equal(await page.locator("dialog[open]").count(), 1);
+      await page.keyboard.press("Escape");
+    }
+    const publicFilter = en.projects.filters.find((f) => f.id === "public").name;
+    await page.locator("button[aria-pressed]", { hasText: publicFilter }).click();
     await page.waitForTimeout(700);
-    assert.equal(await page.locator("#projects article").count(), 6);
+    const publicCount = facts.projects.filter((p) => isPublic(p.github)).length;
+    assert.equal(await page.locator("#projects article").count(), Math.min(6, publicCount));
   });
 
   await check("command menu navigates", async () => {
@@ -126,96 +158,107 @@ try {
     );
   });
 
-  await check("command menu opens a case study", async () => {
-    const page = await openPage({ path: "work/career-craft/" });
-    await page.keyboard.press("Control+k");
-    await page.keyboard.type("streaming");
-    await page.keyboard.press("Enter");
-    await page.waitForURL(/\/work\/streaming-ad-platform\/$/);
-    await page.waitForLoadState("networkidle");
-    // A section is on the home page, so choosing one from a case study goes there.
-    await page.keyboard.press("Control+k");
-    await page.keyboard.type("contact");
-    await page.keyboard.press("Enter");
-    await page.waitForURL(/\/#contact$/);
-  });
+  if (studies.length > 1) {
+    await check("command menu opens a case study", async () => {
+      const [from, to] = [studies.at(-1), studies[0]];
+      const page = await openPage({ path: studyPath(from) });
+      await page.keyboard.press("Control+k");
+      await page.keyboard.type(to.slug);
+      await page.keyboard.press("Enter");
+      await page.waitForURL(new RegExp(`/${studyPath(to)}$`));
+      await page.waitForLoadState("networkidle");
+      // A section is on the home page, so choosing one from a case study goes there.
+      await page.keyboard.press("Control+k");
+      await page.keyboard.type("contact");
+      await page.keyboard.press("Enter");
+      await page.waitForURL(/\/#contact$/);
+    });
+  }
 
   await check("German language and title load", async () => {
     const page = await openPage({ locale: "de-DE" });
     await page.waitForTimeout(500);
-    assert.match(await page.locator("h1").innerText(), /entwickle/);
-    assert.match(await page.title(), /KI-Entwickler/);
+    assert.ok((await page.locator("h1").innerText()).includes(de.ui.hero.headline_a));
+    assert.equal(await page.title(), de.ui.meta.title);
 
-    const study = await openPage({ locale: "de-DE", path: "work/streaming-ad-platform/" });
-    await study.waitForTimeout(500);
-    assert.equal(await study.locator("h1").innerText(), "Streaming-Werbeplattform");
-    assert.match(await study.title(), /^Streaming-Werbeplattform — Abdullah Rather$/);
+    if (studies.length) {
+      const title = de.projects.items.find((p) => p.id === studies[0].id).title;
+      const study = await openPage({ locale: "de-DE", path: studyPath(studies[0]) });
+      await study.waitForTimeout(500);
+      assert.equal(plain(await study.locator("h1").innerText()), plain(title));
+      assert.equal(await study.title(), `${plain(title)} — ${site.name}`);
+    }
   });
 
-  for (const path of ["", "work/streaming-ad-platform/"]) {
+  for (const path of ["", ...studies.map(studyPath)]) {
     await check(`phone layout has no sideways scroll on /${path}`, async () => {
-      const page = await openPage({ path, viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+      const page = await openPage({ path, ...phone });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     });
   }
 
   await check("the German headline fits a phone screen", async () => {
-    const page = await openPage({
-      locale: "de-DE",
-      viewport: { width: 390, height: 844 },
-      isMobile: true,
-      hasTouch: true,
-    });
-    await page.waitForFunction(() => /entwickle/.test(document.querySelector("h1").innerText));
+    const page = await openPage({ locale: "de-DE", ...phone });
+    await page.waitForFunction((text) => document.querySelector("h1").innerText.includes(text), de.ui.hero.headline_a);
     assert.equal(await page.locator("h1").evaluate((h1) => h1.scrollWidth <= h1.clientWidth), true);
   });
 
-  await check("the cookie banner leaves the headline readable on a phone", async () => {
-    const page = await openPage({
-      consent: null,
-      viewport: { width: 390, height: 844 },
-      isMobile: true,
-      hasTouch: true,
+  if (analyticsOn) {
+    await check("the cookie banner leaves the headline readable on a phone", async () => {
+      const page = await openPage({ consent: null, ...phone });
+      await page.waitForTimeout(1200);
+      const headline = await page.locator("h1").boundingBox();
+      const banner = await page.getByRole("region", { name: en.ui.consent.title }).boundingBox();
+      assert.ok(headline.y + headline.height <= banner.y, "the headline ends above the banner");
     });
-    await page.waitForTimeout(1200);
-    const headline = await page.locator("h1").boundingBox();
-    const banner = await page.getByRole("region", { name: "This site uses cookies" }).boundingBox();
-    assert.ok(headline.y + headline.height <= banner.y, "the headline ends above the banner");
-  });
 
-  await check("Google Analytics waits for consent", async () => {
-    const page = await openPage({ consent: null });
-    const banner = page.getByRole("region", { name: "This site uses cookies" });
-    assert.equal(await banner.count(), 1, "banner shows on a first visit");
-    assert.match(await banner.textContent(), /Google Analytics/, "banner names the analytics provider");
-    assert.deepEqual(page.analyticsRequests, [], "nothing loads before a choice");
+    await check("Google Analytics waits for consent", async () => {
+      const page = await openPage({ consent: null });
+      const banner = page.getByRole("region", { name: en.ui.consent.title });
+      assert.equal(await banner.count(), 1, "banner shows on a first visit");
+      assert.match(await banner.textContent(), /Google Analytics/, "banner names the analytics provider");
+      assert.deepEqual(page.analyticsRequests, [], "nothing loads before a choice");
 
-    await page.getByRole("button", { name: "Decline" }).click();
-    await page.waitForTimeout(300);
-    assert.equal(await banner.count(), 0, "banner closes");
-    assert.deepEqual(page.analyticsRequests, [], "nothing loads after declining");
+      await page.getByRole("button", { name: en.ui.consent.decline }).click();
+      await page.waitForTimeout(300);
+      assert.equal(await banner.count(), 0, "banner closes");
+      assert.deepEqual(page.analyticsRequests, [], "nothing loads after declining");
 
-    await page.getByRole("button", { name: "Cookie settings" }).click();
-    await page.getByRole("button", { name: "Accept" }).click();
-    await page.waitForTimeout(300);
-    assert.ok(page.analyticsRequests.length > 0, "analytics load after accepting");
+      await page.getByRole("button", { name: en.ui.consent.settings }).click();
+      await page.getByRole("button", { name: en.ui.consent.accept }).click();
+      await page.waitForTimeout(300);
+      assert.ok(page.analyticsRequests.length > 0, "analytics load after accepting");
 
-    await page.reload({ waitUntil: "networkidle" });
-    assert.equal(await banner.count(), 0, "the choice is remembered");
-  });
+      await page.reload({ waitUntil: "networkidle" });
+      assert.equal(await banner.count(), 0, "the choice is remembered");
+    });
 
-  await check("privacy page opens and links to cookie settings", async () => {
-    const page = await openPage({ consent: "granted", path: "privacy/" });
-    assert.equal(await page.locator("h1").first().innerText(), "Privacy Policy");
-    await page.getByRole("link", { name: "open cookie settings" }).click();
-    await page.getByRole("button", { name: "Decline" }).waitFor();
-  });
+    await check("privacy page opens and links to cookie settings", async () => {
+      const page = await openPage({ consent: "granted", path: "privacy/" });
+      assert.equal(await page.locator("h1").first().innerText(), "Privacy Policy");
+      await page.getByRole("link", { name: "open cookie settings" }).click();
+      await page.getByRole("button", { name: en.ui.consent.decline }).waitFor();
+    });
+  } else {
+    await check("without an analytics ID, nothing asks for consent or loads analytics", async () => {
+      const page = await openPage({ consent: null });
+      await page.waitForTimeout(800);
+      assert.equal(await page.getByRole("region", { name: en.ui.consent.title }).count(), 0, "no banner");
+      assert.equal(await page.getByRole("button", { name: en.ui.consent.settings }).count(), 0, "no settings link");
+      assert.deepEqual(page.analyticsRequests, [], "no analytics requests");
+    });
+
+    await check("privacy page opens", async () => {
+      const page = await openPage({ path: "privacy/" });
+      assert.equal(await page.locator("h1").first().innerText(), "Privacy Policy");
+    });
+  }
 
   for (const [colorScheme, path] of [
     ["dark", ""],
     ["light", ""],
-    ["dark", "work/streaming-ad-platform/"],
-    ["light", "work/enterprise-management/"],
+    ...(studies.length ? [["dark", studyPath(studies[0])]] : []),
+    ...(studies.length > 1 ? [["light", studyPath(studies.at(-1))]] : []),
   ]) {
     await check(`no accessibility violations in ${colorScheme} theme on /${path}`, async () => {
       const page = await openPage({ consent: null, colorScheme, reducedMotion: "reduce", path });

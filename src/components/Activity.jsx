@@ -4,9 +4,9 @@ import { Icon } from "./Icons";
 import activity from "@content/activity.json";
 import { useTranslation } from "../lib/i18n";
 import { spotlight, useReveal } from "../lib/hooks";
-import { SOCIALS } from "../lib/site";
+import { SITE, SOCIALS } from "../lib/site";
 
-const GITHUB = SOCIALS.find((s) => s.id === "github").url;
+const GITHUB = SOCIALS.find((s) => s.id === "github")?.url ?? `https://github.com/${SITE.github}`;
 
 // Fixed steps, so one very busy day doesn't flatten the rest of the grid.
 const level = (count) => (count === 0 ? 0 : count < 3 ? 1 : count < 10 ? 2 : count < 25 ? 3 : 4);
@@ -31,7 +31,7 @@ const Tile = ({ className = "", delay = 0, children }) => {
 /**
  * Commits, releases and a six-month commit grid from my public GitHub repositories.
  * The data is saved at build time (scripts/fetch-activity.mjs), so nothing is requested
- * from GitHub in the visitor's browser.
+ * from GitHub in the visitor's browser. Shown only when site.json names a GitHub user.
  */
 const Activity = () => {
   const { t, lang } = useTranslation();
@@ -42,6 +42,7 @@ const Activity = () => {
   }, [lang]);
   const summary = t("ui.activity.summary", { repos: activity.repos });
   const { days } = activity;
+  if (!SITE.github || !days.length) return null;
 
   return (
     <section id="activity" className="section" aria-labelledby="activity-title">

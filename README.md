@@ -8,6 +8,8 @@ My personal site, live at **[abdullahrather.com](https://abdullahrather.com)**. 
 
 It's a static site: React pages turned into plain HTML when the site is built, hosted on GitHub Pages, with no server and no database.
 
+The repository itself ships with a fictional demo person, Robin Hartmann, so a fresh copy builds a complete working site straight away. My own content lives in a private repository that the deploy pulls in. See [Use it for your own site](#use-it-for-your-own-site).
+
 ![The home page: headline, portrait and three case studies as a fan of windows](./docs/images/home.webp)
 
 | Projects | A case study |
@@ -124,11 +126,32 @@ tests/
 
 `npm run check:content` reports anything missing or mismatched.
 
-To keep your content outside this repository, put the folder anywhere and set `CONTENT_DIR` to its path in `.env`.
+Three parts switch themselves off when their setting in `site.json` is empty:
+
+| Setting | Empty means |
+|---|---|
+| `analyticsId` | No Google Analytics, no cookie banner, and no "Cookie settings" link |
+| `github` | No GitHub activity section |
+| `portraitAvif` | Only the `portrait` file is used |
+
+The contact form works once its EmailJS and reCAPTCHA keys are set; without them it shows a notice.
+
+## Use it for your own site
+
+1. Copy the repository with **Use this template** on GitHub, or fork it.
+2. Replace the demo content in `content/` with your own, and run `npm run check:content`.
+3. In your repository's **Settings → Pages**, set the source to the `gh-pages` branch once the first deploy has run.
+
+If you'd rather keep your content out of the public repository, as I do:
+
+1. Put your `content/` folder in a private repository of its own.
+2. In the public repository, add the variable `CONTENT_REPO` (such as `you/portfolio-content`) and a secret `CONTENT_TOKEN`: a fine-grained token that can read that repository's contents.
+3. The deploy then checks out your content in place of the demo. If it can't read it, the deploy stops and the live site stays as it is.
+4. To work on it locally, clone it next to the code and set `CONTENT_DIR=../portfolio-content` in `.env`.
 
 ## Checks
 
-Every pull request runs these, and all must pass before it can be merged:
+Every pull request runs these against the demo content, and all must pass before it can be merged. The deploy runs the content check and the browser checks again against the content that is about to go live.
 
 | Check | What it does | Run it |
 |---|---|---|
@@ -137,7 +160,7 @@ Every pull request runs these, and all must pass before it can be merged:
 | Content | Both languages have the same text keys, and every fact, picture and case study lines up | `npm run check:content` |
 | Build | Builds the site and renders every page | `npm run build` |
 | Dependency audit | Fails on a high or critical vulnerability | `npm audit --audit-level=high` |
-| Smoke and accessibility | Opens the built site in a browser: pages without JavaScript, filters, the command menu, both languages, phone width, cookie consent, and axe in both themes | `npm run build && npm run test:smoke` |
+| Smoke and accessibility | Opens the built site in a browser: pages without JavaScript, filters, the command menu, both languages, phone width, cookie consent when analytics are on, and axe in both themes. What to expect is read from the content folder | `npm run build && npm run test:smoke` |
 | Workflow lint | Checks the GitHub Actions files | CI only |
 
 ## Deploys and releases
@@ -161,4 +184,4 @@ Bug reports and corrections are welcome. See [CONTRIBUTING](./CONTRIBUTING.md), 
 
 ## License
 
-The code is under the [MIT licence](./LICENSE). My photo, resumes, written text and project screenshots are not: see [NOTICE](./NOTICE.md).
+The code and the demo content are under the [MIT licence](./LICENSE). The screenshots of my site, and my personal content in the repository's history, are not: see [NOTICE](./NOTICE.md).

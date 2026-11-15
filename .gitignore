@@ -30,3 +30,6 @@ dist-ssr
 *.sln
 *.sw?
 .vite
+
+# The site's own content, checked out by the deploy
+own-content

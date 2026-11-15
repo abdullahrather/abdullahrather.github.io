@@ -90,15 +90,19 @@ const Portrait = () => {
 
       <div className="ring-conic relative aspect-square rounded-full p-0.5">
         <div className="size-full rounded-full bg-bg p-2">
-          <img
-            src={SITE.portrait}
-            alt={t("ui.a11y.portrait")}
-            width="640"
-            height="640"
-            fetchPriority="high"
-            decoding="async"
-            className="size-full rounded-full object-cover"
-          />
+          {/* An optional smaller AVIF copy, for the browsers that support it. */}
+          <picture>
+            {SITE.portraitAvif && <source srcSet={SITE.portraitAvif} type="image/avif" />}
+            <img
+              src={SITE.portrait}
+              alt={t("ui.a11y.portrait")}
+              width="640"
+              height="640"
+              fetchPriority="high"
+              decoding="async"
+              className="size-full rounded-full object-cover"
+            />
+          </picture>
         </div>
       </div>
     </div>
@@ -108,12 +112,18 @@ const Portrait = () => {
 const side =
   "absolute top-[16%] w-[44%] opacity-70 transition-all duration-700 ease-out-expo hover:z-20 hover:-translate-y-2 hover:rotate-0 hover:opacity-100 focus-visible:z-20 focus-visible:opacity-100 sm:w-[38%]";
 
-/** The three case studies as a fan of windows under the buttons: one in front, two behind. */
+/**
+ * Up to three case studies as a fan of windows under the buttons: the last one in front, the
+ * others behind it, the second on the left and the first on the right.
+ */
 const Showcase = () => {
   const { t } = useTranslation();
-  // In the order of the project list: the private platform (a schematic), then the two with screenshots.
-  const [right, left, front] = (t("projects.items") || []).filter((p) => p.caseStudy);
+  const studies = (t("projects.items") || []).filter((p) => p.caseStudy).slice(0, 3);
+  const front = studies.at(-1);
   if (!front) return null;
+  const behind = studies.slice(0, -1);
+  const left = behind.at(-1);
+  const right = behind.length > 1 ? behind[0] : null;
 
   const window = (project, className, sizes, eager) => (
     <a
@@ -132,8 +142,8 @@ const Showcase = () => {
       className="enter relative mx-auto mt-14 max-w-4xl px-5 mask-[linear-gradient(to_bottom,#000_55%,transparent)] sm:mt-20"
       style={delay(360)}
     >
-      {window(left, `${side} left-5 -rotate-3`, "(min-width: 896px) 325px, 40vw")}
-      {window(right, `${side} right-5 rotate-3`, "(min-width: 896px) 325px, 40vw")}
+      {left && window(left, `${side} left-5 -rotate-3`, "(min-width: 896px) 325px, 40vw")}
+      {right && window(right, `${side} right-5 rotate-3`, "(min-width: 896px) 325px, 40vw")}
       {window(
         front,
         "relative z-10 mx-auto w-[68%] transition-transform duration-700 ease-out-expo hover:-translate-y-2 sm:w-[54%]",

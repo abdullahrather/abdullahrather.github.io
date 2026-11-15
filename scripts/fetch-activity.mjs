@@ -106,6 +106,11 @@ const collect = async () => {
   };
 };
 
+if (!USER) {
+  console.log("activity: no GitHub user in site.json, so the section stays hidden");
+  process.exit(0);
+}
+
 try {
   const activity = await collect();
   fs.writeFileSync(file, `${JSON.stringify(activity, null, 2)}\n`);

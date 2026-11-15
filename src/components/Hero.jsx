@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { Screen, Window } from "./Cover";
 import { Icon } from "./Icons";
 import { trackEvent } from "../lib/analytics";
 import { useExperienceYears } from "../lib/experience";
 import { useTranslation } from "../lib/i18n";
+import { studyPath } from "../lib/route";
 import { SOCIALS, STACK, getResume } from "../lib/site";
 
 const delay = (ms) => ({ "--delay": `${ms}ms` });
@@ -79,24 +81,69 @@ const ResumeMenu = () => {
   );
 };
 
-/** The portrait, set into the headline as a pill the height of a letter. */
 const Portrait = () => {
   const { t } = useTranslation();
   return (
-    <span className="mx-[0.06em] inline-block h-[0.86em] w-[1.5em] rounded-full bg-linear-to-r from-accent to-accent-2 p-[0.03em] align-[-0.1em] shadow-[0_0_3rem_-0.25rem_var(--glow)]">
-      <picture>
-        <source srcSet="/images/profile-avatar.avif" type="image/avif" />
-        <img
-          src="/images/profile-avatar.webp"
-          alt={t("ui.a11y.portrait")}
-          width="640"
-          height="640"
-          fetchPriority="high"
-          decoding="async"
-          className="size-full rounded-full object-cover object-[50%_22%]"
-        />
-      </picture>
-    </span>
+    <div className="enter relative mx-auto size-24 sm:size-28">
+      {/* Glow */}
+      <div aria-hidden="true" className="absolute -inset-4 -z-10 rounded-full bg-accent/30 blur-2xl" />
+
+      <div className="ring-conic relative size-full rounded-full p-0.5">
+        <div className="size-full rounded-full bg-bg p-1">
+          <picture>
+            <source srcSet="/images/profile-avatar.avif" type="image/avif" />
+            <img
+              src="/images/profile-avatar.webp"
+              alt={t("ui.a11y.portrait")}
+              width="640"
+              height="640"
+              fetchPriority="high"
+              decoding="async"
+              className="size-full rounded-full object-cover"
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const side =
+  "absolute top-[16%] w-[44%] opacity-70 transition-all duration-700 ease-out-expo hover:z-20 hover:-translate-y-2 hover:rotate-0 hover:opacity-100 focus-visible:z-20 focus-visible:opacity-100 sm:w-[38%]";
+
+/** The three case studies as a fan of windows under the buttons: one in front, two behind. */
+const Showcase = () => {
+  const { t } = useTranslation();
+  // In the order of the project list: the private platform (a schematic), then the two with screenshots.
+  const [right, left, front] = (t("projects.items") || []).filter((p) => p.caseStudy);
+  if (!front) return null;
+
+  const window = (project, className, sizes, eager) => (
+    <a
+      href={studyPath(project.slug)}
+      aria-label={`${t("ui.study.eyebrow")}: ${project.title}`}
+      className={`block ${className}`}
+    >
+      <Window className="aspect-16/10">
+        <Screen project={project} sizes={sizes} eager={eager} />
+      </Window>
+    </a>
+  );
+
+  return (
+    <div
+      className="enter relative mx-auto mt-14 max-w-4xl px-5 mask-[linear-gradient(to_bottom,#000_55%,transparent)] sm:mt-20"
+      style={delay(360)}
+    >
+      {window(left, `${side} left-5 -rotate-3`, "(min-width: 896px) 325px, 40vw")}
+      {window(right, `${side} right-5 rotate-3`, "(min-width: 896px) 325px, 40vw")}
+      {window(
+        front,
+        "relative z-10 mx-auto w-[68%] transition-transform duration-700 ease-out-expo hover:-translate-y-2 sm:w-[54%]",
+        "(min-width: 896px) 460px, 62vw",
+        true,
+      )}
+    </div>
   );
 };
 
@@ -105,11 +152,14 @@ const Hero = () => {
   const years = useExperienceYears();
 
   return (
-    <section id="top" className="relative overflow-hidden pb-16 pt-32 sm:pt-44 lg:pb-24">
+    <section id="top" className="relative overflow-hidden pb-16 pt-28 sm:pt-36 lg:pb-24">
       <div className="container-x text-center">
+        <Portrait />
+
         <a
           href="#experience"
-          className="enter group inline-flex items-center gap-2.5 rounded-full border border-line bg-card py-1.5 pl-2 pr-3.5 text-xs text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-fg"
+          className="enter group mt-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-card py-1.5 pl-2 pr-3.5 text-xs text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-fg"
+          style={delay(60)}
         >
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping-slow rounded-full bg-ok opacity-60" />
@@ -119,20 +169,20 @@ const Hero = () => {
           <Icon name="arrowRight" className="size-3 transition-transform group-hover:translate-x-0.5" />
         </a>
 
-        <p className="enter mt-8 font-mono text-sm text-muted" style={delay(60)}>
+        <p className="enter mt-6 font-mono text-sm text-muted" style={delay(100)}>
           {t("ui.hero.greeting")}
           <span className="hidden sm:inline"> — {t("hero.role")}</span>
         </p>
 
         <h1
-          className="enter mx-auto mt-5 max-w-5xl text-[clamp(1.9rem,9.6vw,2.6rem)] font-semibold leading-[1.04] tracking-[-0.045em] sm:text-7xl lg:text-[5.5rem]"
-          style={delay(120)}
+          className="enter mx-auto mt-4 max-w-4xl text-[clamp(1.9rem,9.6vw,2.6rem)] font-semibold leading-[1.04] tracking-[-0.045em] sm:text-6xl lg:text-[4.75rem]"
+          style={delay(140)}
         >
-          {t("ui.hero.headline_a")} <Portrait /> <span className="serif-em">{t("ui.hero.headline_em")}</span>{" "}
+          {t("ui.hero.headline_a")} <span className="serif-em">{t("ui.hero.headline_em")}</span>{" "}
           {t("ui.hero.headline_b")}
         </h1>
 
-        <p className="enter mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg" style={delay(200)}>
+        <p className="enter mx-auto mt-7 max-w-2xl text-base leading-relaxed text-muted sm:text-lg" style={delay(200)}>
           {t("hero.summary", { years })}
         </p>
 
@@ -160,8 +210,10 @@ const Hero = () => {
         </div>
       </div>
 
+      <Showcase />
+
       {/* Stack marquee */}
-      <div className="enter mt-20 sm:mt-28" style={delay(400)}>
+      <div className="enter mt-12 sm:mt-16" style={delay(440)}>
         <p className="container-x mb-6 text-center font-mono text-xs uppercase tracking-[0.2em] text-subtle">
           {t("ui.hero.stack_label")}
         </p>

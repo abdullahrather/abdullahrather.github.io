@@ -46,6 +46,10 @@ try {
   await check("pre-rendered content works without JavaScript", async () => {
     const page = await openPage({ javaScriptEnabled: false });
     assert.match(await page.locator("h1").innerText(), /backends/);
+    // The portrait stays out of the headline, so the heading reads as one plain sentence.
+    assert.equal(await page.locator("h1 img").count(), 0);
+    assert.equal(await page.locator('#top img[alt="Portrait of Abdullah Rather"]').count(), 1);
+    assert.equal(await page.locator('#top a[aria-label^="Case study: "]').count(), 3);
     assert.equal(await page.locator("#projects article").count(), 7);
   });
 
